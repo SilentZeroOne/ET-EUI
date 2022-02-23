@@ -1,0 +1,586 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2087b5be0ca1d4e8a8f362d3a27f79, type: 3}
+  m_Name: InnerMessage
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  FileName: 0
+  MessageClasses:
+  - Enabled: 0
+    MessageType: 5
+    ClassName: ObjectQueryRequest
+    ResponseType: ObjectQueryResponse
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Key
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: InstanceId
+      ParamType: 1
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 5
+    ClassName: M2A_Reload
+    ResponseType: A2M_Reload
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 6
+    ClassName: A2M_Reload
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 5
+    ClassName: G2G_LockRequest
+    ResponseType: G2G_LockResponse
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Id
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Address
+      ParamType: 3
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 6
+    ClassName: G2G_LockResponse
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 5
+    ClassName: G2G_LockReleaseRequest
+    ResponseType: G2G_LockReleaseResponse
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Id
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Address
+      ParamType: 3
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 6
+    ClassName: G2G_LockReleaseResponse
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 5
+    ClassName: ObjectAddRequest
+    ResponseType: ObjectAddResponse
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Key
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: InstanceId
+      ParamType: 1
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 6
+    ClassName: ObjectAddResponse
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 5
+    ClassName: ObjectLockRequest
+    ResponseType: ObjectLockResponse
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Key
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: InstanceId
+      ParamType: 1
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Time
+      ParamType: 0
+      MemberID: 3
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 6
+    ClassName: ObjectLockResponse
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 5
+    ClassName: ObjectUnLockRequest
+    ResponseType: ObjectUnLockResponse
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Key
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: OldInstanceId
+      ParamType: 1
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: InstanceId
+      ParamType: 1
+      MemberID: 3
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 6
+    ClassName: ObjectUnLockResponse
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 5
+    ClassName: ObjectRemoveRequest
+    ResponseType: ObjectRemoveResponse
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Key
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 6
+    ClassName: ObjectRemoveResponse
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 5
+    ClassName: ObjectGetRequest
+    ResponseType: ObjectGetResponse
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Key
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 6
+    ClassName: ObjectGetResponse
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: InstanceId
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 5
+    ClassName: R2G_GetLoginKey
+    ResponseType: G2R_GetLoginKey
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Account
+      ParamType: 3
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 6
+    ClassName: G2R_GetLoginKey
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Key
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: GateId
+      ParamType: 1
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 6
+    ClassName: M2M_UnitTransferResponse
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 3
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: NewInstanceId
+      ParamType: 1
+      MemberID: 4
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 7
+    ClassName: G2M_SessionDisconnect
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  ImportMessagesGroup: 1

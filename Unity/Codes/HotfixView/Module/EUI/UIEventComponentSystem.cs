@@ -19,6 +19,7 @@ namespace ET
         {
             self.UIEventHandlers.Clear();
             UIEventComponent.Instance = null;
+            self.IsClicked = false;
         }
     }
     
@@ -43,6 +44,11 @@ namespace ET
             }
             Log.Error($"windowId : {windowID} is not have any uiEvent");
             return null;
+        }
+
+        public static void SetUIClicked(this UIEventComponent self, bool isClicked)
+        {
+            self.IsClicked = isClicked;
         }
     }
 }

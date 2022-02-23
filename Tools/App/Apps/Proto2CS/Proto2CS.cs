@@ -34,7 +34,7 @@ namespace ET
             msgOpcode.Clear();
             Proto2CS("ET", "../Proto/InnerMessage.proto", serverMessagePath, "InnerOpcode", OpcodeRangeDefine.InnerMinOpcode);
             GenerateOpcode("ET", "InnerOpcode", serverMessagePath);
-            
+
             Proto2CS("ET", "../Proto/MongoMessage.proto", serverMessagePath, "MongoOpcode", OpcodeRangeDefine.MongoMinOpcode);
             GenerateOpcode("ET", "MongoOpcode", serverMessagePath);
 
@@ -82,9 +82,15 @@ namespace ET
                     continue;
                 }
 
+                if (newline.StartsWith("///"))
+                {
+                    sb.Append($"\t{newline}\n");
+                    continue;
+                }
+
                 if (newline.StartsWith("//"))
                 {
-                    sb.Append($"{newline}\n");
+                    sb.Append($"\t\t{newline}\n");
                     continue;
                 }
 

@@ -161,6 +161,26 @@ namespace ET
             toggle.onValueChanged.AddListener(selectEventHandler);
         }
         
+        public static void AddListenerAsync(this Button button, Func<ETTask> action)
+        {
+            button.onClick.RemoveAllListeners();
+
+            async ETTask onClickAsync()
+            {
+                UIEventComponent.Instance?.SetUIClicked(true);
+                await action?.Invoke();
+                UIEventComponent.Instance?.SetUIClicked(false);
+            }
+
+            button.onClick.AddListener(() =>
+            {
+                if (UIEventComponent.Instance != null && !UIEventComponent.Instance.IsClicked)
+                {
+                    onClickAsync().Coroutine();
+                }
+            });
+        }
+        
         public static void AddListener(this Button button,UnityAction clickEventHandler )
         {
             button.onClick.RemoveAllListeners();

@@ -41,7 +41,7 @@ message G2C_EnterMap // IResponse
 	int32 RpcId = 1;
 	int32 Error = 2;
 	string Message = 3;
-	// 自己unitId
+	// 自己unitId 
 	int64 MyId = 4;
 }
 
@@ -50,7 +50,6 @@ message MoveInfo
 	repeated float X = 1;
 	repeated float Y = 2;
 	repeated float Z = 3;
-
 	float A = 4;
 	float B = 5;
 	float C = 6;
@@ -87,7 +86,7 @@ message M2C_CreateMyUnit // IActorMessage
 message M2C_StartSceneChange // IActorMessage
 {
 	int64 SceneInstanceId = 1;
-	string SceneName = 2;	
+	string SceneName = 2;
 }
 
 message M2C_RemoveUnits // IActorMessage
@@ -98,7 +97,6 @@ message M2C_RemoveUnits // IActorMessage
 message C2M_PathfindingResult // IActorLocationMessage
 {
 	int32 RpcId = 90;
-
 	float X = 1;
 	float Y = 2;
 	float Z = 3;
@@ -112,11 +110,9 @@ message C2M_Stop // IActorLocationMessage
 message M2C_PathfindingResult // IActorMessage
 {
 	int64 Id = 1;
-
 	float X = 2;
 	float Y = 3;
 	float Z = 4;
-
 	repeated float Xs = 5;
 	repeated float Ys = 6;
 	repeated float Zs = 7;
@@ -125,12 +121,10 @@ message M2C_PathfindingResult // IActorMessage
 message M2C_Stop // IActorMessage
 {
 	int32 Error = 1;
-
 	int64 Id = 2;
 	float X = 3;
 	float Y = 4;
 	float Z = 5;
-
 	float A = 6;
 	float B = 7;
 	float C = 8;
@@ -148,10 +142,8 @@ message G2C_Ping // IResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
-
 	int64 Time = 1;
 }
-
 
 message G2C_Test // IMessage
 {
@@ -176,8 +168,8 @@ message M2C_Reload // IResponse
 message C2R_Login // IRequest
 {
 	int32 RpcId = 90;
-	string  Account = 1;  // 帐号
-	string  Password = 2;  // 密码
+	string Account = 1;
+	string Password = 2;
 }
 
 message R2C_Login // IResponse
@@ -194,7 +186,7 @@ message R2C_Login // IResponse
 message C2G_LoginGate // IRequest
 {
 	int32 RpcId = 90;
-	int64 Key = 1;  // 帐号
+	int64 Key = 1;
 	int64 GateId = 2;
 }
 
@@ -238,4 +230,26 @@ message M2C_TransferMap // IActorLocationResponse
 	int32 Error = 91;
 	string Message = 92;
 }
- 
+
+//ResponseType A2C_LoginAccount
+message C2A_LoginAccount // IRequest
+{
+	int32 RpcId = 90;
+	string AccountName = 1;
+	string AccountPassword = 2;
+}
+
+message A2C_LoginAccount // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string Token = 1;
+	int64 AccountId = 2;
+}
+
+message A2C_Disconnect // IMessage
+{
+	int32 Error = 1;
+}
+
