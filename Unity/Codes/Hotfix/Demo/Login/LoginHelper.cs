@@ -38,6 +38,41 @@ namespace ET
             accountInfo.AccountId = a2CLoginAccount.AccountId;
 
             return ErrorCode.ERR_Success;
-        } 
+        }
+
+        public static async ETTask<int> GetServerInfo(Scene zoneScene)
+        {
+            A2C_GetServerInfo infos = null;
+
+            try
+            {
+                infos = (A2C_GetServerInfo) await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2A_GetServerInfo()
+                {
+                    AccountId = zoneScene.GetComponent<AccountInfoComponent>().AccountId,
+                    Token = zoneScene.GetComponent<AccountInfoComponent>().Token
+                });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                return ErrorCode.ERR_NetworkError;
+            }
+
+            if (infos.Error != ErrorCode.ERR_Success)
+            {
+                return infos.Error;
+            }
+
+            foreach (var serverInfo in infos.ServerInfoList)
+            {
+                var info = zoneScene.GetComponent<ServerInfosComponent>().AddChild<ServerInfo>();
+                info.FromMessage(serverInfo);
+                zoneScene.GetComponent<ServerInfosComponent>().Add(info);
+            }
+            
+            await ETTask.CompletedTask;
+            return ErrorCode.ERR_Success;
+        }
+        
     }
 }
