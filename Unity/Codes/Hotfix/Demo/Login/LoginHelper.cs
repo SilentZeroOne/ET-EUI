@@ -31,6 +31,8 @@ namespace ET
             }
 
             zoneScene.GetComponent<SessionComponent>().Session = accountSession;//保持连接
+            zoneScene.GetComponent<SessionComponent>().Session.AddComponent<PingComponent>();
+            
             var accountInfo = zoneScene.GetComponent<AccountInfoComponent>();
             accountInfo.Token = a2CLoginAccount.Token;
             accountInfo.AccountId = a2CLoginAccount.AccountId;

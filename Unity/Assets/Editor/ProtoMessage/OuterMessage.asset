@@ -971,7 +971,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 1
     ClassName: A2C_Disconnect
     ResponseType: 
@@ -984,4 +984,4 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  ImportMessagesGroup: 0
+  ImportMessagesGroup: 1

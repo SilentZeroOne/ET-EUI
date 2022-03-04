@@ -38,6 +38,8 @@ namespace ET
 				
 				//TODO 显示登陆之后的界面逻辑
 				Log.Debug("登陆成功");
+				self.DomainScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Login);
+				self.DomainScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Lobby);
 			}
 			catch (Exception e)
 			{

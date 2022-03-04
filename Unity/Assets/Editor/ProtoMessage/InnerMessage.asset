@@ -583,4 +583,51 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
+  - Enabled: 0
+    MessageType: 5
+    ClassName: A2L_LoginAccountRequest
+    ResponseType: L2A_LoginAccountResponse
+    Annotation: Account
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: AccountId
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 6
+    ClassName: L2A_LoginAccountResponse
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 3
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
   ImportMessagesGroup: 1

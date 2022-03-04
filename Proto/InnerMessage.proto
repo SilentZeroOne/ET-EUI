@@ -158,7 +158,7 @@ message G2M_SessionDisconnect // IActorLocationMessage
 }
 
 /// <summary>
-/// Account to Login Center
+/// Account
 /// </summary>
 //ResponseType L2A_LoginAccountResponse
 message A2L_LoginAccountRequest // IActorRequest
@@ -168,6 +168,20 @@ message A2L_LoginAccountRequest // IActorRequest
 }
 
 message L2A_LoginAccountResponse // IActorResponse
+{
+	int32 RpcId = 1;
+	int32 Error = 2;
+	string Message = 3;
+}
+
+//ResponseType G2L_DisconnectGateUnit
+message L2G_DisconnectGateUnit // IActorRequest
+{
+	int32 RpcId = 90;
+	int64 AccountId = 1;
+}
+
+message G2L_DisconnectGateUnit // IActorResponse
 {
 	int32 RpcId = 1;
 	int32 Error = 2;

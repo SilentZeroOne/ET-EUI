@@ -326,7 +326,7 @@ namespace ET
 	}
 
 	/// <summary>
-	/// Account to Login Center
+	/// Account
 	/// </summary>
 	[ResponseType(nameof(L2A_LoginAccountResponse))]
 	[Message(InnerOpcode.A2L_LoginAccountRequest)]
@@ -344,6 +344,34 @@ namespace ET
 	[Message(InnerOpcode.L2A_LoginAccountResponse)]
 	[ProtoContract]
 	public partial class L2A_LoginAccountResponse: Object, IActorResponse
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public int Error { get; set; }
+
+		[ProtoMember(3)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(G2L_DisconnectGateUnit))]
+	[Message(InnerOpcode.L2G_DisconnectGateUnit)]
+	[ProtoContract]
+	public partial class L2G_DisconnectGateUnit: Object, IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long AccountId { get; set; }
+
+	}
+
+	[Message(InnerOpcode.G2L_DisconnectGateUnit)]
+	[ProtoContract]
+	public partial class G2L_DisconnectGateUnit: Object, IActorResponse
 	{
 		[ProtoMember(1)]
 		public int RpcId { get; set; }

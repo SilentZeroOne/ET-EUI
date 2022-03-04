@@ -40,7 +40,7 @@ namespace ET
                 return;
             }
 
-            if (!Regex.IsMatch(request.AccountPassword.Trim(), @"^(?=.*[0-9].*)(?=.*[a-z].*)(?=.*[A-Z].*).{6,15}$"))
+            if (!Regex.IsMatch(request.AccountPassword.Trim(), @"^[A-Za-z0-9]+$"))
             {
                 response.Error = ErrorCode.ERR_AccountPasswordRegexError;
                 reply();
