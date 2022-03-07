@@ -33,9 +33,20 @@
         public static async ETTask Awake(this ServerInfoManagerComponent self)
         {
             var serverInfoList = await DBManagerComponent.Instance.GetZoneDB(self.DomainZone()).Query<ServerInfo>(d => true);
-            if (serverInfoList == null || serverInfoList.Count<0)
+            if (serverInfoList == null || serverInfoList.Count <= 0)
             {
                 Log.Error("ServerInfo count is zero");
+                var serverInfos = ServerInfosConfigCategory.Instance.GetAll();
+                foreach (var serverInfo in serverInfos.Values)
+                {
+                    var info = self.AddChildWithId<ServerInfo>(serverInfo.Id);
+                    info.Status = (int) ServerStatus.Normal;
+                    info.ServerName = serverInfo.ServerName;
+                    self.ServerInfos.Add(info);
+
+                    await DBManagerComponent.Instance.GetZoneDB(self.DomainZone()).Save(info);
+                }
+
                 return;
             }
             
