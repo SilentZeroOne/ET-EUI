@@ -1072,4 +1072,127 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
+  - Enabled: 1
+    MessageType: 2
+    ClassName: C2A_CrerateRole
+    ResponseType: A2C_CreateRole
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Token
+      ParamType: 3
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: AccountId
+      ParamType: 1
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Name
+      ParamType: 3
+      MemberID: 3
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ServerId
+      ParamType: 0
+      MemberID: 4
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 1
+    MessageType: 6
+    ClassName: A2C_CreateRole
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 1
+    MessageType: 0
+    ClassName: RoleInfoProto
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: Id
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Name
+      ParamType: 3
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: State
+      ParamType: 0
+      MemberID: 3
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: AccountId
+      ParamType: 1
+      MemberID: 4
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: LastLoginTime
+      ParamType: 1
+      MemberID: 5
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: CreateTime
+      ParamType: 1
+      MemberID: 6
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ServerId
+      ParamType: 0
+      MemberID: 7
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
   ImportMessagesGroup: 1

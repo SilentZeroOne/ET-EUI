@@ -291,6 +291,7 @@ message A2C_CreateRole // IActorResponse
 	int32 RpcId = 90;
 	int32 Error = 91;
 	string Message = 92;
+	RoleInfoProto RoleInfo = 1;
 }
 
 message RoleInfoProto

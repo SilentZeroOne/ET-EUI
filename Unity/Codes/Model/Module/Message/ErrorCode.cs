@@ -22,5 +22,7 @@ namespace ET
         public const int ERR_AccountPasswordError = 200007;
         public const int ERR_RepeatedRequestError = 200008;
         public const int ERR_TokenError = 200009;
+        public const int ERR_RoleNameIsNull = 200010;
+        public const int ERR_RoleNameSame = 200011;
     }
 }

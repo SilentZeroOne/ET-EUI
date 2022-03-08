@@ -1,5 +1,11 @@
 ﻿namespace ET
 {
+    public enum RoleState
+    {
+        Normal,
+        Freeze
+    }
+    
     public class RoleInfo: Entity, IAwake
     {
         public string Name;
