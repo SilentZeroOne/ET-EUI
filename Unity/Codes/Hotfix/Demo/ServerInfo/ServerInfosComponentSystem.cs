@@ -17,6 +17,7 @@
                 info?.Dispose();
             }
             self.ServerInfoList.Clear();
+            self.CurrentServerId = 0;
         }
     }
 }
