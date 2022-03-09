@@ -1,7 +1,7 @@
 ﻿namespace ET
 {
-	[AUIEvent(WindowID.WindowID_Server)]
-	public  class DlgServerEventHandler : IAUIEventHandler
+	[AUIEvent(WindowID.WindowID_Role)]
+	public  class DlgRoleEventHandler : IAUIEventHandler
 	{
 
 		public void OnInitWindowCoreData(UIBaseWindow uiBaseWindow)
@@ -11,23 +11,22 @@
 
 		public void OnInitComponent(UIBaseWindow uiBaseWindow)
 		{
-		  uiBaseWindow.AddComponent<DlgServerViewComponent>(); 
-		  uiBaseWindow.AddComponent<DlgServer>(); 
+		  uiBaseWindow.AddComponent<DlgRoleViewComponent>(); 
+		  uiBaseWindow.AddComponent<DlgRole>(); 
 		}
 
 		public void OnRegisterUIEvent(UIBaseWindow uiBaseWindow)
 		{
-		  uiBaseWindow.GetComponent<DlgServer>().RegisterUIEvent(); 
+		  uiBaseWindow.GetComponent<DlgRole>().RegisterUIEvent(); 
 		}
 
 		public void OnShowWindow(UIBaseWindow uiBaseWindow, Entity contextData = null)
 		{
-		  uiBaseWindow.GetComponent<DlgServer>().ShowWindow(contextData); 
+		  uiBaseWindow.GetComponent<DlgRole>().ShowWindow(contextData); 
 		}
 
 		public void OnHideWindow(UIBaseWindow uiBaseWindow)
 		{
-			uiBaseWindow.GetComponent<DlgServer>().HideWindow();
 		}
 
 		public void BeforeUnload(UIBaseWindow uiBaseWindow)

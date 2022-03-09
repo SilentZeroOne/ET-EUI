@@ -128,9 +128,11 @@ namespace ET
 
             if (a2CGetRoles.Error != ErrorCode.ERR_Success)
             {
+                Log.Error(a2CGetRoles.Error.ToString());
                 return a2CGetRoles.Error;
             }
 
+            zoneScene.GetComponent<RoleInfosComponent>().RoleInfos.Clear();
             foreach (var roleInfo in a2CGetRoles.RoleInfos)
             {
                 var newRoleInfo = zoneScene.GetComponent<RoleInfosComponent>().AddChild<RoleInfo>();
@@ -143,9 +145,33 @@ namespace ET
 
         public static async ETTask<int> DeleteRole(Scene zoneScene)
         {
-            
-            
-            await ETTask.CompletedTask;
+            A2C_DeleteRole a2CDeleteRole = null;
+
+            try
+            {
+                a2CDeleteRole = (A2C_DeleteRole) await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2A_DeleteRole()
+                {
+                    AccountId = zoneScene.GetComponent<AccountInfoComponent>().AccountId,
+                    RoleInfoId = zoneScene.GetComponent<RoleInfosComponent>().CurrentRoleId,
+                    Token = zoneScene.GetComponent<AccountInfoComponent>().Token,
+                    ServerId = zoneScene.GetComponent<ServerInfosComponent>().CurrentServerId
+                });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                return ErrorCode.ERR_NetworkError;
+            }
+
+            if (a2CDeleteRole.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(a2CDeleteRole.Error.ToString());
+                return a2CDeleteRole.Error;
+            }
+
+            var index= zoneScene.GetComponent<RoleInfosComponent>().RoleInfos.FindIndex((info) => info.AccountId == a2CDeleteRole.DeleteRoleInfoId);
+            zoneScene.GetComponent<RoleInfosComponent>().RoleInfos.RemoveAt(index);
+
             return ErrorCode.ERR_Success;
         }
 
