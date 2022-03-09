@@ -8,10 +8,10 @@ namespace ET
         public static void RegisterUIEvent(this DlgServer self)
         {
             self.View.EButton_EnterServerButton.AddListenerAsync(() => { return self.OnConfirmClickHandler(); });
-            self.View.ELoopScrollList_ServersLoopVerticalScrollRect.AddItemRefreshListener(((transform, i) =>
+            self.View.ELoopScrollList_ServersLoopVerticalScrollRect.AddItemRefreshListener((transform, i) =>
             {
                 self.OnScrollItemRefreshHandler(transform, i);
-            }));
+            });
         }
 
         public static void ShowWindow(this DlgServer self,Entity context = null)

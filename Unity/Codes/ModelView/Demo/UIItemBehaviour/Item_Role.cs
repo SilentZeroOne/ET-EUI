@@ -17,6 +17,54 @@ namespace ET
 			return this;
 		}
 
+		public UnityEngine.UI.Button EButton_SelectRoleButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if (this.isCacheNode)
+     			{
+     				if( this.m_EButton_SelectRoleButton == null )
+     				{
+		    			this.m_EButton_SelectRoleButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"EButton_SelectRole");
+     				}
+     				return this.m_EButton_SelectRoleButton;
+     			}
+     			else
+     			{
+		    		return UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"EButton_SelectRole");
+     			}
+     		}
+     	}
+
+		public UnityEngine.UI.Image EButton_SelectRoleImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if (this.isCacheNode)
+     			{
+     				if( this.m_EButton_SelectRoleImage == null )
+     				{
+		    			this.m_EButton_SelectRoleImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EButton_SelectRole");
+     				}
+     				return this.m_EButton_SelectRoleImage;
+     			}
+     			else
+     			{
+		    		return UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"EButton_SelectRole");
+     			}
+     		}
+     	}
+
 		public UnityEngine.UI.Text E_NameText
      	{
      		get
@@ -67,11 +115,15 @@ namespace ET
 
 		public void DestroyWidget()
 		{
+			this.m_EButton_SelectRoleButton = null;
+			this.m_EButton_SelectRoleImage = null;
 			this.m_E_NameText = null;
 			this.m_E_CreateTimeText = null;
 			this.uiTransform = null;
 		}
 
+		private UnityEngine.UI.Button m_EButton_SelectRoleButton = null;
+		private UnityEngine.UI.Image m_EButton_SelectRoleImage = null;
 		private UnityEngine.UI.Text m_E_NameText = null;
 		private UnityEngine.UI.Text m_E_CreateTimeText = null;
 		public Transform uiTransform = null;

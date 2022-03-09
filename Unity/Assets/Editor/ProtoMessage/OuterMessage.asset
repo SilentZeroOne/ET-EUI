@@ -984,7 +984,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 2
     ClassName: C2A_GetServerInfo
     ResponseType: A2C_GetServerInfo
@@ -1011,7 +1011,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 3
     ClassName: A2C_GetServerInfo
     ResponseType: 
@@ -1045,7 +1045,7 @@ MonoBehaviour:
       CustomMessageClassName: ServerInfoProto
       MessageClassName: ServerInfoProto
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 0
     ClassName: ServerInfoProto
     ResponseType: 
@@ -1072,7 +1072,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 2
     ClassName: C2A_CrerateRole
     ResponseType: A2C_CreateRole
@@ -1113,7 +1113,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 6
     ClassName: A2C_CreateRole
     ResponseType: 
@@ -1144,10 +1144,10 @@ MonoBehaviour:
       ParamType: 5
       MemberID: 1
       Custom: 0
-      CustomMessageClassName: 
+      CustomMessageClassName: RoleInfoProto
       MessageClassName: RoleInfoProto
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 0
     ClassName: RoleInfoProto
     ResponseType: 
@@ -1202,7 +1202,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 2
     ClassName: C2A_GetRoles
     ResponseType: A2C_GetRoles
@@ -1236,7 +1236,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 3
     ClassName: A2C_GetRoles
     ResponseType: 
@@ -1267,10 +1267,10 @@ MonoBehaviour:
       ParamType: 11
       MemberID: 1
       Custom: 0
-      CustomMessageClassName: 
+      CustomMessageClassName: RoleInfoProto
       MessageClassName: RoleInfoProto
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 2
     ClassName: C2A_DeleteRole
     ResponseType: A2C_DeleteRole
@@ -1311,7 +1311,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 3
     ClassName: A2C_DeleteRole
     ResponseType: 

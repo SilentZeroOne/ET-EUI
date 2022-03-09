@@ -169,7 +169,12 @@ namespace ET
                 return a2CDeleteRole.Error;
             }
 
-            var index= zoneScene.GetComponent<RoleInfosComponent>().RoleInfos.FindIndex((info) => info.AccountId == a2CDeleteRole.DeleteRoleInfoId);
+            var index= zoneScene.GetComponent<RoleInfosComponent>().RoleInfos.FindIndex((info) => info.Id == a2CDeleteRole.DeleteRoleInfoId);
+            if (index == -1)
+            {
+                Log.Error("Can't find such role info!");
+                return ErrorCode.ERR_RoleNotExist;
+            }
             zoneScene.GetComponent<RoleInfosComponent>().RoleInfos.RemoveAt(index);
 
             return ErrorCode.ERR_Success;
