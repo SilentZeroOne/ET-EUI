@@ -138,6 +138,12 @@ public class ETMessageDefineObject : SerializedScriptableObject
         MessageClasses = ParseMessages(FileName.ToString());
     }
 
+    [Button("打开Proto目录", ButtonHeight = 30)]
+    public void OpenProtoPath()
+    {
+        EditorUtility.RevealInFinder($"../Proto/{ETProtoFileType.OuterMessage}.proto");
+    }
+
     private static readonly char[] splitChars = { ' ', '\t' };
     public static List<MessageClass> ParseMessages(string fileName)
     {
