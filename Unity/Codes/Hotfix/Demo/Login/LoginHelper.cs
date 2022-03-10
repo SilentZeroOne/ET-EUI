@@ -180,5 +180,70 @@ namespace ET
             return ErrorCode.ERR_Success;
         }
 
+        public static async ETTask<int> GetRealmKey(Scene zoneScene)
+        {
+            A2C_GetRealmKey a2CGetRealmKey = null;
+            try
+            {
+                a2CGetRealmKey = (A2C_GetRealmKey) await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2A_GetRelamKey()
+                {
+                    AccountId = zoneScene.GetComponent<AccountInfoComponent>().AccountId,
+                    Token = zoneScene.GetComponent<AccountInfoComponent>().Token,
+                    ServerId = zoneScene.GetComponent<ServerInfosComponent>().CurrentServerId
+                });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                return ErrorCode.ERR_NetworkError;
+            }
+
+            if (a2CGetRealmKey.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(a2CGetRealmKey.Error.ToString());
+                return a2CGetRealmKey.Error;
+            }
+
+            zoneScene.GetComponent<AccountInfoComponent>().RealmKey = a2CGetRealmKey.RealmKey;
+            zoneScene.GetComponent<AccountInfoComponent>().RealmAddress = a2CGetRealmKey.RealmAddress;
+            zoneScene.GetComponent<SessionComponent>().Session.Dispose();//断开与Account服务器的链接
+
+            return ErrorCode.ERR_Success;
+        }
+
+        public static async ETTask<int> EnterGame(Scene zoneScene)
+        {
+            string realmAddress = zoneScene.GetComponent<AccountInfoComponent>().RealmAddress;
+            //1.连接Realm网关服务器获取Gate地址
+            R2C_LoginRealm r2CLoginRealm = null;
+            Session session = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(realmAddress));
+            try
+            {
+                r2CLoginRealm = (R2C_LoginRealm) await session.Call(new C2R_LoginRealm()
+                {
+                    AccountId = zoneScene.GetComponent<AccountInfoComponent>().AccountId,
+                    RealmKey = zoneScene.GetComponent<AccountInfoComponent>().RealmKey
+                });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                session?.Dispose();
+                return ErrorCode.ERR_NetworkError;
+            }
+            session?.Dispose();
+
+            if (r2CLoginRealm.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(r2CLoginRealm.Error.ToString());
+                return r2CLoginRealm.Error;
+            }
+            
+            //2.连接Gate
+            
+            
+            await ETTask.CompletedTask;
+            return ErrorCode.ERR_Success;
+        }
     }
 }

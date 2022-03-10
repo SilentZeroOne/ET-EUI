@@ -6,9 +6,9 @@ namespace ET
 	{
 		private readonly Dictionary<long, string> sessionKey = new Dictionary<long, string>();
 		
-		public void Add(long key, string account)
+		public void Add(long key, string token)
 		{
-			this.sessionKey.Add(key, account);
+			this.sessionKey.Add(key, token);
 			this.TimeoutRemoveKey(key).Coroutine();
 		}
 

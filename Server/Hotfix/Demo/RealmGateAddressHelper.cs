@@ -10,9 +10,16 @@ namespace ET
 			List<StartSceneConfig> zoneGates = StartSceneConfigCategory.Instance.Gates[zone];
 			
 			//int n = RandomHelper.RandomNumber(0, zoneGates.Count);
+			//取模固定获得一个Gate
 			var n = accountId.GetHashCode() % zoneGates.Count;
 			
 			return zoneGates[n];
+		}
+
+		public static StartSceneConfig GetRealm(int zone)
+		{
+			StartSceneConfig zoneRealm = StartSceneConfigCategory.Instance.Realms[zone];
+			return zoneRealm;
 		}
 	}
 }

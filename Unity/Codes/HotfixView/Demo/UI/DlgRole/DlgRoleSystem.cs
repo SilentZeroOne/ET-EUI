@@ -15,7 +15,7 @@ namespace ET
 			self.View.ELoopScrollList_RolesListLoopHorizontalScrollRect.AddItemRefreshListener(((transform, i) =>
 					self.OnScrollItemRefreshHandler(transform, i)));
 			self.View.EButton_DeleteRoleButton.AddListenerAsync(() => { return self.OnDeleteRoleClickHandler();});
-			
+			self.View.EButton_EnterGameButton.AddListenerAsync(() => { return self.OnComfirmClickHandler();});
 		}
 
 		public static void ShowWindow(this DlgRole self, Entity contextData = null)
@@ -81,8 +81,7 @@ namespace ET
 
 		public static async ETTask OnDeleteRoleClickHandler(this DlgRole self)
 		{
-			var currentId = self.ZoneScene().GetComponent<RoleInfosComponent>().CurrentRoleId;
-			if (currentId == 0)
+			if (self.ZoneScene().GetComponent<RoleInfosComponent>().CurrentRoleId == 0)
 			{
 				Log.Error("Please select a role to delete");
 				return;
@@ -98,6 +97,31 @@ namespace ET
 				}
 				
 				self.RefreshRoleItem();
+			}
+			catch (Exception e)
+			{
+				Log.Error(e.ToString());
+			}
+		}
+
+		public static async ETTask OnComfirmClickHandler(this DlgRole self)
+		{
+			if (self.ZoneScene().GetComponent<RoleInfosComponent>().CurrentRoleId == 0)
+			{
+				Log.Error("Please select a role to enter game");
+				return;
+			}
+
+			try
+			{
+				var errorCode = await LoginHelper.GetRealmKey(self.ZoneScene());
+				if (errorCode != ErrorCode.ERR_Success)
+				{
+					Log.Error(errorCode.ToString());
+					return;
+				}
+				
+				
 			}
 			catch (Exception e)
 			{

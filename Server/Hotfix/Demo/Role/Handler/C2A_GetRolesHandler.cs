@@ -37,7 +37,7 @@ namespace ET
                     var roleInfos = await DBManagerComponent.Instance.GetZoneDB(session.DomainZone())
                             .Query<RoleInfo>(r => r.AccountId == request.AccountId
                                     && r.ServerId == request.ServerId
-                                    && r.State != (int) RoleState.Freeze);
+                                    && r.State == (int) RoleState.Normal);
 
                     if (roleInfos == null || roleInfos.Count == 0)
                     {
