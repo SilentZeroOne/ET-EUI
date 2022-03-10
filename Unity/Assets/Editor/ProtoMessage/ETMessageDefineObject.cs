@@ -141,7 +141,7 @@ public class ETMessageDefineObject : SerializedScriptableObject
     [Button("打开Proto目录", ButtonHeight = 30)]
     public void OpenProtoPath()
     {
-        EditorUtility.RevealInFinder($"../Proto/{ETProtoFileType.OuterMessage}.proto");
+        EditorUtility.RevealInFinder($"../Proto/{this.FileName}.proto");
     }
 
     private static readonly char[] splitChars = { ' ', '\t' };
