@@ -214,6 +214,7 @@ namespace ET
         public static async ETTask<int> EnterGame(Scene zoneScene)
         {
             string realmAddress = zoneScene.GetComponent<AccountInfoComponent>().RealmAddress;
+            long accountId = zoneScene.GetComponent<AccountInfoComponent>().AccountId;
             //1.连接Realm网关服务器获取Gate地址
             R2C_LoginRealm r2CLoginRealm = null;
             Session session = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(realmAddress));
@@ -221,7 +222,7 @@ namespace ET
             {
                 r2CLoginRealm = (R2C_LoginRealm) await session.Call(new C2R_LoginRealm()
                 {
-                    AccountId = zoneScene.GetComponent<AccountInfoComponent>().AccountId,
+                    AccountId = accountId,
                     RealmKey = zoneScene.GetComponent<AccountInfoComponent>().RealmKey
                 });
             }
@@ -235,14 +236,40 @@ namespace ET
 
             if (r2CLoginRealm.Error != ErrorCode.ERR_Success)
             {
-                Log.Error(r2CLoginRealm.Error.ToString());
                 return r2CLoginRealm.Error;
             }
             
+            Log.Warning($"GateAddress {r2CLoginRealm.GateAddress}");
+            Session gateSession = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(r2CLoginRealm.GateAddress));
+            gateSession.AddComponent<PingComponent>();
+            zoneScene.GetComponent<SessionComponent>().Session = gateSession;
+            
             //2.连接Gate
+            long currentRole = zoneScene.GetComponent<RoleInfosComponent>().CurrentRoleId;
+            G2C_LoginGameGate g2CLoginGameGate = null;
+            try
+            {
+                g2CLoginGameGate = (G2C_LoginGameGate) await gateSession.Call(new C2G_LoginGameGate()
+                {
+                    AccountId = accountId, Key = r2CLoginRealm.GateSessionKey, RoleId = currentRole
+                });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                gateSession?.Dispose();
+                return ErrorCode.ERR_NetworkError;
+            }
+
+            if (g2CLoginGameGate.Error != ErrorCode.ERR_Success)
+            {
+                gateSession?.Dispose();
+                return g2CLoginGameGate.Error;
+            }
+            Log.Debug("Login Gate Success");
             
             
-            await ETTask.CompletedTask;
+            
             return ErrorCode.ERR_Success;
         }
     }

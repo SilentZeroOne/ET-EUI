@@ -7,7 +7,7 @@ namespace ET
         protected override async ETTask Run(Scene scene, A2L_LoginAccountRequest request, L2A_LoginAccountResponse response, Action reply)
         {
             var accountId = request.AccountId;
-            using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.LogingCenterLock,accountId.GetHashCode()))
+            using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.LoginCenterLock,accountId.GetHashCode()))
             {
                 if (!scene.GetComponent<LoginInfoRecordComponent>().IsExist(accountId))
                 {
