@@ -58,7 +58,7 @@ namespace ET
                         return;
                     }
                     
-                    Player player = gateScene.GetComponent<PlayerComponent>().Get(request.RoleId);
+                    Player player = gateScene.GetComponent<PlayerComponent>().Get(request.AccountId);
                     if (player == null)
                     {
                         player = gateScene.GetComponent<PlayerComponent>()
@@ -74,6 +74,7 @@ namespace ET
 
                     session.AddComponent<SessionPlayerComponent>().PlayerId = player.Id;
                     session.GetComponent<SessionPlayerComponent>().PlayerInstanceId = player.InstanceId;
+                    session.GetComponent<SessionPlayerComponent>().AccountId = request.AccountId;
                     player.SessionInstanceId = session.InstanceId;
                 }
             }

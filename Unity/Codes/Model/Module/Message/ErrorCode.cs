@@ -27,5 +27,6 @@ namespace ET
         public const int ERR_RoleNotExist = 200012;
         public const int ERR_RequestSceneTypeError = 200013;
         public const int ERR_ConnectGateKeyError = 200014;
+        public const int ERR_OtherAccountLogin = 200015;
     }
 }
