@@ -120,8 +120,16 @@ namespace ET
 					Log.Error(errorCode.ToString());
 					return;
 				}
-				
-				
+
+				errorCode = await LoginHelper.EnterGame(self.ZoneScene());
+				if (errorCode != ErrorCode.ERR_Success)
+				{
+					Log.Error(errorCode.ToString());
+					return;
+				}
+				self.ZoneScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Role);
+				Log.Debug($"进入游戏成功！！！");
+
 			}
 			catch (Exception e)
 			{

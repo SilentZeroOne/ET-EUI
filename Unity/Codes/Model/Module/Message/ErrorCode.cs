@@ -28,5 +28,11 @@ namespace ET
         public const int ERR_RequestSceneTypeError = 200013;
         public const int ERR_ConnectGateKeyError = 200014;
         public const int ERR_OtherAccountLogin = 200015;
+        public const int ERR_SessionPlayerError = 200016;
+        public const int ERR_NonePlayerError = 200017;
+        public const int ERR_SessionStateError = 200018;
+        public const int ERR_EnterGameError = 200019;
+        public const int ERR_ReEnterGameError = 200020;
+        public const int ERR_ReEnterGameError2 = 200021;
     }
 }

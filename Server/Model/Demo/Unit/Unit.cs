@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace ET
 {
+    /// <summary>
+    /// 在游戏里逻辑服当中角色的映射对象
+    /// </summary>
     public sealed class Unit: Entity, IAwake<int>
     {
         public int ConfigId; //配置表id

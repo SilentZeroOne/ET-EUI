@@ -268,8 +268,26 @@ namespace ET
             }
             Log.Debug("Login Gate Success");
             
-            
-            
+            //角色正式请求进入游戏逻辑服
+            G2C_EnterGame g2CEnterGame = null;
+            try
+            {
+                g2CEnterGame = (G2C_EnterGame) await gateSession.Call(new C2G_EnterGame());
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                gateSession?.Dispose();
+                return ErrorCode.ERR_NetworkError;
+            }
+
+            if (g2CEnterGame.Error != ErrorCode.ERR_Success)
+            {
+                return g2CEnterGame.Error;
+            }
+
+            Log.Debug("角色进入游戏成功！！！");
+
             return ErrorCode.ERR_Success;
         }
     }

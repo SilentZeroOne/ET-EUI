@@ -57,6 +57,15 @@ namespace ET
                         session?.Disconnect().Coroutine();
                         return;
                     }
+
+                    var sessionStateComponent = session.GetComponent<SessionStateComponent>();
+                    if (sessionStateComponent == null)
+                    {
+                        sessionStateComponent = session.AddComponent<SessionStateComponent>();
+                    }
+
+                    sessionStateComponent.State = SessionState.Normal;
+                    Log.Debug("添加Session State component");
                     
                     Player player = gateScene.GetComponent<PlayerComponent>().Get(request.AccountId);
                     if (player == null)
