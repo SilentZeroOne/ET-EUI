@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OuterMessage
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -1488,4 +1488,119 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
+  - Enabled: 0
+    MessageType: 2
+    ClassName: C2G_LoginGameGate
+    ResponseType: G2C_LoginGameGate
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Key
+      ParamType: 3
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: RoleId
+      ParamType: 1
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: AccountId
+      ParamType: 1
+      MemberID: 3
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 3
+    ClassName: G2C_LoginGameGate
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: PlayerId
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 2
+    ClassName: C2G_EnterGame
+    ResponseType: G2C_EnterGame
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
+    MessageType: 3
+    ClassName: G2C_EnterGame
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: MyId
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: "\u81EA\u5DF1\u7684ID "
   ImportMessagesGroup: 1
