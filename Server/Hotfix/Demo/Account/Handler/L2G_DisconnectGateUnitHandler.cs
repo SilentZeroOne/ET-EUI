@@ -22,13 +22,12 @@ namespace ET
                 Session gateSession = Game.EventSystem.Get(player.SessionInstanceId) as Session;
                 if (gateSession != null && !gateSession.IsDisposed)
                 {
-                    gateSession.Send(new A2C_Disconnect(){Error = ErrorCode.ERR_OtherAccountLogin});
                     var sessionPlayer = gateSession.GetComponent<SessionPlayerComponent>();
                     if (sessionPlayer != null)
                     {
                         sessionPlayer.OtherPlayLogin = true;
                     }
-                    
+                    gateSession.Send(new A2C_Disconnect(){Error = ErrorCode.ERR_OtherAccountLogin});
                     gateSession?.Disconnect().Coroutine();
                 }
 

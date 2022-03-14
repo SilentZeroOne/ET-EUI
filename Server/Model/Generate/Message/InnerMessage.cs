@@ -561,4 +561,94 @@ namespace ET
 
 	}
 
+	/// <summary>
+	/// 增加或更新Unit缓存
+	/// </summary>
+	[ResponseType(nameof(UnitCache2Other_AddOrUpdateUnit))]
+	[Message(InnerOpcode.Other2UnitCache_AddOrUpdateUnit)]
+	[ProtoContract]
+	public partial class Other2UnitCache_AddOrUpdateUnit: Object, IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long UnitId { get; set; }
+
+		// 实体类型
+		[ProtoMember(2)]
+		public List<string> EntityTypes = new List<string>();
+
+		// 实体序列化之后的Bytes
+		[ProtoMember(3)]
+		public List<byte[]> EntityBytes = new List<byte[]>();
+
+	}
+
+	[Message(InnerOpcode.UnitCache2Other_AddOrUpdateUnit)]
+	[ProtoContract]
+	public partial class UnitCache2Other_AddOrUpdateUnit: Object, IActorResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	/// <summary>
+	/// 获取Unit缓存
+	/// </summary>
+	[ResponseType(nameof(UnitCache2Other_GetUnit))]
+	[Message(InnerOpcode.Other2UnitCache_GetUnit)]
+	[ProtoContract]
+	public partial class Other2UnitCache_GetUnit: Object, IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long UnitId { get; set; }
+
+		// 需要获取的组件名
+		[ProtoMember(2)]
+		public List<string> ComponentNameList = new List<string>();
+
+	}
+
+	/// <summary>
+	/// 删除缓存
+	/// </summary>
+	[ResponseType(nameof(UnitCache2Other_DeleteUnit))]
+	[Message(InnerOpcode.Other2UnitCache_DeleteUnit)]
+	[ProtoContract]
+	public partial class Other2UnitCache_DeleteUnit: Object, IActorRequest
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public long UnitId { get; set; }
+
+	}
+
+	[Message(InnerOpcode.UnitCache2Other_DeleteUnit)]
+	[ProtoContract]
+	public partial class UnitCache2Other_DeleteUnit: Object, IActorResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
 }

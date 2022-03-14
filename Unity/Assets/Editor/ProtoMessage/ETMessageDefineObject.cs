@@ -101,7 +101,7 @@ public class ETMessageDefineObject : SerializedScriptableObject
                         type = "repeated float";
                         break;
                     case Proto3Type.RepeatedString:
-                        type = "string";
+                        type = "repeated string";
                         break;
                     case Proto3Type.RepeatedBytes:
                         type = "repeated bytes";

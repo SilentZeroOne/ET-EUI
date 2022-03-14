@@ -19,12 +19,21 @@ namespace ET
 					DisconnectHelper.KickPlayer((Player) Game.EventSystem.Get(self.PlayerInstanceId)).Coroutine();
 					Log.Debug($"玩家 {self.PlayerId} 自动断线");
 				}
+				self.Revert();
 			}
 		}
 
 		public static Player GetMyPlayer(this SessionPlayerComponent self)
 		{
 			return self.Domain.GetComponent<PlayerComponent>().Get(self.AccountId);
+		}
+
+		public static void Revert(this SessionPlayerComponent self)
+		{
+			self.AccountId = 0;
+			self.PlayerId = 0;
+			self.OtherPlayLogin = false;
+			self.PlayerInstanceId = 0;
 		}
 	}
 }
