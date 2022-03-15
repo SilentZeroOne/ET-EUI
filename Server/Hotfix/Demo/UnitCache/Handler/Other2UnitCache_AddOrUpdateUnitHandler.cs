@@ -6,12 +6,12 @@ namespace ET
     {
         protected override async ETTask Run(Scene scene, Other2UnitCache_AddOrUpdateUnit request, UnitCache2Other_AddOrUpdateUnit response, Action reply)
         {
-
+            UpdateUnitCacheAsync(scene, request).Coroutine();
             reply();
             await ETTask.CompletedTask;
         }
 
-        private async ETTask UpdateUnitCacheAsync(Scene scene, Other2UnitCache_AddOrUpdateUnit request, UnitCache2Other_AddOrUpdateUnit response)
+        private async ETTask UpdateUnitCacheAsync(Scene scene, Other2UnitCache_AddOrUpdateUnit request)
         {
             var unitCache = scene.GetComponent<UnitCacheComponent>();
             using (ListComponent<Entity> entityList = ListComponent<Entity>.Create())
@@ -22,7 +22,8 @@ namespace ET
                     Entity entity = (Entity)MongoHelper.FromBson(type, request.EntityBytes[i]);
                     entityList.Add(entity);
                 }
-                await 
+
+                await unitCache.AddOrUpdate(request.UnitId, entityList);
             }
         }
     }
