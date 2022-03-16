@@ -1,4 +1,6 @@
-﻿namespace ET
+﻿using System;
+
+namespace ET
 {
     public static class UnitCacheHelper
     {
@@ -13,6 +15,37 @@
             message.EntityTypes.Add(typeof (T).FullName);
             message.EntityBytes.Add(MongoHelper.ToBson(self));
             await MessageHelper.CallActor(StartSceneConfigCategory.Instance.GetUnitCacheConfig(self.Id).InstanceId, message);
+        }
+
+        public static async ETTask<Unit> GetUnitCache(Scene scene, long unitId)
+        {
+            long instanceId = StartSceneConfigCategory.Instance.GetUnitCacheConfig(unitId).InstanceId;
+            Other2UnitCache_GetUnit message = new Other2UnitCache_GetUnit() { UnitId = unitId };
+            UnitCache2Other_GetUnit queryResponse = (UnitCache2Other_GetUnit)await MessageHelper.CallActor(instanceId, message);
+            if (queryResponse.Error != ErrorCode.ERR_Success || queryResponse.EntityList.Count <= 0)
+            {
+                return null;
+            }
+
+            int indexOf = queryResponse.ComponentNameList.IndexOf(nameof (Unit));
+            Unit unit = queryResponse.EntityList[indexOf] as Unit;
+            if (unit == null)
+            {
+                return null;
+            }
+
+            scene.AddChild(unit);
+            foreach (var entity in queryResponse.EntityList)
+            {
+                if (entity == null || entity.IsDisposed)
+                {
+                    continue;
+                }
+
+                unit.AddComponent(entity);
+            }
+
+            return unit;
         }
 
         /// <summary>
@@ -39,6 +72,24 @@
         {
             var message = new Other2UnitCache_DeleteUnit() { UnitId = unitId };
             await MessageHelper.CallActor(StartSceneConfigCategory.Instance.GetUnitCacheConfig(unitId).InstanceId, message);
+        }
+
+        public static void AddOrUpdateAllUnitCache(Unit unit)
+        {
+            var message = new Other2UnitCache_AddOrUpdateUnit() { UnitId = unit.Id };
+            message.EntityTypes.Add(unit.GetType().FullName);
+            message.EntityBytes.Add(MongoHelper.ToBson(unit));
+
+            foreach ((Type key,Entity value) in unit.Components)
+            {
+                if (!typeof (IUnitCache).IsAssignableFrom(key))
+                {
+                    continue;
+                }
+                message.EntityTypes.Add(key.FullName);
+                message.EntityBytes.Add(MongoHelper.ToBson(value));
+            }
+            MessageHelper.CallActor(StartSceneConfigCategory.Instance.GetUnitCacheConfig(unit.Id).InstanceId,message).Coroutine();
         }
     }
 }

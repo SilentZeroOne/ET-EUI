@@ -65,5 +65,29 @@ namespace ET
             removeUnits.Units.Add(sendUnit.Id);
             MessageHelper.SendToClient(unit, removeUnits);
         }
+
+        public static async ETTask<(bool, Unit)> LoadUnit(Player player)
+        {
+            var gateMapComponent = player.AddComponent<GateMapComponent>();
+            gateMapComponent.Scene = await SceneFactory.Create(gateMapComponent, "GateMap", SceneType.Map);
+
+            Unit unit = await UnitCacheHelper.GetUnitCache(gateMapComponent.Scene, player.UnitId);
+
+            bool isNewPlayer = unit == null;
+            if (isNewPlayer)
+            {
+                unit = UnitFactory.Create(gateMapComponent.Scene, player.UnitId, UnitType.Player);
+                UnitCacheHelper.AddOrUpdateAllUnitCache(unit);
+            }
+
+            return (isNewPlayer, unit);
+        }
+
+        public static async ETTask InitUnit(Unit unit, bool isNew)
+        {
+            
+            
+            await ETTask.CompletedTask;
+        }
     }
 }
