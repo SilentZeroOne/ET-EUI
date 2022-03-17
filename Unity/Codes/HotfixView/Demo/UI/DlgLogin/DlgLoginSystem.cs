@@ -17,18 +17,19 @@ namespace ET
 
 		public static void ShowWindow(this DlgLogin self, Entity contextData = null)
 		{
-			
+			self.RevertLastAccount();
 		}
 		
 		public static async ETTask OnLoginClickHandler(this DlgLogin self)
 		{
 			try
 			{
+				self.SaveLastAccount();
 				int errorCode = await LoginHelper.Login(
 					self.DomainScene(), 
 					ConstValue.LoginAddress, 
-					self.View.E_AccountInputField.GetComponent<InputField>().text, 
-					self.View.E_PasswordInputField.GetComponent<InputField>().text);
+					self.View.E_AccountInputField.text, 
+					self.View.E_PasswordInputField.text);
 
 				if (errorCode != ErrorCode.ERR_Success)
 				{
@@ -51,6 +52,18 @@ namespace ET
 				Log.Error(e.ToString());
 				throw;
 			}
+		}
+
+		public static void SaveLastAccount(this DlgLogin self)
+		{
+			PlayerPrefs.SetString("account", self.View.E_AccountInputField.text);
+			PlayerPrefs.SetString("password", self.View.E_PasswordInputField.text);
+		}
+
+		public static void RevertLastAccount(this DlgLogin self)
+		{
+			self.View.E_AccountInputField.SetTextWithoutNotify(PlayerPrefs.GetString("account", ""));
+			self.View.E_PasswordInputField.SetTextWithoutNotify(PlayerPrefs.GetString("password", ""));
 		}
 		
 		public static void HideWindow(this DlgLogin self)

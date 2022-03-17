@@ -93,7 +93,7 @@ namespace ET
                         //Unit unit = UnitFactory.Create(gateMapComponent.Scene, player.Id, UnitType.Player);
                         (bool isNewPlayer, Unit unit) = await UnitHelper.LoadUnit(player);
                         
-                        unit.AddComponent<UnitGateComponent, long>(session.InstanceId);//现在还在Gate上，需要转移到Map上
+                        unit.AddComponent<UnitGateComponent, long>(player.InstanceId);//现在还在Gate上，需要转移到Map上
 
                         //初始化
                         await UnitHelper.InitUnit(unit, isNewPlayer);
@@ -115,7 +115,7 @@ namespace ET
                     }
                     catch (Exception e)
                     {
-                        Log.Error($"角色进入游戏逻辑服出错 账号ID:{player.Account} 角色ID:{player.Id} 异常信息 {e.ToString()}");
+                        Log.Error($"角色进入游戏逻辑服发生错误 账号ID:{player.Account} 角色ID:{player.Id} 异常信息 {e.ToString()}");
                         response.Error = ErrorCode.ERR_EnterGameError;
                         reply();
                         await DisconnectHelper.KickPlayer(player, true);

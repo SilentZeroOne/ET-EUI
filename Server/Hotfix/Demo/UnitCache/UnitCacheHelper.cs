@@ -33,11 +33,12 @@ namespace ET
             {
                 return null;
             }
-
+            
+            queryResponse.EntityList.Remove(unit);
             scene.AddChild(unit);
             foreach (var entity in queryResponse.EntityList)
             {
-                if (entity == null || entity.IsDisposed)
+                if (entity == null || entity.IsDisposed || entity == unit)
                 {
                     continue;
                 }

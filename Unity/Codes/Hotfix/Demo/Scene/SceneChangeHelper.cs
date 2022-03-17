@@ -20,8 +20,10 @@
             M2C_CreateMyUnit m2CCreateMyUnit = waitCreateMyUnit.Message;
             Unit unit = UnitFactory.Create(currentScene, m2CCreateMyUnit.Unit);
             unitComponent.Add(unit);
+
+            await TimerComponent.Instance.WaitAsync(2000);
             
-            zoneScene.RemoveComponent<AIComponent>();
+            //zoneScene.RemoveComponent<AIComponent>();
             
             Game.EventSystem.Publish(new EventType.SceneChangeFinish() {ZoneScene = zoneScene, CurrentScene = currentScene});
 
