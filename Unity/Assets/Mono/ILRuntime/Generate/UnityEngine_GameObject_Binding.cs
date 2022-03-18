@@ -26,7 +26,7 @@ namespace ILRuntime.Runtime.Generated
             method = type.GetMethod("get_transform", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, get_transform_0);
             Dictionary<string, List<MethodInfo>> genericMethods = new Dictionary<string, List<MethodInfo>>();
-            List<MethodInfo> lst = null;                    
+            List<MethodInfo> lst = null;
             foreach(var m in type.GetMethods())
             {
                 if(m.IsGenericMethodDefinition)

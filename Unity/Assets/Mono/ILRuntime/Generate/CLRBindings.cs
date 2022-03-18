@@ -106,12 +106,14 @@ namespace ILRuntime.Runtime.Generated
             UnityEngine_AsyncOperation_Binding.Register(app);
             UnityEngine_SceneManagement_SceneManager_Binding.Register(app);
             UnityEngine_UI_Text_Binding.Register(app);
+            UnityEngine_UI_LoopScrollRect_Binding.Register(app);
             UnityEngine_UI_InputField_Binding.Register(app);
             UnityEngine_UI_LoopScrollRect_Binding.Register(app);
             UnityEngine_Color_Binding.Register(app);
             UnityEngine_UI_Graphic_Binding.Register(app);
             System_Int64_Binding.Register(app);
             UnityEngine_UI_LoopScrollRectBase_Binding.Register(app);
+            System_Int32_Binding.Register(app);
             UnityEngine_Animator_Binding.Register(app);
             UnityEngine_RuntimeAnimatorController_Binding.Register(app);
             System_Collections_Generic_Dictionary_2_String_AnimationClip_Binding.Register(app);
