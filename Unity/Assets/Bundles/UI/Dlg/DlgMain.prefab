@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1734830495155799901}
   - component: {fileID: 5196057254574296053}
   m_Layer: 0
-  m_Name: EButton_ Advanture
+  m_Name: EButton_Advanture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 616168421017239275}
   - component: {fileID: 6771466026608234907}
   m_Layer: 5
-  m_Name: E_HeadImage
+  m_Name: E_Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 2093026123775504067}
   - component: {fileID: 6270407282002582993}
   m_Layer: 0
-  m_Name: E_ExperienceImage
+  m_Name: E_Experience
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -759,7 +759,7 @@ GameObject:
   - component: {fileID: 934932521854686010}
   - component: {fileID: 6122710555206582315}
   m_Layer: 0
-  m_Name: E_GoldTxt
+  m_Name: E_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 401806240349947858}
   - component: {fileID: 5367101477618234250}
   m_Layer: 0
-  m_Name: EButton_ Shop
+  m_Name: EButton_Shop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -959,7 +959,7 @@ GameObject:
   - component: {fileID: 5777220357972456014}
   - component: {fileID: 1029501576442969368}
   m_Layer: 0
-  m_Name: E_ExperienceTxt
+  m_Name: E_Experience
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 794540721047926855}
   - component: {fileID: 5204329008720321331}
   m_Layer: 0
-  m_Name: EButton_ Quest
+  m_Name: EButton_Quest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1356,7 +1356,7 @@ GameObject:
   - component: {fileID: 4323488384962304169}
   - component: {fileID: 3486499856133714798}
   m_Layer: 0
-  m_Name: E_GoldImage
+  m_Name: E_Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1587,7 +1587,7 @@ GameObject:
   - component: {fileID: 8231545288352298375}
   - component: {fileID: 4401869645124860038}
   m_Layer: 0
-  m_Name: E_LevelTxt
+  m_Name: E_Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1743,7 +1743,7 @@ GameObject:
   - component: {fileID: 2895501845549176212}
   - component: {fileID: 8678216591757670986}
   m_Layer: 0
-  m_Name: EButton_ Build
+  m_Name: EButton_Build
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

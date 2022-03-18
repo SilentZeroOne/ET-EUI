@@ -127,8 +127,10 @@ namespace ET
 					Log.Error(errorCode.ToString());
 					return;
 				}
-				self.ZoneScene().GetComponent<UIComponent>().CloseWindow(WindowID.WindowID_Role);
+				
 				self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Main);
+				self.ZoneScene().GetComponent<UIComponent>().CloseWindow(WindowID.WindowID_Role);
+				
 				Log.Debug($"进入游戏成功！！！");
 
 			}

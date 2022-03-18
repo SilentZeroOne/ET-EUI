@@ -85,7 +85,7 @@ namespace ET
 
         public static async ETTask InitUnit(Unit unit, bool isNew)
         {
-            
+            await unit.AddComponent<NumericComponent>().GetUnitComponentCache();
             
             await ETTask.CompletedTask;
         }

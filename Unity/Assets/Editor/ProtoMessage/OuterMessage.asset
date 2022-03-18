@@ -349,7 +349,7 @@ MonoBehaviour:
       CustomMessageClassName: UnitInfo
       MessageClassName: UnitInfo
       Comment: 
-  - Enabled: 0
+  - Enabled: 1
     MessageType: 4
     ClassName: M2C_StartSceneChange
     ResponseType: 
