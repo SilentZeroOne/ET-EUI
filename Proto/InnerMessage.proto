@@ -283,9 +283,9 @@ message Other2UnitCache_AddOrUpdateUnit // IActorRequest
 {
 	int32 RpcId = 90;
 	int64 UnitId = 1;
-	// 实体类型
+	// 实体类型 
 	repeated string EntityTypes = 2;
-	// 实体序列化之后的Bytes
+	// 实体序列化之后的Bytes 
 	repeated bytes EntityBytes = 3;
 }
 
@@ -304,7 +304,7 @@ message Other2UnitCache_GetUnit // IActorRequest
 {
 	int32 RpcId = 90;
 	int64 UnitId = 1;
-	// 需要获取的组件名
+	// 需要获取的组件名 
 	repeated string ComponentNameList = 2;
 }
 

@@ -980,7 +980,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 5
     ClassName: Other2UnitCache_AddOrUpdateUnit
     ResponseType: UnitCache2Other_AddOrUpdateUnit
@@ -1006,15 +1006,15 @@ MonoBehaviour:
       Custom: 0
       CustomMessageClassName: 
       MessageClassName: 
-      Comment: "\u5B9E\u4F53\u7C7B\u578B"
+      Comment: "\u5B9E\u4F53\u7C7B\u578B "
     - ParamName: EntityBytes
       ParamType: 10
       MemberID: 3
       Custom: 0
       CustomMessageClassName: 
       MessageClassName: 
-      Comment: "\u5B9E\u4F53\u5E8F\u5217\u5316\u4E4B\u540E\u7684Bytes"
-  - Enabled: 1
+      Comment: "\u5B9E\u4F53\u5E8F\u5217\u5316\u4E4B\u540E\u7684Bytes "
+  - Enabled: 0
     MessageType: 6
     ClassName: UnitCache2Other_AddOrUpdateUnit
     ResponseType: 
@@ -1041,7 +1041,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 5
     ClassName: Other2UnitCache_GetUnit
     ResponseType: UnitCache2Other_GetUnit
@@ -1067,8 +1067,8 @@ MonoBehaviour:
       Custom: 0
       CustomMessageClassName: 
       MessageClassName: 
-      Comment: "\u9700\u8981\u83B7\u53D6\u7684\u7EC4\u4EF6\u540D"
-  - Enabled: 1
+      Comment: "\u9700\u8981\u83B7\u53D6\u7684\u7EC4\u4EF6\u540D "
+  - Enabled: 0
     MessageType: 5
     ClassName: Other2UnitCache_DeleteUnit
     ResponseType: UnitCache2Other_DeleteUnit
@@ -1088,7 +1088,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 6
     ClassName: UnitCache2Other_DeleteUnit
     ResponseType: 

@@ -84,7 +84,7 @@ MonoBehaviour:
       CustomMessageClassName: Entity
       MessageClassName: Entity
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 6
     ClassName: UnitCache2Other_GetUnit
     ResponseType: 
@@ -114,9 +114,9 @@ MonoBehaviour:
     - ParamName: EntityList
       ParamType: 11
       MemberID: 1
-      Custom: 1
+      Custom: 0
       CustomMessageClassName: Entity
-      MessageClassName: 
+      MessageClassName: Entity
       Comment: 
     - ParamName: ComponentNameList
       ParamType: 9

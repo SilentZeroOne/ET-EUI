@@ -17,6 +17,11 @@ namespace ET
                     // unit.Position = new Vector3(-10, 0, -10);
 			
                     NumericComponent numericComponent = unit.AddComponent<NumericComponent>();
+                    UnitConfig unitConfig = UnitConfigCategory.Instance.Get(1001);
+                    numericComponent.SetNoEvent(NumericType.Position,unitConfig.Position);
+                    numericComponent.SetNoEvent(NumericType.Weight,unitConfig.Weight);
+                    numericComponent.SetNoEvent(NumericType.Height,unitConfig.Height);
+                    
                     // numericComponent.Set(NumericType.Speed, 6f); // 速度是6米每秒
                     // numericComponent.Set(NumericType.AOI, 15000); // 视野15米
                     

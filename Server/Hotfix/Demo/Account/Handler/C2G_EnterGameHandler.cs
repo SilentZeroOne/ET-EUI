@@ -97,16 +97,11 @@ namespace ET
 
                         //初始化
                         await UnitHelper.InitUnit(unit, isNewPlayer);
-                        
-                        long unitId = unit.Id;
+                        response.MyId = unit.Id;
+                        reply();
 
                         StartSceneConfig startSceneConfig = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Game");
                         await TransferHelper.Transfer(unit, startSceneConfig.InstanceId, startSceneConfig.Name);
-
-                        player.UnitId = unitId;
-                        response.MyId = unitId;
-
-                        reply();
 
                         SessionStateComponent sessionStateComponent = session.GetComponent<SessionStateComponent>();
                         sessionStateComponent.State = SessionState.Game;
