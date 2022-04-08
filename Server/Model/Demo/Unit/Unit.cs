@@ -24,8 +24,10 @@ namespace ET
             get => this.position;
             set
             {
+                EventType.ChangePosition.Instance.OldPos.Value = this.position;
                 this.position = value;
-                Game.EventSystem.Publish(new EventType.ChangePosition() { Unit = this });
+                EventType.ChangePosition.Instance.Unit = this;
+                Game.EventSystem.PublishClass(EventType.ChangePosition.Instance);
             }
         }
 
@@ -43,7 +45,8 @@ namespace ET
             set
             {
                 this.rotation = value;
-                Game.EventSystem.Publish(new EventType.ChangeRotation() {Unit = this});
+                EventType.ChangeRotation.Instance.Unit = this;
+                Game.EventSystem.PublishClass(EventType.ChangeRotation.Instance);
             }
         }
     }

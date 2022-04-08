@@ -13,8 +13,10 @@ namespace ET
                 case UnitType.Player:
                 {
                     Unit unit = unitComponent.AddChildWithId<Unit, int>(id, 1001);
-                    // unit.AddComponent<MoveComponent>();
-                    // unit.Position = new Vector3(-10, 0, -10);
+                    //ChildType测试代码 取消注释 编译Server.hotfix 可发现报错
+                    //unitComponent.AddChild<Player, string>("Player");
+                    //unit.AddComponent<MoveComponent>();
+                    //unit.Position = new Vector3(-10, 0, -10);
 			
                     NumericComponent numericComponent = unit.AddComponent<NumericComponent>();
                     UnitConfig unitConfig = UnitConfigCategory.Instance.Get(1001);

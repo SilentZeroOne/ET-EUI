@@ -140,6 +140,8 @@ namespace ET
                 zoneScene.GetComponent<RoleInfosComponent>().RoleInfos.Add(newRoleInfo);
             }
             
+            Game.EventSystem.PublishAsync(new EventType.LoginFinish() {ZoneScene = zoneScene}).Coroutine();
+
             return ErrorCode.ERR_Success;
         }
 
