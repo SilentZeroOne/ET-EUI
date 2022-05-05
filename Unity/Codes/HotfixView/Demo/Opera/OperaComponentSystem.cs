@@ -21,6 +21,7 @@ namespace ET
         }
     }
     
+    [FriendClass(typeof(OperaComponent))]
     public static class OperaComponentSystem
     {
         public static void Update(this OperaComponent self)
@@ -43,7 +44,7 @@ namespace ET
             if (InputHelper.GetKeyDown(114))
             {
                 CodeLoader.Instance.LoadLogic();
-                Game.EventSystem.Add(CodeLoader.Instance.GetTypes());
+                Game.EventSystem.Add(CodeLoader.Instance.GetHotfixTypes());
                 Game.EventSystem.Load();
                 Log.Debug("hot reload success!");
             }

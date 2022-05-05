@@ -51,6 +51,26 @@ namespace ET
             loopScrollRect.RefillCells();
         }
 
+        public static void SetVisible(this Transform transform, bool isVisible)
+        {
+            if (null == transform)
+            {
+                Log.Error("uibehaviour is null!");
+                return;
+            }
+
+            if (null == transform.gameObject)
+            {
+                Log.Error("uiBehaviour gameObject is null!");
+                return;
+            }
+            
+            if (transform.gameObject.activeSelf == isVisible)
+            {
+                return;
+            }
+            transform.gameObject.SetActive(isVisible);
+        }
 
 
         public  static void SetTogglesInteractable(this ToggleGroup toggleGroup, bool isEnable)
@@ -99,29 +119,7 @@ namespace ET
         }
         
         
-        public static void AddUIScrollItems<K,T>(this K self, ref Dictionary<int, T> dictionary, int count) where K : Entity,IUILogic  where T : Entity,IAwake,IUIScrollItem
-        {
-            if (dictionary == null)
-            {
-                dictionary = new Dictionary<int, T>();
-            }
-            
-            if (count <= 0)
-            {
-                return;
-            }
-            
-            foreach (var item in dictionary)
-            {
-                item.Value.Dispose();
-            }
-            dictionary.Clear();
-            for (int i = 0; i <= count; i++)
-            {
-                T itemServer = self.AddChild<T>(true);
-                dictionary.Add(i , itemServer);
-            }
-        }
+
         
         
         public static void RemoveUIScrollItems<K,T>(this K self, ref Dictionary<int, T> dictionary) where K : Entity,IUILogic  where T : Entity,IUIScrollItem
@@ -210,6 +208,24 @@ namespace ET
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(() => { clickEventHandler(param1 , param2);  });
         }
+
+
+       public static void AddListener(this ToggleGroup toggleGroup, UnityAction<int> selectEventHandler)
+       {
+           var togglesList = toggleGroup.GetComponentsInChildren<Toggle>();
+           for (int i = 0; i < togglesList.Length; i++)
+           {
+               int index = i;
+               togglesList[i].AddListener((isOn) => 
+               {
+                   if (isOn)
+                   {
+                       selectEventHandler(index);
+                   }
+               });
+           }
+       }
+
         
         /// <summary>
         /// 注册窗口关闭事件

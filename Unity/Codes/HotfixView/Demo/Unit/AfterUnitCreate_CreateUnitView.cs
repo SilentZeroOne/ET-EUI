@@ -2,7 +2,8 @@
 
 namespace ET
 {
-    public class AfterUnitCreate_CreateUnitView: AEventAsync<EventType.AfterUnitCreate>
+    [FriendClass(typeof(GlobalComponent))]
+    public class AfterUnitCreate_CreateUnitView: AEvent<EventType.AfterUnitCreate>
     {
         protected override async ETTask Run(EventType.AfterUnitCreate args)
         {
