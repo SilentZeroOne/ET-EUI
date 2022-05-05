@@ -87,7 +87,6 @@ namespace ILRuntime.Runtime.Generated
             ET_ThreadSynchronizationContext_Binding.Register(app);
             ET_ForeachHelper_Binding.Register(app);
             System_Collections_Generic_HashSet_1_AService_Binding.Register(app);
-            System_Collections_Generic_HashSet_1_AService_Binding_Enumerator_Binding.Register(app);
             System_Object_Binding.Register(app);
             System_Exception_Binding.Register(app);
             ET_TimeInfo_Binding.Register(app);
@@ -113,7 +112,6 @@ namespace ILRuntime.Runtime.Generated
             UnityEngine_SceneManagement_SceneManager_Binding.Register(app);
             UnityEngine_UI_Text_Binding.Register(app);
             UnityEngine_UI_InputField_Binding.Register(app);
-            UnityEngine_UI_LoopScrollRect_Binding.Register(app);
             UnityEngine_Color_Binding.Register(app);
             UnityEngine_UI_Graphic_Binding.Register(app);
             System_Int64_Binding.Register(app);

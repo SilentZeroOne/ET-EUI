@@ -11,6 +11,7 @@
         WindowID_Server,
         WindowID_Role,
         WindowID_Main,
-        WindowID_Loading
+        WindowID_Loading,
+        WindowID_RoleInfo
     }
 }
