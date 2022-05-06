@@ -14,5 +14,10 @@
             PlayerComponent playerComponent = currentScene.Parent.Parent.GetComponent<PlayerComponent>();
             return currentScene.GetComponent<UnitComponent>().Get(playerComponent.MyId);
         }
+
+        public static NumericComponent GetMyUnitNumericComponent(Scene currentScene)
+        {
+            return GetMyUnitFromCurrentScene(currentScene).GetComponent<NumericComponent>();
+        }
     }
 }

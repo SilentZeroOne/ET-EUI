@@ -7,7 +7,7 @@ namespace ET
 {
     [ProtoContract]
     [Config]
-    public partial class ServerInfosConfigCategory : ProtoObject
+    public partial class ServerInfosConfigCategory : ProtoObject, IMerge
     {
         public static ServerInfosConfigCategory Instance;
 		
@@ -22,6 +22,12 @@ namespace ET
         public ServerInfosConfigCategory()
         {
             Instance = this;
+        }
+        
+        public void Merge(object o)
+        {
+            ServerInfosConfigCategory s = o as ServerInfosConfigCategory;
+            this.list.AddRange(s.list);
         }
 		
         public override void EndInit()
@@ -69,8 +75,10 @@ namespace ET
     [ProtoContract]
 	public partial class ServerInfosConfig: ProtoObject, IConfig
 	{
+		/// <summary>Id</summary>
 		[ProtoMember(1)]
 		public int Id { get; set; }
+		/// <summary>服务器名字</summary>
 		[ProtoMember(2)]
 		public string ServerName { get; set; }
 

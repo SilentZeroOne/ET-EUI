@@ -34,5 +34,8 @@ namespace ET
         public const int ERR_EnterGameError = 200019;
         public const int ERR_ReEnterGameError = 200020;
         public const int ERR_ReEnterGameError2 = 200021;
+        public const int ERR_NumericTypeNotExist = 200022;
+        public const int ERR_NumericTypeNotAddPoint = 200023;
+        public const int ERR_AddPointNotEnough = 200024;
     }
 }

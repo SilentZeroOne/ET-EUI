@@ -90,7 +90,7 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Text E_StrengthText
+		public ESAttributeItem ESAttributeItem_Strength
      	{
      		get
      		{
@@ -99,15 +99,16 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_E_StrengthText == null )
+     			if( this.m_esattributeitem_strength == null )
      			{
-		    		this.m_E_StrengthText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"Background/AddPointBg/Strength/E_Strength");
+		    	   Transform subTrans = UIFindHelper.FindDeepChild<Transform>(this.uiTransform.gameObject,"Background/AddPointBg/ESAttributeItem_Strength");
+		    	   this.m_esattributeitem_strength = this.AddChild<ESAttributeItem,Transform>(subTrans);
      			}
-     			return this.m_E_StrengthText;
+     			return this.m_esattributeitem_strength;
      		}
      	}
 
-		public UnityEngine.UI.Button E_AddStrengthButton
+		public ESAttributeItem ESAttributeItem_Stamina
      	{
      		get
      		{
@@ -116,15 +117,16 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_E_AddStrengthButton == null )
+     			if( this.m_esattributeitem_stamina == null )
      			{
-		    		this.m_E_AddStrengthButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"Background/AddPointBg/Strength/E_AddStrength");
+		    	   Transform subTrans = UIFindHelper.FindDeepChild<Transform>(this.uiTransform.gameObject,"Background/AddPointBg/ESAttributeItem_Stamina");
+		    	   this.m_esattributeitem_stamina = this.AddChild<ESAttributeItem,Transform>(subTrans);
      			}
-     			return this.m_E_AddStrengthButton;
+     			return this.m_esattributeitem_stamina;
      		}
      	}
 
-		public UnityEngine.UI.Image E_AddStrengthImage
+		public ESAttributeItem ESAttributeItem_Agility
      	{
      		get
      		{
@@ -133,15 +135,16 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_E_AddStrengthImage == null )
+     			if( this.m_esattributeitem_agility == null )
      			{
-		    		this.m_E_AddStrengthImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Background/AddPointBg/Strength/E_AddStrength");
+		    	   Transform subTrans = UIFindHelper.FindDeepChild<Transform>(this.uiTransform.gameObject,"Background/AddPointBg/ESAttributeItem_Agility");
+		    	   this.m_esattributeitem_agility = this.AddChild<ESAttributeItem,Transform>(subTrans);
      			}
-     			return this.m_E_AddStrengthImage;
+     			return this.m_esattributeitem_agility;
      		}
      	}
 
-		public UnityEngine.UI.Text E_StaminaText
+		public ESAttributeItem ESAttributeItem_Spirit
      	{
      		get
      		{
@@ -150,15 +153,16 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_E_StaminaText == null )
+     			if( this.m_esattributeitem_spirit == null )
      			{
-		    		this.m_E_StaminaText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"Background/AddPointBg/Stamina/E_Stamina");
+		    	   Transform subTrans = UIFindHelper.FindDeepChild<Transform>(this.uiTransform.gameObject,"Background/AddPointBg/ESAttributeItem_Spirit");
+		    	   this.m_esattributeitem_spirit = this.AddChild<ESAttributeItem,Transform>(subTrans);
      			}
-     			return this.m_E_StaminaText;
+     			return this.m_esattributeitem_spirit;
      		}
      	}
 
-		public UnityEngine.UI.Button E_AddStaminaButton
+		public UnityEngine.UI.LoopVerticalScrollRect E_AttributeStatusLoopVerticalScrollRect
      	{
      		get
      		{
@@ -167,232 +171,11 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_E_AddStaminaButton == null )
+     			if( this.m_E_AttributeStatusLoopVerticalScrollRect == null )
      			{
-		    		this.m_E_AddStaminaButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"Background/AddPointBg/Stamina/E_AddStamina");
+		    		this.m_E_AttributeStatusLoopVerticalScrollRect = UIFindHelper.FindDeepChild<UnityEngine.UI.LoopVerticalScrollRect>(this.uiTransform.gameObject,"Background/StatusBg/AllStatus/E_AttributeStatus");
      			}
-     			return this.m_E_AddStaminaButton;
-     		}
-     	}
-
-		public UnityEngine.UI.Image E_AddStaminaImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_AddStaminaImage == null )
-     			{
-		    		this.m_E_AddStaminaImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Background/AddPointBg/Stamina/E_AddStamina");
-     			}
-     			return this.m_E_AddStaminaImage;
-     		}
-     	}
-
-		public UnityEngine.UI.Text E_AgilityText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_AgilityText == null )
-     			{
-		    		this.m_E_AgilityText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"Background/AddPointBg/Agility/E_Agility");
-     			}
-     			return this.m_E_AgilityText;
-     		}
-     	}
-
-		public UnityEngine.UI.Button E_AddAgilityButton
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_AddAgilityButton == null )
-     			{
-		    		this.m_E_AddAgilityButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"Background/AddPointBg/Agility/E_AddAgility");
-     			}
-     			return this.m_E_AddAgilityButton;
-     		}
-     	}
-
-		public UnityEngine.UI.Image E_AddAgilityImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_AddAgilityImage == null )
-     			{
-		    		this.m_E_AddAgilityImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Background/AddPointBg/Agility/E_AddAgility");
-     			}
-     			return this.m_E_AddAgilityImage;
-     		}
-     	}
-
-		public UnityEngine.UI.Text E_SpiritText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_SpiritText == null )
-     			{
-		    		this.m_E_SpiritText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"Background/AddPointBg/Spirit/E_Spirit");
-     			}
-     			return this.m_E_SpiritText;
-     		}
-     	}
-
-		public UnityEngine.UI.Button E_AddSpiritButton
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_AddSpiritButton == null )
-     			{
-		    		this.m_E_AddSpiritButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"Background/AddPointBg/Spirit/E_AddSpirit");
-     			}
-     			return this.m_E_AddSpiritButton;
-     		}
-     	}
-
-		public UnityEngine.UI.Image E_AddSpiritImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_AddSpiritImage == null )
-     			{
-		    		this.m_E_AddSpiritImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Background/AddPointBg/Spirit/E_AddSpirit");
-     			}
-     			return this.m_E_AddSpiritImage;
-     		}
-     	}
-
-		public UnityEngine.UI.Text E_DamageText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_DamageText == null )
-     			{
-		    		this.m_E_DamageText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"Background/StatusBg/AllStatus/Damage/E_Damage");
-     			}
-     			return this.m_E_DamageText;
-     		}
-     	}
-
-		public UnityEngine.UI.Text E_DamageAddText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_DamageAddText == null )
-     			{
-		    		this.m_E_DamageAddText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"Background/StatusBg/AllStatus/DamageAdd/E_DamageAdd");
-     			}
-     			return this.m_E_DamageAddText;
-     		}
-     	}
-
-		public UnityEngine.UI.Text E_HealthText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_HealthText == null )
-     			{
-		    		this.m_E_HealthText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"Background/StatusBg/AllStatus/Health/E_Health");
-     			}
-     			return this.m_E_HealthText;
-     		}
-     	}
-
-		public UnityEngine.UI.Text E_MPText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_MPText == null )
-     			{
-		    		this.m_E_MPText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"Background/StatusBg/AllStatus/MP/E_MP");
-     			}
-     			return this.m_E_MPText;
-     		}
-     	}
-
-		public UnityEngine.UI.Text E_ArmorText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_ArmorText == null )
-     			{
-		    		this.m_E_ArmorText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"Background/StatusBg/AllStatus/Armor/E_Armor");
-     			}
-     			return this.m_E_ArmorText;
-     		}
-     	}
-
-		public UnityEngine.UI.Text E_ArmorAddText
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_ArmorAddText == null )
-     			{
-		    		this.m_E_ArmorAddText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"Background/StatusBg/AllStatus/ArmorAdd/E_ArmorAdd");
-     			}
-     			return this.m_E_ArmorAddText;
+     			return this.m_E_AttributeStatusLoopVerticalScrollRect;
      		}
      	}
 
@@ -403,24 +186,15 @@ namespace ET
 			this.m_EquipmentBgImage = null;
 			this.m_E_CompatPowerText = null;
 			this.m_E_AvailablePointText = null;
-			this.m_E_StrengthText = null;
-			this.m_E_AddStrengthButton = null;
-			this.m_E_AddStrengthImage = null;
-			this.m_E_StaminaText = null;
-			this.m_E_AddStaminaButton = null;
-			this.m_E_AddStaminaImage = null;
-			this.m_E_AgilityText = null;
-			this.m_E_AddAgilityButton = null;
-			this.m_E_AddAgilityImage = null;
-			this.m_E_SpiritText = null;
-			this.m_E_AddSpiritButton = null;
-			this.m_E_AddSpiritImage = null;
-			this.m_E_DamageText = null;
-			this.m_E_DamageAddText = null;
-			this.m_E_HealthText = null;
-			this.m_E_MPText = null;
-			this.m_E_ArmorText = null;
-			this.m_E_ArmorAddText = null;
+			this.m_esattributeitem_strength?.Dispose();
+			this.m_esattributeitem_strength = null;
+			this.m_esattributeitem_stamina?.Dispose();
+			this.m_esattributeitem_stamina = null;
+			this.m_esattributeitem_agility?.Dispose();
+			this.m_esattributeitem_agility = null;
+			this.m_esattributeitem_spirit?.Dispose();
+			this.m_esattributeitem_spirit = null;
+			this.m_E_AttributeStatusLoopVerticalScrollRect = null;
 			this.uiTransform = null;
 		}
 
@@ -429,24 +203,11 @@ namespace ET
 		private UnityEngine.UI.Image m_EquipmentBgImage = null;
 		private UnityEngine.UI.Text m_E_CompatPowerText = null;
 		private UnityEngine.UI.Text m_E_AvailablePointText = null;
-		private UnityEngine.UI.Text m_E_StrengthText = null;
-		private UnityEngine.UI.Button m_E_AddStrengthButton = null;
-		private UnityEngine.UI.Image m_E_AddStrengthImage = null;
-		private UnityEngine.UI.Text m_E_StaminaText = null;
-		private UnityEngine.UI.Button m_E_AddStaminaButton = null;
-		private UnityEngine.UI.Image m_E_AddStaminaImage = null;
-		private UnityEngine.UI.Text m_E_AgilityText = null;
-		private UnityEngine.UI.Button m_E_AddAgilityButton = null;
-		private UnityEngine.UI.Image m_E_AddAgilityImage = null;
-		private UnityEngine.UI.Text m_E_SpiritText = null;
-		private UnityEngine.UI.Button m_E_AddSpiritButton = null;
-		private UnityEngine.UI.Image m_E_AddSpiritImage = null;
-		private UnityEngine.UI.Text m_E_DamageText = null;
-		private UnityEngine.UI.Text m_E_DamageAddText = null;
-		private UnityEngine.UI.Text m_E_HealthText = null;
-		private UnityEngine.UI.Text m_E_MPText = null;
-		private UnityEngine.UI.Text m_E_ArmorText = null;
-		private UnityEngine.UI.Text m_E_ArmorAddText = null;
+		private ESAttributeItem m_esattributeitem_strength = null;
+		private ESAttributeItem m_esattributeitem_stamina = null;
+		private ESAttributeItem m_esattributeitem_agility = null;
+		private ESAttributeItem m_esattributeitem_spirit = null;
+		private UnityEngine.UI.LoopVerticalScrollRect m_E_AttributeStatusLoopVerticalScrollRect = null;
 		public Transform uiTransform = null;
 	}
 }
