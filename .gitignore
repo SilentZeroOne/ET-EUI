@@ -60,3 +60,7 @@ Server/.DS_Store
 /.vscode
 *.csproj
 /Unity/.vsconfig
+Unity/Unity.Hotfix.csproj
+Unity/Unity.HotfixView.csproj
+Unity/Unity.Model.csproj
+Unity/Unity.ModelView.csproj
