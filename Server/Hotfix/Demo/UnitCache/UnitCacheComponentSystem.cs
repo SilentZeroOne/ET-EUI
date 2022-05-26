@@ -1,5 +1,6 @@
 ﻿namespace ET
 {
+    [FriendClass(typeof(UnitCache))]
     public class UnitCacheComponentAwakeSystem : AwakeSystem<UnitCacheComponent>
     {
         public override void Awake(UnitCacheComponent self)
@@ -34,6 +35,8 @@
         }
     }
 
+    [FriendClass(typeof(UnitCacheComponent))]
+    [FriendClass(typeof(UnitCache))]
     public static class UnitCacheComponentSystem
     {
         public static async ETTask AddOrUpdate(this UnitCacheComponent self, long id, ListComponent<Entity> entities)

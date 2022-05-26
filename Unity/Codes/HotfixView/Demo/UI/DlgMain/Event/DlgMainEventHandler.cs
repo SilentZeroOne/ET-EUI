@@ -1,6 +1,8 @@
 ﻿namespace ET
 {
 	[AUIEvent(WindowID.WindowID_Main)]
+	[FriendClass(typeof(UIBaseWindow))]
+	[FriendClass(typeof(WindowCoreData))]
 	public  class DlgMainEventHandler : IAUIEventHandler
 	{
 

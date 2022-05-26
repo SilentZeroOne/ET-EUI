@@ -28,6 +28,8 @@
         }
     }
 
+    [FriendClass(typeof(ServerInfo))]
+    [FriendClass(typeof(ServerInfoManagerComponent))]
     public static class ServerInfoManagerComponentSystem
     {
         public static async ETTask Awake(this ServerInfoManagerComponent self)

@@ -13,6 +13,7 @@
         }
     }
 
+    [FriendClass(typeof(UnitCache))]
     public static class UnitCacheSystem
     {
         public static void AddOrUpdate(this UnitCache self, Entity entity)

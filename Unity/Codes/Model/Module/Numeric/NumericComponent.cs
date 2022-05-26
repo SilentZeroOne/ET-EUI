@@ -105,8 +105,11 @@ namespace ET
 		}
 	}
 	
-
+#if SERVER
+	public class NumericComponent: Entity, IAwake, ITransfer ,IUnitCache
+#else
 	public class NumericComponent: Entity, IAwake, ITransfer
+#endif
 	{
 		[BsonDictionaryOptions(DictionaryRepresentation.ArrayOfArrays)]
 		public Dictionary<int, long> NumericDic = new Dictionary<int, long>();

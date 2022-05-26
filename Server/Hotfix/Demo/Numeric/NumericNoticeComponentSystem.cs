@@ -1,5 +1,6 @@
 ﻿namespace ET
 {
+    [FriendClass(typeof(NumericNoticeComponent))]
     public static class NumericNoticeComponentSystem
     {
         public static void NoticeImmediately(this NumericNoticeComponent self, EventType.NumbericChange args)

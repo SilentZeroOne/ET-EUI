@@ -1,6 +1,8 @@
 ﻿namespace ET
 {
 	[AUIEvent(WindowID.WindowID_RoleInfo)]
+	[FriendClass(typeof(UIBaseWindow))]
+	[FriendClass(typeof(WindowCoreData))]
 	public  class DlgRoleInfoEventHandler : IAUIEventHandler
 	{
 

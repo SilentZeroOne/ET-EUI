@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace ET
 {
+    [FriendClass(typeof(ServerInfosComponent))]
+    [FriendClass(typeof(DlgServer))]
+    [FriendClass(typeof(ServerInfo))]
     public static class DlgServerSystem
     {
         public static void RegisterUIEvent(this DlgServer self)

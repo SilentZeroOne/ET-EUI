@@ -2,7 +2,7 @@
 
 namespace ET
 {
-    public class NumericHelper
+    public static class NumericHelper
     {
         public static async ETTask<int> TestUpdateNumeric(Scene zoneScene)
         {

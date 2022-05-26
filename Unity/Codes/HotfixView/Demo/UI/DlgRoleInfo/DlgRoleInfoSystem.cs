@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 namespace ET
 {
+	[FriendClass(typeof(DlgRoleInfo))]
 	public static  class DlgRoleInfoSystem
 	{
 

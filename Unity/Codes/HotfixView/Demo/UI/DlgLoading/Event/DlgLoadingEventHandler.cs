@@ -1,6 +1,8 @@
 ﻿namespace ET
 {
 	[AUIEvent(WindowID.WindowID_Loading)]
+	[FriendClass(typeof(UIBaseWindow))]
+	[FriendClass(typeof(WindowCoreData))]
 	public  class DlgLoadingEventHandler : IAUIEventHandler
 	{
 

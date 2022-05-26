@@ -8,6 +8,7 @@
         }
     }
     
+    [FriendClass(typeof(AccountSessionsComponent))]
     public static class AccountSessionsSystem
     {
         public static long Get(this AccountSessionsComponent self, long accountId)
