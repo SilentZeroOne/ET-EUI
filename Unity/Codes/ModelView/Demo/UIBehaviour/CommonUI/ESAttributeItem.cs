@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace ET
 {
+	[EnableMethod]
 	public  class ESAttributeItem : Entity,ET.IAwake<UnityEngine.Transform>,IDestroy 
 	{
 		public UnityEngine.UI.Text E_TitleText

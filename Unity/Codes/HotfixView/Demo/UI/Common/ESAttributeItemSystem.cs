@@ -2,6 +2,7 @@
 
 namespace ET
 {
+    [FriendClass(typeof(ESAttributeItem))]
     public static class ESAttributeItemSystem
     {
         public static void Refresh(this ESAttributeItem self, int numericType)
@@ -17,7 +18,7 @@ namespace ET
                 return self.RequestAddAttribute(numericType);
             });
         }
-
+        
         public static async ETTask RequestAddAttribute(this ESAttributeItem self, int numericType)
         {
             try

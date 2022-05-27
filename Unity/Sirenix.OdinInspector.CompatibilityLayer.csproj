@@ -296,6 +296,24 @@
      <Reference Include="Sirenix.Utilities.Editor">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
      </Reference>
+     <Reference Include="DemiLib">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenProEditor">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenEditor">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="DemiEditor">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTween">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenPro">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+     </Reference>
      <Reference Include="mscorlib">
      <HintPath>I:/Software/Unity/2020.3.30f1c1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
      </Reference>

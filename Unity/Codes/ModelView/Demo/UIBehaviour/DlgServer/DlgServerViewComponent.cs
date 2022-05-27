@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace ET
 {
+	[EnableMethod]
 	public  class DlgServerViewComponent : Entity,IAwake,IDestroy 
 	{
 		public UnityEngine.UI.Image E_BackGroundImage
