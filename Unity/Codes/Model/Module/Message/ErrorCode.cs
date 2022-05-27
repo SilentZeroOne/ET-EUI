@@ -37,5 +37,9 @@ namespace ET
         public const int ERR_NumericTypeNotExist = 200022;
         public const int ERR_NumericTypeNotAddPoint = 200023;
         public const int ERR_AddPointNotEnough = 200024;
+        public const int ERR_AlreadyInAdventure = 200025;
+        public const int ERR_AdventureInDying = 200026;
+        public const int ERR_AdventureErrorLevel = 200027;
+        public const int ERR_AdventureLevelNotEnough = 200028;
     }
 }

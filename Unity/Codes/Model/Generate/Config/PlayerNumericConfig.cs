@@ -18,10 +18,6 @@ namespace ET
         [BsonElement]
         [ProtoMember(1)]
         private List<PlayerNumericConfig> list = new List<PlayerNumericConfig>();
-        
-        [ProtoIgnore]
-        [BsonIgnore]
-        private List<PlayerNumericConfig> showList = new List<PlayerNumericConfig>();
 		
         public PlayerNumericConfigCategory()
         {
@@ -40,10 +36,6 @@ namespace ET
             {
                 config.EndInit();
                 this.dict.Add(config.Id, config);
-                if (config.Id < 3000)
-                {
-	                this.showList.Add(config);
-                }
             }            
             this.AfterEndInit();
         }
