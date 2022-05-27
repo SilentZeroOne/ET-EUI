@@ -38,8 +38,9 @@ namespace ET
             int targetAttributeCount = numericComponent.GetAsInt(targetNumericType) + 1;
             numericComponent.Set(targetNumericType, targetAttributeCount);
 
-            await numericComponent.AddOrUpdateUnitCache(); //关键数据立刻存数据库
+            //await numericComponent.AddOrUpdateUnitCache(); //关键数据立刻存数据库
 
+            await ETTask.CompletedTask;
             reply();
         }
     }

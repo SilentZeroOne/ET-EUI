@@ -6,16 +6,6 @@
 		Gate,
 		Game
 	}
-	
-	[ObjectSystem]
-	public class PlayerSystem: AwakeSystem<Player, long, long>
-	{
-		public override void Awake(Player self, long accountId, long roleId)
-		{
-			self.Account = accountId;
-			self.UnitId = roleId;
-		}
-	}
 
 	/// <summary>
 	/// 玩家角色在Gate网关上的映射

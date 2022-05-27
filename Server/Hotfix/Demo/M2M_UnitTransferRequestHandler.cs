@@ -15,6 +15,8 @@ namespace ET
 			unitComponent.AddChild(unit);
 			unitComponent.Add(unit);
 
+			unit.AddComponent<UnitSaveDBComponent>();
+			
 			foreach (Entity entity in request.Entitys)
 			{
 				unit.AddComponent(entity);

@@ -1,15 +1,17 @@
 ﻿namespace ET
 {
-    [FriendClass(typeof(Player))]
+    [ObjectSystem]
+    public class PlayerAwakeSystem: AwakeSystem<Player, long, long>
+    {
+        public override void Awake(Player self, long accountId, long roleId)
+        {
+            self.Account = accountId;
+            self.UnitId = roleId;
+        }
+    }
+    
     public static class PlayerSystem
     {
-        // [ObjectSystem]
-        // public class PlayerAwakeSystem: AwakeSystem<Player, string>
-        // {
-        //     public override void Awake(Player self, string a)
-        //     {
-        //         self.Account = a;
-        //     }
-        // }
+        
     }
 }
