@@ -9,7 +9,7 @@ namespace ET
 		public class NumbericChange: DisposeObject
 		{
 			public static readonly NumbericChange Instance = new NumbericChange();
-			
+
 			public Entity Parent;
 			public int NumericType;
 			public long Old;
@@ -29,7 +29,7 @@ namespace ET
 		{
 			return (int)self.GetByKey(numericType);
 		}
-		
+
 		public static long GetAsLong(this NumericComponent self, int numericType)
 		{
 			return self.GetByKey(numericType);
@@ -44,7 +44,7 @@ namespace ET
 		{
 			self[nt] = value;
 		}
-		
+
 		public static void Set(this NumericComponent self, int nt, long value)
 		{
 			self[nt] = value;
@@ -54,7 +54,7 @@ namespace ET
 		{
 			self.Insert(numericType,value,false);
 		}
-		
+
 		public static void Insert(this NumericComponent self, int numericType, long value,bool isPublicEvent = true)
 		{
 			long oldValue = self.GetByKey(numericType);
@@ -81,7 +81,7 @@ namespace ET
 				Game.EventSystem.PublishClass(args);
 			}
 		}
-		
+
 		public static long GetByKey(this NumericComponent self, int key)
 		{
 			long value = 0;
@@ -92,7 +92,7 @@ namespace ET
 		public static void Update(this NumericComponent self, int numericType,bool isPublicEvent)
 		{
 			int final = (int) numericType / 10;
-			int bas = final * 10 + 1; 
+			int bas = final * 10 + 1;
 			int add = final * 10 + 2;
 			int pct = final * 10 + 3;
 			int finalAdd = final * 10 + 4;
@@ -104,7 +104,7 @@ namespace ET
 			self.Insert(final,result,isPublicEvent);
 		}
 	}
-	
+
 #if SERVER
 	public class NumericComponent: Entity, IAwake, ITransfer ,IUnitCache
 #else
