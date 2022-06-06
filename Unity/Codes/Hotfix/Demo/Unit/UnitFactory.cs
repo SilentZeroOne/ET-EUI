@@ -41,8 +41,26 @@ namespace ET
 
 	        //unit.AddComponent<XunLuoPathComponent>();
 	        
-	        Game.EventSystem.PublishAsync(new EventType.AfterUnitCreate() {Unit = unit});
+	        Game.EventSystem.Publish(new EventType.AfterUnitCreate() {Unit = unit});
             return unit;
+        }
+
+        public static async ETTask<Unit> CreateEnemy(Scene currentScene, int configId)
+        {
+	        UnitComponent unitComponent = currentScene.GetComponent<UnitComponent>();
+	        Unit unit = unitComponent.AddChildWithId<Unit, int>(IdGenerater.Instance.GenerateId(), configId);
+	        unitComponent.Add(unit);
+
+	        NumericComponent numericComponent = unit.AddComponent<NumericComponent>();
+	        numericComponent.SetNoEvent(NumericType.IsAlive, 1);
+	        numericComponent.SetNoEvent(NumericType.DamageValue, unit.Config.DamageValue);
+	        numericComponent.SetNoEvent(NumericType.MaxHp, unit.Config.MaxHP);
+	        numericComponent.SetNoEvent(NumericType.Hp, unit.Config.MaxHP);
+
+	        unit.AddComponent<ObjectWait>();
+
+	        await Game.EventSystem.PublishAsync(new EventType.AfterUnitCreate() { Unit = unit });
+	        return unit;
         }
     }
 }

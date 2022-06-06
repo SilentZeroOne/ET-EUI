@@ -113,5 +113,10 @@ namespace ET
         {
             public Scene ZoneScene;
         }
+        
+        public struct AdventureRoundReset
+        {
+            public Scene ZoneScene;
+        }
     }
 }

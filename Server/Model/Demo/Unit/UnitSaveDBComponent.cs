@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace ET
 {
+    [ComponentOf(typeof(Unit))]
     public class UnitSaveDBComponent : Entity , IAwake,IDestroy
     {
         public HashSet<Type> EntityChangeTypeSet { get; } = new HashSet<Type>();

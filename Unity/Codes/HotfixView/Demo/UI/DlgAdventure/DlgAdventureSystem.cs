@@ -52,17 +52,20 @@ namespace ET
 			{
 				if (!isInAdventure)
 				{
+					item.E_CurrentStatusText.SetVisible(false);
 					item.E_EnterButton.SetVisible(true);
 				}
 				else
 				{
 					item.E_CurrentStatusText.SetVisible(true);
+					item.E_EnterButton.SetVisible(false);
 					item.E_CurrentStatusText.SetText("战斗中...");
 				}
 			}
 			else
 			{
 				item.E_CurrentStatusText.SetVisible(true);
+				item.E_EnterButton.SetVisible(false);
 				item.E_CurrentStatusText.SetText("未达到进入等级");
 			}
 			
@@ -81,11 +84,12 @@ namespace ET
 					return;
 				}
 				
-				self.Refresh();
-				Game.EventSystem.Publish(new EventType.StartGameLevel(){ZoneScene = self.ZoneScene()});
+				//self.Refresh();
+				//Game.EventSystem.Publish(new EventType.StartGameLevel(){ZoneScene = self.ZoneScene()});
 				
-				//TODO 闯关结束后伪代码 别抄
 				self.View.GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Adventure);
+
+				self.ZoneScene().CurrentScene().GetComponent<AdventureComponent>().StartAdventure().Coroutine();
 			}
 			catch (Exception e)
 			{

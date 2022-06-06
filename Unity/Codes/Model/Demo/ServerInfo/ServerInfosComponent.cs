@@ -2,6 +2,7 @@
 
 namespace ET
 {
+    [ComponentOf()]
     [ChildType(typeof(ServerInfo))]
     public class ServerInfosComponent : Entity,IAwake,IDestroy
     {

@@ -18,7 +18,16 @@ namespace ET
 
         public int GetShowConfigCount()
         {
-            return this.list.Count;
+            var count = 0;
+            foreach (var config in this.list)
+            {
+                if (config.isNeedShow == 1)
+                {
+                    count++;
+                }
+            }
+
+            return count;
         }
     }
 }

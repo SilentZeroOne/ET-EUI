@@ -2,6 +2,7 @@
 
 namespace ET
 {
+    [ComponentOf]
     [ChildType(typeof(RoleInfo))]
     public class RoleInfosComponent : Entity , IAwake, IDestroy
     {

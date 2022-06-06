@@ -88,5 +88,7 @@
 	    public const int DyingState = 3011; //垂死状态
 
 	    public const int AdventureStartTime = 3012; // 开始冒险时间
+
+	    public const int IsAlive = 3013; //存活状态 0为死亡 1为活着
     }
 }

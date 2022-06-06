@@ -2,7 +2,6 @@
 
 namespace ET
 {
-    [Config]
     public partial class BattleLevelConfigCategory
     {
         public BattleLevelConfig GetConfigByIndex(int index)

@@ -78,26 +78,14 @@ namespace ET
 		/// <summary>Id</summary>
 		[ProtoMember(1)]
 		public int Id { get; set; }
-		/// <summary>所属ai</summary>
-		[ProtoMember(2)]
-		public int AIConfigId { get; set; }
-		/// <summary>此ai中的顺序</summary>
-		[ProtoMember(3)]
-		public int Order { get; set; }
-		/// <summary>节点名字</summary>
-		[ProtoMember(4)]
-		public string Name { get; set; }
-		/// <summary>节点参数</summary>
-		[ProtoMember(5)]
-		public int[] NodeParams { get; set; }
 		/// <summary>怪物列表</summary>
-		[ProtoMember(6)]
+		[ProtoMember(2)]
 		public int[] MonsterIds { get; set; }
-		/// <summary>怪物数量</summary>
-		[ProtoMember(7)]
-		public int[] MonsterCount { get; set; }
+		/// <summary>c关卡名字</summary>
+		[ProtoMember(3)]
+		public string Name { get; set; }
 		/// <summary>准入等级范围</summary>
-		[ProtoMember(8)]
+		[ProtoMember(4)]
 		public int[] MinEnterLevel { get; set; }
 
 	}

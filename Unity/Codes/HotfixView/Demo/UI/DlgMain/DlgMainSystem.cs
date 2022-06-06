@@ -12,6 +12,7 @@ namespace ET
 		public static void RegisterUIEvent(this DlgMain self)
 		{
 			self.View.EButton_RoleButton.AddListenerAsync(() => { return self.OnRoleButtonClickHandler(); });
+			self.View.EButton_AdvantureButton.AddListenerAsync(() => { return self.OnAdventureButtonClickHandler(); });
 		}
 
 		public static void ShowWindow(this DlgMain self, Entity contextData = null)
@@ -55,5 +56,11 @@ namespace ET
 			await ETTask.CompletedTask;
 		}
 
+		public static async ETTask OnAdventureButtonClickHandler(this DlgMain self)
+		{
+			self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Adventure);
+
+			await ETTask.CompletedTask;
+		}
 	}
 }

@@ -44,5 +44,7 @@ namespace ET
                 Game.EventSystem.PublishClass(EventType.ChangeRotation.Instance);
             }
         }
+
+        public UnitType Type => (UnitType)this.Config.Type;
     }
 }
