@@ -1,5 +1,5 @@
 {"list":[
-{"_t":"BattleLevelConfig","_id":1,"MonsterIds":[1002],"Name":"诅咒之地1","MinEnterLevel":[1,10]},
+{"_t":"BattleLevelConfig","_id":1,"MonsterIds":[1002,1002,1002],"Name":"诅咒之地1","MinEnterLevel":[1,10]},
 {"_t":"BattleLevelConfig","_id":2,"MonsterIds":[1003],"Name":"诅咒之地2","MinEnterLevel":[10,20]},
 {"_t":"BattleLevelConfig","_id":3,"MonsterIds":[1004],"Name":"诅咒之地3","MinEnterLevel":[20,30]},
 {"_t":"BattleLevelConfig","_id":4,"MonsterIds":[1005],"Name":"诅咒之地4","MinEnterLevel":[30,40]},

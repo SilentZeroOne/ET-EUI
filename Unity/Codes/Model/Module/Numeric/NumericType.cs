@@ -18,6 +18,13 @@
 	    public const int MaxHpPct = MaxHp * 10 + 3;
 	    public const int MaxHpFinalAdd = MaxHp * 10 + 4;
 	    public const int MaxHpFinalPct = MaxHp * 10 + 5;
+	    
+	    public const int MaxMp = 1004;  //法力值
+	    public const int MaxMpBase = Mp * 10 + 1;
+	    public const int MaxMpAdd = Mp * 10 + 2;
+	    public const int MaxMpPct = Mp * 10 + 3;
+	    public const int MaxMpFinalAdd = Mp * 10 + 4;
+	    public const int MaxMpFinalPct = Mp * 10 + 5;
 
 	    public const int AOI = 1003;
 	    public const int AOIBase = AOI * 10 + 1;

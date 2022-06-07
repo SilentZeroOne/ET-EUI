@@ -118,5 +118,25 @@ namespace ET
         {
             public Scene ZoneScene;
         }
+
+        public struct AdventureBattleRound
+        {
+            public Scene ZoneScene;
+            public Unit AttackUnit;
+            public Unit TargetUnit;
+        }
+
+        public struct AdventureBattleOver
+        {
+            public Scene ZoneScene;
+            public Unit WinUnit;
+        }
+
+        public struct AdventureBattleReport
+        {
+            public Scene ZoneScene;
+            public BattleRoundResult BattleRoundResult;
+            public int Round;
+        }
     }
 }
