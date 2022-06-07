@@ -4,6 +4,7 @@ using UnityEngine.UI;
 namespace ET
 {
 	[EnableMethod]
+	[ComponentOf(typeof(UIBaseWindow))]
 	public  class DlgServerViewComponent : Entity,IAwake,IDestroy 
 	{
 		public UnityEngine.UI.Image E_BackGroundImage

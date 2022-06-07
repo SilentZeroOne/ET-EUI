@@ -4,6 +4,7 @@ using UnityEngine.UI;
 namespace ET
 {
 	[EnableMethod]
+	[ComponentOf(typeof(UIBaseWindow))]
 	public  class DlgRoleViewComponent : Entity,IAwake,IDestroy 
 	{
 		public UnityEngine.UI.Button EButton_DeleteRoleButton

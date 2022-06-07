@@ -2,6 +2,7 @@
 
 namespace ET
 {
+	[ComponentOf(typeof(UIBaseWindow))]
 	public  class DlgRole :Entity,IAwake,IUILogic
 	{
 

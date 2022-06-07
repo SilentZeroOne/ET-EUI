@@ -2,6 +2,7 @@
 
 namespace ET
 {
+	[ComponentOf(typeof(UIBaseWindow))]
 	public  class DlgServer :Entity,IAwake,IUILogic
 	{
 

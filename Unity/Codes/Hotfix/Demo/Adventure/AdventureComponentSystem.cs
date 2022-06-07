@@ -54,7 +54,7 @@ namespace ET
             for (int i = 0; i < config.MonsterIds.Length; i++)
             {
                 Unit enemyUnit = await UnitFactory.CreateEnemy(self.ZoneScene().CurrentScene(), config.MonsterIds[i]);
-                enemyUnit.Position = new Vector3(1.5f, -2 + i);
+                enemyUnit.Position = new Vector3(1.5f, -2 + i, 0);
                 self.EnemyIdList.Add(enemyUnit.Id);
             }
             
