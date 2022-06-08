@@ -2,10 +2,11 @@
 
 namespace ET
 {
-    public class AdventureBattleRoundEvent_CaculateDamage: AEvent<AdventureBattleRound>
+    public class AdventureBattleRoundEvent_CaculateDamage: AEventAsync<AdventureBattleRound>
     {
-        protected override void Run(AdventureBattleRound a)
+        protected override async ETTask Run(AdventureBattleRound a)
         {
+            await a.ZoneScene.GetComponent<ObjectWait>().Wait<WaitType.Wait_PlayBattleAnimationEnd>();
             if (!a.AttackUnit.IsAlive() || !a.TargetUnit.IsAlive())
             {
                 return;
@@ -26,6 +27,8 @@ namespace ET
             
             Log.Debug($"************{a.AttackUnit.Type} 攻击造成 {damage}点伤害");
             Log.Debug($"************{a.TargetUnit.Type} 剩余血量 {hp}");
+
+            await ETTask.CompletedTask;
         }
     }
 }

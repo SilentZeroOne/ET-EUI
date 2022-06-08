@@ -535,7 +535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   data:
   - key: Unit
-    gameObject: {fileID: 342975271}
+    gameObject: {fileID: 0}
 --- !u!1 &1114695592
 GameObject:
   m_ObjectHideFlags: 0

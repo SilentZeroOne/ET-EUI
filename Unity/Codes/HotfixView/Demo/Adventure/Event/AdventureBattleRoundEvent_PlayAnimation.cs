@@ -13,6 +13,7 @@ namespace ET
             }
             
             a.AttackUnit?.GetComponent<AnimatorComponent>().Play(MotionType.Attack);
+            await TimerComponent.Instance.WaitAsync(300);
             a.TargetUnit?.GetComponent<AnimatorComponent>().Play(MotionType.Hurt);
 
             long instanceId = a.TargetUnit.InstanceId;
@@ -27,6 +28,7 @@ namespace ET
             }
             
             a.TargetUnit.GetComponent<GameObjectComponent>().SpriteRenderer.color=Color.white;
+            a.ZoneScene.GetComponent<ObjectWait>().Notify(new WaitType.Wait_PlayBattleAnimationEnd());
         }
     }
 }

@@ -8,6 +8,7 @@
         }
     }
 
+    [FriendClass(typeof(AdventureCheckComponent))]
     public static class AdventureCheckComponentSystem
     {
         public static bool CheckBattleWinResult(this AdventureCheckComponent self, int totalBattleRound)
@@ -40,7 +41,7 @@
             long playAnimationTime = TimeHelper.ServerNow() - numericComponent.GetAsLong(NumericType.AdventureStartTime);
             if (playAnimationTime < self.AnimationTotalTime)
             {
-                Log.Error("动画时间不足");
+                Log.Error($"动画时间不足 实际：{playAnimationTime}ms 模拟：{self.AnimationTotalTime}ms");
                 return false;
             }
 
@@ -81,7 +82,7 @@
                     //敌方回合
                     for (int j = 0; j < config.MonsterIds.Length; j++)
                     {
-                        if (self.EnemyHpDict[i] < 0)
+                        if (self.EnemyHpDict[j] <= 0)
                         {
                             continue;
                         }

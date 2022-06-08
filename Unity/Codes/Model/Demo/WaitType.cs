@@ -30,5 +30,14 @@
                 set;
             }
         }
+
+        public struct Wait_PlayBattleAnimationEnd: IWaitType
+        {
+            public int Error
+            {
+                get;
+                set;
+            }
+        }
     }
 }

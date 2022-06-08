@@ -2,14 +2,12 @@
 
 namespace ET
 {
-    public class AdventureRoundResetEvent_ResetAnimation : AEventAsync<AdventureRoundReset>
+    public class AdventureRoundResetEvent_ResetAnimation : AEvent<AdventureRoundReset>
     {
-        protected override async ETTask Run(AdventureRoundReset args)
+        protected override void Run(AdventureRoundReset args)
         {
             Unit unit = UnitHelper.GetMyUnitFromZoneScene(args.ZoneScene);
             unit?.GetComponent<AnimatorComponent>()?.Play(MotionType.Idle);
-
-            await ETTask.CompletedTask;
         }
     }
 }

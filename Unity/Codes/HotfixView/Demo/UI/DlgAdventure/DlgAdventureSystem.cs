@@ -87,7 +87,7 @@ namespace ET
 				//self.Refresh();
 				//Game.EventSystem.Publish(new EventType.StartGameLevel(){ZoneScene = self.ZoneScene()});
 				
-				self.View.GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Adventure);
+				self.ZoneScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Adventure);
 
 				self.ZoneScene().CurrentScene().GetComponent<AdventureComponent>().StartAdventure().Coroutine();
 			}
