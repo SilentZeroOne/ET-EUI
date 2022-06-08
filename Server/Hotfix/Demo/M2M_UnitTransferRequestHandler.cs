@@ -34,6 +34,7 @@ namespace ET
 			MessageHelper.SendToClient(unit, m2CCreateUnits);
 			
 			unit.AddComponent<NumericNoticeComponent>();
+			unit.AddComponent<AdventureCheckComponent>();
 			
 			// 加入aoi
 			// unit.AddComponent<AOIEntity, int, Vector3>(9 * 1000, unit.Position);
