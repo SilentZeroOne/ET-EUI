@@ -41,8 +41,19 @@ namespace ET
             self.ResetAdventure();
 
             await self.CreateAdventureEnemy();
-
+            self.ShowAdventureHpBarInfo(true);
             self.BattleTimer = TimerComponent.Instance.NewOnceTimer(500, TimerType.BattleRound, self);
+        }
+
+        public static void ShowAdventureHpBarInfo(this AdventureComponent self, bool isShow)
+        {
+            Unit myUnit = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene());
+            Game.EventSystem.Publish(new EventType.ShowAdventureHpBar() { Unit = myUnit, isShow = isShow });
+            for (int i = 0; i < self.EnemyIdList.Count; i++)
+            {
+                Unit enemyUnit = self.ZoneScene().CurrentScene().GetComponent<UnitComponent>().Get(self.EnemyIdList[i]);
+                Game.EventSystem.Publish(new EventType.ShowAdventureHpBar() { Unit = enemyUnit, isShow = isShow });
+            }
         }
 
         public static async ETTask CreateAdventureEnemy(this AdventureComponent self)

@@ -42,9 +42,33 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Res\FantasyIconsPackFree\Demo\IconViewer.cs" />
+     <Compile Include="Assets\Res\Beautiful Progress Bar Free - CYKO\Scripts\SliderScripts.cs" />
      <None Include="Assets\Res\Knight Files\Read Me.txt" />
      <None Include="Assets\Res\2D_Background_SunshineForest\2D_Horizontal_battle_Enviroment_05\Get full backgrounds pack.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <None Include="Assets\link.xml" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\Res\Ninja Files\Read Me.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne.json" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
      <Reference Include="UnityEngine">
      <HintPath>I:/Software/Unity/2020.3.30f1c1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>
@@ -261,6 +285,9 @@
      <Reference Include="UnityEditor.UnityConnectModule">
      <HintPath>I:/Software/Unity/2020.3.30f1c1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
      </Reference>
+     <Reference Include="DemiLib">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+     </Reference>
      <Reference Include="Sirenix.OdinInspector.Editor">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
      </Reference>
@@ -273,6 +300,9 @@
      <Reference Include="Sirenix.Serialization.Config">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
      </Reference>
+     <Reference Include="DOTween">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
+     </Reference>
      <Reference Include="Sirenix.Utilities">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
      </Reference>
@@ -281,6 +311,9 @@
      </Reference>
      <Reference Include="Sirenix.Serialization">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenPro">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.Utilities.Editor">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
@@ -633,14 +666,8 @@
      <Reference Include="System.Xml.XPath.XDocument">
      <HintPath>I:/Software/Unity/2020.3.30f1c1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.ShaderGraph.Editor">
-     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.RenderPipelines.Universal.Shaders">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.RenderPipelines.Universal.Editor">
-     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.RenderPipelines.Universal.Runtime">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
@@ -651,23 +678,11 @@
      <Reference Include="Unity.VisualStudio.Editor">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
-     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Timeline.Editor">
-     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.Timeline">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
      </Reference>
      <Reference Include="Unity.TextMeshPro">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
-     </Reference>
-     <Reference Include="Unity.Mathematics.Editor">
-     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Searcher.Editor">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
@@ -687,17 +702,38 @@
      <Reference Include="UnityEngine.UI">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
      </Reference>
-     <Reference Include="Unity.RenderPipelines.Core.Editor">
-     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
-     </Reference>
      <Reference Include="Unity.Mathematics">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
      </Reference>
+     <Reference Include="Unity.ShaderGraph.Editor">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.RenderPipelines.Universal.Editor">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Timeline.Editor">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.Mathematics.Editor">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.RenderPipelines.Core.Editor">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="Unity.2D.Sprite.Editor">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.Mono.csproj">
-      <Project>{5910fa29-5797-199c-985b-fc9fc473328e}</Project>
-      <Name>Unity.Mono</Name>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{09b46226-3263-561e-d797-c9025c53bdd6}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.csproj">
       <Project>{9f5687e3-5f72-c8f5-517b-584709b7d5d8}</Project>
@@ -707,21 +743,17 @@
       <Project>{041131cd-3018-19b1-81b6-5dbee2467ffb}</Project>
       <Name>Unity.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.ThirdParty.csproj">
-      <Project>{d2ad5be1-263a-9a30-ab0f-dc5b08044350}</Project>
-      <Name>Unity.ThirdParty</Name>
-    </ProjectReference>
-    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
-      <Project>{e0456168-1ba5-5e68-ef99-a1034c8b63ab}</Project>
-      <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
+    <ProjectReference Include="Unity.Hotfix.csproj">
+      <Project>{52f66610-896a-c4d1-9881-1a19df7ab80e}</Project>
+      <Name>Unity.Hotfix</Name>
     </ProjectReference>
     <ProjectReference Include="Sirenix.OdinInspector.Modules.UnityMathematics.csproj">
       <Project>{56df1de4-7636-2075-3b3d-021f8dba6bfa}</Project>
       <Name>Sirenix.OdinInspector.Modules.UnityMathematics</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Hotfix.csproj">
-      <Project>{52f66610-896a-c4d1-9881-1a19df7ab80e}</Project>
-      <Name>Unity.Hotfix</Name>
+    <ProjectReference Include="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj">
+      <Project>{e0456168-1ba5-5e68-ef99-a1034c8b63ab}</Project>
+      <Name>Sirenix.OdinInspector.CompatibilityLayer.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.HotfixView.csproj">
       <Project>{de4513d3-889b-5c52-8e9c-744c99ae7509}</Project>
@@ -731,9 +763,17 @@
       <Project>{9498bfb4-d9f5-c441-13e3-3f26f7700e29}</Project>
       <Name>Unity.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Mono.csproj">
+      <Project>{5910fa29-5797-199c-985b-fc9fc473328e}</Project>
+      <Name>Unity.Mono</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.ModelView.csproj">
       <Project>{c109842f-01da-64d4-dbf2-00c6449e459e}</Project>
       <Name>Unity.ModelView</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ThirdParty.csproj">
+      <Project>{d2ad5be1-263a-9a30-ab0f-dc5b08044350}</Project>
+      <Name>Unity.ThirdParty</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

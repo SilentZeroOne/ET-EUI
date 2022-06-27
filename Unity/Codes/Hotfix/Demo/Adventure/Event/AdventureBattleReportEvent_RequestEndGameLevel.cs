@@ -20,6 +20,7 @@ namespace ET
 
             await TimerComponent.Instance.WaitAsync(3000);
             
+            a.ZoneScene?.CurrentScene()?.GetComponent<AdventureComponent>()?.ShowAdventureHpBarInfo(false);
             a.ZoneScene?.CurrentScene()?.GetComponent<AdventureComponent>()?.ResetAdventure();
         }
     }

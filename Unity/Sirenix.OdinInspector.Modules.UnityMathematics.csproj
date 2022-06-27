@@ -281,8 +281,20 @@
      <Reference Include="UnityEditor.WindowsStandalone.Extensions">
      <HintPath>I:/Software/Unity/2020.3.30f1c1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
      </Reference>
+     <Reference Include="DemiLib">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
+     </Reference>
      <Reference Include="Sirenix.OdinInspector.Editor">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Editor.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenProEditor">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTweenEditor">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
+     </Reference>
+     <Reference Include="DemiEditor">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.OdinInspector.Attributes">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.OdinInspector.Attributes.dll</HintPath>
@@ -292,6 +304,9 @@
      </Reference>
      <Reference Include="Sirenix.Serialization.Config">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.Config.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTween">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
      </Reference>
      <Reference Include="Sirenix.Utilities">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.dll</HintPath>
@@ -305,26 +320,11 @@
      <Reference Include="Sirenix.Serialization">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Serialization.dll</HintPath>
      </Reference>
-     <Reference Include="Sirenix.Utilities.Editor">
-     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
-     </Reference>
-     <Reference Include="DemiLib">
-     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
-     </Reference>
-     <Reference Include="DOTweenProEditor">
-     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenProEditor.dll</HintPath>
-     </Reference>
-     <Reference Include="DOTweenEditor">
-     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll</HintPath>
-     </Reference>
-     <Reference Include="DemiEditor">
-     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DemiLib/Core/Editor/DemiEditor.dll</HintPath>
-     </Reference>
-     <Reference Include="DOTween">
-     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
-     </Reference>
      <Reference Include="DOTweenPro">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
+     </Reference>
+     <Reference Include="Sirenix.Utilities.Editor">
+     <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Assets/Plugins/Sirenix/Assemblies/Sirenix.Utilities.Editor.dll</HintPath>
      </Reference>
      <Reference Include="nunit.framework">
      <HintPath>I:/Software/Unity/UnityProject/ET-EUI/Unity/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll</HintPath>

@@ -138,5 +138,18 @@ namespace ET
             public BattleRoundResult BattleRoundResult;
             public int Round;
         }
+
+        public struct ShowAdventureHpBar
+        {
+            public Unit Unit;
+            public bool isShow;
+        }
+
+        public struct ShowDamageValueView
+        {
+            public Scene ZoneScene;
+            public Unit TargetUnit;
+            public long DamageValue;
+        }
     }
 }
