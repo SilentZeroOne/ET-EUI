@@ -125,6 +125,13 @@ namespace ET
             public Unit AttackUnit;
             public Unit TargetUnit;
         }
+        
+        public struct AdventureBattleRoundView
+        {
+            public Scene ZoneScene;
+            public Unit AttackUnit;
+            public Unit TargetUnit;
+        }
 
         public struct AdventureBattleOver
         {

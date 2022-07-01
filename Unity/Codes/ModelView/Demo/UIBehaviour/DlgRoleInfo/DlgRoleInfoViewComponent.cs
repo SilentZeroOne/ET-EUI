@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace ET
 {
-	[EnableMethod]
 	[ComponentOf(typeof(UIBaseWindow))]
+	[EnableMethod]
 	public  class DlgRoleInfoViewComponent : Entity,IAwake,IDestroy 
 	{
 		public UnityEngine.UI.Button EButton_CloseButton
@@ -72,6 +72,40 @@ namespace ET
 		    		this.m_E_CompatPowerText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"Background/EquipmentBg/CompatPower/E_CompatPower");
      			}
      			return this.m_E_CompatPowerText;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_UpLevelButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_UpLevelButton == null )
+     			{
+		    		this.m_E_UpLevelButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"Background/EquipmentBg/E_UpLevel");
+     			}
+     			return this.m_E_UpLevelButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_UpLevelImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_UpLevelImage == null )
+     			{
+		    		this.m_E_UpLevelImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Background/EquipmentBg/E_UpLevel");
+     			}
+     			return this.m_E_UpLevelImage;
      		}
      	}
 
@@ -187,6 +221,8 @@ namespace ET
 			this.m_EButton_CloseImage = null;
 			this.m_EquipmentBgImage = null;
 			this.m_E_CompatPowerText = null;
+			this.m_E_UpLevelButton = null;
+			this.m_E_UpLevelImage = null;
 			this.m_E_AvailablePointText = null;
 			this.m_esattributeitem_strength?.Dispose();
 			this.m_esattributeitem_strength = null;
@@ -204,6 +240,8 @@ namespace ET
 		private UnityEngine.UI.Image m_EButton_CloseImage = null;
 		private UnityEngine.UI.Image m_EquipmentBgImage = null;
 		private UnityEngine.UI.Text m_E_CompatPowerText = null;
+		private UnityEngine.UI.Button m_E_UpLevelButton = null;
+		private UnityEngine.UI.Image m_E_UpLevelImage = null;
 		private UnityEngine.UI.Text m_E_AvailablePointText = null;
 		private ESAttributeItem m_esattributeitem_strength = null;
 		private ESAttributeItem m_esattributeitem_stamina = null;

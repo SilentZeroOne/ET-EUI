@@ -18,6 +18,8 @@ namespace ET
 			self.View.ESAttributeItem_Stamina.RegisterEvent(NumericType.Stamina);
 			self.View.ESAttributeItem_Strength.RegisterEvent(NumericType.Strength);
 			self.View.E_AttributeStatusLoopVerticalScrollRect.AddItemRefreshListener(self.OnAttributeItemRefreshHandler);
+			
+			self.View.E_UpLevelButton.AddListenerAsync(self.OnUpRoleLevelHandler);
 		}
 
 		public static void ShowWindow(this DlgRoleInfo self, Entity contextData = null)
@@ -46,8 +48,24 @@ namespace ET
 			Scroll_Item_Status scrollItemStatus = self.ScrollItemStatus[index].BindTrans(transform);
 			PlayerNumericConfig config = PlayerNumericConfigCategory.Instance.GetConfigByIndex(index);
 			scrollItemStatus.E_TitleText.text = config.Name + ":";
-			scrollItemStatus.E_DamageText.text =
-					UnitHelper.GetMyUnitNumericComponent(self.ZoneScene().CurrentScene()).GetAsLong(config.Id).ToString();
+			var value = UnitHelper.GetMyUnitNumericComponent(self.ZoneScene().CurrentScene()).GetAsLong(config.Id);
+			scrollItemStatus.E_DamageText.text = config.isPrecent == 0? value.ToString() : $"{value}%";
+		}
+
+		public static async ETTask OnUpRoleLevelHandler(this DlgRoleInfo self)
+		{
+			try
+			{
+				int errorCode = await NumericHelper.RequestUpRoleLevel(self.ZoneScene());
+				if (errorCode!=ErrorCode.ERR_Success)
+				{
+					return;
+				}
+			}
+			catch (Exception e)
+			{
+				Log.Error(e.ToString());
+			}
 		}
 
 	}

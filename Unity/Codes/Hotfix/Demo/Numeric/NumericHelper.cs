@@ -47,5 +47,27 @@ namespace ET
             }
             return ErrorCode.ERR_Success;
         }
+
+        public static async ETTask<int> RequestUpRoleLevel(Scene zoneScene)
+        {
+            M2C_UpRoleLevel m2CAddAttributePoint = null;
+            try
+            {
+                m2CAddAttributePoint = (M2C_UpRoleLevel) await zoneScene.GetComponent<SessionComponent>().Session
+                        .Call(new C2M_UpRoleLevel()); 
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                return ErrorCode.ERR_NetworkError;
+            }
+
+            if (m2CAddAttributePoint.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(m2CAddAttributePoint.Error.ToString());
+                return m2CAddAttributePoint.Error;
+            }
+            return ErrorCode.ERR_Success;
+        }
     }
 }

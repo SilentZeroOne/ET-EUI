@@ -97,5 +97,7 @@
 	    public const int AdventureStartTime = 3012; // 开始冒险时间
 
 	    public const int IsAlive = 3013; //存活状态 0为死亡 1为活着
+
+	    public const int BattleRandomSeed = 3014; //战斗随机种子
     }
 }
