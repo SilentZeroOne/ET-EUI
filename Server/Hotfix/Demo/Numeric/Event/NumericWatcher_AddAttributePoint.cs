@@ -23,6 +23,7 @@ namespace ET
             if (args.NumericType == NumericType.Agility)
             {
                 unit.GetComponent<NumericComponent>()[NumericType.ArmorValueFinalAdd] += 5;
+                unit.GetComponent<NumericComponent>()[NumericType.Dodge] += 50;
             }
 
             if (args.NumericType == NumericType.Stamina)

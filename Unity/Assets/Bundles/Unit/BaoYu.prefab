@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2819626499019627894}
   - component: {fileID: 5480193547923179709}
   - component: {fileID: 3618709722175894924}
+  - component: {fileID: 1031701702493107194}
   m_Layer: 0
   m_Name: BaoYu
   m_TagString: Untagged
@@ -115,6 +116,25 @@ SortingGroup:
   m_SortingLayerID: 438667973
   m_SortingLayer: 2
   m_SortingOrder: 0
+--- !u!114 &1031701702493107194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819626499019627888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 502d8cafd6a5a0447ab1db9a24cdcb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+  - key: HpBarGroup
+    gameObject: {fileID: 3991946489841297031}
+  - key: HpBar
+    gameObject: {fileID: 6705706550382169323}
+  - key: HpText
+    gameObject: {fileID: 8078936618793052475}
 --- !u!1001 &112368370932825588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -140,17 +160,17 @@ PrefabInstance:
     - target: {fileID: 7046016625433409663, guid: 7497fcbc854d7f441b9059ca37dc8289,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.7841
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7046016625433409663, guid: 7497fcbc854d7f441b9059ca37dc8289,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.7841
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7046016625433409663, guid: 7497fcbc854d7f441b9059ca37dc8289,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.7841
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7046016625433409663, guid: 7497fcbc854d7f441b9059ca37dc8289,
         type: 3}
@@ -204,9 +224,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7497fcbc854d7f441b9059ca37dc8289, type: 3}
+--- !u!1 &3991946489841297031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3956702949726165875, guid: 7497fcbc854d7f441b9059ca37dc8289,
+    type: 3}
+  m_PrefabInstance: {fileID: 112368370932825588}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6937598113691780491 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7046016625433409663, guid: 7497fcbc854d7f441b9059ca37dc8289,
+    type: 3}
+  m_PrefabInstance: {fileID: 112368370932825588}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6705706550382169323 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6665400997256016159, guid: 7497fcbc854d7f441b9059ca37dc8289,
+    type: 3}
+  m_PrefabInstance: {fileID: 112368370932825588}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8078936618793052475 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8183340126420505807, guid: 7497fcbc854d7f441b9059ca37dc8289,
     type: 3}
   m_PrefabInstance: {fileID: 112368370932825588}
   m_PrefabAsset: {fileID: 0}

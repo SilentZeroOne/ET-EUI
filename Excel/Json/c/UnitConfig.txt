@@ -1,6 +1,6 @@
 {"list":[
 {"_t":"UnitConfig","_id":1001,"Type":1,"Name":"Tivon","Desc":"带有强力攻击技能","MaxHP":0,"DamageValue":0,"PrefabName":"Knight"},
-{"_t":"UnitConfig","_id":1002,"Type":2,"Name":"弱鸡宝鱼","Desc":"吃饭睡觉打宝鱼","MaxHP":100,"DamageValue":10,"PrefabName":"BaoYu"},
+{"_t":"UnitConfig","_id":1002,"Type":2,"Name":"弱鸡宝鱼","Desc":"吃饭睡觉打宝鱼","MaxHP":200,"DamageValue":10,"PrefabName":"BaoYu"},
 {"_t":"UnitConfig","_id":1003,"Type":2,"Name":"新兵宝鱼","Desc":"吃饭睡觉打宝鱼","MaxHP":200,"DamageValue":20,"PrefabName":"BaoYu"},
 {"_t":"UnitConfig","_id":1004,"Type":2,"Name":"精英宝鱼","Desc":"吃饭睡觉打宝鱼","MaxHP":300,"DamageValue":30,"PrefabName":"BaoYu"},
 {"_t":"UnitConfig","_id":1005,"Type":2,"Name":"专家宝鱼","Desc":"吃饭睡觉打宝鱼","MaxHP":400,"DamageValue":40,"PrefabName":"BaoYu"},

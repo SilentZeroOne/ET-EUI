@@ -12,8 +12,11 @@ namespace ET
                 return;
             }
 
-            int damage = a.AttackUnit.GetComponent<NumericComponent>().GetAsInt(NumericType.DamageValue);
+            //int damage = a.AttackUnit.GetComponent<NumericComponent>().GetAsInt(NumericType.DamageValue);
 
+            int damage = DamageCaculateHelper.CaculateDamageValue(a.AttackUnit, a.TargetUnit,
+                ref a.ZoneScene.CurrentScene().GetComponent<AdventureComponent>().Random);
+            
             int hp = a.TargetUnit.GetComponent<NumericComponent>().GetAsInt(NumericType.Hp);
 
             hp -= damage;

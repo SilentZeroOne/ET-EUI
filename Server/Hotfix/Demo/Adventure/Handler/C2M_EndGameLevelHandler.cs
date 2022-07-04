@@ -45,7 +45,9 @@ namespace ET
                 return;
             }
 
+            var config = BattleLevelConfigCategory.Instance.Get(level);
             numericComponent.Set(NumericType.AdventureState, 0);
+            numericComponent[NumericType.Exp] += config.RewardExp;
             reply();
             
             //TODO:下发战斗胜利奖励

@@ -4,95 +4,106 @@
     {
         public override void Destroy(AdventureCheckComponent self)
         {
-            self.ResetAdventureInfo();
+            foreach (var monsterId in self.CacheEnemyIdList)
+            {
+                self.DomainScene().GetComponent<UnitComponent>().Remove(monsterId);
+            }
+            self.EnemyIdList.Clear();
+            self.CacheEnemyIdList.Clear();
+            self.Random = null;
+            self.AnimationTotalTime = 0;
         }
     }
 
     [FriendClass(typeof(AdventureCheckComponent))]
+    [FriendClass(typeof(Unit))]
     public static class AdventureCheckComponentSystem
     {
         public static bool CheckBattleWinResult(this AdventureCheckComponent self, int totalBattleRound)
         {
-            self.ResetAdventureInfo();
-
-            NumericComponent numericComponent = self.GetParent<Unit>().GetComponent<NumericComponent>();
-            int levelId = numericComponent.GetAsInt(NumericType.AdventureState);
-            //模拟战斗
-            bool isSimulationNormal = self.SimulationBattle(levelId, totalBattleRound);
-            if (!isSimulationNormal)
+            try
             {
-                Log.Error("模拟对战失败");
-                return false;
-            }
+                self.ResetAdventureInfo();
+                self.SetBattleRandomSeed();
+                self.CreateBattleMonsterUnit();
 
-            if (self.MonsterTotalDamage > numericComponent.GetAsInt(NumericType.MaxHp))
-            {
-                Log.Error("角色无法存活");
-                return false;
-            }
+                NumericComponent numericComponent = self.GetParent<Unit>().GetComponent<NumericComponent>();
+                int levelId = numericComponent.GetAsInt(NumericType.AdventureState);
+                //模拟战斗
+                bool isSimulationNormal = self.SimulationBattle(levelId, totalBattleRound);
+                if (!isSimulationNormal)
+                {
+                    Log.Error("模拟对战失败");
+                    return false;
+                }
 
-            if (self.MonsterTotalHp > self.UnitTotalDamage)
-            {
-                Log.Error("角色伤害不足");
-                return false;
-            }
-            
-            //判断战斗动画是否正常
-            long playAnimationTime = TimeHelper.ServerNow() - numericComponent.GetAsLong(NumericType.AdventureStartTime);
-            if (playAnimationTime < self.AnimationTotalTime)
-            {
-                Log.Error($"动画时间不足 实际：{playAnimationTime}ms 模拟：{self.AnimationTotalTime}ms");
-                return false;
-            }
+                if (!self.GetParent<Unit>().IsAlive())
+                {
+                    Log.Error("玩家死亡");
+                    return false;
+                }
 
-            return true;
+                if (self.GetFirstAliveMonster() != null)
+                {
+                    Log.Error("模拟对战失败,怪物存活");
+                    return false;
+                }
+
+                //判断战斗动画是否正常
+                long playAnimationTime = TimeHelper.ServerNow() - numericComponent.GetAsLong(NumericType.AdventureStartTime);
+                if (playAnimationTime < self.AnimationTotalTime)
+                {
+                    Log.Error($"动画时间不足 实际：{playAnimationTime}ms 模拟：{self.AnimationTotalTime}ms");
+                    return false;
+                }
+
+                return true;
+            }
+            finally
+            {
+                self.ResetAdventureInfo();
+            }
         }
 
         public static bool SimulationBattle(this AdventureCheckComponent self, int levelId, int totalBattleRound)
         {
-            //创建怪物信息
-            BattleLevelConfig config = BattleLevelConfigCategory.Instance.Get(levelId);
-            for (int i = 0; i < config.MonsterIds.Length; i++)
-            {
-                UnitConfig unitConfig = UnitConfigCategory.Instance.Get(config.MonsterIds[i]);
-                self.EnemyHpDict.Add(i, unitConfig.MaxHP);
-                self.MonsterTotalHp += unitConfig.MaxHP; 
-            }
-            
             //开始模拟战斗
             for (int i = 0; i < totalBattleRound; i++)
             {
-                if (self.Round % 2 == 0)
+                if (i % 2 == 0)
                 {
                     //玩家回合
-                    int targetIndex = self.GetFirstAliveMonsterIndex(levelId);
-                    if (targetIndex < 0)
+                    Unit targetMonster = self.GetFirstAliveMonster();
+                    if (targetMonster == null)
                     {
-                        Log.Error($"TargeIndex error :{targetIndex}");
+                        Log.Debug("Monster is null");
                         return false;
                     }
 
-                    int damage = self.GetParent<Unit>().GetComponent<NumericComponent>().GetAsInt(NumericType.DamageValue);
-                    self.EnemyHpDict[targetIndex] -= damage;
-                    self.UnitTotalDamage += damage;
                     self.AnimationTotalTime += 1000;
+                    self.CaculateDamageValue(self.GetParent<Unit>(), targetMonster);
                 }
                 else
                 {
-                    //敌方回合
-                    for (int j = 0; j < config.MonsterIds.Length; j++)
+                    if (!self.GetParent<Unit>().IsAlive())
                     {
-                        if (self.EnemyHpDict[j] <= 0)
+                        return false;
+                    }
+                    
+                    //敌方回合
+                    for (int j = 0; j < self.EnemyIdList.Count; j++)
+                    {
+                        Unit monsterUnit = self.DomainScene().GetComponent<UnitComponent>().Get(self.EnemyIdList[j]);
+                        if (!monsterUnit.IsAlive())
                         {
                             continue;
                         }
-
-                        self.MonsterTotalDamage += UnitConfigCategory.Instance.Get(config.MonsterIds[j]).DamageValue;
+                        
                         self.AnimationTotalTime += 1000;
+                        self.CaculateDamageValue(monsterUnit,self.GetParent<Unit>());
                     }
                 }
-
-                ++self.Round;
+                
             }
 
             return true;
@@ -100,26 +111,79 @@
 
         public static void ResetAdventureInfo(this AdventureCheckComponent self)
         {
-            self.Round = 0;
             self.AnimationTotalTime = 0;
-            self.MonsterTotalDamage = 0;
-            self.MonsterTotalHp = 0;
-            self.UnitTotalDamage = 0;
-            self.EnemyHpDict.Clear();
+            NumericComponent numericComponent = self.GetParent<Unit>().GetComponent<NumericComponent>();
+            numericComponent.SetNoEvent(NumericType.Hp,numericComponent.GetAsInt(NumericType.MaxHp));
+            numericComponent.SetNoEvent(NumericType.IsAlive, 1);
         }
 
-        public static int GetFirstAliveMonsterIndex(this AdventureCheckComponent self,int levelId)
+        public static Unit GetFirstAliveMonster(this AdventureCheckComponent self)
         {
-            BattleLevelConfig config = BattleLevelConfigCategory.Instance.Get(levelId);
-            for (int i = 0; i < config.MonsterIds.Length; i++)
+            for (int i = 0; i < self.EnemyIdList.Count; i++)
             {
-                if (self.EnemyHpDict[i] > 0)
+                Unit monster = self.DomainScene().GetComponent<UnitComponent>().Get(self.EnemyIdList[i]);
+                if (monster.IsAlive())
                 {
-                    return i;
+                    return monster;
                 }
             }
 
-            return -1;
+            return null;
+        }
+
+        public static void SetBattleRandomSeed(this AdventureCheckComponent self)
+        {
+            int seed = self.GetParent<Unit>().GetComponent<NumericComponent>().GetAsInt(NumericType.BattleRandomSeed);
+            if (self.Random == null)
+            {
+                self.Random = new SRandom((uint)seed);
+            }
+            else
+            {
+                self.Random.SetRandomSeed((uint)seed);
+            }
+        }
+
+        public static void CreateBattleMonsterUnit(this AdventureCheckComponent self)
+        {
+            int level = self.GetParent<Unit>().GetComponent<NumericComponent>().GetAsInt(NumericType.AdventureState);
+            var battleLevelConfig = BattleLevelConfigCategory.Instance.Get(level);
+            var monsterCount = battleLevelConfig.MonsterIds.Length - self.CacheEnemyIdList.Count;
+            for (int i = 0; i < monsterCount; i++)
+            {
+                Unit monsterUnit = UnitFactory.CreateEnemy(self.DomainScene(), 1002);
+                self.CacheEnemyIdList.Add(monsterUnit.Id);
+            }
+            
+            //复用怪物Unit
+            self.EnemyIdList.Clear();
+            for (int i = 0; i < battleLevelConfig.MonsterIds.Length; i++)
+            {
+                Unit monster = self.DomainScene().GetComponent<UnitComponent>().Get(self.CacheEnemyIdList[i]);
+                UnitConfig config = UnitConfigCategory.Instance.Get(battleLevelConfig.MonsterIds[i]);
+                monster.ConfigId = config.Id;
+                
+                NumericComponent numericComponent = monster.GetComponent<NumericComponent>();
+                numericComponent.SetNoEvent(NumericType.IsAlive, 1);
+                numericComponent.SetNoEvent(NumericType.DamageValue, monster.Config.DamageValue);
+                numericComponent.SetNoEvent(NumericType.MaxHp, monster.Config.MaxHP);
+                numericComponent.SetNoEvent(NumericType.Hp, monster.Config.MaxHP);
+                self.EnemyIdList.Add(monster.Id);
+            }
+        }
+
+        public static void CaculateDamageValue(this AdventureCheckComponent self, Unit unit, Unit targetUnit)
+        {
+            var numericComponent = targetUnit.GetComponent<NumericComponent>();
+            int targetHp = numericComponent.GetAsInt(NumericType.Hp);
+            targetHp -= DamageCaculateHelper.CaculateDamageValue(unit, targetUnit, ref self.Random);
+            if (targetHp <= 0)
+            {
+                targetHp = 0;
+                numericComponent.SetNoEvent(NumericType.IsAlive, 0);
+            }
+
+            numericComponent.SetNoEvent(NumericType.Hp, targetHp);
         }
     }
 }

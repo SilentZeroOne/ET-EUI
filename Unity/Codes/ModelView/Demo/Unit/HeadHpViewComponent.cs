@@ -8,6 +8,7 @@ namespace ET
     {
         public GameObject HpBarGroup = null;
         public SpriteRenderer HpBar = null;
-        public TextMeshPro HpText = null; 
+        public TextMeshPro HpText = null;
+        public float HpBarOriginalX;
     }
 }

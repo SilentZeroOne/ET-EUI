@@ -57,6 +57,7 @@ namespace ET
 
             await self.CreateAdventureEnemy();
             self.ShowAdventureHpBarInfo(true);
+            self.SetBattleRandomSeed();
             self.BattleTimer = TimerComponent.Instance.NewOnceTimer(TimeHelper.ServerNow() + 500, TimerType.BattleRound, self);
         }
 

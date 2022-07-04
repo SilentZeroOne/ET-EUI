@@ -20,11 +20,23 @@ namespace ET
 			self.View.E_AttributeStatusLoopVerticalScrollRect.AddItemRefreshListener(self.OnAttributeItemRefreshHandler);
 			
 			self.View.E_UpLevelButton.AddListenerAsync(self.OnUpRoleLevelHandler);
+			
+			RedDotHelper.AddRedDotNodeView(self.ZoneScene(),"UpLevelButton",self.View.E_UpLevelButton.gameObject,Vector3.one, new Vector2(90,30));
+			RedDotHelper.AddRedDotNodeView(self.ZoneScene(),"AddAttribute",self.View.E_AvailablePointText.gameObject,Vector3.one, new Vector2(20,20));
 		}
 
 		public static void ShowWindow(this DlgRoleInfo self, Entity contextData = null)
 		{
 			self.Refresh();
+		}
+
+		public static void OnUnloadWindow(this DlgRoleInfo self)
+		{
+			RedDotMonoView monoView = self.View.E_UpLevelButton.GetComponent<RedDotMonoView>();
+			RedDotHelper.RemoveRedDotView(self.ZoneScene(), "UpLevelButton", out monoView);
+			
+			monoView = self.View.E_AvailablePointText.GetComponent<RedDotMonoView>();
+			RedDotHelper.RemoveRedDotView(self.ZoneScene(), "AddAttribute", out monoView);
 		}
 
 		public static void Refresh(this DlgRoleInfo self)

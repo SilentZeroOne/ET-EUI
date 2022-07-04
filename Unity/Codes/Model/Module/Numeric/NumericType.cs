@@ -72,6 +72,12 @@
 
 	    public const int AdditionalArmor = 1016; //护甲追加
 
+	    public const int Dodge = 1017;		//闪避
+	    
+	    public const int AdditionalDodge = 1018; //闪避追加
+
+	    public const int Critial = 1019;		//暴击率
+
 	    public const int Strength = 3001; //力量
 
 	    public const int Stamina = 3002; //体力

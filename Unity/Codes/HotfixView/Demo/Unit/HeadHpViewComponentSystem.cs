@@ -10,7 +10,8 @@ namespace ET
             GameObject go = self.GetParent<Unit>().GetComponent<GameObjectComponent>().GameObject;
             self.HpBarGroup = go.GetComponent<ReferenceCollector>().GetObject("HpBarGroup") as GameObject;
             self.HpBar = (go.GetComponent<ReferenceCollector>().GetObject("HpBar") as GameObject).GetComponent<SpriteRenderer>();
-            self.HpText = (go.GetComponent<ReferenceCollector>().GetObject("HpBar") as GameObject).GetComponent<TextMeshPro>();
+            self.HpText = (go.GetComponent<ReferenceCollector>().GetObject("HpText") as GameObject).GetComponent<TextMeshPro>();
+            self.HpBarOriginalX = self.HpBar.size.x;
         }
     }
 
@@ -30,7 +31,7 @@ namespace ET
             int hp = numericComponent.GetAsInt(NumericType.Hp);
 
             self.HpText.text = $"{hp}/{maxHp}";
-            self.HpBar.size = new Vector2(self.HpBar.size.x * ((float) hp / maxHp), self.HpBar.size.y);
+            self.HpBar.size = new Vector2(self.HpBarOriginalX * ((float) hp / maxHp), self.HpBar.size.y);
         }
     }
 }

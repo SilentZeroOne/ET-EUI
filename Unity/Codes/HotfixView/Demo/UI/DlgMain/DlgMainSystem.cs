@@ -13,11 +13,18 @@ namespace ET
 		{
 			self.View.EButton_RoleButton.AddListenerAsync(() => { return self.OnRoleButtonClickHandler(); });
 			self.View.EButton_AdvantureButton.AddListenerAsync(() => { return self.OnAdventureButtonClickHandler(); });
+			RedDotHelper.AddRedDotNodeView(self.ZoneScene(), "Role", self.View.EButton_RoleButton.gameObject, Vector3.one, new Vector2(95, 35));
 		}
 
 		public static void ShowWindow(this DlgMain self, Entity contextData = null)
 		{
 			self.Refresh().Coroutine();	
+		}
+
+		public static void OnUnLoadWindow(this DlgMain self)
+		{
+			RedDotMonoView monoView = self.View.EButton_RoleButton.GetComponent<RedDotMonoView>();
+			RedDotHelper.RemoveRedDotView(self.ZoneScene(), "Role", out monoView);
 		}
 
 		public static async ETTask Refresh(this DlgMain self)
