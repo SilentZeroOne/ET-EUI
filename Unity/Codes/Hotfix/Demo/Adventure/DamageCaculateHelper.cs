@@ -1,4 +1,6 @@
-﻿namespace ET
+﻿using System;
+
+namespace ET
 {
     public static class DamageCaculateHelper
     {
@@ -21,7 +23,7 @@
             if (damage > 0)
             {
                 //减去护甲值
-                damage -= aromr;
+                damage -= (int)Math.Ceiling(aromr * 0.08f);
                 damage = damage < 0? 1 : damage;
             }
 
