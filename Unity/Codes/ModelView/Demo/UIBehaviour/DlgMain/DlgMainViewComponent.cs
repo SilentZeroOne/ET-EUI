@@ -3,8 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace ET
 {
-	[EnableMethod]
 	[ComponentOf(typeof(UIBaseWindow))]
+	[EnableMethod]
 	public  class DlgMainViewComponent : Entity,IAwake,IDestroy 
 	{
 		public UnityEngine.UI.Button EButton_RoleButton
@@ -143,7 +143,7 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Button EButton_ShopButton
+		public UnityEngine.UI.Button EButton_BagButton
      	{
      		get
      		{
@@ -152,15 +152,15 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_ShopButton == null )
+     			if( this.m_EButton_BagButton == null )
      			{
-		    		this.m_EButton_ShopButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"Buttons/EButton_Shop");
+		    		this.m_EButton_BagButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"Buttons/EButton_Bag");
      			}
-     			return this.m_EButton_ShopButton;
+     			return this.m_EButton_BagButton;
      		}
      	}
 
-		public UnityEngine.UI.Image EButton_ShopImage
+		public UnityEngine.UI.Image EButton_BagImage
      	{
      		get
      		{
@@ -169,11 +169,11 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EButton_ShopImage == null )
+     			if( this.m_EButton_BagImage == null )
      			{
-		    		this.m_EButton_ShopImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Buttons/EButton_Shop");
+		    		this.m_EButton_BagImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Buttons/EButton_Bag");
      			}
-     			return this.m_EButton_ShopImage;
+     			return this.m_EButton_BagImage;
      		}
      	}
 
@@ -340,8 +340,8 @@ namespace ET
 			this.m_EButton_AdvantureImage = null;
 			this.m_EButton_QuestButton = null;
 			this.m_EButton_QuestImage = null;
-			this.m_EButton_ShopButton = null;
-			this.m_EButton_ShopImage = null;
+			this.m_EButton_BagButton = null;
+			this.m_EButton_BagImage = null;
 			this.m_E_HeadImageRingImage = null;
 			this.m_E_HeadImage = null;
 			this.m_E_LevelText = null;
@@ -362,8 +362,8 @@ namespace ET
 		private UnityEngine.UI.Image m_EButton_AdvantureImage = null;
 		private UnityEngine.UI.Button m_EButton_QuestButton = null;
 		private UnityEngine.UI.Image m_EButton_QuestImage = null;
-		private UnityEngine.UI.Button m_EButton_ShopButton = null;
-		private UnityEngine.UI.Image m_EButton_ShopImage = null;
+		private UnityEngine.UI.Button m_EButton_BagButton = null;
+		private UnityEngine.UI.Image m_EButton_BagImage = null;
 		private UnityEngine.UI.Image m_E_HeadImageRingImage = null;
 		private UnityEngine.UI.Image m_E_HeadImage = null;
 		private UnityEngine.UI.Text m_E_LevelText = null;

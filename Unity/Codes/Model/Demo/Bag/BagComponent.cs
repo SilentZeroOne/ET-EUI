@@ -1,0 +1,26 @@
+﻿using System.Collections.Generic;
+#if SERVER
+using MongoDB.Bson.Serialization.Attributes;
+#endif
+
+namespace ET
+{
+    [ComponentOf(typeof(Scene))]
+#if SERVER
+    public class BagComponent: Entity, IAwake, IDestroy, IDeserialize, ITransfer, IUnitCache
+#else
+    public class BagComponent: Entity, IAwake, IDestroy
+#endif
+    {
+#if SERVER
+        [BsonIgnore]
+#endif
+        public Dictionary<long, Item> ItemsDict = new Dictionary<long, Item>();
+
+#if SERVER
+        [BsonIgnore]
+#endif
+        public MultiMap<int, Item> ItemMap = new MultiMap<int, Item>();
+
+    }
+}

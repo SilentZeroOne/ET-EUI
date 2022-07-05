@@ -13,6 +13,7 @@ namespace ET
 		{
 			self.View.EButton_RoleButton.AddListenerAsync(() => { return self.OnRoleButtonClickHandler(); });
 			self.View.EButton_AdvantureButton.AddListenerAsync(() => { return self.OnAdventureButtonClickHandler(); });
+			self.View.EButton_BagButton.AddListenerAsync(() => { return self.OnBagButtonClickHandler(); });
 			RedDotHelper.AddRedDotNodeView(self.ZoneScene(), "Role", self.View.EButton_RoleButton.gameObject, Vector3.one, new Vector2(95, 35));
 		}
 
@@ -66,6 +67,13 @@ namespace ET
 		public static async ETTask OnAdventureButtonClickHandler(this DlgMain self)
 		{
 			self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Adventure);
+
+			await ETTask.CompletedTask;
+		}
+		
+		public static async ETTask OnBagButtonClickHandler(this DlgMain self)
+		{
+			self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Bag);
 
 			await ETTask.CompletedTask;
 		}

@@ -474,7 +474,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5546\u5E97"
+  m_Text: "\u80CC\u5305"
 --- !u!1 &1216066084376435125
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 401806240349947858}
   - component: {fileID: 5367101477618234250}
   m_Layer: 0
-  m_Name: EButton_Shop
+  m_Name: EButton_Bag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
