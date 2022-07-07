@@ -105,5 +105,7 @@
 	    public const int IsAlive = 3013; //存活状态 0为死亡 1为活着
 
 	    public const int BattleRandomSeed = 3014; //战斗随机种子
+
+	    public const int MaxBagCapcity = 3015; //背包容量
     }
 }

@@ -483,3 +483,32 @@ message M2C_UpRoleLevel // IActorLocationResponse
 	string Message = 92;
 }
 
+message M2C_ItemUpdateOpInfo // IActorMessage
+{
+	int32 RpcId = 90;
+	ItemInfo ItemInfo = 1;
+	int32 Op = 2;
+	int32 ContainerType = 3;
+}
+
+message ItemInfo
+{
+	int64 ItemUid = 1;
+	int32 ItemConfigId = 2;
+	int32 ItemQuality = 3;
+	EquipInfoProto EquipInfo = 4;
+}
+
+message M2C_AllItemList // IActorMessage
+{
+	int32 RpcId = 90;
+	repeated ItemInfo ItemInfoList = 1;
+	int32 ContainerType = 2;
+}
+
+message EquipInfoProto
+{
+	int64 Id = 1;
+	int32 Score = 2;
+}
+

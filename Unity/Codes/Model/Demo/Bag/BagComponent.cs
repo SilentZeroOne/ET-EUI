@@ -5,7 +5,8 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ET
 {
-    [ComponentOf(typeof(Scene))]
+    [ChildType(typeof(Item))]
+    [ComponentOf()]
 #if SERVER
     public class BagComponent: Entity, IAwake, IDestroy, IDeserialize, ITransfer, IUnitCache
 #else
@@ -21,6 +22,10 @@ namespace ET
         [BsonIgnore]
 #endif
         public MultiMap<int, Item> ItemMap = new MultiMap<int, Item>();
-
+        
+#if SERVER
+        [BsonIgnore]
+        public M2C_ItemUpdateOpInfo message = new M2C_ItemUpdateOpInfo() { ContainerType = (int)ItemContainerType.Bag };
+#endif
     }
 }

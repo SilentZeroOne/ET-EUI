@@ -38,6 +38,8 @@ namespace ET
                         }
                     }
 
+                    unit.AddComponent<BagComponent>();
+
                     // UnitConfig unitConfig = UnitConfigCategory.Instance.Get(1001);
                     // numericComponent.SetNoEvent(NumericType.Position,unitConfig.Position);
                     // numericComponent.SetNoEvent(NumericType.Weight,unitConfig.Weight);

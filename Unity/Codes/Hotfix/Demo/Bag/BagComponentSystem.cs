@@ -22,5 +22,35 @@
 
             return null;
         }
+
+        public static void AddItem(this BagComponent self, Item item)
+        {
+            self.AddChild(item);
+            self.ItemsDict.Add(item.Id, item);
+            self.ItemMap.Add(item.Config.Type, item);
+        }
+
+        public static void RemoveItem(this BagComponent self, Item item)
+        {
+            if (item == null)
+            {
+                Log.Error("Item is null");
+                return;
+            }
+            
+            self.ItemsDict.Remove(item.Id);
+            self.ItemMap.Remove(item.Config.Type, item);
+            item?.Dispose();
+        }
+
+        public static void Clear(this BagComponent self)
+        {
+            ForeachHelper.Foreach(self.ItemsDict, (id, item) =>
+            {
+                item?.Dispose();
+            });
+            self.ItemsDict.Clear();
+            self.ItemMap.Clear();
+        }
     }
 }
