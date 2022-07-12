@@ -64,7 +64,7 @@
                 return false;
             }
 
-            if (self.ItemsDict.ContainsKey(item.ConfigId))
+            if (self.ItemsDict.ContainsKey(item.Id))
             {
                 return false;
             }
