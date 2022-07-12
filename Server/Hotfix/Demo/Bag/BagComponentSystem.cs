@@ -64,6 +64,11 @@
                 return false;
             }
 
+            if (self.ItemsDict.ContainsKey(item.ConfigId))
+            {
+                return false;
+            }
+
             if (item.Parent == self)
             {
                 return false;
