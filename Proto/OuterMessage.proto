@@ -549,3 +549,17 @@ message AttributeEntryProto
 	int32 EntryType = 4;
 }
 
+//ResponseType M2C_EquipItem
+message C2M_EquipItem // IActorLocationRequest
+{
+	int32 RpcId = 1;
+	int64 ItemId = 2;
+}
+
+message M2C_EquipItem // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+

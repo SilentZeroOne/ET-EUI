@@ -4,6 +4,30 @@ namespace ET
 {
     public static class ItemApplyHelper
     {
+        public static async ETTask<int> EquipItem(Scene zoneScene, long itemId)
+        {
+            Item item = ItemHelper.GetItem(zoneScene, itemId, ItemContainerType.Bag);
+
+            if (item == null)
+            {
+                return ErrorCode.ERR_ItemNotExist;
+            }
+
+            M2C_EquipItem m2CEquipItem;
+            
+            try
+            {
+                m2CEquipItem = (M2C_EquipItem)await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2M_EquipItem() { ItemId = itemId });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                return ErrorCode.ERR_NetworkError;
+            }
+
+            return m2CEquipItem.Error;
+        }
+        
         public static async ETTask<int> SellBagItem(Scene zoneScene,long itemId)
         {
             Item item = ItemHelper.GetItem(zoneScene, itemId, ItemContainerType.Bag);

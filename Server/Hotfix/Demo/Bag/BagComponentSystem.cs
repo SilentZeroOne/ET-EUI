@@ -47,6 +47,31 @@
             return true;
         }
 
+        public static bool IsCanAddItem(this BagComponent self, Item item)
+        {
+            if (item == null || item.IsDisposed)
+            {
+                return false;
+            }
+            
+            if (!ItemConfigCategory.Instance.Contain(item.ConfigId))
+            {
+                return false;
+            }
+            
+            if (self.IsMaxLoad())
+            {
+                return false;
+            }
+
+            if (item.Parent == self)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public static bool IsItemExit(this BagComponent self, long itemUid)
         {
             self.ItemsDict.TryGetValue(itemUid, out var item);

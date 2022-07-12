@@ -47,5 +47,7 @@ namespace ET
         public const int ERR_ExpNotEnough = 200032;
         public const int ERR_ExpNumError = 200033;
         public const int ERR_ItemNotExist = 200034;
+        public const int ERR_AddBagItemError = 200035;
+        public const int ERR_EquipItemError = 200036;
     }
 }
