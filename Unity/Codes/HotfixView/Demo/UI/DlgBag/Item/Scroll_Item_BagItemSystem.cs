@@ -13,7 +13,7 @@
         {
             self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_ItemPopUp);
             Item item = self.ZoneScene().GetComponent<BagComponent>().GetItemById(id);
-            //TODO refresh Popup
+            self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgItemPopUp>().RefreshInfo(item, ItemContainerType.Bag);
         }
     }
 }

@@ -26,7 +26,7 @@ namespace ET
                 case ItemType.Weapon:
                 case ItemType.Armor:
                 case ItemType.Ring:
-                    
+                    item.AddComponent<EquipInfoComponent>();
                     break;
                 case ItemType.Prop:
                     

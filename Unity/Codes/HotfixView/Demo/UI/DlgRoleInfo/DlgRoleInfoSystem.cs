@@ -61,7 +61,7 @@ namespace ET
 			PlayerNumericConfig config = PlayerNumericConfigCategory.Instance.GetConfigByIndex(index);
 			scrollItemStatus.E_TitleText.text = config.Name + ":";
 			var value = UnitHelper.GetMyUnitNumericComponent(self.ZoneScene().CurrentScene()).GetAsLong(config.Id);
-			scrollItemStatus.E_DamageText.text = config.isPrecent == 0? value.ToString() : $"{(value / (float)10000)}%";
+			scrollItemStatus.E_DamageText.text = config.isPercent == 0? value.ToString() : $"{(value / (float)10000)}%";
 		}
 
 		public static async ETTask OnUpRoleLevelHandler(this DlgRoleInfo self)

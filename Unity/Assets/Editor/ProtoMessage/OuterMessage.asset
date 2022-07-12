@@ -1858,4 +1858,213 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
+  - Enabled: 1
+    MessageType: 4
+    ClassName: M2C_ItemUpdateOpInfo
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ItemInfo
+      ParamType: 5
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: ItemInfo
+      Comment: 
+    - ParamName: Op
+      ParamType: 0
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ContainerType
+      ParamType: 0
+      MemberID: 3
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 1
+    MessageType: 0
+    ClassName: ItemInfo
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: ItemUid
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ItemConfigId
+      ParamType: 0
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ItemQuality
+      ParamType: 0
+      MemberID: 3
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: EquipInfo
+      ParamType: 5
+      MemberID: 4
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: EquipInfoProto
+      Comment: 
+  - Enabled: 1
+    MessageType: 4
+    ClassName: M2C_AllItemList
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ItemInfoList
+      ParamType: 11
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: ItemInfo
+      Comment: 
+    - ParamName: ContainerType
+      ParamType: 0
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 1
+    MessageType: 0
+    ClassName: EquipInfoProto
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: Id
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Score
+      ParamType: 0
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 1
+    MessageType: 8
+    ClassName: C2M_UnloadEquipItem
+    ResponseType: M2C_UnloadEquipItem
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: EquipPosition
+      ParamType: 0
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 1
+    MessageType: 9
+    ClassName: M2C_UnloadEquipItem
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 1
+    MessageType: 8
+    ClassName: C2M_SellItem
+    ResponseType: M2C_SellItem
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ItemUid
+      ParamType: 1
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 1
+    MessageType: 9
+    ClassName: M2C_SellItem
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
   ImportMessagesGroup: 0

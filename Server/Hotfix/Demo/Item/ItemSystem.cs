@@ -50,8 +50,12 @@
             ItemInfo info = new ItemInfo() { ItemConfigId = self.ConfigId, ItemQuality = self.Quality, ItemUid = self.Id };
             if (!isAllInfo)
                 return info;
-            
-            //TODO EquipInfoComponent
+
+            EquipInfoComponent equipInfoComponent = self.GetComponent<EquipInfoComponent>();
+            if (equipInfoComponent != null)
+            {
+                info.EquipInfo = equipInfoComponent.ToMessage();
+            }
 
             return info;
         }

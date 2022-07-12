@@ -1,0 +1,15 @@
+{"list":[
+{"_t":"EntryConfig","_id":1,"EntryType":1,"EntryLevel":1,"EntryScore":1,"AttributeType":1002,"AttributeMinValue":80,"AttributeMaxValue":100},
+{"_t":"EntryConfig","_id":2,"EntryType":1,"EntryLevel":1,"EntryScore":1,"AttributeType":1016,"AttributeMinValue":5,"AttributeMaxValue":10},
+{"_t":"EntryConfig","_id":3,"EntryType":1,"EntryLevel":1,"EntryScore":1,"AttributeType":1017,"AttributeMinValue":3000,"AttributeMaxValue":4000},
+{"_t":"EntryConfig","_id":4,"EntryType":1,"EntryLevel":2,"EntryScore":2,"AttributeType":1011,"AttributeMinValue":10,"AttributeMaxValue":20},
+{"_t":"EntryConfig","_id":5,"EntryType":1,"EntryLevel":2,"EntryScore":2,"AttributeType":1019,"AttributeMinValue":2500,"AttributeMaxValue":3000},
+{"_t":"EntryConfig","_id":6,"EntryType":1,"EntryLevel":2,"EntryScore":2,"AttributeType":1002,"AttributeMinValue":90,"AttributeMaxValue":105},
+{"_t":"EntryConfig","_id":7,"EntryType":1,"EntryLevel":2,"EntryScore":2,"AttributeType":1016,"AttributeMinValue":7,"AttributeMaxValue":15},
+{"_t":"EntryConfig","_id":8,"EntryType":1,"EntryLevel":3,"EntryScore":3,"AttributeType":1017,"AttributeMinValue":4000,"AttributeMaxValue":4500},
+{"_t":"EntryConfig","_id":9,"EntryType":2,"EntryLevel":1,"EntryScore":3,"AttributeType":1011,"AttributeMinValue":20,"AttributeMaxValue":30},
+{"_t":"EntryConfig","_id":10,"EntryType":2,"EntryLevel":1,"EntryScore":3,"AttributeType":1019,"AttributeMinValue":3000,"AttributeMaxValue":4500},
+{"_t":"EntryConfig","_id":11,"EntryType":2,"EntryLevel":2,"EntryScore":3,"AttributeType":1002,"AttributeMinValue":150,"AttributeMaxValue":200},
+{"_t":"EntryConfig","_id":12,"EntryType":2,"EntryLevel":2,"EntryScore":3,"AttributeType":1016,"AttributeMinValue":15,"AttributeMaxValue":30},
+{"_t":"EntryConfig","_id":13,"EntryType":2,"EntryLevel":3,"EntryScore":3,"AttributeType":1017,"AttributeMinValue":5000,"AttributeMaxValue":8000},
+]}

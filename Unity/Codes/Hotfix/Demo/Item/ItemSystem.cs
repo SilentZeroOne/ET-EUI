@@ -28,7 +28,13 @@
 
             if (itemInfo.EquipInfo != null)
             {
+                EquipInfoComponent equipInfoComponent = self.GetComponent<EquipInfoComponent>();
+                if (equipInfoComponent == null)
+                {
+                    equipInfoComponent = self.AddComponent<EquipInfoComponent>();
+                }
                 
+                equipInfoComponent.FromMessage(itemInfo.EquipInfo);
             }
         }
     }

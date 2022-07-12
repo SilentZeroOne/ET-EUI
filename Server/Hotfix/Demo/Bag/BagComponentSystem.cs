@@ -27,12 +27,9 @@
 
         public static Item GetItemById(this BagComponent self, long id)
         {
-            if (self.ItemsDict.TryGetValue(id, out var item))
-            {
-                return item;
-            }
+            self.ItemsDict.TryGetValue(id, out var item);
 
-            return null;
+            return item;
         }
 
         public static bool IsCanAddItemByConfigId(this BagComponent self, int configId)
@@ -48,6 +45,13 @@
             }
 
             return true;
+        }
+
+        public static bool IsItemExit(this BagComponent self, long itemUid)
+        {
+            self.ItemsDict.TryGetValue(itemUid, out var item);
+
+            return item!=null && !item.IsDisposed;
         }
 
         public static bool IsMaxLoad(this BagComponent self)
@@ -110,6 +114,20 @@
             return true;
         }
 
+        public static void RemoveItem(this BagComponent self, Item item)
+        {
+            self.RemoveContainer(item);
+            ItemUpdateNoticeHelper.SyncRemoveItem(self.GetParent<Unit>(), item, self.message);
+            item.Dispose();
+        }
+
+        public static Item RemoveItemNoDispose(this BagComponent self, Item item)
+        {
+            self.RemoveContainer(item);
+            ItemUpdateNoticeHelper.SyncRemoveItem(self.GetParent<Unit>(), item, self.message);
+            return item;
+        }
+
         public static bool AddContainer(this BagComponent self, Item item)
         {
             if (self.ItemsDict.ContainsKey(item.Id))
@@ -126,7 +144,6 @@
         {
             self.ItemsDict.Remove(item.Id);
             self.ItemMap.Remove(item.Config.Type, item);
-            ItemUpdateNoticeHelper.SyncRemoveItem(self.GetParent<Unit>(), item, self.message);
         }
     }
 }

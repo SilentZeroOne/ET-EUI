@@ -1088,6 +1088,83 @@ namespace ET
 		[ProtoMember(2)]
 		public int Score { get; set; }
 
+		[ProtoMember(3)]
+		public List<AttributeEntryProto> AttributeEntryProtoList = new List<AttributeEntryProto>();
+
+	}
+
+	[ResponseType(nameof(M2C_UnloadEquipItem))]
+	[Message(OuterOpcode.C2M_UnloadEquipItem)]
+	[ProtoContract]
+	public partial class C2M_UnloadEquipItem: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public int EquipPosition { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_UnloadEquipItem)]
+	[ProtoContract]
+	public partial class M2C_UnloadEquipItem: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(M2C_SellItem))]
+	[Message(OuterOpcode.C2M_SellItem)]
+	[ProtoContract]
+	public partial class C2M_SellItem: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public long ItemUid { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_SellItem)]
+	[ProtoContract]
+	public partial class M2C_SellItem: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.AttributeEntryProto)]
+	[ProtoContract]
+	public partial class AttributeEntryProto: Object
+	{
+		[ProtoMember(1)]
+		public long Id { get; set; }
+
+		[ProtoMember(2)]
+		public int Key { get; set; }
+
+		[ProtoMember(3)]
+		public long Value { get; set; }
+
+		[ProtoMember(4)]
+		public int EntryType { get; set; }
+
 	}
 
 }

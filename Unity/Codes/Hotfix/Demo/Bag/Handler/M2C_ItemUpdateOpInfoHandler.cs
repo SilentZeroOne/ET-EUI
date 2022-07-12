@@ -11,7 +11,7 @@
             }
             else if (message.Op == (int)ItemOp.Remove)
             {
-                ItemHelper.RemoveItem(session.ZoneScene(), message.ItemInfo.ItemUid, (ItemContainerType)message.ContainerType);
+                ItemHelper.RemoveItemById(session.ZoneScene(), message.ItemInfo.ItemUid, (ItemContainerType)message.ContainerType);
             }
         }
     }

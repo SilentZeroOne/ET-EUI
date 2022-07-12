@@ -78,21 +78,15 @@ namespace ET
 		/// <summary>Id</summary>
 		[ProtoMember(1)]
 		public int Id { get; set; }
-		/// <summary>c名字</summary>
+		/// <summary>名字</summary>
 		[ProtoMember(2)]
 		public string Name { get; set; }
-		/// <summary>s初始基础值</summary>
-		[ProtoMember(3)]
-		public long BaseValue { get; set; }
 		/// <summary>是否用于展示</summary>
 		[ProtoMember(4)]
 		public int isNeedShow { get; set; }
-		/// <summary>s是否用于加成点</summary>
-		[ProtoMember(5)]
-		public int isAddPoint { get; set; }
-		/// <summary>c是否是百分比</summary>
+		/// <summary>是否是百分比</summary>
 		[ProtoMember(6)]
-		public int isPrecent { get; set; }
+		public int isPercent { get; set; }
 
 	}
 }
