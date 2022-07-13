@@ -7,7 +7,6 @@ SpriteAtlas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Icons
-  serializedVersion: 2
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -133,10 +132,10 @@ SpriteAtlas:
   - {fileID: 21300000, guid: fa697c9f9ee44564fa6d5414bd536b3e, type: 3}
   - {fileID: 21300000, guid: 0f1303cfff6593747a97f9c964728649, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Apple (Type=Supplies, Collection=Pro)
+  - m1
   - SteelAxe (Type=Weapon, Collection=Basic, Tags=Axe&2H)
   - VikingAxe3 (Type=Weapon, Collection=Vikings, Tags=Axe&1H)
-  - SilverRing
+  - r2
   - GateCrusher (Type=Weapon, Collection=Pro, Tags=Hammer&2H)
   - ManticoreArmor (Type=Boots, Collection=Pro)
   - HunterBow (Type=Arrow, Collection=Basic)
@@ -155,7 +154,7 @@ SpriteAtlas:
   - GreyKnight (Type=Boots, Collection=SpellMasters)
   - WoodenShield2 (Type=Shield, Collection=Vikings)
   - HawkHelm (Type=Helmet, Collection=Basic)
-  - BronzeRing
+  - r1
   - BattleguardHelm (Type=Helmet, Collection=AbandonedWorkshop)
   - BattleBow (Type=Weapon, Collection=Basic, Tags=Bow&2H)
   - WaterAdeptWand1 (Type=Weapon, Collection=Basic, Tags=Wand&1H)
@@ -163,12 +162,12 @@ SpriteAtlas:
   - DarkMountain [Paint] (Type=Helmet, Collection=Thrones)
   - OldPoleaxe (Type=Weapon, Collection=Basic, Tags=Axe&2H)
   - ScoutHelm (Type=Helmet, Collection=Basic)
-  - Cheese (Type=Supplies, Collection=Pro)
+  - m2
   - SharpenedInfantrySword (Type=Weapon, Collection=AbandonedWorkshop, Tags=Sword&1H)
-  - BattleguardArmor (Type=Armor, Collection=AbandonedWorkshop)
+  - a03
   - DarkMountain (Type=Boots, Collection=Thrones)
   - HardwoodWand (Type=Weapon, Collection=Basic, Tags=Wand&1H)
-  - TwoHandedWoodenMace (Type=Weapon, Collection=Basic, Tags=Hammer&2H)
+  - w02
   - GoldenRing
   - HunterKnife [Paint] (Type=Weapon, Collection=Basic, Tags=Dagger&1H)
   - HunterBow (Type=Weapon, Collection=Basic, Tags=Bow&2H)
@@ -178,44 +177,43 @@ SpriteAtlas:
   - WyvernHornBow (Type=Arrow, Collection=AbandonedWorkshop)
   - SandHealerStaff1 (Type=Weapon, Collection=SandLords, Tags=Staff&1H)
   - WoodcutterAxe (Type=Weapon, Collection=Basic, Tags=Axe&1H)
-  - MagicSilverRing
+  - r3
   - BanditLightArmor [Paint] (Type=Boots, Collection=Basic)
   - BattleguardArmor (Type=Gloves, Collection=AbandonedWorkshop)
-  - DarkMountain (Type=Armor, Collection=Thrones)
+  - a04
   - WoodenShield (Type=Shield, Collection=Basic)
   - MarauderBow (Type=Arrow, Collection=SpellMasters)
   - Scout [Paint] (Type=Gloves, Collection=Basic)
   - ManticoreHelmet (Type=Helmet, Collection=Pro)
   - ManticoreSword (Type=Weapon, Collection=Pro, Tags=Sword&1H)
-  - LongHammer (Type=Weapon, Collection=Pro, Tags=Hammer&2H)
+  - w04
   - WarHammer (Type=Weapon, Collection=Basic, Tags=Hammer&1H)
   - FreeFolkAxe (Type=Weapon, Collection=Thrones, Tags=Axe&1H)
   - BerserkAxe (Type=Weapon, Collection=SpellMasters, Tags=Axe&2H)
   - GladiatorShield (Type=Shield, Collection=SpellMasters)
   - Grog (Type=Supplies, Collection=Pro)
   - BronzeDagger (Type=Weapon, Collection=Pro, Tags=Dagger&1H)
-  - SmallPotion (Type=Supplies, Collection=Basic)
+  - m3
   - WoodenBuckler (Type=Shield, Collection=Basic)
   - Katana1 [Paint] (Type=Weapon, Collection=Samurai, Tags=Sword&1H)
   - AssassinDagger [Paint] (Type=Weapon, Collection=SpellMasters, Tags=Dagger&Sword&1H)
-  - GreyKnight (Type=Armor, Collection=SpellMasters)
+  - a05
   - BattleguardArmor (Type=Boots, Collection=AbandonedWorkshop)
   - MilitiamanShield (Type=Shield, Collection=Basic)
-  - Scout [Paint] (Type=Armor, Collection=Basic)
+  - a01
   - Harpoon (Type=Weapon, Collection=Pro, Tags=Spear&2H)
-  - ChickenLeg (Type=Supplies, Collection=Pro)
-  - HandBomb (Type=Supplies, Collection=Pro)
+  - m5
+  - m4
   - VikingShortBow (Type=Arrow, Collection=Vikings)
   - RedwoodBow (Type=Arrow, Collection=AbandonedWorkshop)
   - MarauderBow (Type=Weapon, Collection=SpellMasters, Tags=Bow&2H)
-  - BanditLightArmor [Paint] (Type=Armor, Collection=Basic)
+  - a02
   - Scout [Paint] (Type=Boots, Collection=Basic)
-  - AriostinGreatsword (Type=Weapon, Collection=AbandonedWorkshop, Tags=Sword&2H)
+  - w01
   - DarkMountain (Type=Gloves, Collection=Thrones)
-  - ButcherKnife (Type=Weapon, Collection=AbandonedWorkshop, Tags=Sword&2H)
-  - MountainSword [Paint] (Type=Weapon, Collection=Thrones, Tags=Sword&2H)
+  - w05
+  - w03
   - MagicBronzeRing
   m_RenderDataMap: {}
   m_Tag: Icons
   m_IsVariant: 0
-  m_IsPlaceholder: 0

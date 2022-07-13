@@ -38,7 +38,7 @@ namespace ET
 			AttributeEntry entry = item.GetComponent<EquipInfoComponent>().EntryList[index];
 			itemEntry.E_EntryNameText.text = PlayerNumericConfigCategory.Instance.Get(entry.Key).Name + ":";
 			bool isPercent = PlayerNumericConfigCategory.Instance.Get(entry.Key).isPercent > 0;
-			itemEntry.E_EntryValueText.text = isPercent? $"{(entry.Value / (float)10000).ToString("0.00")}%" : entry.Value.ToString();
+			itemEntry.E_EntryValueText.text = isPercent? $"+{(entry.Value / (float)10000).ToString("0.00")}%" : "+" + entry.Value;
 		}
 
 		public static void RefreshInfo(this DlgItemPopUp self, Item item, ItemContainerType itemContainerType)

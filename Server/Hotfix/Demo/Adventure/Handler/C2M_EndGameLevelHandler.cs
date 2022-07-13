@@ -49,9 +49,13 @@ namespace ET
             numericComponent.Set(NumericType.AdventureState, 0);
             numericComponent[NumericType.Exp] += config.RewardExp;
             
-            //TODO:下发战斗胜利奖励
-            
-            
+
+            int itemCount = RandomHelper.RandomNumber(3, 7);
+            for (int i = 0; i < itemCount; i++)
+            {
+                int itemConfigId = RandomHelper.RandomNumber(1002, 1019);
+                unit.GetComponent<BagComponent>().AddItemByConfig(itemConfigId);
+            }
             
             reply();
             await ETTask.CompletedTask;

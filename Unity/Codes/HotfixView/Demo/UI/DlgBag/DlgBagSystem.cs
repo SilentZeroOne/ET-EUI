@@ -70,8 +70,12 @@ namespace ET
         {
             self.ZoneScene().GetComponent<BagComponent>().ItemMap.TryGetValue((int)self.CurrentItemType, out var itemList);
             Scroll_Item_BagItem bagItem = self.ScrollItemBagItems[index].BindTrans(transform);
-
+            
             index = (self.CurrentPageIndex * self.PageContentSize) + index;
+
+            bagItem.E_QualityImage.color = itemList[index].ItemQulityColor();
+            bagItem.E_IconImage.overrideSprite = IconHelper.LoadIconSprite("Icons", itemList[index].Config.Icon);
+            
             bagItem.Refresh(itemList[index].Id);
         }
 

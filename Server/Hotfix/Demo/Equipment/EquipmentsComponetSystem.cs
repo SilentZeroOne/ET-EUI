@@ -2,6 +2,18 @@
 
 namespace ET
 {
+    
+    public class EquipmentsComponetDeserializeSystem: DeserializeSystem<EquipmentsComponent>
+    {
+        public override void Deserialize(EquipmentsComponent self)
+        {
+            foreach (var entity in self.Children.Values)
+            {
+                self.AddContainer(entity as Item);
+            }
+        }
+    }
+    
     [FriendClass(typeof(EquipmentsComponent))]
     public static class EquipmentsComponetSystem
     {
@@ -35,6 +47,17 @@ namespace ET
         {
             self.EquipItems.TryGetValue(position, out var item);
             return item;
+        }
+
+        public static bool AddContainer(this EquipmentsComponent self, Item item)
+        {
+            if (self.EquipItems.ContainsKey(item.Config.EquipPosition))
+            {
+                return false;
+            }
+
+            self.EquipItems.Add(item.Config.EquipPosition, item);
+            return true;
         }
         
     }

@@ -94,7 +94,16 @@ namespace ET
                 var numeric = await unit.AddComponent<NumericComponent>().GetUnitComponentCache();
                 unit.RemoveComponent<NumericComponent>();
                 unit.AddComponent(numeric);
+
+                var bagComponent = await unit.AddComponent<BagComponent>().GetUnitComponentCache();
+                unit.RemoveComponent<BagComponent>();
+                unit.AddComponent(bagComponent);
+
+                var equipmentsComponent = await unit.AddComponent<EquipmentsComponent>().GetUnitComponentCache();
+                unit.RemoveComponent<EquipmentsComponent>();
+                unit.AddComponent(equipmentsComponent);
             }
+            await ETTask.CompletedTask;
         }
     }
 }

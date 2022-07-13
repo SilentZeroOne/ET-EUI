@@ -13,6 +13,7 @@
 
 
     [FriendClass(typeof(BagComponent))]
+    [FriendClass(typeof(Item))]
     public static class BagComponentSystem
     {
         public static int GetItemCountByItemType(this BagComponent self, ItemType itemType)
