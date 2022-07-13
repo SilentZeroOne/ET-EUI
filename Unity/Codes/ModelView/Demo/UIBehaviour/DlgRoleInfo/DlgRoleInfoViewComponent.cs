@@ -109,6 +109,114 @@ namespace ET
      		}
      	}
 
+		public ES_EquipItem ES_EquipItem_Head
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_es_equipitem_head == null )
+     			{
+		    	   Transform subTrans = UIFindHelper.FindDeepChild<Transform>(this.uiTransform.gameObject,"Background/EquipmentBg/ES_EquipItem_Head");
+		    	   this.m_es_equipitem_head = this.AddChild<ES_EquipItem,Transform>(subTrans);
+     			}
+     			return this.m_es_equipitem_head;
+     		}
+     	}
+
+		public ES_EquipItem ES_EquipItem_Clothes
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_es_equipitem_clothes == null )
+     			{
+		    	   Transform subTrans = UIFindHelper.FindDeepChild<Transform>(this.uiTransform.gameObject,"Background/EquipmentBg/ES_EquipItem_Clothes");
+		    	   this.m_es_equipitem_clothes = this.AddChild<ES_EquipItem,Transform>(subTrans);
+     			}
+     			return this.m_es_equipitem_clothes;
+     		}
+     	}
+
+		public ES_EquipItem ES_EquipItem_Shoes
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_es_equipitem_shoes == null )
+     			{
+		    	   Transform subTrans = UIFindHelper.FindDeepChild<Transform>(this.uiTransform.gameObject,"Background/EquipmentBg/ES_EquipItem_Shoes");
+		    	   this.m_es_equipitem_shoes = this.AddChild<ES_EquipItem,Transform>(subTrans);
+     			}
+     			return this.m_es_equipitem_shoes;
+     		}
+     	}
+
+		public ES_EquipItem ES_EquipItem_Ring
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_es_equipitem_ring == null )
+     			{
+		    	   Transform subTrans = UIFindHelper.FindDeepChild<Transform>(this.uiTransform.gameObject,"Background/EquipmentBg/ES_EquipItem_Ring");
+		    	   this.m_es_equipitem_ring = this.AddChild<ES_EquipItem,Transform>(subTrans);
+     			}
+     			return this.m_es_equipitem_ring;
+     		}
+     	}
+
+		public ES_EquipItem ES_EquipItem_Weapon
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_es_equipitem_weapon == null )
+     			{
+		    	   Transform subTrans = UIFindHelper.FindDeepChild<Transform>(this.uiTransform.gameObject,"Background/EquipmentBg/ES_EquipItem_Weapon");
+		    	   this.m_es_equipitem_weapon = this.AddChild<ES_EquipItem,Transform>(subTrans);
+     			}
+     			return this.m_es_equipitem_weapon;
+     		}
+     	}
+
+		public ES_EquipItem ES_EquipItem_Shield
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_es_equipitem_shield == null )
+     			{
+		    	   Transform subTrans = UIFindHelper.FindDeepChild<Transform>(this.uiTransform.gameObject,"Background/EquipmentBg/ES_EquipItem_Shield");
+		    	   this.m_es_equipitem_shield = this.AddChild<ES_EquipItem,Transform>(subTrans);
+     			}
+     			return this.m_es_equipitem_shield;
+     		}
+     	}
+
 		public UnityEngine.UI.Text E_AvailablePointText
      	{
      		get
@@ -223,6 +331,18 @@ namespace ET
 			this.m_E_CompatPowerText = null;
 			this.m_E_UpLevelButton = null;
 			this.m_E_UpLevelImage = null;
+			this.m_es_equipitem_head?.Dispose();
+			this.m_es_equipitem_head = null;
+			this.m_es_equipitem_clothes?.Dispose();
+			this.m_es_equipitem_clothes = null;
+			this.m_es_equipitem_shoes?.Dispose();
+			this.m_es_equipitem_shoes = null;
+			this.m_es_equipitem_ring?.Dispose();
+			this.m_es_equipitem_ring = null;
+			this.m_es_equipitem_weapon?.Dispose();
+			this.m_es_equipitem_weapon = null;
+			this.m_es_equipitem_shield?.Dispose();
+			this.m_es_equipitem_shield = null;
 			this.m_E_AvailablePointText = null;
 			this.m_esattributeitem_strength?.Dispose();
 			this.m_esattributeitem_strength = null;
@@ -242,6 +362,12 @@ namespace ET
 		private UnityEngine.UI.Text m_E_CompatPowerText = null;
 		private UnityEngine.UI.Button m_E_UpLevelButton = null;
 		private UnityEngine.UI.Image m_E_UpLevelImage = null;
+		private ES_EquipItem m_es_equipitem_head = null;
+		private ES_EquipItem m_es_equipitem_clothes = null;
+		private ES_EquipItem m_es_equipitem_shoes = null;
+		private ES_EquipItem m_es_equipitem_ring = null;
+		private ES_EquipItem m_es_equipitem_weapon = null;
+		private ES_EquipItem m_es_equipitem_shield = null;
 		private UnityEngine.UI.Text m_E_AvailablePointText = null;
 		private ESAttributeItem m_esattributeitem_strength = null;
 		private ESAttributeItem m_esattributeitem_stamina = null;

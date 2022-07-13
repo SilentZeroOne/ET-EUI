@@ -10,7 +10,7 @@
             }
             else if (containerType == ItemContainerType.RoleInfo)
             {
-                
+                zoneScene.GetComponent<EquipmentsComponent>().EquipItem(item);
             }
         }
 
@@ -23,7 +23,7 @@
             }
             else if (containerType == ItemContainerType.RoleInfo)
             {
-                
+                zoneScene.GetComponent<EquipmentsComponent>().UnEquipItem(item);
             }
         }
 
@@ -33,9 +33,10 @@
             {
                 return zoneScene.GetComponent<BagComponent>().GetItemById(itemId);
             }
-            else if (containerType == ItemContainerType.RoleInfo)
+
+            if (containerType == ItemContainerType.RoleInfo)
             {
-                
+                return zoneScene.GetComponent<EquipmentsComponent>().GetEquipItemByID(itemId);
             }
 
             return null;
@@ -46,6 +47,10 @@
             if (containerType == ItemContainerType.Bag)
             {
                 zoneScene?.GetComponent<BagComponent>().Clear();
+            }
+            else if (containerType == ItemContainerType.RoleInfo)
+            {
+                zoneScene?.GetComponent<EquipmentsComponent>().Clear();
             }
         }
     }

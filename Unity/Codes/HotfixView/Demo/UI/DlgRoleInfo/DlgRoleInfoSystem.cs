@@ -19,6 +19,13 @@ namespace ET
 			self.View.ESAttributeItem_Strength.RegisterEvent(NumericType.Strength);
 			self.View.E_AttributeStatusLoopVerticalScrollRect.AddItemRefreshListener(self.OnAttributeItemRefreshHandler);
 			
+			self.View.ES_EquipItem_Head.RegisterEventHandler(EquipPosition.Head);
+			self.View.ES_EquipItem_Clothes.RegisterEventHandler(EquipPosition.Clothes);
+			self.View.ES_EquipItem_Ring.RegisterEventHandler(EquipPosition.Ring);
+			self.View.ES_EquipItem_Shield.RegisterEventHandler(EquipPosition.Shield);
+			self.View.ES_EquipItem_Shoes.RegisterEventHandler(EquipPosition.Shoes);
+			self.View.ES_EquipItem_Weapon.RegisterEventHandler(EquipPosition.Weapon);
+			
 			self.View.E_UpLevelButton.AddListenerAsync(self.OnUpRoleLevelHandler);
 			
 			RedDotHelper.AddRedDotNodeView(self.ZoneScene(),"UpLevelButton",self.View.E_UpLevelButton.gameObject,Vector3.one, new Vector2(90,30));
@@ -28,6 +35,7 @@ namespace ET
 		public static void ShowWindow(this DlgRoleInfo self, Entity contextData = null)
 		{
 			self.Refresh();
+			self.RefreshEquipShowItem();
 		}
 
 		public static void OnUnloadWindow(this DlgRoleInfo self)
@@ -55,13 +63,23 @@ namespace ET
 			self.View.E_AttributeStatusLoopVerticalScrollRect.SetVisible(true, count);
 		}
 
+		public static void RefreshEquipShowItem(this DlgRoleInfo self)
+		{
+			self.View.ES_EquipItem_Head.RefreshShowItem(EquipPosition.Head);
+			self.View.ES_EquipItem_Clothes.RefreshShowItem(EquipPosition.Clothes);
+			self.View.ES_EquipItem_Ring.RefreshShowItem(EquipPosition.Ring);
+			self.View.ES_EquipItem_Shield.RefreshShowItem(EquipPosition.Shield);
+			self.View.ES_EquipItem_Shoes.RefreshShowItem(EquipPosition.Shoes);
+			self.View.ES_EquipItem_Weapon.RefreshShowItem(EquipPosition.Weapon);
+		}
+
 		public static void OnAttributeItemRefreshHandler(this DlgRoleInfo self, Transform transform, int index)
 		{
 			Scroll_Item_Status scrollItemStatus = self.ScrollItemStatus[index].BindTrans(transform);
 			PlayerNumericConfig config = PlayerNumericConfigCategory.Instance.GetConfigByIndex(index);
 			scrollItemStatus.E_TitleText.text = config.Name + ":";
 			var value = UnitHelper.GetMyUnitNumericComponent(self.ZoneScene().CurrentScene()).GetAsLong(config.Id);
-			scrollItemStatus.E_DamageText.text = config.isPercent == 0? value.ToString() : $"{(value / (float)10000)}%";
+			scrollItemStatus.E_DamageText.text = config.isPercent == 0? value.ToString() : $"{(value / (float)10000).ToString("0.00")}%";
 		}
 
 		public static async ETTask OnUpRoleLevelHandler(this DlgRoleInfo self)

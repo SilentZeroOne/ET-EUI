@@ -6,7 +6,7 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace ET
 {
     [ChildType(typeof(Item))]
-    [ComponentOf(typeof(Unit))]
+    [ComponentOf]
 #if SERVER
     public class EquipmentsComponent : Entity,IAwake,IDestroy,IDeserialize,IUnitCache,ITransfer
 #else

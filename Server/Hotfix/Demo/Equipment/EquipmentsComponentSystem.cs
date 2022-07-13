@@ -59,6 +59,12 @@ namespace ET
             self.EquipItems.Add(item.Config.EquipPosition, item);
             return true;
         }
+
+        public static bool IsEquipItemByPosition(this EquipmentsComponent self, int equipPosition)
+        {
+            self.EquipItems.TryGetValue(equipPosition, out var item);
+            return item != null && !item.IsDisposed;
+        }
         
     }
 }
