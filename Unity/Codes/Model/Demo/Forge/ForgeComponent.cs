@@ -6,11 +6,12 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace ET
 {
-    [ComponentOf(typeof(Scene))]
+    [ChildType(typeof(Production))]
+    [ComponentOf()]
 #if SERVER
-    public class ForgeComponent:Entity,IAwake,IDestroy,IDeserialize,ITransfer,IUnitCache
+    public class ForgeComponent : Entity,IAwake,IDestroy,IDeserialize,ITransfer,IUnitCache
 #else
-    public class ForgeComponent: Entity, IAwake, IDestroy
+    public class ForgeComponent : Entity, IAwake, IDestroy
 #endif
     {
 #if SERVER

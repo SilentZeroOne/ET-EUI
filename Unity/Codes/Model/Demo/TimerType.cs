@@ -18,6 +18,8 @@
         public const int BattleRound = 1008;
 
         public const int MakeQueueOver = 1009;
+
+        public const int MakeQueueUI = 1010;
         // 不能超过10000
     }
 }

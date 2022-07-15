@@ -21,7 +21,7 @@ namespace ET
             {
                 materialCounts.Add(numericComponent.GetAsInt(config.ConsumIds[i]));
             }
-            
+            Convert.ToInt32()
             bool enableToMake = true;
             for (int i = 0; i < config.ConsumCounts.Length; i++)
             {

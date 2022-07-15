@@ -7,6 +7,15 @@ using UnityEngine.UI;
 
 namespace ET
 {
+	[Timer(TimerType.MakeQueueUI)]
+	public class MakeQueueUITimer: ATimer<DlgForge>
+	{
+		public override void Run(DlgForge self)
+		{
+			self?.RefreshMakeQueue();
+		}
+	}
+	
 	[FriendClass(typeof(DlgForge))]
 	[FriendClass(typeof(Scroll_Item_Production))]
 	public static  class DlgForgeSystem
@@ -31,19 +40,32 @@ namespace ET
 
 		public static void Refresh(this DlgForge self)
 		{
-			self.RefreshProduction();
 			self.RefreshMakeQueue();
+			self.RefreshProduction();
 			self.RefreshMaterialCount();
 		}
 
 		public static void RefreshMakeQueue(this DlgForge self)
 		{
+			Production production = self.ZoneScene().GetComponent<ForgeComponent>().GetProductionByIndex(0);
+			self.View.ES_MakeQueue1.Refresh(production);
 			
+			production = self.ZoneScene().GetComponent<ForgeComponent>().GetProductionByIndex(1);
+			self.View.ES_MakeQueue2.Refresh(production);
+
+			TimerComponent.Instance.Remove(ref self.MakeQueueTimer);
+			int count = self.ZoneScene().GetComponent<ForgeComponent>().GetMakingProductionQueueCount();
+			if (count > 0)
+			{
+				TimerComponent.Instance.NewOnceTimer(TimeHelper.ServerNow() + 1000, TimerType.MakeQueueUI, self);
+			}
 		}
 
 		public static void RefreshMaterialCount(this DlgForge self)
 		{
-			
+			var numericComponent = UnitHelper.GetMyUnitNumericComponent(self.ZoneScene().CurrentScene());
+			self.View.E_IronStoneCountText.SetText(numericComponent.GetAsInt(NumericType.IronCount).ToString());
+			self.View.E_FurCountText.SetText(numericComponent.GetAsInt(NumericType.FurCount).ToString());
 		}
 
 		public static void RefreshProduction(this DlgForge self)
@@ -98,7 +120,7 @@ namespace ET
 			production.E_ConsumeCountText.SetText(sb.ToString());
 			production.E_ItemNameText.SetText(ItemConfigCategory.Instance.Get(config.ItemConfigId).Name);
 			production.E_MakeButton.interactable = enableToMake;
-			production.E_MakeButton.AddListenerAsync(() => self.OnStartProductionClickHandler(config.Id));
+			production.E_MakeButton.AddListenerAsync(() => { return self.OnStartProductionClickHandler(config.Id); });
 		}
 
 		public static async ETTask OnStartProductionClickHandler(this DlgForge self, int itemConfigId)

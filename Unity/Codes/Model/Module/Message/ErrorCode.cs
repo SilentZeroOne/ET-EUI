@@ -52,5 +52,7 @@ namespace ET
         public const int ERR_BagMaxLoad = 200037;
         public const int ERR_ProductionNotExist = 200038;
         public const int ERR_ConsumeNotEnough = 200039;
+        public const int ERR_MakeConfigNotExist = 200040;
+        public const int ERR_NoMakeFreeQueue = 200041;
     }
 }

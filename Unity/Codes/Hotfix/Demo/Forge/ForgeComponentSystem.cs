@@ -25,6 +25,7 @@
         }
     }
 
+    [FriendClass(typeof(Production ))]
     [FriendClass(typeof (ForgeComponent))]
     public static class ForgeComponentSystem
     {
@@ -83,6 +84,20 @@
         public static bool IsExistMakeQueueOver(this ForgeComponent self)
         {
             return self.Productions.Count > 0;
+        }
+
+        public static int GetMakingProductionQueueCount(this ForgeComponent self)
+        {
+            var result = 0;
+            for (int i = 0; i < self.Productions.Count; i++)
+            {
+                if (self.Productions[i].IsMakingState())
+                {
+                    result++;
+                }
+            }
+
+            return result;
         }
     }
 }
