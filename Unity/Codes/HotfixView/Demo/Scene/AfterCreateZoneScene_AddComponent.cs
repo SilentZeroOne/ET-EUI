@@ -11,9 +11,7 @@ namespace ET
             zoneScene.AddComponent<RedDotComponent>();
             zoneScene.AddComponent<ResourcesLoaderComponent>();
             zoneScene.AddComponent<FlyDamageValueViewComponent>();
-            zoneScene.AddComponent<BagComponent>();
-            zoneScene.AddComponent<EquipmentsComponent>();
-        
+
             zoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Login);
         }
     }

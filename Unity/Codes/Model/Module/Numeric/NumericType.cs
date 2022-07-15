@@ -107,5 +107,9 @@
 	    public const int BattleRandomSeed = 3014; //战斗随机种子
 
 	    public const int MaxBagCapcity = 3015; //背包容量
+
+	    public const int IronCount = 3016; //精铁数量
+
+	    public const int FurCount = 3017; //皮革数量
     }
 }

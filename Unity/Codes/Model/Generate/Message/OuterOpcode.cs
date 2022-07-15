@@ -75,5 +75,10 @@ namespace ET
 		 public const ushort AttributeEntryProto = 10072;
 		 public const ushort C2M_EquipItem = 10073;
 		 public const ushort M2C_EquipItem = 10074;
+		 public const ushort C2M_StartProduction = 10075;
+		 public const ushort M2C_StartProduction = 10076;
+		 public const ushort ProductionProto = 10077;
+		 public const ushort C2M_ReceiveProduction = 10078;
+		 public const ushort M2C_ReceiveProduction = 10079;
 	}
 }

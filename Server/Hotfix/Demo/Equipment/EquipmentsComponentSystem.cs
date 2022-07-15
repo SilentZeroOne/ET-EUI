@@ -2,8 +2,20 @@
 
 namespace ET
 {
-    
-    public class EquipmentsComponetDeserializeSystem: DeserializeSystem<EquipmentsComponent>
+    public class EquipmentsComponentDestroySystem: DestroySystem<EquipmentsComponent>
+    {
+        public override void Destroy(EquipmentsComponent self)
+        {
+            foreach (var item in self.EquipItems.Values)
+            {
+                item?.Dispose();
+            }
+            self.EquipItems.Clear();
+            self.message = null;
+        }
+    }
+
+    public class EquipmentsComponentDeserializeSystem: DeserializeSystem<EquipmentsComponent>
     {
         public override void Deserialize(EquipmentsComponent self)
         {
@@ -15,7 +27,7 @@ namespace ET
     }
     
     [FriendClass(typeof(EquipmentsComponent))]
-    public static class EquipmentsComponetSystem
+    public static class EquipmentsComponentSystem
     {
         public static bool EquipItem(this EquipmentsComponent self, Item item)
         {

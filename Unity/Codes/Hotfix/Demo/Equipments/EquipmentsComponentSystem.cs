@@ -1,5 +1,13 @@
 ﻿namespace ET
 {
+    public class EquipmentsComponentDestroySystem: DestroySystem<EquipmentsComponent>
+    {
+        public override void Destroy(EquipmentsComponent self)
+        {
+            self.Clear();
+        }
+    }
+    
     [FriendClass(typeof(EquipmentsComponent))]
     public static class EquipmentsComponentSystem
     {
@@ -26,6 +34,7 @@
             if (self.EquipItems.ContainsKey(item.Config.EquipPosition))
             {
                 self.EquipItems.Remove(item.Config.EquipPosition);
+                item?.Dispose();
                 return true;
             }
 
@@ -34,16 +43,12 @@
 
         public static Item GetEquipItemByID(this EquipmentsComponent self, long itemId)
         {
-            Item result = null;
-            ForeachHelper.Foreach(self.EquipItems,((i, item) =>
+            if (self.Children.TryGetValue(itemId, out var item))
             {
-                if (item.Id == itemId)
-                {
-                    result = item;
-                }
-            } ));
+                return item as Item;
+            }
 
-            return result;
+            return null;
         }
 
         public static void Clear(this EquipmentsComponent self)

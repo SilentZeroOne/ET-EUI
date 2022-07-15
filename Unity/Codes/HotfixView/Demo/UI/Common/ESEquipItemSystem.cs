@@ -21,6 +21,12 @@ namespace ET
             }
         }
 
+        public static void RefreshShowItem(this ES_EquipItem self, int itemConfigId)
+        {
+            self.E_QualityImage.color = Color.grey;
+            self.E_IconImage.overrideSprite = IconHelper.LoadIconSprite("Icons", ItemConfigCategory.Instance.Get(itemConfigId).Icon);
+        }
+
         public static void RegisterEventHandler(this ES_EquipItem self, EquipPosition equipPosition)
         {
             self.E_SelectButton.AddListenerWithParam(self.OnSelectItemHandler, equipPosition);

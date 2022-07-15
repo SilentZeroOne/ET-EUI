@@ -158,5 +158,10 @@ namespace ET
             public Unit TargetUnit;
             public long DamageValue;
         }
+
+        public struct MakeQueueOver
+        {
+            public Scene ZoneScene;
+        }
     }
 }

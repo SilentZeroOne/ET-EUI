@@ -11,9 +11,10 @@ namespace ET
 
 		public static void RegisterUIEvent(this DlgMain self)
 		{
-			self.View.EButton_RoleButton.AddListenerAsync(() => { return self.OnRoleButtonClickHandler(); });
-			self.View.EButton_AdvantureButton.AddListenerAsync(() => { return self.OnAdventureButtonClickHandler(); });
-			self.View.EButton_BagButton.AddListenerAsync(() => { return self.OnBagButtonClickHandler(); });
+			self.View.EButton_RoleButton.AddListenerAsync(self.OnRoleButtonClickHandler);
+			self.View.EButton_AdvantureButton.AddListenerAsync(self.OnAdventureButtonClickHandler);
+			self.View.EButton_BagButton.AddListenerAsync(self.OnBagButtonClickHandler);
+			self.View.EButton_BuildButton.AddListenerAsync(self.OnBuildButtonClickHandler);
 			RedDotHelper.AddRedDotNodeView(self.ZoneScene(), "Role", self.View.EButton_RoleButton.gameObject, Vector3.one, new Vector2(95, 35));
 		}
 
@@ -74,6 +75,13 @@ namespace ET
 		public static async ETTask OnBagButtonClickHandler(this DlgMain self)
 		{
 			self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Bag);
+
+			await ETTask.CompletedTask;
+		}
+
+		public static async ETTask OnBuildButtonClickHandler(this DlgMain self)
+		{
+			self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Forge);
 
 			await ETTask.CompletedTask;
 		}

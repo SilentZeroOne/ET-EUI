@@ -50,5 +50,7 @@ namespace ET
         public const int ERR_AddBagItemError = 200035;
         public const int ERR_EquipItemError = 200036;
         public const int ERR_BagMaxLoad = 200037;
+        public const int ERR_ProductionNotExist = 200038;
+        public const int ERR_ConsumeNotEnough = 200039;
     }
 }

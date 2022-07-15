@@ -1,0 +1,4 @@
+{"list":[
+{"_t":"ForgeProductionConfig","_id":1,"ItemConfigId":1002,"ProductionTime":60,"ConsumIds":[3016,3017],"ConsumCounts":[60,10],"NeedLevel":1},
+{"_t":"ForgeProductionConfig","_id":2,"ItemConfigId":1007,"ProductionTime":90,"ConsumIds":[3016,3017],"ConsumCounts":[20,120],"NeedLevel":2},
+]}
