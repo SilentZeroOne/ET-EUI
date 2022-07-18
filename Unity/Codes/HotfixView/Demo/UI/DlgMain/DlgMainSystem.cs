@@ -16,6 +16,7 @@ namespace ET
 			self.View.EButton_BagButton.AddListenerAsync(self.OnBagButtonClickHandler);
 			self.View.EButton_BuildButton.AddListenerAsync(self.OnBuildButtonClickHandler);
 			RedDotHelper.AddRedDotNodeView(self.ZoneScene(), "Role", self.View.EButton_RoleButton.gameObject, Vector3.one, new Vector2(95, 35));
+			RedDotHelper.AddRedDotNodeView(self.ZoneScene(), "Forge", self.View.EButton_BuildButton.gameObject, Vector3.one, new Vector2(95, 35));
 		}
 
 		public static void ShowWindow(this DlgMain self, Entity contextData = null)
@@ -27,6 +28,8 @@ namespace ET
 		{
 			RedDotMonoView monoView = self.View.EButton_RoleButton.GetComponent<RedDotMonoView>();
 			RedDotHelper.RemoveRedDotView(self.ZoneScene(), "Role", out monoView);
+			monoView = self.View.EButton_BuildButton.GetComponent<RedDotMonoView>();
+			RedDotHelper.RemoveRedDotView(self.ZoneScene(), "Forge", out monoView);
 		}
 
 		public static async ETTask Refresh(this DlgMain self)

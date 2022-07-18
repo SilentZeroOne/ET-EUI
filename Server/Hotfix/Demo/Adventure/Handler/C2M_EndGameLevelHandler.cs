@@ -49,13 +49,17 @@ namespace ET
             numericComponent.Set(NumericType.AdventureState, 0);
             numericComponent[NumericType.Exp] += config.RewardExp;
             
-
+            //添加奖励
             int itemCount = RandomHelper.RandomNumber(3, 7);
             for (int i = 0; i < itemCount; i++)
             {
                 int itemConfigId = RandomHelper.RandomNumber(1002, 1019);
                 unit.GetComponent<BagComponent>().AddItemByConfig(itemConfigId);
             }
+            
+            //添加素材(先写死)
+            numericComponent[NumericType.IronCount] += 500;
+            numericComponent[NumericType.FurCount] += 500;
             
             reply();
             await ETTask.CompletedTask;

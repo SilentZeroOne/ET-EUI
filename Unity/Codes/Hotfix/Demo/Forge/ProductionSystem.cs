@@ -79,14 +79,14 @@ namespace ET
             long remainTime = self.TargetTime - TimeHelper.ServerNow();
             if (remainTime <= 0)
             {
-                return "0时0分0秒";
+                return "00:00:00";
             }
 
             remainTime /= 1000;
             float h = Mathf.FloorToInt(remainTime / 3600.0f);
             float m = Mathf.FloorToInt(remainTime / 60.0f - h * 60f);
             float s = Mathf.FloorToInt(remainTime - m * 60 - h * 3600f);
-            return h.ToString("00") + "小时" + m.ToString("00") + "分" + s.ToString("00") + "秒";
+            return h.ToString("00") + ":" + m.ToString("00") + ":" + s.ToString("00");
         }
 #endif
     }

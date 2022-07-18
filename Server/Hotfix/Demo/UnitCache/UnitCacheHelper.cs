@@ -68,6 +68,21 @@ namespace ET
 
             return null;
         }
+        
+        public static async ETTask GetUnitComponentCache2<T>(this T self) where T : Entity, IUnitCache
+        {
+            var message = new Other2UnitCache_GetUnit() { UnitId = self.Id };
+            message.ComponentNameList.Add(typeof (T).Name);
+            var instanceId = StartSceneConfigCategory.Instance.GetUnitCacheConfig(self.Id).InstanceId;
+            UnitCache2Other_GetUnit response = (UnitCache2Other_GetUnit)await MessageHelper.CallActor(instanceId, message);
+            if (response.Error == ErrorCode.ERR_Success && response.EntityList.Count > 0)
+            {
+                Unit unit = self.GetParent<Unit>();
+                unit.RemoveComponent(self);
+                T component = response.EntityList[0] as T;
+                unit.AddComponent(component);
+            }
+        }
 
         public static async ETTask DeleteUnitCache(long unitId)
         {

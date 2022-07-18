@@ -52,5 +52,10 @@
             self.ItemsDict.Clear();
             self.ItemMap.Clear();
         }
+        
+        public static bool IsMaxLoad(this BagComponent self)
+        {
+            return self.ItemsDict.Count >= UnitHelper.GetMyUnitNumericComponent(self.ZoneScene().CurrentScene()).GetAsInt(NumericType.MaxBagCapcity);
+        }
     }
 }

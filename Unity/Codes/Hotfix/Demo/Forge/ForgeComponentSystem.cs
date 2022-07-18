@@ -81,11 +81,6 @@
             return null;
         }
 
-        public static bool IsExistMakeQueueOver(this ForgeComponent self)
-        {
-            return self.Productions.Count > 0;
-        }
-
         public static int GetMakingProductionQueueCount(this ForgeComponent self)
         {
             var result = 0;
@@ -98,6 +93,22 @@
             }
 
             return result;
+        }
+
+        public static bool IsExistMakeQueueOver(this ForgeComponent self)
+        {
+            bool isCanReceive = false;
+            for (int i = 0; i < self.Productions.Count; i++)
+            {
+                Production production = self.Productions[i];
+                if (production.IsMakingState() && production.IsMakeTimeOver())
+                {
+                    isCanReceive = true;
+                    break;
+                }
+            }
+
+            return isCanReceive;
         }
     }
 }

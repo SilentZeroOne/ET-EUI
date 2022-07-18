@@ -91,17 +91,26 @@ namespace ET
         {
             if (!isNew)
             {
-                var numeric = await unit.AddComponent<NumericComponent>().GetUnitComponentCache();
-                unit.RemoveComponent<NumericComponent>();
-                unit.AddComponent(numeric);
+                // var numeric = await unit.AddComponent<NumericComponent>().GetUnitComponentCache();
+                // unit.RemoveComponent<NumericComponent>();
+                // unit.AddComponent(numeric);
+                //
+                // var bagComponent = await unit.AddComponent<BagComponent>().GetUnitComponentCache();
+                // unit.RemoveComponent<BagComponent>();
+                // unit.AddComponent(bagComponent);
+                //
+                // var equipmentsComponent = await unit.AddComponent<EquipmentsComponent>().GetUnitComponentCache();
+                // unit.RemoveComponent<EquipmentsComponent>();
+                // unit.AddComponent(equipmentsComponent);
+                //
+                // var forgeComponent = await unit.AddComponent<ForgeComponent>().GetUnitComponentCache();
+                // unit.RemoveComponent<ForgeComponent>();
+                // unit.AddComponent(forgeComponent);
 
-                var bagComponent = await unit.AddComponent<BagComponent>().GetUnitComponentCache();
-                unit.RemoveComponent<BagComponent>();
-                unit.AddComponent(bagComponent);
-
-                var equipmentsComponent = await unit.AddComponent<EquipmentsComponent>().GetUnitComponentCache();
-                unit.RemoveComponent<EquipmentsComponent>();
-                unit.AddComponent(equipmentsComponent);
+                await unit.AddComponent<NumericComponent>().GetUnitComponentCache2();
+                await unit.AddComponent<BagComponent>().GetUnitComponentCache2();
+                await unit.AddComponent<EquipmentsComponent>().GetUnitComponentCache2();
+                await unit.AddComponent<ForgeComponent>().GetUnitComponentCache2();
             }
             await ETTask.CompletedTask;
         }

@@ -2155,4 +2155,200 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
+  - Enabled: 1
+    MessageType: 8
+    ClassName: C2M_StartProduction
+    ResponseType: M2C_StartProduction
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ConfigId
+      ParamType: 0
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 1
+    MessageType: 9
+    ClassName: M2C_StartProduction
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ProductionProto
+      ParamType: 5
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: ProductionProto
+      Comment: 
+  - Enabled: 1
+    MessageType: 0
+    ClassName: ProductionProto
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: Id
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ConfigId
+      ParamType: 0
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: TargetTime
+      ParamType: 1
+      MemberID: 3
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: StartTime
+      ParamType: 1
+      MemberID: 4
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ProductionState
+      ParamType: 0
+      MemberID: 5
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 1
+    MessageType: 8
+    ClassName: C2M_ReceiveProduction
+    ResponseType: M2C_ReceiveProduction
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ProductionId
+      ParamType: 1
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 1
+    MessageType: 9
+    ClassName: M2C_ReceiveProduction
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ProductionProto
+      ParamType: 5
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: ProductionProto
+      Comment: 
+  - Enabled: 1
+    MessageType: 4
+    ClassName: M2C_AllProductionList
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: ProductionProtoList
+      ParamType: 11
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: ProductionProto
+      Comment: 
+  - Enabled: 1
+    MessageType: 0
+    ClassName: TaskInfoProto
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: ConfigId
+      ParamType: 0
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: TaskState
+      ParamType: 0
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: TaskProgress
+      ParamType: 0
+      MemberID: 3
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
   ImportMessagesGroup: 0

@@ -123,11 +123,11 @@ namespace ET
 			production.E_MakeButton.AddListenerAsync(() => { return self.OnStartProductionClickHandler(config.Id); });
 		}
 
-		public static async ETTask OnStartProductionClickHandler(this DlgForge self, int itemConfigId)
+		public static async ETTask OnStartProductionClickHandler(this DlgForge self, int productionConfigId)
 		{
 			try
 			{
-				int errorCode = await ForgeHelper.StartProduction(self.ZoneScene(), itemConfigId);
+				int errorCode = await ForgeHelper.StartProduction(self.ZoneScene(), productionConfigId);
 				if (errorCode != ErrorCode.ERR_Success)
 				{
 					Log.Error(errorCode.ToString());

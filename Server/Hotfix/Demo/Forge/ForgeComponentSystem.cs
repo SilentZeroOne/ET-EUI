@@ -78,6 +78,32 @@
             return production;
         }
 
-        
+        public static bool IsExistProductionOverQueue(this ForgeComponent self, long productionId)
+        {
+            for (int i = 0; i < self.Productions.Count; i++)
+            {
+                if (self.Productions[i].Id == productionId && 
+                    self.Productions[i].IsMakingState() &&
+                    self.Productions[i].TargetTime <= TimeHelper.ServerNow())
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static Production GetProductionById(this ForgeComponent self, long productionId)
+        {
+            for (int i = 0; i < self.Productions.Count; i++)
+            {
+                if (self.Productions[i].Id == productionId)
+                {
+                    return self.Productions[i];
+                }
+            }
+
+            return null;
+        }
     }
 }

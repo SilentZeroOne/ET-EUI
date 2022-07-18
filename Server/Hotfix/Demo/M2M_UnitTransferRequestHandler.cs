@@ -37,6 +37,9 @@ namespace ET
 			ItemUpdateNoticeHelper.SyncAllBagItems(unit);
 			ItemUpdateNoticeHelper.SyncAllEquipItems(unit);
 			
+			//通知客户端同步打造信息
+			ForgeHelper.SyncAllProduction(unit);
+			
 			unit.AddComponent<NumericNoticeComponent>();
 			unit.AddComponent<AdventureCheckComponent>();
 			

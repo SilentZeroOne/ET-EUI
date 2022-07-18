@@ -8,7 +8,7 @@ namespace ET
         public static async ETTask<int> StartProduction(Scene zoneScene, int productionId)
         {
             //判断生成配方是否存在
-            if (ForgeProductionConfigCategory.Instance.Contain(productionId))
+            if (!ForgeProductionConfigCategory.Instance.Contain(productionId))
             {
                 return ErrorCode.ERR_ProductionNotExist;
             }
@@ -21,7 +21,7 @@ namespace ET
             {
                 materialCounts.Add(numericComponent.GetAsInt(config.ConsumIds[i]));
             }
-            Convert.ToInt32()
+            
             bool enableToMake = true;
             for (int i = 0; i < config.ConsumCounts.Length; i++)
             {
@@ -50,6 +50,30 @@ namespace ET
             zoneScene.GetComponent<ForgeComponent>().AddOrUpdateProductionQueue(m2CStartProduction.ProductionProto);
             
             return ErrorCode.ERR_Success;
+        }
+
+        public static async ETTask<int> ReceiveProduction(Scene zoneScene, long productionId)
+        {
+            if (zoneScene.GetComponent<BagComponent>().IsMaxLoad())
+            {
+                return ErrorCode.ERR_BagMaxLoad;
+            }
+
+            M2C_ReceiveProduction m2CReceiveProduction = null;
+            try
+            {
+                m2CReceiveProduction = (M2C_ReceiveProduction)await zoneScene.GetComponent<SessionComponent>().Session
+                        .Call(new C2M_ReceiveProduction() { ProductionId = productionId });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                return ErrorCode.ERR_NetworkError;
+            }
+            
+            zoneScene.GetComponent<ForgeComponent>().AddOrUpdateProductionQueue(m2CReceiveProduction.ProductionProto);
+
+            return m2CReceiveProduction.Error;
         }
     }
 }

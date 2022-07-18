@@ -1256,7 +1256,7 @@ namespace ET
 		public int RpcId { get; set; }
 
 		[ProtoMember(2)]
-		public int ProductionId { get; set; }
+		public long ProductionId { get; set; }
 
 	}
 
@@ -1272,6 +1272,36 @@ namespace ET
 
 		[ProtoMember(92)]
 		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public ProductionProto ProductionProto { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_AllProductionList)]
+	[ProtoContract]
+	public partial class M2C_AllProductionList: Object, IActorMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public List<ProductionProto> ProductionProtoList = new List<ProductionProto>();
+
+	}
+
+	[Message(OuterOpcode.TaskInfoProto)]
+	[ProtoContract]
+	public partial class TaskInfoProto: Object
+	{
+		[ProtoMember(1)]
+		public int ConfigId { get; set; }
+
+		[ProtoMember(2)]
+		public int TaskState { get; set; }
+
+		[ProtoMember(3)]
+		public int TaskProgress { get; set; }
 
 	}
 

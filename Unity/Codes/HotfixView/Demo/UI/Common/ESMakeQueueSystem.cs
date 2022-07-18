@@ -29,10 +29,10 @@ namespace ET
             self.E_MakeTipText.SetVisible(!isCanReceive);
             self.E_MakeOverTipText.SetVisible(isCanReceive);
             self.E_ReveiveButton.SetVisible(isCanReceive);
-            self.E_ReveiveButton.AddListenerAsync(() => { return self.OnReceiveButtonHandler(production.ConfigId); });
+            self.E_ReveiveButton.AddListenerAsync(() => { return self.OnReceiveButtonHandler(production.Id); });
         }
 
-        public static async ETTask OnReceiveButtonHandler(this ES_MakeQueue self, int productionId)
+        public static async ETTask OnReceiveButtonHandler(this ES_MakeQueue self, long productionId)
         {
             try
             {
@@ -42,6 +42,7 @@ namespace ET
                     Log.Error(errCode.ToString());
                     return;
                 }
+                self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgForge>().RefreshMakeQueue();
             }
             catch (Exception e)
             {
