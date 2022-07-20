@@ -41,6 +41,7 @@ namespace ET
                     unit.AddComponent<BagComponent>();
                     unit.AddComponent<EquipmentsComponent>();
                     unit.AddComponent<ForgeComponent>();
+                    unit.AddComponent<TaskComponent>();
 
                     // UnitConfig unitConfig = UnitConfigCategory.Instance.Get(1001);
                     // numericComponent.SetNoEvent(NumericType.Position,unitConfig.Position);

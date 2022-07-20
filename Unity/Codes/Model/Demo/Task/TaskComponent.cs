@@ -6,6 +6,7 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace ET
 {
     [ComponentOf()]
+    [ChildType(typeof(TaskInfo))]
 #if SERVER
     public class TaskComponent : Entity,IAwake,IDestroy,IDeserialize,ITransfer,IUnitCache
 #else
@@ -24,6 +25,11 @@ namespace ET
 #if SERVER
         [BsonIgnore]
         public HashSet<int> CurrentTaskSet = new HashSet<int>();
+#endif
+        
+#if SERVER
+        [BsonIgnore]
+        public M2C_UpdateTaskInfo Message = new M2C_UpdateTaskInfo();
 #endif
     }
 }

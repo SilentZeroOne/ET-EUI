@@ -615,3 +615,28 @@ message TaskInfoProto
 	int32 TaskProgress = 3;
 }
 
+//ResponseType M2C_UpdateTaskInfo
+message M2C_UpdateTaskInfo // IActorMessage
+{
+	TaskInfoProto TaskInfoProto = 1;
+}
+
+message M2C_AllTaskInfoList // IActorMessage
+{
+	repeated TaskInfoProto TaskInfoProtoList = 1;
+}
+
+//ResponseType M2C_ReceiveTaskReward
+message C2M_ReceiveTaskReward // IActorLocationRequest
+{
+	int32 RpcId = 1;
+	int32 TaskConfigId = 2;
+}
+
+message M2C_ReceiveTaskReward // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+

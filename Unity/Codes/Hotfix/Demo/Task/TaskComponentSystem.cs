@@ -19,6 +19,7 @@ namespace ET
     }
 
     [FriendClass(typeof (TaskComponent))]
+    [FriendClass(typeof(TaskInfo))]
     public static class TaskComponentSystem
     {
         public static int GetTaskInfoCount(this TaskComponent self)

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 namespace ET
 {
 	[FriendClass(typeof(DlgTask))]
+	[FriendClass(typeof(TaskInfo))]
 	public static  class DlgTaskSystem
 	{
 
@@ -53,7 +54,7 @@ namespace ET
 		{
 			try
 			{
-				int errorCode = await ItemApplyHelper.EquipItem(self.ZoneScene(), self.ItemId);
+				int errorCode = await TaskHelper.GetTaskReward(self.ZoneScene(), taskConfigId);
 				if (errorCode != ErrorCode.ERR_Success)
 				{
 					Log.Debug(errorCode.ToString());
