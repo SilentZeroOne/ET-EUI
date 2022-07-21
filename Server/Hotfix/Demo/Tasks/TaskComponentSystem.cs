@@ -12,17 +12,28 @@
     {
         public override void Destroy(TaskComponent self)
         {
-
+            foreach (var taskInfo in self.TaskInfoDict.Values)
+            {
+                taskInfo?.Dispose();
+            }
+            self.TaskInfoDict.Clear();
+            self.CurrentTaskSet.Clear();
         }
     }
 
+    [FriendClass(typeof(TaskInfo))]
     public class TaskComponentDeserializeSystem: DeserializeSystem<TaskComponent>
     {
         public override void Deserialize(TaskComponent self)
         {
             foreach (Entity entity in self.Children.Values)
             {
-                // self.AddContainer(entity as Item);
+                TaskInfo taskInfo = entity as TaskInfo;
+                self.TaskInfoDict.Add(taskInfo.ConfigId, taskInfo);
+                if (!taskInfo.IsTaskState(TaskState.Received))
+                {
+                    self.CurrentTaskSet.Add(taskInfo.ConfigId);
+                }
             }
         }
     }
@@ -65,7 +76,7 @@
             return 0;
         }
 
-        public static void AddOrUpdateTaskInfo(this TaskComponent self, int taskConfigId, int count, bool isNoticeClient)
+        public static void AddOrUpdateTaskInfo(this TaskComponent self, int taskConfigId, int count, bool isNoticeClient = true)
         {
             if (!self.TaskInfoDict.TryGetValue(taskConfigId, out var taskInfo))
             {
@@ -77,7 +88,19 @@
             taskInfo.TryCompleteTask();
             if (isNoticeClient)
             {
-                TaskNoticeHelper.SyncTaskInfo(self.GetParent<Unit>(), self.Message);
+                TaskNoticeHelper.SyncTaskInfo(self.GetParent<Unit>(), taskInfo, self.Message);
+            }
+        }
+
+        public static void TriggerTaskAction(this TaskComponent self,TaskActionType taskActionType, int count, int targetId = 0)
+        {
+            foreach (var taskConfigId in self.CurrentTaskSet)
+            {
+                TaskConfig config = TaskConfigCategory.Instance.Get(taskConfigId);
+                if (config.TaskActionType == (int)taskActionType && config.TaskTargetId == targetId)
+                {
+                    self.AddOrUpdateTaskInfo(taskConfigId, count);
+                }
             }
         }
     }

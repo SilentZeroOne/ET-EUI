@@ -40,6 +40,8 @@ namespace ET
 			//通知客户端同步打造信息
 			ForgeHelper.SyncAllProduction(unit);
 			
+			TaskNoticeHelper.SyncAllTaskInfo(unit);
+			
 			unit.AddComponent<NumericNoticeComponent>();
 			unit.AddComponent<AdventureCheckComponent>();
 			

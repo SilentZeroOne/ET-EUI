@@ -45,8 +45,13 @@ namespace ET
                 return;
             }
 
-            var config = BattleLevelConfigCategory.Instance.Get(level);
             numericComponent.Set(NumericType.AdventureState, 0);
+            reply();
+            
+            //发送胜利事件
+            Game.EventSystem.Publish(new EventType.BattleWin(){LevelId = level,Unit = unit});
+            
+            var config = BattleLevelConfigCategory.Instance.Get(level);
             numericComponent[NumericType.Exp] += config.RewardExp;
             
             //添加奖励
@@ -61,7 +66,6 @@ namespace ET
             numericComponent[NumericType.IronCount] += 500;
             numericComponent[NumericType.FurCount] += 500;
             
-            reply();
             await ETTask.CompletedTask;
         }
     }

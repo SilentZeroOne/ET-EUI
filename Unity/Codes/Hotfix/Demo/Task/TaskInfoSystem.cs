@@ -65,6 +65,23 @@
         {
             return self.TaskProgress >= TaskConfigCategory.Instance.Get(self.ConfigId).TaskTargetCount;
         }
+
+        public static void FromMessage(this TaskInfo self, TaskInfoProto proto)
+        {
+            self.ConfigId = proto.ConfigId;
+            self.TaskProgress = proto.TaskProgress;
+            self.TaskState = proto.TaskState;
+        }
+
+        public static TaskInfoProto ToMessage(this TaskInfo self)
+        {
+            return new TaskInfoProto()
+            {
+                ConfigId = self.ConfigId,
+                TaskProgress = self.TaskProgress,
+                TaskState = self.TaskState
+            };
+        }
         
     }
 }

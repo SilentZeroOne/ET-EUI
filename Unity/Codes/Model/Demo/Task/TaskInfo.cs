@@ -23,9 +23,9 @@
     }
     
 #if SERVER
-    public class TaskInfo : Entity,IAwake,IAwake<int>,IDestroy,ISerializeToEntity
+    public class TaskInfo : Entity, IAwake, IAwake<int>, IDestroy, ISerializeToEntity
 #else
-    public class TaskInfo: Entity, IAwake ,IAwake<int>, IDestroy
+    public class TaskInfo : Entity, IAwake ,IAwake<int>, IDestroy
 #endif
     {
         public int ConfigId = 0;
