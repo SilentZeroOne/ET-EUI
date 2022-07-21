@@ -10,9 +10,9 @@
 
     public enum TaskActionType
     {
-        UpLevel = 0,
-        MakeItem = 1,
-        Adventure = 2
+        UpLevel = 1,
+        MakeItem = 2,
+        Adventure = 3
     }
 
     public enum TaskProgressType

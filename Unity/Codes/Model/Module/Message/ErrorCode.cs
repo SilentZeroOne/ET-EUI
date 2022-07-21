@@ -55,6 +55,10 @@ namespace ET
         public const int ERR_MakeConfigNotExist = 200040;
         public const int ERR_NoMakeFreeQueue = 200041;
         public const int ERR_NoMakeQueueOver = 200042;
-        public const int ERR_TaskConfigNotExist = 200043;
+        public const int ERR_TaskInfoNotExist = 200043;
+        public const int ERR_TaskNoCompleted = 200044;
+        public const int ERR_NoTaskExist = 200045;
+        public const int ERR_BeforeTaskNotOver = 200046;
+        public const int ERR_TaskRewarded = 200047;
     }
 }

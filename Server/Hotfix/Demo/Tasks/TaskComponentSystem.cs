@@ -103,5 +103,68 @@
                 }
             }
         }
+
+        public static int TryReceiveTaskReward(this TaskComponent self, int taskConfigId)
+        {
+            if (!TaskConfigCategory.Instance.Contain(taskConfigId))
+            {
+                return ErrorCode.ERR_NoTaskExist;
+            }
+
+            self.TaskInfoDict.TryGetValue(taskConfigId, out var taskInfo);
+
+            if (taskInfo == null || taskInfo.IsDisposed)
+            {
+                return ErrorCode.ERR_TaskInfoNotExist;
+            }
+
+            if (!self.IsBeforeTaskReceived(taskConfigId))
+            {
+                return ErrorCode.ERR_BeforeTaskNotOver;
+            }
+
+            if (taskInfo.IsTaskState(TaskState.Received))
+            {
+                return ErrorCode.ERR_TaskRewarded;
+            }
+
+            if (!taskInfo.IsTaskState(TaskState.Complete))
+            {
+                return ErrorCode.ERR_TaskNoCompleted;
+            }
+
+            return ErrorCode.ERR_Success;
+        }
+
+        public static bool IsBeforeTaskReceived(this TaskComponent self, int taskConfigId)
+        {
+            var config = TaskConfigCategory.Instance.Get(taskConfigId);
+            if (config.TaskBeforeId == 0) return true;
+
+            if (!self.TaskInfoDict.TryGetValue(config.TaskBeforeId, out var beforeTaskInfo))
+            {
+                return false;
+            }
+
+            if (!beforeTaskInfo.IsTaskState(TaskState.Received))
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        public static void ReceiveTaskRewardState(this TaskComponent self, Unit unit, int taskConfigId)
+        {
+            if (!self.TaskInfoDict.TryGetValue(taskConfigId, out var taskInfo))
+            {
+                Log.Error("TaskInof error :"+taskConfigId);
+                return;
+            }
+            
+            taskInfo.SetTaskState(TaskState.Received);
+            TaskNoticeHelper.SyncTaskInfo(unit, taskInfo, self.Message);
+            self.UpdateAfterTaskInfo(taskConfigId);
+        }
     }
 }

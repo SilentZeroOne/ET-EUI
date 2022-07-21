@@ -40,6 +40,38 @@ namespace ET
             return self.TaskInfoList[index];
         }
 
+        public static TaskInfo GetTaskInfoByConfigId(this TaskComponent self, int configId)
+        {
+            self.TaskInfoDict.TryGetValue(configId, out var taskInfo);
+            return taskInfo;
+        }
+
+        public static void AddOrUpdateTaskInfo(this TaskComponent self, TaskInfoProto proto)
+        {
+            TaskInfo taskInfo = self.GetTaskInfoByConfigId(proto.ConfigId);
+            if (taskInfo == null)
+            {
+                taskInfo = self.AddChild<TaskInfo>();
+                self.TaskInfoDict.Add(proto.ConfigId, taskInfo);
+            }
+
+            taskInfo.FromMessage(proto);
+            Game.EventSystem.Publish(new EventType.UpdateTaskInfo() { ZoneScene = self.ZoneScene() });
+        }
+
+        public static bool IsExistTaskComplete(this TaskComponent self)
+        {
+            foreach (var taskInfo in self.TaskInfoDict.Values)
+            {
+                if (taskInfo.IsTaskState(TaskState.Complete))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
 
     }
 }

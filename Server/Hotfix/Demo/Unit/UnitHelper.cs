@@ -111,6 +111,7 @@ namespace ET
                 await unit.AddComponent<BagComponent>().GetUnitComponentCache2();
                 await unit.AddComponent<EquipmentsComponent>().GetUnitComponentCache2();
                 await unit.AddComponent<ForgeComponent>().GetUnitComponentCache2();
+                await unit.AddComponent<TaskComponent>().GetUnitComponentCache2();
             }
             await ETTask.CompletedTask;
         }

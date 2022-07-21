@@ -9,6 +9,7 @@ namespace ET
             RedDotHelper.AddRedDotNode(a.ZoneScene, "Root", "Main", false);
             RedDotHelper.AddRedDotNode(a.ZoneScene, "Main", "Role", false);
             RedDotHelper.AddRedDotNode(a.ZoneScene, "Main", "Forge", false);
+            RedDotHelper.AddRedDotNode(a.ZoneScene, "Main", "Task", false);
             RedDotHelper.AddRedDotNode(a.ZoneScene, "Role", "UpLevelButton", false);
             RedDotHelper.AddRedDotNode(a.ZoneScene, "Role", "AddAttribute", false);
         }

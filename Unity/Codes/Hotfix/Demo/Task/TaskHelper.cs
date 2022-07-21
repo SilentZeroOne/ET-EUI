@@ -6,9 +6,16 @@ namespace ET
     {
         public static async ETTask<int> GetTaskReward(Scene zoneScene, int taskConfigId)
         {
-            if (!TaskConfigCategory.Instance.Contain(taskConfigId))
+            TaskInfo taskInfo = zoneScene.GetComponent<TaskComponent>().GetTaskInfoByConfigId(taskConfigId);
+
+            if (taskInfo == null || taskInfo.IsDisposed)
             {
-                return ErrorCode.ERR_TaskConfigNotExist;
+                return ErrorCode.ERR_TaskInfoNotExist;
+            }
+
+            if (!taskInfo.IsTaskState(TaskState.Complete))
+            {
+                return ErrorCode.ERR_TaskNoCompleted;
             }
 
             M2C_ReceiveTaskReward m2CReceiveTaskReward = null;
