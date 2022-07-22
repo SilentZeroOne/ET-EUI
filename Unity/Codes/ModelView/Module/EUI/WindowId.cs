@@ -17,6 +17,7 @@
         WindowID_Bag,
         WindowID_ItemPopUp,
         WindowID_Forge,
-        WindowID_Task
+        WindowID_Task,
+        WindowID_Rank
     }
 }
