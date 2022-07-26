@@ -125,4 +125,24 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
+  - Enabled: 1
+    MessageType: 4
+    ClassName: Map2Rank_AddOrUpdateRankInfo
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: RankInfo
+      ParamType: 5
+      MemberID: 1
+      Custom: 1
+      CustomMessageClassName: RankInfo
+      MessageClassName: 
+      Comment: 
   ImportMessagesGroup: 1

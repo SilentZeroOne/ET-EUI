@@ -177,6 +177,40 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Button EButton_RankButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EButton_RankButton == null )
+     			{
+		    		this.m_EButton_RankButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"Buttons/EButton_Rank");
+     			}
+     			return this.m_EButton_RankButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image EButton_RankImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EButton_RankImage == null )
+     			{
+		    		this.m_EButton_RankImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"Buttons/EButton_Rank");
+     			}
+     			return this.m_EButton_RankImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Image E_HeadImageRingImage
      	{
      		get
@@ -342,6 +376,8 @@ namespace ET
 			this.m_EButton_QuestImage = null;
 			this.m_EButton_BagButton = null;
 			this.m_EButton_BagImage = null;
+			this.m_EButton_RankButton = null;
+			this.m_EButton_RankImage = null;
 			this.m_E_HeadImageRingImage = null;
 			this.m_E_HeadImage = null;
 			this.m_E_LevelText = null;
@@ -364,6 +400,8 @@ namespace ET
 		private UnityEngine.UI.Image m_EButton_QuestImage = null;
 		private UnityEngine.UI.Button m_EButton_BagButton = null;
 		private UnityEngine.UI.Image m_EButton_BagImage = null;
+		private UnityEngine.UI.Button m_EButton_RankButton = null;
+		private UnityEngine.UI.Image m_EButton_RankImage = null;
 		private UnityEngine.UI.Image m_E_HeadImageRingImage = null;
 		private UnityEngine.UI.Image m_E_HeadImage = null;
 		private UnityEngine.UI.Text m_E_LevelText = null;

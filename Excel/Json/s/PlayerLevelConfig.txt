@@ -1,6 +1,6 @@
 {"list":[
 {"_t":"PlayerLevelConfig","_id":1,"NeedExp":1},
-{"_t":"PlayerLevelConfig","_id":2,"NeedExp":2},
+{"_t":"PlayerLevelConfig","_id":2,"NeedExp":1},
 {"_t":"PlayerLevelConfig","_id":3,"NeedExp":100},
 {"_t":"PlayerLevelConfig","_id":4,"NeedExp":200},
 {"_t":"PlayerLevelConfig","_id":5,"NeedExp":300},

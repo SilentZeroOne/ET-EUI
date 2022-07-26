@@ -6,7 +6,12 @@
         Freeze
     }
     
+    [ComponentOf()]
+#if SERVER
+    public class RoleInfo: Entity, IAwake ,ITransfer , IUnitCache
+#else
     public class RoleInfo: Entity, IAwake
+#endif
     {
         public string Name;
         public int ServerId;

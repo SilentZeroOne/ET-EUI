@@ -14,6 +14,8 @@ namespace ET
             
             unit = args.Parent as Unit;
             unit.GetComponent<TaskComponent>().TriggerTaskAction(TaskActionType.UpLevel, (int)args.New);
+
+            RankHelper.AddOrUpdateLevelRank(unit);
         }
     }
 }

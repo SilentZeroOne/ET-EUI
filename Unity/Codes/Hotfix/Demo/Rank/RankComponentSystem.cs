@@ -12,7 +12,7 @@
     {
         public override void Destroy(RankComponent self)
         {
-
+            self.ClearAll();
         }
     }
     
@@ -20,6 +20,13 @@
     [FriendClass(typeof (RankComponent))]
     public static class RankComponentSystem
     {
+        public static void Add(this RankComponent self, RankInfoProto proto)
+        {
+            RankInfo rankInfo = self.AddChild<RankInfo>(true);
+            rankInfo.FromMessage(proto);
+            self.RankInfos.Add(rankInfo);
+        }
+
         public static int GetRankCount(this RankComponent self)
         {
             return self.RankInfos.Count;

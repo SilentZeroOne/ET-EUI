@@ -13,6 +13,8 @@ namespace ET
         public MultiMap<int, StartSceneConfig> ProcessScenes = new MultiMap<int, StartSceneConfig>();
 
         public Dictionary<int, StartSceneConfig> UnitCaches = new Dictionary<int, StartSceneConfig>();
+        
+        public Dictionary<int, StartSceneConfig> Ranks = new Dictionary<int, StartSceneConfig>();
 
         public Dictionary<long, Dictionary<string, StartSceneConfig>> ZoneScenesByName = new Dictionary<long, Dictionary<string, StartSceneConfig>>();
 
@@ -69,6 +71,9 @@ namespace ET
                         break;
                     case SceneType.UnitCache:
                         this.UnitCaches.Add(startSceneConfig.Zone,startSceneConfig);
+                        break;
+                    case SceneType.Rank:
+                        this.Ranks.Add(startSceneConfig.Zone, startSceneConfig);
                         break;
                 }
             }

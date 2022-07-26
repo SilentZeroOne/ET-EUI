@@ -4,6 +4,6 @@
     {
         public long UnitId;
         public string Name;
-        public string Count;
+        public int Count;
     }
 }

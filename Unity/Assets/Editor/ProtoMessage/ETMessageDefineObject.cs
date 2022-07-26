@@ -212,6 +212,9 @@ public class ETMessageDefineObject : SerializedScriptableObject
                     case "IActorLocationMessage": type = ETMessageType.IActorLocationMessage;break;
                     case "IActorLocationRequest": type = ETMessageType.IActorLocationRequest;break;
                     case "IActorLocationResponse": type = ETMessageType.IActorLocationResponse; break;
+                    case "IActorRankInfoMessage": type = ETMessageType.IActorRankInfoMessage; break;
+                    case "IActorRankInfoRequest": type = ETMessageType.IActorRankInfoRequest; break;
+                    case "IActorRankInfoResponse": type = ETMessageType.IActorRankInfoResponse; break;
                     default:break;
                 }
                 message.MessageType = type;
@@ -358,7 +361,8 @@ public class MessageClass
     {
         get
         {
-            return (MessageType == ETMessageType.IRequest || MessageType == ETMessageType.IActorRequest || MessageType == ETMessageType.IActorLocationRequest);
+            return (MessageType == ETMessageType.IRequest || MessageType == ETMessageType.IActorRequest ||
+                MessageType == ETMessageType.IActorLocationRequest || MessageType == ETMessageType.IActorRankInfoRequest);
         }
     }
 }
@@ -433,6 +437,9 @@ public enum ETMessageType
     IActorLocationMessage,
     IActorLocationRequest,
     IActorLocationResponse,
+    IActorRankInfoMessage,
+    IActorRankInfoRequest,
+    IActorRankInfoResponse
 }
 
 [Serializable]

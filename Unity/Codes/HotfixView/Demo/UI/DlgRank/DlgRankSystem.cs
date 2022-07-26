@@ -73,11 +73,9 @@ namespace ET
 			Scroll_Item_rank scrollItemRank = self.ScrollItemRanks[index].BindTrans(transform);
 			RankInfo rankInfo = self.ZoneScene().GetComponent<RankComponent>().GetRankInfoByIndex(index);
 
-			scrollItemRank.E_RankOrderText.text = $"第{index}名";
+			scrollItemRank.E_RankOrderText.text = $"第{index+1}名";
 			scrollItemRank.E_NameText.text = rankInfo.Name;
 			scrollItemRank.E_LevelText.SetText($"Lv.{rankInfo.Count}");
 		}
-		 
-
 	}
 }
