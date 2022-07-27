@@ -11,18 +11,19 @@ namespace ET
             self.Awake();
         }
     }
-    
+
     [ObjectSystem]
     public class UIEventComponentDestroySystem : DestroySystem<UIEventComponent>
     {
         public override void Destroy(UIEventComponent self)
         {
             self.UIEventHandlers.Clear();
+            self.IsClicked = false;
             UIEventComponent.Instance = null;
             self.IsClicked = false;
         }
     }
-    
+
     [FriendClass(typeof(UIEventComponent))]
     public static class UIEventComponentSystem
     {
@@ -35,7 +36,7 @@ namespace ET
                 self.UIEventHandlers.Add(attr.WindowID, Activator.CreateInstance(v) as IAUIEventHandler);
             }
         }
-        
+
         public static IAUIEventHandler GetUIEventHandler(this UIEventComponent self,WindowID windowID)
         {
             if (self.UIEventHandlers.TryGetValue(windowID, out IAUIEventHandler handler))
@@ -50,5 +51,6 @@ namespace ET
         {
             self.IsClicked = isClicked;
         }
+
     }
 }

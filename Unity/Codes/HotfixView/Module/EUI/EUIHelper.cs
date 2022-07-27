@@ -76,9 +76,9 @@ namespace ET
         public  static void SetTogglesInteractable(this ToggleGroup toggleGroup, bool isEnable)
         {
            var toggles = toggleGroup.transform.GetComponentsInChildren<Toggle>();
-           foreach (var toggle in toggles)
+           for (int i = 0; i < toggles.Length; i++)
            {
-               toggle.interactable = isEnable;
+               toggles[i].interactable = isEnable;
            }
         }
         
@@ -118,10 +118,7 @@ namespace ET
             toggle.onValueChanged?.Invoke(isSelected);
         }
         
-        
 
-        
-        
         public static void RemoveUIScrollItems<K,T>(this K self, ref Dictionary<int, T> dictionary) where K : Entity,IUILogic  where T : Entity,IUIScrollItem
         {
             if (dictionary == null)
@@ -152,6 +149,60 @@ namespace ET
         #endregion
         
   #region UI按钮事件
+
+      public static void AddListenerAsyncWithId(this Button button, Func<int, ETTask> action,int id)
+      { 
+          button.onClick.RemoveAllListeners();
+
+          async ETTask clickActionAsync()
+          {
+              UIEventComponent.Instance?.SetUIClicked(true);
+              await action(id);
+              UIEventComponent.Instance?.SetUIClicked(false);
+          }
+                   
+          button.onClick.AddListener(() =>
+          {
+              if ( UIEventComponent.Instance == null)
+              {
+                  return;
+              }
+
+              if (UIEventComponent.Instance.IsClicked)
+              {
+                  return;
+              }
+                       
+              clickActionAsync().Coroutine();
+          });
+      }
+      
+      public static void AddListenerAsync(this Button button, Func<ETTask> action)
+      { 
+          button.onClick.RemoveAllListeners();
+
+          async ETTask clickActionAsync()
+          {
+              UIEventComponent.Instance?.SetUIClicked(true);
+              await action();
+              UIEventComponent.Instance?.SetUIClicked(false);
+          }
+               
+          button.onClick.AddListener(() =>
+          {
+              if ( UIEventComponent.Instance == null)
+              {
+                  return;
+              }
+
+              if (UIEventComponent.Instance.IsClicked)
+              {
+                  return;
+              }
+                   
+              clickActionAsync().Coroutine();
+          });
+      }
 
         public static void AddListener(this Toggle toggle, UnityAction<bool> selectEventHandler)
         {
@@ -264,6 +315,35 @@ namespace ET
             closeButton.onClick.RemoveAllListeners();
             closeButton.onClick.AddListener(() => { self.DomainScene().GetComponent<UIComponent>().HideWindow(self.GetParent<UIBaseWindow>().WindowID); });
         }
+
+
+
+        public static void RegisterEvent(this EventTrigger trigger, EventTriggerType eventType, UnityAction<BaseEventData> callback)
+        {
+            EventTrigger.Entry entry = null;
+
+            // 查找是否已经存在要注册的事件
+            foreach (EventTrigger.Entry existingEntry in trigger.triggers)
+            {
+                if (existingEntry.eventID == eventType)
+                {
+                    entry = existingEntry;
+                    break;
+                }
+            }
+            
+            // 如果这个事件不存在，就创建新的实例
+            if (entry == null)
+            {
+                entry = new EventTrigger.Entry();
+                entry.eventID = eventType;
+            }
+            // 添加触发回调并注册事件
+            entry.callback.AddListener(callback);
+            trigger.triggers.Add(entry);
+        }
+
+
         #endregion
         
     }
