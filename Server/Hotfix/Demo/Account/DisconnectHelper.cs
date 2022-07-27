@@ -42,10 +42,16 @@ namespace ET
                         case PlayerState.Gate:
                             break;
                         case PlayerState.Game:
-                            //TODO 通知游戏逻辑服下线玩家，并将数据存入数据库
+                            //通知游戏逻辑服下线玩家，并将数据存入数据库
                             var m2GRequestExitGame =
                                     (M2G_RequestExitGame) await MessageHelper.CallLocationActor(player.UnitId, new G2M_RequestExitGame());
 
+                            //通知聊天服下线玩家
+                            var chat2GRequestExit =
+                                    (Chat2G_RequestExitChat)await MessageHelper.CallActor(player.ChatInfoUnitInstanceId,
+                                        new G2Chat_RequestExitChat());
+                                
+                            //通知移除账号角色登陆信息
                             long loginCenterConfig = StartSceneConfigCategory.Instance.LoginCenterConfig.InstanceId;
                             var l2gRemoveRecord = (L2G_RemoveLoginRecord) await MessageHelper.CallActor(loginCenterConfig,
                                 new G2L_RemoveLoginRecord() { AccountId = player.Account, ServerId = player.DomainZone() });

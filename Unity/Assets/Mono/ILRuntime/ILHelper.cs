@@ -56,10 +56,15 @@ namespace ET
             appdomain.DelegateManager.RegisterMethodDelegate<long, MemoryStream>();
             appdomain.DelegateManager.RegisterMethodDelegate<long, IPEndPoint>();
             appdomain.DelegateManager.RegisterMethodDelegate<ILTypeInstance>();
+            appdomain.DelegateManager.RegisterMethodDelegate<int, ILTypeInstance>();
             appdomain.DelegateManager.RegisterMethodDelegate<Transform,int>();
             appdomain.DelegateManager.RegisterMethodDelegate<AsyncOperation>();
             appdomain.DelegateManager.RegisterMethodDelegate<System.Type, ILRuntime.Runtime.Intepreter.ILTypeInstance>();
             appdomain.DelegateManager.RegisterMethodDelegate<System.Int64, ILRuntime.Runtime.Intepreter.ILTypeInstance>();
+            appdomain.DelegateManager.RegisterMethodDelegate<UnityEngine.GameObject>();
+            appdomain.DelegateManager.RegisterFunctionDelegate<ILRuntime.Runtime.Intepreter.ILTypeInstance, ILRuntime.Runtime.Intepreter.ILTypeInstance, System.Int32>();
+
+
             
             appdomain.DelegateManager.RegisterFunctionDelegate<UnityEngine.Events.UnityAction>();
             appdomain.DelegateManager.RegisterFunctionDelegate<System.Object, ET.ETTask>();
@@ -103,6 +108,24 @@ namespace ET
                     ((Action)act)();
                 });
             });
+            
+            appdomain.DelegateManager.RegisterDelegateConvertor<UnityEngine.Events.UnityAction<System.Boolean>>((act) =>
+            {
+                return new UnityEngine.Events.UnityAction<System.Boolean>((arg0) =>
+                {
+                    ((Action<System.Boolean>)act)(arg0);
+                });
+            });
+            
+            appdomain.DelegateManager.RegisterDelegateConvertor<DG.Tweening.TweenCallback>((act) =>
+            {
+                return new DG.Tweening.TweenCallback(() =>
+                {
+                    ((Action)act)();
+                });
+            });
+
+
 
             // 注册适配器
             RegisterAdaptor(appdomain);

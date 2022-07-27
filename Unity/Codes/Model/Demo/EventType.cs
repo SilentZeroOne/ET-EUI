@@ -168,5 +168,10 @@ namespace ET
         {
             public Scene ZoneScene;
         }
+        
+        public struct UpdateChatInfo
+        {
+            public Scene ZoneScene;
+        }
     }
 }

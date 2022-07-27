@@ -662,3 +662,26 @@ message Rank2C_GetRankInfos // IActorRankInfoResponse
 	repeated RankInfoProto RankInfoProtoList = 1;
 }
 
+//ResponseType Chat2C_SendChatInfo
+message C2Chat_SendChatInfo // IActorChatInfoRequest
+{
+	int32 RpcId = 1;
+	string ChatMessage = 2;
+}
+
+message Chat2C_SendChatInfo // IActorChatInfoResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message Chat2C_NoticeChatInfo // IActorChatInfoMessage
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string Name = 1;
+	string ChatMessage = 2;
+}
+

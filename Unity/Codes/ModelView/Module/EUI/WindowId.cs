@@ -18,6 +18,7 @@
         WindowID_ItemPopUp,
         WindowID_Forge,
         WindowID_Task,
-        WindowID_Rank
+        WindowID_Rank,
+        WindowID_Chat
     }
 }

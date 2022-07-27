@@ -4,7 +4,9 @@ namespace ET
 {
     [FriendClass(typeof(SessionStateComponent))]
     [FriendClass(typeof(SessionPlayerComponent))]
-    public class C2G_EnterGameHandler : AMRpcHandler<C2G_EnterGame,G2C_EnterGame>
+    [FriendClassAttribute(typeof(ET.RoleInfo))]
+    [FriendClassAttribute(typeof(ET.UnitGateComponent))]
+    public class C2G_EnterGameHandler : AMRpcHandler<C2G_EnterGame, G2C_EnterGame>
     {
         protected override async ETTask Run(Session session, C2G_EnterGame request, G2C_EnterGame response, Action reply)
         {
@@ -14,7 +16,7 @@ namespace ET
                 session.Dispose();
                 return;
             }
-            
+
             if (session.GetComponent<SessionLockingComponent>() != null)
             {
                 response.Error = ErrorCode.ERR_RepeatedRequestError;
@@ -42,7 +44,7 @@ namespace ET
             long sessionInstanceId = session.InstanceId;
             using (session.AddComponent<SessionLockingComponent>())
             {
-                using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.LoginGate,player.Account.GetHashCode()))
+                using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.LoginGate, player.Account.GetHashCode()))
                 {
                     if (sessionInstanceId != session.InstanceId || player.IsDisposed)
                     {
@@ -69,7 +71,7 @@ namespace ET
                                 reply();
                                 return;
                             }
-                            
+
                             Log.Error($"二次登陆失败 {reqEnter.Error.ToString()}|{reqEnter.Message}");
                             response.Error = ErrorCode.ERR_ReEnterGameError;
                             await DisconnectHelper.KickPlayer(player, true);
@@ -94,11 +96,14 @@ namespace ET
 
                         //Unit unit = UnitFactory.Create(gateMapComponent.Scene, player.Id, UnitType.Player);
                         (bool isNewPlayer, Unit unit) = await UnitHelper.LoadUnit(player);
-                        
-                        unit.AddComponent<UnitGateComponent, long>(player.InstanceId);//现在还在Gate上，需要转移到Map上
 
+                        unit.AddComponent<UnitGateComponent, long>(player.InstanceId);//现在还在Gate上，需要转移到Map上
+                        
                         //初始化
                         await UnitHelper.InitUnit(unit, isNewPlayer);
+
+                        player.ChatInfoUnitInstanceId = await this.EnterWorldChatServer(unit);
+                        
                         response.MyId = unit.Id;
                         reply();
 
@@ -108,7 +113,7 @@ namespace ET
                         SessionStateComponent sessionStateComponent = session.GetComponent<SessionStateComponent>();
                         sessionStateComponent.State = SessionState.Game;
                         player.PlayerState = PlayerState.Game;
-                        
+
                     }
                     catch (Exception e)
                     {
@@ -120,8 +125,22 @@ namespace ET
                     }
                 }
             }
-            
+
             await ETTask.CompletedTask;
+        }
+
+        private async ETTask<long> EnterWorldChatServer(Unit unit)
+        {
+            StartSceneConfig config = StartSceneConfigCategory.Instance.GetBySceneName(unit.DomainZone(), "ChatInfo");
+            Chat2G_EnterChat message = (Chat2G_EnterChat)await MessageHelper.CallActor(config.InstanceId,
+                new G2Chat_EnterChat()
+                {
+                    Name = unit.GetComponent<RoleInfo>().Name,
+                    UnitId = unit.Id,
+                    GateSessionActorId = unit.GetComponent<UnitGateComponent>().GateSessionActorId
+                });
+
+            return message.ChatInfoUnitInstanceId;
         }
     }
 }

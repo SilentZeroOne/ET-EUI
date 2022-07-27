@@ -17,6 +17,7 @@ namespace ET
 			self.View.EButton_BuildButton.AddListenerAsync(self.OnBuildButtonClickHandler);
 			self.View.EButton_QuestButton.AddListenerAsync(self.OnTaskButtonClickHandler);
 			self.View.EButton_RankButton.AddListenerAsync(self.OnRankButtonClickHandler);
+			self.View.EButton_ChatButton.AddListenerAsync(self.OnChatButtonClickHandler);
 			
 			RedDotHelper.AddRedDotNodeView(self.ZoneScene(), "Role", self.View.EButton_RoleButton.gameObject, Vector3.one, new Vector2(95, 35));
 			RedDotHelper.AddRedDotNodeView(self.ZoneScene(), "Forge", self.View.EButton_BuildButton.gameObject, Vector3.one, new Vector2(95, 35));
@@ -105,6 +106,13 @@ namespace ET
 		public static async ETTask OnRankButtonClickHandler(this DlgMain self)
 		{
 			self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Rank);
+
+			await ETTask.CompletedTask;
+		}
+		
+		public static async ETTask OnChatButtonClickHandler(this DlgMain self)
+		{
+			self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Chat);
 
 			await ETTask.CompletedTask;
 		}

@@ -34,15 +34,18 @@ namespace ILRuntime.Runtime.Generated
             args = new Type[]{typeof(UnityEngine.Quaternion)};
             method = type.GetMethod("set_rotation", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, set_rotation_3);
-            args = new Type[]{typeof(UnityEngine.Transform), typeof(System.Boolean)};
+            args = new Type[]{typeof(UnityEngine.Transform)};
             method = type.GetMethod("SetParent", flag, null, args, null);
             app.RegisterCLRMethodRedirection(method, SetParent_4);
+            args = new Type[]{typeof(UnityEngine.Transform), typeof(System.Boolean)};
+            method = type.GetMethod("SetParent", flag, null, args, null);
+            app.RegisterCLRMethodRedirection(method, SetParent_5);
             args = new Type[]{typeof(UnityEngine.Vector3)};
             method = type.GetMethod("set_localScale", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, set_localScale_5);
+            app.RegisterCLRMethodRedirection(method, set_localScale_6);
             args = new Type[]{};
             method = type.GetMethod("SetAsLastSibling", flag, null, args, null);
-            app.RegisterCLRMethodRedirection(method, SetAsLastSibling_6);
+            app.RegisterCLRMethodRedirection(method, SetAsLastSibling_7);
 
 
         }
@@ -134,6 +137,25 @@ namespace ILRuntime.Runtime.Generated
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
+            StackObject* __ret = ILIntepreter.Minus(__esp, 2);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
+            UnityEngine.Transform @p = (UnityEngine.Transform)typeof(UnityEngine.Transform).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack), (CLR.Utils.Extensions.TypeFlags)0);
+            __intp.Free(ptr_of_this_method);
+
+            ptr_of_this_method = ILIntepreter.Minus(__esp, 2);
+            UnityEngine.Transform instance_of_this_method = (UnityEngine.Transform)typeof(UnityEngine.Transform).CheckCLRTypes(StackObject.ToObject(ptr_of_this_method, __domain, __mStack), (CLR.Utils.Extensions.TypeFlags)0);
+            __intp.Free(ptr_of_this_method);
+
+            instance_of_this_method.SetParent(@p);
+
+            return __ret;
+        }
+
+        static StackObject* SetParent_5(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        {
+            ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
+            StackObject* ptr_of_this_method;
             StackObject* __ret = ILIntepreter.Minus(__esp, 3);
 
             ptr_of_this_method = ILIntepreter.Minus(__esp, 1);
@@ -152,7 +174,7 @@ namespace ILRuntime.Runtime.Generated
             return __ret;
         }
 
-        static StackObject* set_localScale_5(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* set_localScale_6(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;
@@ -176,7 +198,7 @@ namespace ILRuntime.Runtime.Generated
             return __ret;
         }
 
-        static StackObject* SetAsLastSibling_6(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
+        static StackObject* SetAsLastSibling_7(ILIntepreter __intp, StackObject* __esp, IList<object> __mStack, CLRMethod __method, bool isNewObj)
         {
             ILRuntime.Runtime.Enviorment.AppDomain __domain = __intp.AppDomain;
             StackObject* ptr_of_this_method;

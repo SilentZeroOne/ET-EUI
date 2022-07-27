@@ -70,6 +70,37 @@ namespace ET
                     }
                     break;
                 }
+                case IActorChatInfoRequest actorChatInfoRequest:
+                {
+                    Player player = Game.EventSystem.Get(session.GetComponent<SessionPlayerComponent>().PlayerInstanceId) as Player;
+                    if (player == null || player.IsDisposed || player.ChatInfoUnitInstanceId == 0)
+                    {
+                        return;
+                    }
+
+                    int rpcId = actorChatInfoRequest.RpcId;// 这里要保存客户端的RpcId
+                    long instanceId = session.InstanceId;
+                    IResponse response = await MessageHelper.CallActor(player.ChatInfoUnitInstanceId, actorChatInfoRequest);
+                    response.RpcId = rpcId;
+                    //session 可能断开
+                    if (session.InstanceId == instanceId)
+                    {
+                        session.Reply(response);
+                    }
+                    
+                    break;
+                }
+                case IActorChatInfoMessage actorChatInfoMessage:
+                {
+                    Player player = Game.EventSystem.Get(session.GetComponent<SessionPlayerComponent>().PlayerInstanceId) as Player;
+                    if (player == null || player.IsDisposed || player.ChatInfoUnitInstanceId == 0)
+                    {
+                        return;
+                    }
+                    
+                    MessageHelper.SendActor(player.ChatInfoUnitInstanceId, actorChatInfoMessage);
+                    break;
+                }
                 case IActorRequest actorRequest:  // 分发IActorRequest消息，目前没有用到，需要的自己添加
                 {
                     break;
