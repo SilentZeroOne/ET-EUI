@@ -7,6 +7,7 @@ namespace ET
         protected override async ETTask Run(ShowDamageValueView a)
         {
             a.TargetUnit.GetComponent<HeadHpViewComponent>().SetHp();
+            a.TargetUnit?.GetComponent<HeadHpViewComponent>().SetVisiable(true);
             a.ZoneScene.GetComponent<FlyDamageValueViewComponent>().SpawnFlyDamage(a.TargetUnit.Position,a.DamageValue).Coroutine();
             bool isAlive = a.TargetUnit.IsAlive();
             await TimerComponent.Instance.WaitAsync(400);

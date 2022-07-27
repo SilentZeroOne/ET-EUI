@@ -8,6 +8,7 @@ namespace ET
 {
 	[FriendClass(typeof(DlgChat))]
 	[FriendClass(typeof(Scroll_Item_chat))]
+	[FriendClass(typeof(ChatInfo))]
 	public static  class DlgChatSystem
 	{
 

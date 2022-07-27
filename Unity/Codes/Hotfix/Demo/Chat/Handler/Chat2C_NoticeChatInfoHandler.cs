@@ -4,6 +4,7 @@ using System;
 
 namespace ET
 {
+    [FriendClass(typeof(ChatInfo))]
     public class Chat2C_NoticeChatInfoHandler: AMHandler<Chat2C_NoticeChatInfo>
     {
         protected override void Run(Session session, Chat2C_NoticeChatInfo message)
