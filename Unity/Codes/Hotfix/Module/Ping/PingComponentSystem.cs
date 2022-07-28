@@ -38,6 +38,8 @@ namespace ET
                     Game.TimeInfo.ServerMinusClientTime = response.Time + (time2 - time1) / 2 - time2;
 
                     await TimerComponent.Instance.WaitAsync(2000);
+
+                    Game.EventSystem.Publish(new EventType.UpdatePing() { ZoneScene = self.ZoneScene(), Ping = self.Ping });
                 }
                 catch (RpcException e)
                 {

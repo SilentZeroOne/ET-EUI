@@ -116,5 +116,11 @@ namespace ET
 
 			await ETTask.CompletedTask;
 		}
+
+		public static void UpdatePingText(this DlgMain self, long value)
+		{
+			self.View.E_PingText.SetText(value.ToString());
+			self.View.E_PingText.color = PingViewHelper.PingColor(value);
+		}
 	}
 }

@@ -29,7 +29,7 @@ namespace ET
             selectStartConfigIndex = EditorGUILayout.Popup(selectStartConfigIndex, this.startConfigs);
             this.startConfig = this.startConfigs[this.selectStartConfigIndex];
             
-            if (GUILayout.Button("Start Server(Single Srocess)"))
+            if (GUILayout.Button("Start Server(Single Process)"))
             {
                 string arguments = $"Server.dll --Process=1 --StartConfig=StartConfig/{this.startConfig} --Console=1";
                 ProcessHelper.Run("dotnet.exe", arguments, "../Bin/");

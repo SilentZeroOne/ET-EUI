@@ -173,5 +173,11 @@ namespace ET
         {
             public Scene ZoneScene;
         }
+
+        public struct UpdatePing
+        {
+            public Scene ZoneScene;
+            public long Ping;
+        }
     }
 }

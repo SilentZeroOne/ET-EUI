@@ -398,6 +398,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Text E_PingText
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_PingText == null )
+     			{
+		    		this.m_E_PingText = UIFindHelper.FindDeepChild<UnityEngine.UI.Text>(this.uiTransform.gameObject,"Displays/PingTitle/E_Ping");
+     			}
+     			return this.m_E_PingText;
+     		}
+     	}
+
 		public void DestroyWidget()
 		{
 			this.m_EButton_RoleButton = null;
@@ -423,6 +440,7 @@ namespace ET
 			this.m_E_ExperienceBgImage = null;
 			this.m_E_ExperienceImage = null;
 			this.m_E_ExperienceText = null;
+			this.m_E_PingText = null;
 			this.uiTransform = null;
 		}
 
@@ -449,6 +467,7 @@ namespace ET
 		private UnityEngine.UI.Image m_E_ExperienceBgImage = null;
 		private UnityEngine.UI.Image m_E_ExperienceImage = null;
 		private UnityEngine.UI.Text m_E_ExperienceText = null;
+		private UnityEngine.UI.Text m_E_PingText = null;
 		public Transform uiTransform = null;
 	}
 }
