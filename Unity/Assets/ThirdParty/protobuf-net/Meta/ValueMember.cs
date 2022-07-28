@@ -123,9 +123,7 @@ namespace ProtoBuf.Meta
             if (memberType == null) throw new ArgumentNullException("memberType");
             if (model == null) throw new ArgumentNullException("model");
             this.fieldNumber = fieldNumber;
-            this.memberType = memberType is ILRuntime.Reflection.ILRuntimeWrapperType
-                ? ((ILRuntime.Reflection.ILRuntimeWrapperType) memberType).RealType
-                : memberType;
+            this.memberType = memberType;
             this.itemType = itemType;
             this.defaultType = defaultType;
 
@@ -236,12 +234,6 @@ namespace ProtoBuf.Meta
 #else
             if (Helpers.IsEnum(type))
             {
-                if (value is ILRuntime.Mono.Cecil.CustomAttributeArgument)
-                {
-                    var v = (ILRuntime.Mono.Cecil.CustomAttributeArgument)value;
-                    return v.Value;
-                }
-                
                 return Enum.ToObject(type, value);
             }
             return Convert.ChangeType(value, type, CultureInfo.InvariantCulture);

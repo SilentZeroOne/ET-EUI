@@ -7,7 +7,7 @@ namespace ET
 	public enum CodeMode
 	{
 		Mono = 1,
-		ILRuntime = 2,
+		Wolong=2,
 		Reload = 3,
 	}
 	
@@ -30,7 +30,6 @@ namespace ET
 			
 			DontDestroyOnLoad(gameObject);
 			
-			LitJson.UnityTypeBindings.Register();
 
 			ETTask.ExceptionHandler += Log.Error;
 

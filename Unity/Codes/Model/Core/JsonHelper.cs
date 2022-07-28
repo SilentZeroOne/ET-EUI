@@ -1,4 +1,5 @@
 ﻿using System;
+using CatJson;
 
 namespace ET
 {
@@ -13,7 +14,7 @@ namespace ET
 #if NOT_UNITY
             return MongoDB.Bson.BsonExtensionMethods.ToJson(message, logDefineSettings);
 #else
-            return LitJson.JsonMapper.ToJson(message);
+            return JsonParser.ToJson(message);
 #endif
         }
         
@@ -22,7 +23,7 @@ namespace ET
 #if NOT_UNITY
             return MongoDB.Bson.Serialization.BsonSerializer.Deserialize(json, type);
 #else
-            return LitJson.JsonMapper.ToObject(type, json);
+            return JsonParser.ParseJson(json);
 #endif
             
         }
@@ -32,7 +33,7 @@ namespace ET
 #if NOT_UNITY
             return MongoDB.Bson.Serialization.BsonSerializer.Deserialize<T>(json);
 #else
-            return LitJson.JsonMapper.ToObject<T>(json);
+            return JsonParser.ParseJson<T>(json);
 #endif
         }
     }

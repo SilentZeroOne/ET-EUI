@@ -29,10 +29,10 @@ namespace ProtoBuf.Serializers
                 )
             {
                 //ILRuntime enum 转int需要忽略
-                if (!Helpers.IsEnum(tail.ExpectedType) && !(tail.ExpectedType is ILRuntime.Reflection.ILRuntimeType))
-                {
-                    throw new ArgumentException("Default value is of incorrect type", "defaultValue");
-                }
+                // if (!Helpers.IsEnum(tail.ExpectedType) && !(tail.ExpectedType is ILRuntime.Reflection.ILRuntimeType))
+                // {
+                //     throw new ArgumentException("Default value is of incorrect type", "defaultValue");
+                // }
             }
             this.defaultValue = defaultValue;
         }
