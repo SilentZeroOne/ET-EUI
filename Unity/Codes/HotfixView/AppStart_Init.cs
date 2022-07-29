@@ -1,3 +1,5 @@
+using BM;
+
 namespace ET
 {
     public class AppStart_Init: AEvent<EventType.AppStart>
@@ -14,11 +16,11 @@ namespace ET
 
             // 加载配置
             Game.Scene.AddComponent<ResourcesComponent>();
-            await ResourcesComponent.Instance.LoadBundleAsync("config.unity3d");
+            await AssetComponent.Initialize("Config");
             Game.Scene.AddComponent<ConfigComponent>();
             ConfigComponent.Instance.Load();
-            ResourcesComponent.Instance.UnloadBundle("config.unity3d");
-            
+            AssetComponent.UnInitialize("Config");
+
             Game.Scene.AddComponent<OpcodeTypeComponent>();
             Game.Scene.AddComponent<MessageDispatcherComponent>();
             
@@ -29,8 +31,8 @@ namespace ET
             Game.Scene.AddComponent<GlobalComponent>();
             Game.Scene.AddComponent<NumericWatcherComponent>();
             Game.Scene.AddComponent<AIDispatcherComponent>();
-            await ResourcesComponent.Instance.LoadBundleAsync("unit.unity3d");
-            
+            //await ResourcesComponent.Instance.LoadBundleAsync("unit.unity3d");
+
             Scene zoneScene = SceneFactory.CreateZoneScene(1, "Game", Game.Scene);
             
             Game.EventSystem.Publish(new EventType.AppStartInitFinish() { ZoneScene = zoneScene });

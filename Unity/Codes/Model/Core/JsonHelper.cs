@@ -1,5 +1,7 @@
 ﻿using System;
+#if !NOT_UNITY
 using CatJson;
+#endif
 
 namespace ET
 {

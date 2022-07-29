@@ -1,0 +1,68 @@
+ManifestFileVersion: 0
+CRC: 2567137660
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: shader_resbundles
+      Dependencies: {}
+    Info_1:
+      Name: resbundles_assets_bundles_resbundles_atlas_common_axe_png.unity3d
+      Dependencies: {}
+    Info_2:
+      Name: resbundles_assets_bundles_resbundles_atlas_common_common_spriteatlas.unity3d
+      Dependencies:
+        Dependency_0: resbundles_assets_bundles_resbundles_atlas_common_axe_png.unity3d
+        Dependency_1: resbundles_assets_bundles_resbundles_atlas_common_gold_gif.unity3d
+        Dependency_2: resbundles_assets_bundles_resbundles_atlas_common_healthwater_png.unity3d
+        Dependency_3: resbundles_assets_bundles_resbundles_atlas_common_shield_gif.unity3d
+        Dependency_4: resbundles_assets_bundles_resbundles_atlas_common_silver_gif.unity3d
+        Dependency_5: resbundles_assets_bundles_resbundles_atlas_common_sword_png.unity3d
+    Info_3:
+      Name: resbundles_assets_bundles_resbundles_atlas_common_gold_gif.unity3d
+      Dependencies: {}
+    Info_4:
+      Name: resbundles_assets_bundles_resbundles_atlas_common_healthwater_png.unity3d
+      Dependencies: {}
+    Info_5:
+      Name: resbundles_assets_bundles_resbundles_atlas_common_shield_gif.unity3d
+      Dependencies: {}
+    Info_6:
+      Name: resbundles_assets_bundles_resbundles_atlas_common_silver_gif.unity3d
+      Dependencies: {}
+    Info_7:
+      Name: resbundles_assets_bundles_resbundles_atlas_common_sword_png.unity3d
+      Dependencies: {}
+    Info_8:
+      Name: resbundles_assets_bundles_resbundles_ui_uihelp_prefab.unity3d
+      Dependencies: {}
+    Info_9:
+      Name: resbundles_assets_bundles_resbundles_ui_common_escommonui_prefab.unity3d
+      Dependencies: {}
+    Info_10:
+      Name: resbundles_assets_bundles_resbundles_ui_common_esreuseui_prefab.unity3d
+      Dependencies: {}
+    Info_11:
+      Name: resbundles_assets_bundles_resbundles_ui_common_reddot_prefab.unity3d
+      Dependencies: {}
+    Info_12:
+      Name: resbundles_assets_bundles_resbundles_ui_dlg_dlghelper_prefab.unity3d
+      Dependencies: {}
+    Info_13:
+      Name: resbundles_assets_bundles_resbundles_ui_dlg_dlglobby_prefab.unity3d
+      Dependencies: {}
+    Info_14:
+      Name: resbundles_assets_bundles_resbundles_ui_dlg_dlglogin_prefab.unity3d
+      Dependencies: {}
+    Info_15:
+      Name: resbundles_assets_bundles_resbundles_ui_dlg_dlgreddot_prefab.unity3d
+      Dependencies: {}
+    Info_16:
+      Name: resbundles_assets_bundles_resbundles_ui_item_item_servertest_prefab.unity3d
+      Dependencies: {}
+    Info_17:
+      Name: resbundles_assets_bundles_resbundles_ui_item_item_test_prefab.unity3d
+      Dependencies: {}
+    Info_18:
+      Name: resbundles_assets_bundles_resbundles_unit_unit_prefab.unity3d
+      Dependencies:
+        Dependency_0: shader_resbundles

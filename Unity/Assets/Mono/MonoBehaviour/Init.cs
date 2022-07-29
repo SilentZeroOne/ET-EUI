@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using BM;
 using UnityEngine;
 
 namespace ET
@@ -7,7 +8,7 @@ namespace ET
 	public enum CodeMode
 	{
 		Mono = 1,
-		Wolong=2,
+		Wolong = 2,
 		Reload = 3,
 	}
 	
@@ -18,7 +19,7 @@ namespace ET
 		private void Awake()
 		{
 #if ENABLE_IL2CPP
-			this.CodeMode = CodeMode.ILRuntime;
+			this.CodeMode = CodeMode.Wolong;
 #endif
 			
 			System.AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
@@ -49,17 +50,18 @@ namespace ET
 
 		private void Update()
 		{
-			CodeLoader.Instance.Update();
+			CodeLoader.Instance.Update?.Invoke();
+			AssetComponent.Update();
 		}
 
 		private void LateUpdate()
 		{
-			CodeLoader.Instance.LateUpdate();
+			CodeLoader.Instance.LateUpdate?.Invoke();
 		}
 
 		private void OnApplicationQuit()
 		{
-			CodeLoader.Instance.OnApplicationQuit();
+			CodeLoader.Instance.OnApplicationQuit?.Invoke();
 			CodeLoader.Instance.Dispose();
 		}
 	}

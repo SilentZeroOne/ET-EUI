@@ -4,6 +4,7 @@ using System.IO;
 using System.Reflection;
 using UnityEngine;
 using System.Linq;
+using BM;
 
 namespace ET
 {
@@ -57,18 +58,49 @@ namespace ET
 		
 		public void Start()
 		{
+			this.Initialize().Coroutine();
+		}
+
+		private async ETTask Initialize()
+		{
+			await this.CheckHotfix();
+			await this.LoadGameDll();
+		}
+
+		private async ETTask CheckHotfix()
+		{
+			AssetComponentConfig.DefaultBundlePackageName = "ResBundle";
+			
+			//重新配置热更路径(开发方便用, 打包移动端需要注释注释)
+			AssetComponentConfig.HotfixPath = Application.dataPath + "/../HotfixBundles/";
+			
+			Dictionary<string, bool> updatePackageBundle = new Dictionary<string, bool>()
+			{
+				{"Code", false},
+				{"ResBundles", false},
+			};
+			UpdateBundleDataInfo updateBundleDataInfo = await AssetComponent.CheckAllBundlePackageUpdate(updatePackageBundle);
+			if (updateBundleDataInfo.NeedUpdate)
+			{
+				Debug.LogError("需要更新, 大小: " + updateBundleDataInfo.NeedUpdateSize);
+				await AssetComponent.DownLoadUpdate(updateBundleDataInfo);
+			}
+			await AssetComponent.Initialize("Code");
+			await AssetComponent.Initialize("ResBundles");
+		}
+		
+		private async ETTask LoadGameDll()
+		{
 			switch (this.CodeMode)
 			{
 				case CodeMode.Mono:
+				case CodeMode.Wolong:
 				{
-					(AssetBundle assetsBundle, Dictionary<string, UnityEngine.Object> dictionary) = AssetsBundleHelper.LoadBundle("code.unity3d");
-					byte[] assBytes = ((TextAsset)dictionary["Code.dll"]).bytes;
-					byte[] pdbBytes = ((TextAsset)dictionary["Code.pdb"]).bytes;
+					byte[] assBytes = (await AssetComponent.LoadAsync<TextAsset>(BPath.Assets_Bundles_Code_Code__dll__bytes,"Code")).bytes;
 					
-					if (assetsBundle != null)
-					{
-						assetsBundle.Unload(true);	
-					}
+					byte[] pdbBytes = (await AssetComponent.LoadAsync<TextAsset>(BPath.Assets_Bundles_Code_Code__pdb__bytes,"Code")).bytes;
+					
+					AssetComponent.UnInitialize("Code");
 					
 					assembly = Assembly.Load(assBytes, pdbBytes);
 					foreach (Type type in this.assembly.GetTypes())

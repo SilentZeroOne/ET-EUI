@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2070531821
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: ffd55546eaa0050f502167d453bbc64b
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ba740a701dfcd3eaa22374d723b44054
+HashAppended: 0
+ClassTypes:
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 687078895
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Bundles/ResBundles/Atlas/Common/Axe.png
+Dependencies: []
