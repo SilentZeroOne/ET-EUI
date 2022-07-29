@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 963611198
+CRC: 3509666394
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -7,4 +7,13 @@ AssetBundleManifest:
       Dependencies: {}
     Info_1:
       Name: code_assets_bundles_code_code_pdb_bytes.unity3d
+      Dependencies: {}
+    Info_2:
+      Name: code_assets_bundles_code_mscorlib_dll_bytes.unity3d
+      Dependencies: {}
+    Info_3:
+      Name: code_assets_bundles_code_system_core_dll_bytes.unity3d
+      Dependencies: {}
+    Info_4:
+      Name: code_assets_bundles_code_system_dll_bytes.unity3d
       Dependencies: {}

@@ -1,4 +1,4 @@
-2022/7/29 12:51:53|0|False
+2022/7/29 17:33:43|0|False
 resbundles_assets_bundles_resbundles_atlas_common_axe_png.unity3d|11088|374150720
 resbundles_assets_bundles_resbundles_atlas_common_common_spriteatlas.unity3d|1058416|432378655
 resbundles_assets_bundles_resbundles_atlas_common_gold_gif.unity3d|10496|1896290551

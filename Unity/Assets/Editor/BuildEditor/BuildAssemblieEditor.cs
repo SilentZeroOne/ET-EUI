@@ -192,6 +192,9 @@ namespace ET
             assetImporter1.assetBundleName = "Code.unity3d";
             AssetImporter assetImporter2 = AssetImporter.GetAtPath("Assets/Bundles/Code/Code.pdb.bytes");
             assetImporter2.assetBundleName = "Code.unity3d";
+            
+            BuildHelper.CopyDllToAssets(EditorUserBuildSettings.activeBuildTarget);
+            
             AssetDatabase.Refresh();
             Debug.Log("set assetbundle success!");
             

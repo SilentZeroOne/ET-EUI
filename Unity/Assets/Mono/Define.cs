@@ -1,10 +1,25 @@
-﻿using UnityEngine.Networking;
+﻿using System.Collections.Generic;
+using BM;
+using UnityEngine.Networking;
 
 namespace ET
 {
 	public static class Define
 	{
 		public const string BuildOutputDir = "./Temp/Bin/Debug";
+
+		public static List<string> RawDllAotList = new List<string>()
+		{
+			"mscorlib.dll", 
+			"System.dll", 
+			"System.Core.dll",
+		};
+
+		public static List<string> DllAotList = new List<string>() { 
+			$"{BPath.Assets_Bundles_Code_mscorlib__dll__bytes}", 
+			$"{BPath.Assets_Bundles_Code_System__dll__bytes}", 
+			$"{BPath.Assets_Bundles_Code_System__Core__dll__bytes}",
+		};
 
 #if UNITY_EDITOR && !ASYNC
 		public static bool IsAsync = false;
