@@ -8,6 +8,7 @@ namespace BM
 		public const string Assets_Bundles_Code_mscorlib__dll__bytes = "Assets/Bundles/Code/mscorlib.dll.bytes";
 		public const string Assets_Bundles_Code_System__Core__dll__bytes = "Assets/Bundles/Code/System.Core.dll.bytes";
 		public const string Assets_Bundles_Code_System__dll__bytes = "Assets/Bundles/Code/System.dll.bytes";
+		public const string Assets_Bundles_Code_Unity__Mono__dll__bytes = "Assets/Bundles/Code/Unity.Mono.dll.bytes";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_Axe__png = "Assets/Bundles/ResBundles/Atlas/Common/Axe.png";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_common__spriteatlas = "Assets/Bundles/ResBundles/Atlas/Common/common.spriteatlas";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_Gold__gif = "Assets/Bundles/ResBundles/Atlas/Common/Gold.gif";

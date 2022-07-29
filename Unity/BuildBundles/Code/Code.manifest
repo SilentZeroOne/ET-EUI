@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 3509666394
+CRC: 3113453926
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -16,4 +16,7 @@ AssetBundleManifest:
       Dependencies: {}
     Info_4:
       Name: code_assets_bundles_code_system_dll_bytes.unity3d
+      Dependencies: {}
+    Info_5:
+      Name: code_assets_bundles_code_unity_mono_dll_bytes.unity3d
       Dependencies: {}

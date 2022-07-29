@@ -13,12 +13,14 @@ namespace ET
 			"mscorlib.dll", 
 			"System.dll", 
 			"System.Core.dll",
+			"Unity.Mono.dll"
 		};
 
 		public static List<string> DllAotList = new List<string>() { 
 			$"{BPath.Assets_Bundles_Code_mscorlib__dll__bytes}", 
 			$"{BPath.Assets_Bundles_Code_System__dll__bytes}", 
 			$"{BPath.Assets_Bundles_Code_System__Core__dll__bytes}",
+			$"{BPath.Assets_Bundles_Code_Unity__Mono__dll__bytes}"
 		};
 
 #if UNITY_EDITOR && !ASYNC

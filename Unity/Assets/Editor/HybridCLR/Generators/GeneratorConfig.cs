@@ -45,6 +45,7 @@ namespace HybridCLR.Generators
             return new List<string>
             {
                 "vi8i8",
+                "i1i8i8i2i1"
             };
         }
 
