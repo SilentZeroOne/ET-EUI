@@ -25,7 +25,7 @@ namespace BM
         /// <summary>
         /// 资源服务器的地址 http://192.168.50.157/BundleData/
         /// </summary>
-        public static string BundleServerUrl = "http://192.168.50.157/BundleData/";
+        public static string BundleServerUrl = "http://192.168.31.30:8080/BuildBundles/";
         
         /// <summary>
         /// 默认加载的Bundle名

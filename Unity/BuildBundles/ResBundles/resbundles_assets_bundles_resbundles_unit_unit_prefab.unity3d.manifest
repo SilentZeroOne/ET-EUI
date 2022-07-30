@@ -41,4 +41,4 @@ SerializeReferenceClassIdentifiers:
 Assets:
 - Assets/Bundles/ResBundles/Unit/Unit.prefab
 Dependencies:
-- D:/UnityProject/MyET/ET-EUI/Unity/BuildBundles/ResBundles/shader_resbundles
+- I:/Software/Unity/UnityProject/ET-EUI/Unity/BuildBundles/ResBundles/shader_resbundles

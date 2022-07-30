@@ -484,7 +484,7 @@ namespace ET
                 Log.Error($"{baseWindow.WindowID} uiPath is not Exist!");
                 return;
             }
-            ResourcesComponent.Instance.LoadBundle(value.StringToAB());
+            //ResourcesComponent.Instance.LoadBundle(value.StringToAB());
             //GameObject go                      = ResourcesComponent.Instance.GetAsset(value.StringToAB(), value ) as GameObject;
             GameObject go = AssetComponent.Load<GameObject>(value.StringToAB());
             baseWindow.UIPrefabGameObject      = UnityEngine.Object.Instantiate(go);

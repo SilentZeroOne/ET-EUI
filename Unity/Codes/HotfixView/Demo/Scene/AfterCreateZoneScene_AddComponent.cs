@@ -11,6 +11,7 @@ namespace ET
             zoneScene.AddComponent<RedDotComponent>();
             zoneScene.AddComponent<ResourcesLoaderComponent>();
         
+            Log.Debug("Current Run Test Wolong");
             zoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Login);
         }
     }

@@ -1,0 +1,27 @@
+ManifestFileVersion: 0
+CRC: 215251921
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 6b23bd7b894999c94ff6892efaf4f315
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 0d677c6dec2405a43fe6dd294cca7c3e
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+- Class: 687078895
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Bundles/ResBundles/Atlas/Common/AllCommon.spriteatlas
+Dependencies:
+- I:/Software/Unity/UnityProject/ET-EUI/Unity/BuildBundles/ResBundles/resbundles_assets_bundles_resbundles_atlas_common_axe_png.unity3d
+- I:/Software/Unity/UnityProject/ET-EUI/Unity/BuildBundles/ResBundles/resbundles_assets_bundles_resbundles_atlas_common_gold_gif.unity3d
+- I:/Software/Unity/UnityProject/ET-EUI/Unity/BuildBundles/ResBundles/resbundles_assets_bundles_resbundles_atlas_common_healthwater_png.unity3d
+- I:/Software/Unity/UnityProject/ET-EUI/Unity/BuildBundles/ResBundles/resbundles_assets_bundles_resbundles_atlas_common_shield_gif.unity3d
+- I:/Software/Unity/UnityProject/ET-EUI/Unity/BuildBundles/ResBundles/resbundles_assets_bundles_resbundles_atlas_common_silver_gif.unity3d
+- I:/Software/Unity/UnityProject/ET-EUI/Unity/BuildBundles/ResBundles/resbundles_assets_bundles_resbundles_atlas_common_sword_png.unity3d

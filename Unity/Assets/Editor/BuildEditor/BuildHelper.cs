@@ -89,6 +89,10 @@ namespace ET
             }
         }
         
+        /// <summary>
+        /// 复制AOT Dll
+        /// </summary>
+        /// <param name="target"></param>
         public static void CopyDllToAssets(BuildTarget target)
         {
             string aotDllDir = $"{AssembliesPostIl2CppStripDir}/{target}";

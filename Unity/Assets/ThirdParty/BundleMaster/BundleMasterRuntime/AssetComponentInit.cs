@@ -145,6 +145,7 @@ namespace BM
             }
             //加载当前分包的shader
             await LoadShader(bundlePackageName);
+            Debug.Log($"初始化分包{bundlePackageName} 成功");
             return true;
         }
         

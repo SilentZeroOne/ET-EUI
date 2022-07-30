@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using BM;
 using UnityEngine;
 using UnityEngine.U2D;
 using UnityEngine.UIElements;
@@ -19,8 +20,8 @@ namespace ET
         {
             try
             {
-                ResourcesComponent.Instance.LoadBundle(atlasName.StringToAB());
-                SpriteAtlas spriteAtlas = ResourcesComponent.Instance.GetAsset(atlasName.StringToAB(),atlasName) as SpriteAtlas ;
+                //ResourcesComponent.Instance.LoadBundle(atlasName.StringToAB());
+                SpriteAtlas spriteAtlas = AssetComponent.Load<SpriteAtlas>(atlasName.StringToAB());
                 Sprite sprite = spriteAtlas.GetSprite(spriteName);
                 if ( null == sprite )
                 {
@@ -44,8 +45,8 @@ namespace ET
         {
             try
             {
-                await ResourcesComponent.Instance.LoadBundleAsync(atlasName.StringToAB());
-                SpriteAtlas spriteAtlas = ResourcesComponent.Instance.GetAsset(atlasName.StringToAB(),atlasName) as SpriteAtlas ;
+                //await ResourcesComponent.Instance.LoadBundleAsync(atlasName.StringToAB());
+                SpriteAtlas spriteAtlas = await AssetComponent.LoadAsync<SpriteAtlas>(atlasName.StringToAB());
                 Sprite sprite = spriteAtlas.GetSprite(spriteName);
                 if (null == sprite)
                 {

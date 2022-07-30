@@ -69,7 +69,7 @@ namespace ET
 
 		private async ETTask CheckHotfix()
 		{
-			AssetComponentConfig.DefaultBundlePackageName = "ResBundle";
+			AssetComponentConfig.DefaultBundlePackageName = "ResBundles";
 			
 			//重新配置热更路径(开发方便用, 打包移动端需要注释注释)
 			AssetComponentConfig.HotfixPath = Application.dataPath + "/../HotfixBundles/";
@@ -78,6 +78,7 @@ namespace ET
 			{
 				{"Code", false},
 				{"ResBundles", false},
+				{"Config", false},
 			};
 			UpdateBundleDataInfo updateBundleDataInfo = await AssetComponent.CheckAllBundlePackageUpdate(updatePackageBundle);
 			if (updateBundleDataInfo.NeedUpdate)

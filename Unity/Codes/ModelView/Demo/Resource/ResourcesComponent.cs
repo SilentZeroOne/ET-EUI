@@ -78,18 +78,18 @@ namespace ET
             return await tcs;
         }
 
-        public static string IntToString(this int value)
-        {
-            string result;
-            if (ResourcesComponent.Instance.IntToStringDict.TryGetValue(value, out result))
-            {
-                return result;
-            }
-
-            result = value.ToString();
-            ResourcesComponent.Instance.IntToStringDict[value] = result;
-            return result;
-        }
+        // public static string IntToString(this int value)
+        // {
+        //     string result;
+        //     if (ResourcesComponent.Instance.IntToStringDict.TryGetValue(value, out result))
+        //     {
+        //         return result;
+        //     }
+        //
+        //     result = value.ToString();
+        //     ResourcesComponent.Instance.IntToStringDict[value] = result;
+        //     return result;
+        // }
 
         // public static string StringToAB(this string value)
         // {
@@ -104,10 +104,10 @@ namespace ET
         //     return result;
         // }
 
-        public static string IntToAB(this int value)
-        {
-            return value.IntToString().StringToAB();
-        }
+        // public static string IntToAB(this int value)
+        // {
+        //     return value.IntToString().StringToAB();
+        // }
 
         public static string BundleNameToLower(this string value)
         {
