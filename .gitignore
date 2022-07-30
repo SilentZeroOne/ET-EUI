@@ -89,3 +89,5 @@ Unity/CatJson.Runtime.csproj
 Unity/Assembly-CSharp-Editor-firstpass.csproj
 Unity/IngameDebugConsole.Editor.csproj
 Unity/IngameDebugConsole.Runtime.csproj
+Unity/Assembly-CSharp-Editor.csproj
+Unity/Assembly-CSharp-firstpass.csproj
