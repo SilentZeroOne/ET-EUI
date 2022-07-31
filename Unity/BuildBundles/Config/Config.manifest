@@ -1,22 +1,28 @@
 ManifestFileVersion: 0
-CRC: 2893129305
+CRC: 3839794445
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: config_assets_bundles_config_aiconfigcategory_bytes.unity3d
       Dependencies: {}
     Info_1:
-      Name: config_assets_bundles_config_startmachineconfigcategory_bytes.unity3d
+      Name: config_assets_bundles_config_gamesceneconfigcategory_bytes.unity3d
       Dependencies: {}
     Info_2:
-      Name: config_assets_bundles_config_startprocessconfigcategory_bytes.unity3d
+      Name: config_assets_bundles_config_playernumericconfigcategory_bytes.unity3d
       Dependencies: {}
     Info_3:
-      Name: config_assets_bundles_config_startsceneconfigcategory_bytes.unity3d
+      Name: config_assets_bundles_config_startmachineconfigcategory_bytes.unity3d
       Dependencies: {}
     Info_4:
-      Name: config_assets_bundles_config_startzoneconfigcategory_bytes.unity3d
+      Name: config_assets_bundles_config_startprocessconfigcategory_bytes.unity3d
       Dependencies: {}
     Info_5:
+      Name: config_assets_bundles_config_startsceneconfigcategory_bytes.unity3d
+      Dependencies: {}
+    Info_6:
+      Name: config_assets_bundles_config_startzoneconfigcategory_bytes.unity3d
+      Dependencies: {}
+    Info_7:
       Name: config_assets_bundles_config_unitconfigcategory_bytes.unity3d
       Dependencies: {}

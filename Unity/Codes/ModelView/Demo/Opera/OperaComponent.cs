@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace ET
 {
-	[ComponentOf(typeof(Scene))]
+	[ComponentOf()]
 	public class OperaComponent: Entity, IAwake, IUpdate
     {
         public Vector3 ClickPoint;
 
 	    public int mapMask;
 
-	    public readonly C2M_PathfindingResult frameClickMap = new C2M_PathfindingResult();
+	    //public readonly C2M_PathfindingResult frameClickMap = new C2M_PathfindingResult();
     }
 }

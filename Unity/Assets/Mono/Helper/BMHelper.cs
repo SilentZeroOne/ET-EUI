@@ -16,5 +16,18 @@ namespace ET
 
             return "";
         }
+        
+        public static string SceneNameToAB(this string self)
+        {
+            foreach (var fieldInfo in typeof (BPath).GetFields())
+            {
+                if (fieldInfo.Name.Contains(self) && fieldInfo.Name.EndsWith("unity"))
+                {
+                    return (string)fieldInfo.GetValue(null);
+                }
+            }
+
+            return "";
+        }
     }
 }

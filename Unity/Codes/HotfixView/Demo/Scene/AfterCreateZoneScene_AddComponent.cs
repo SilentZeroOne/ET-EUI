@@ -9,10 +9,13 @@ namespace ET
             zoneScene.AddComponent<UIPathComponent>();
             zoneScene.AddComponent<UIEventComponent>();
             zoneScene.AddComponent<RedDotComponent>();
-            zoneScene.AddComponent<ResourcesLoaderComponent>();
-        
-            Log.Debug("Current Run Test Wolong");
-            zoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Login);
+            //zoneScene.AddComponent<ResourcesLoaderComponent>();
+            
+            //zoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Login);
+
+            var config = GameSceneConfigCategory.Instance.Get(1);
+
+            SceneChangeHelper.SceneChangeTo(zoneScene, config.SceneName, IdGenerater.Instance.GenerateInstanceId()).Coroutine();
         }
     }
 }

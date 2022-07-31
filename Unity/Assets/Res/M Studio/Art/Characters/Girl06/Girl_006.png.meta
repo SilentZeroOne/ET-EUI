@@ -486,8 +486,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Girl_006_8: 2345034867197306998
       Girl_006_9: -4189311196571253662
+      Girl_006_7: 6756421184908325022
       Girl_006_5: 5491031215903019841
       Girl_006_2: -1387741408451638364
       Girl_006_6: -4325071344090235120
@@ -501,7 +501,7 @@ TextureImporter:
       Girl_006_10: -3767299639985534123
       Girl_006_11: 2446665577938430974
       Girl_006_3: -2448957210301003979
-      Girl_006_7: 6756421184908325022
+      Girl_006_8: 2345034867197306998
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

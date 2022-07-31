@@ -72,11 +72,18 @@ namespace ET
 		{
 			byte[] oneConfigBytes = configBytes[configType.Name];
 
-			object category = ProtobufHelper.FromBytes(configType, oneConfigBytes, 0, oneConfigBytes.Length);
-
-			lock (self)
+			try
 			{
-				self.AllConfig[configType] = category;	
+				object category = ProtobufHelper.FromBytes(configType, oneConfigBytes, 0, oneConfigBytes.Length);
+				
+				lock (self)
+				{
+					self.AllConfig[configType] = category;	
+				}
+			}
+			catch (Exception e)
+			{
+				Log.Error("error e"+e.ToString());
 			}
 		}
 	}

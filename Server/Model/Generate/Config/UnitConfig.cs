@@ -87,15 +87,9 @@ namespace ET
 		/// <summary>描述</summary>
 		[ProtoMember(4)]
 		public string Desc { get; set; }
-		/// <summary>位置</summary>
+		/// <summary>预制体名称</summary>
 		[ProtoMember(5)]
-		public int Position { get; set; }
-		/// <summary>身高</summary>
-		[ProtoMember(6)]
-		public int Height { get; set; }
-		/// <summary>体重</summary>
-		[ProtoMember(7)]
-		public int Weight { get; set; }
+		public string PrefabName { get; set; }
 
 	}
 }

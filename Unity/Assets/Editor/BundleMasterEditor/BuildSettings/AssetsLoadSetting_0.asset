@@ -22,4 +22,5 @@ MonoBehaviour:
   AssetPath:
   - Assets/Bundles/ResBundles
   AssetGroupPaths: []
-  Scene: []
+  Scene:
+  - {fileID: 102900000, guid: fad264034b5ee6e428abca611245fb4c, type: 3}

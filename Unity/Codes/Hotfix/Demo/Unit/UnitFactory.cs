@@ -44,5 +44,24 @@ namespace ET
 	        Game.EventSystem.Publish(new EventType.AfterUnitCreate() {Unit = unit});
             return unit;
         }
+
+        public static Unit Create(Scene currentScene)
+        {
+	        UnitComponent unitComponent = currentScene.GetComponent<UnitComponent>();
+	        Unit unit = unitComponent.AddChild<Unit, int>(UnitConfigCategory.Instance.GetPlayerConfig().Id);
+	        unitComponent.Add(unit);
+
+	        NumericComponent numericComponent = unit.AddComponent<NumericComponent>();
+	        foreach (var config in PlayerNumericConfigCategory.Instance.GetAll().Values)
+	        {
+		        numericComponent.Set(config.Id,config.BaseValue);
+	        }
+
+	        unit.AddComponent<MyMoveComponent>();
+	        unit.AddComponent<ObjectWait>();
+	        
+	        Game.EventSystem.Publish(new EventType.AfterUnitCreate() {Unit = unit});
+	        return unit;
+        }
     }
 }

@@ -15,5 +15,7 @@
 <Assets/Bundles/ResBundles/UI/Dlg/DlgRedDot.prefab|resbundles_assets_bundles_resbundles_ui_dlg_dlgreddot_prefab.unity3d>
 <Assets/Bundles/ResBundles/UI/Item/Item_serverTest.prefab|resbundles_assets_bundles_resbundles_ui_item_item_servertest_prefab.unity3d>
 <Assets/Bundles/ResBundles/UI/Item/Item_test.prefab|resbundles_assets_bundles_resbundles_ui_item_item_test_prefab.unity3d>
+<Assets/Bundles/ResBundles/Unit/Player.prefab|resbundles_assets_bundles_resbundles_unit_player_prefab.unity3d>
 <Assets/Bundles/ResBundles/Unit/Unit.prefab|resbundles_assets_bundles_resbundles_unit_unit_prefab.unity3d>
+<Assets/Scenes/Game.unity|resbundles_assets_scenes_game_unity.unity3d>
 

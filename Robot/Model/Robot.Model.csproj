@@ -34,6 +34,9 @@
         <Compile Include="..\..\Server\Model\Config\ConfigLoader.cs">
           <Link>Config\ConfigLoader.cs</Link>
         </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Generate\ConfigPartial\PlayerNumericConfigPartial.cs">
+          <Link>Generate\ConfigPartial\PlayerNumericConfigPartial.cs</Link>
+        </Compile>
         <Compile Include="..\..\Unity\Codes\Model\Module\Config\**\*.cs">
             <Link>Module\Config\%(RecursiveDir)%(FileName)%(Extension)</Link>
         </Compile>

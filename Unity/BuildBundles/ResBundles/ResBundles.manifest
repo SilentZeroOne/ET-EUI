@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 4097309058
+CRC: 845368489
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
@@ -63,6 +63,12 @@ AssetBundleManifest:
       Name: resbundles_assets_bundles_resbundles_ui_item_item_test_prefab.unity3d
       Dependencies: {}
     Info_18:
+      Name: resbundles_assets_bundles_resbundles_unit_player_prefab.unity3d
+      Dependencies: {}
+    Info_19:
       Name: resbundles_assets_bundles_resbundles_unit_unit_prefab.unity3d
       Dependencies:
         Dependency_0: shader_resbundles
+    Info_20:
+      Name: resbundles_assets_scenes_game_unity.unity3d
+      Dependencies: {}

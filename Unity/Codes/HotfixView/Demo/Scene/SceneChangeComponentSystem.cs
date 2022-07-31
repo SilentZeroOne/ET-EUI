@@ -1,4 +1,5 @@
-﻿using UnityEngine.SceneManagement;
+﻿using BM;
+using UnityEngine.SceneManagement;
 
 namespace ET
 {
@@ -6,6 +7,8 @@ namespace ET
     {
         public override void Update(SceneChangeComponent self)
         {
+            if (self.loadMapOperation == null) return; 
+            
             if (!self.loadMapOperation.isDone)
             {
                 return;
@@ -39,6 +42,8 @@ namespace ET
         {
             self.tcs = ETTask.Create(true);
             // 加载map
+
+            await AssetComponent.LoadSceneAsync(sceneName.SceneNameToAB());
             self.loadMapOperation = SceneManager.LoadSceneAsync(sceneName);
             //this.loadMapOperation.allowSceneActivation = false;
             await self.tcs;
