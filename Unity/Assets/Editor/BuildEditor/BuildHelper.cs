@@ -9,7 +9,7 @@ namespace ET
     {
         private const string relativeDirPrefix = "../Release";
 
-        public static string BuildFolder = "../Release/{0}/StreamingAssets/";
+        public static string BuildFolder = Application.dataPath + "/../BuildBundles";
         
         public static string ProjectDir => Directory.GetParent(Application.dataPath).ToString();
         
