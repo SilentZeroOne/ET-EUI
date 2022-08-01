@@ -13,7 +13,7 @@ namespace ET
             
             //zoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Login);
 
-            var config = GameSceneConfigCategory.Instance.Get(1);
+            var config = GameSceneConfigCategory.Instance.Get(2);
 
             SceneChangeHelper.SceneChangeTo(zoneScene, config.SceneName, IdGenerater.Instance.GenerateInstanceId()).Coroutine();
         }

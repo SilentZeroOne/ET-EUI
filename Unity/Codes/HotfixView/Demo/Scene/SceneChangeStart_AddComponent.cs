@@ -1,3 +1,7 @@
+using ET.WaitType;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
 namespace ET
 {
     public class SceneChangeStart_AddComponent: AEvent<EventType.SceneChangeStart>
@@ -20,7 +24,7 @@ namespace ET
             {
                 sceneChangeComponent = Game.Scene.AddComponent<SceneChangeComponent>();
                 {
-                    await sceneChangeComponent.ChangeSceneAsync(currentScene.Name);
+                    await sceneChangeComponent.ChangeSceneAsync(currentScene.Name, LoadSceneMode.Additive);
                 }
             }
             finally
@@ -28,6 +32,10 @@ namespace ET
                 sceneChangeComponent?.Dispose();
             }
 			
+            var bound = GameObject.FindGameObjectWithTag("Bounds").GetComponent<PolygonCollider2D>();
+            currentScene.AddComponent<BoundComponent>().SetBound(bound);
+
+            args.ZoneScene.GetComponent<ObjectWait>().Notify(new Wait_SceneLoaded());
 
             //currentScene.AddComponent<OperaComponent>();
         }

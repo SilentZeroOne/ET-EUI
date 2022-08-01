@@ -1,5 +1,6 @@
 ﻿using BM;
 using UnityEngine.SceneManagement;
+using UnityEngine.U2D;
 
 namespace ET
 {
@@ -38,17 +39,18 @@ namespace ET
     [FriendClass(typeof(SceneChangeComponent))]
     public static class SceneChangeComponentSystem
     {
-        public static async ETTask ChangeSceneAsync(this SceneChangeComponent self, string sceneName)
+        public static async ETTask ChangeSceneAsync(this SceneChangeComponent self, string sceneName,LoadSceneMode mode = LoadSceneMode.Single)
         {
             self.tcs = ETTask.Create(true);
             // 加载map
 
+            //await AssetComponent.LoadAsync<SpriteAtlas>(BPath.Assets_Bundles_ResBundles_Atlas_MapAltlas__spriteatlas);
             await AssetComponent.LoadSceneAsync(sceneName.SceneNameToAB());
-            self.loadMapOperation = SceneManager.LoadSceneAsync(sceneName);
+            self.loadMapOperation = SceneManager.LoadSceneAsync(sceneName, mode);
             //this.loadMapOperation.allowSceneActivation = false;
             await self.tcs;
         }
-        
+
         public static int Process(this SceneChangeComponent self)
         {
             if (self.loadMapOperation == null)

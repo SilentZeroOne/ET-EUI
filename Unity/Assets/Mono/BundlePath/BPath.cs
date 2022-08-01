@@ -9,6 +9,7 @@ namespace BM
 		public const string Assets_Bundles_Code_System__Core__dll__bytes = "Assets/Bundles/Code/System.Core.dll.bytes";
 		public const string Assets_Bundles_Code_System__dll__bytes = "Assets/Bundles/Code/System.dll.bytes";
 		public const string Assets_Bundles_Code_Unity__Mono__dll__bytes = "Assets/Bundles/Code/Unity.Mono.dll.bytes";
+		public const string Assets_Bundles_ResBundles_Atlas_MapAltlas__spriteatlas = "Assets/Bundles/ResBundles/Atlas/MapAltlas.spriteatlas";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_AllCommon__spriteatlas = "Assets/Bundles/ResBundles/Atlas/Common/AllCommon.spriteatlas";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_Axe__png = "Assets/Bundles/ResBundles/Atlas/Common/Axe.png";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_Gold__gif = "Assets/Bundles/ResBundles/Atlas/Common/Gold.gif";
@@ -16,6 +17,9 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_Atlas_Common_Shield__gif = "Assets/Bundles/ResBundles/Atlas/Common/Shield.gif";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_Silver__gif = "Assets/Bundles/ResBundles/Atlas/Common/Silver.gif";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_Sword__png = "Assets/Bundles/ResBundles/Atlas/Common/Sword.png";
+		public const string Assets_Bundles_ResBundles_TreePrefab_TreeGreen__prefab = "Assets/Bundles/ResBundles/TreePrefab/TreeGreen.prefab";
+		public const string Assets_Bundles_ResBundles_TreePrefab_TreePink__prefab = "Assets/Bundles/ResBundles/TreePrefab/TreePink.prefab";
+		public const string Assets_Bundles_ResBundles_TreePrefab_TreeYellow__prefab = "Assets/Bundles/ResBundles/TreePrefab/TreeYellow.prefab";
 		public const string Assets_Bundles_ResBundles_UI_UIHelp__prefab = "Assets/Bundles/ResBundles/UI/UIHelp.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Common_ESCommonUI__prefab = "Assets/Bundles/ResBundles/UI/Common/ESCommonUI.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Common_ESReuseUI__prefab = "Assets/Bundles/ResBundles/UI/Common/ESReuseUI.prefab";
@@ -29,6 +33,7 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_Unit_Player__prefab = "Assets/Bundles/ResBundles/Unit/Player.prefab";
 		public const string Assets_Bundles_ResBundles_Unit_Unit__prefab = "Assets/Bundles/ResBundles/Unit/Unit.prefab";
 		public const string Assets_Scenes_Game__unity = "Assets/Scenes/Game.unity";
+		public const string Assets_Scenes_Field01__unity = "Assets/Scenes/Field01.unity";
 		public const string Assets_Bundles_Config_AIConfigCategory__bytes = "Assets/Bundles/Config/AIConfigCategory.bytes";
 		public const string Assets_Bundles_Config_GameSceneConfigCategory__bytes = "Assets/Bundles/Config/GameSceneConfigCategory.bytes";
 		public const string Assets_Bundles_Config_PlayerNumericConfigCategory__bytes = "Assets/Bundles/Config/PlayerNumericConfigCategory.bytes";

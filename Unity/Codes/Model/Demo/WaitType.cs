@@ -30,5 +30,14 @@
                 set;
             }
         }
+        
+        public struct Wait_SceneLoaded: IWaitType
+        {
+            public int Error
+            {
+                get;
+                set;
+            }
+        }
     }
 }
