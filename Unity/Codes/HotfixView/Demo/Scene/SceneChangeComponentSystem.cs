@@ -44,7 +44,7 @@ namespace ET
             self.tcs = ETTask.Create(true);
             // 加载map
 
-            //await AssetComponent.LoadAsync<SpriteAtlas>(BPath.Assets_Bundles_ResBundles_Atlas_MapAltlas__spriteatlas);
+            await AssetComponent.LoadAsync<SpriteAtlas>(BPath.Assets_Bundles_ResBundles_Atlas_MapAltlas__spriteatlas);
             await AssetComponent.LoadSceneAsync(sceneName.SceneNameToAB());
             self.loadMapOperation = SceneManager.LoadSceneAsync(sceneName, mode);
             //this.loadMapOperation.allowSceneActivation = false;

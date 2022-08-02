@@ -9,6 +9,7 @@ namespace BM
 		public const string Assets_Bundles_Code_System__Core__dll__bytes = "Assets/Bundles/Code/System.Core.dll.bytes";
 		public const string Assets_Bundles_Code_System__dll__bytes = "Assets/Bundles/Code/System.dll.bytes";
 		public const string Assets_Bundles_Code_Unity__Mono__dll__bytes = "Assets/Bundles/Code/Unity.Mono.dll.bytes";
+		public const string Assets_Bundles_Code_Unity__ThirdParty__dll__bytes = "Assets/Bundles/Code/Unity.ThirdParty.dll.bytes";
 		public const string Assets_Bundles_ResBundles_Atlas_MapAltlas__spriteatlas = "Assets/Bundles/ResBundles/Atlas/MapAltlas.spriteatlas";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_AllCommon__spriteatlas = "Assets/Bundles/ResBundles/Atlas/Common/AllCommon.spriteatlas";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_Axe__png = "Assets/Bundles/ResBundles/Atlas/Common/Axe.png";

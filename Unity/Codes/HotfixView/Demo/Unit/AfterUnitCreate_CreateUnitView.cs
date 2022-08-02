@@ -5,6 +5,7 @@ namespace ET
 {
     [FriendClass(typeof(GlobalComponent))]
     [FriendClassAttribute(typeof(ET.RigidBody2DComponent))]
+    [FriendClassAttribute(typeof(ET.BoundComponent))]
     public class AfterUnitCreate_CreateUnitView : AEvent<EventType.AfterUnitCreate>
     {
         protected override void Run(EventType.AfterUnitCreate args)
@@ -21,12 +22,12 @@ namespace ET
             args.Unit.AddComponent<GameObjectComponent>().GameObject = go;
             args.Unit.AddComponent<RigidBody2DComponent>().Rigidbody2D = go.GetComponent<Rigidbody2D>();
             args.Unit.AddComponent<OperaComponent>();
-            var cinemachineComponent = args.Unit.AddComponent<CinemachineComponent>();
-            cinemachineComponent.AddComponent<GameObjectComponent>().GameObject =
-                    args.Unit.GetComponent<GameObjectComponent>().GameObject.Get<GameObject>("CM vcam1");
+            args.Unit.AddComponent<TriggerFaderComponent, GameObject>(go);
+            
+            var cinemachineComponent = args.Unit.AddComponent<CinemachineComponent, GameObject>(go.Get<GameObject>("CM vcam1"));
 
             cinemachineComponent.SetConfinerBounding(args.Unit.ZoneScene().CurrentScene().GetComponent<BoundComponent>().Bounds);
-
+            
             //args.Unit.AddComponent<AnimatorComponent>();
         }
     }

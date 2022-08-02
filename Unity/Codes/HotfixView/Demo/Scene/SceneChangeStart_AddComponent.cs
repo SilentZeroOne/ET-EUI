@@ -1,4 +1,3 @@
-using ET.WaitType;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,10 +31,10 @@ namespace ET
                 sceneChangeComponent?.Dispose();
             }
 			
-            var bound = GameObject.FindGameObjectWithTag("Bounds").GetComponent<PolygonCollider2D>();
+            var bound = GameObject.FindGameObjectWithTag(TagManager.Bound).GetComponent<PolygonCollider2D>();
             currentScene.AddComponent<BoundComponent>().SetBound(bound);
 
-            args.ZoneScene.GetComponent<ObjectWait>().Notify(new Wait_SceneLoaded());
+            args.ZoneScene.GetComponent<ObjectWait>().Notify(new WaitType.Wait_SceneLoaded());
 
             //currentScene.AddComponent<OperaComponent>();
         }

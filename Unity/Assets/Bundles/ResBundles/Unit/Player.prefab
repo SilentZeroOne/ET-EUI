@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1563593854}
   - component: {fileID: 1563593853}
   - component: {fileID: 1563593855}
+  - component: {fileID: 2114033509}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -63,7 +64,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7488585, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -84,6 +85,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a8a05de0ac134f4f9d01bef6b9da077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2114033509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563593852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConfineMode: 0
+  m_BoundingVolume: {fileID: 0}
+  m_BoundingShape2D: {fileID: 0}
+  m_ConfineScreenEdges: 1
+  m_Damping: 0
 --- !u!1 &2105976614
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +202,8 @@ GameObject:
   - component: {fileID: 8186388567038702259}
   - component: {fileID: 444858152155054385}
   - component: {fileID: 5205865674450697249}
+  - component: {fileID: 2114033511}
+  - component: {fileID: 3807930192496624905}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -269,6 +289,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &2114033511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201852768911768014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 502d8cafd6a5a0447ab1db9a24cdcb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data:
+  - key: CM vcam1
+    gameObject: {fileID: 1563593852}
+--- !u!114 &3807930192496624905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201852768911768014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883126fab2d540c459f53894385b607b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2184491503431533320
 GameObject:
   m_ObjectHideFlags: 0

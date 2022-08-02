@@ -146,6 +146,13 @@ public class RefTypes : MonoBehaviour
         c9.SetException(null);
         c9.SetResult();
         Debug.Log(b);
+
+        var c10 = new ET.ETAsyncTaskMethodBuilder();
+        c10.Start(ref stateMachine);
+        c10.AwaitUnsafeOnCompleted(ref aw, ref stateMachine);
+        c10.SetException(null);
+        c10.SetResult();
+        
     }
 
     void MyAotRefs()

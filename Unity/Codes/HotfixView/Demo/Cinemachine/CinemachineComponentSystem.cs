@@ -3,11 +3,12 @@ using UnityEngine;
 
 namespace ET
 {
-    public class CinemachineComponentAwakeSystem: AwakeSystem<CinemachineComponent>
+    public class CinemachineComponentAwakeSystem: AwakeSystem<CinemachineComponent, GameObject>
     {
-        public override void Awake(CinemachineComponent self)
+        public override void Awake(CinemachineComponent self, GameObject a)
         {
-            self.Confiner = self.GetComponent<GameObjectComponent>().GameObject.GetComponent<CinemachineConfiner>();
+            self.AddComponent<GameObjectComponent>().GameObject = a;
+            self.Confiner = a.GetComponent<CinemachineConfiner>();
         }
     }
 

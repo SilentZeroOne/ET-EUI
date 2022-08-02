@@ -100,7 +100,6 @@ namespace ET
 					byte[] assBytes = (await AssetComponent.LoadAsync<TextAsset>(BPath.Assets_Bundles_Code_Code__dll__bytes,"Code")).bytes;
 					
 					byte[] pdbBytes = (await AssetComponent.LoadAsync<TextAsset>(BPath.Assets_Bundles_Code_Code__pdb__bytes,"Code")).bytes;
-
 #if UNITY_EDITOR
 					AssetComponent.UnInitialize("Code");
 #endif

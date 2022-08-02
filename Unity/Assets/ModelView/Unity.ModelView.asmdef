@@ -6,7 +6,8 @@
         "Unity.Mono",
         "Unity.ThirdParty",
         "DOTweenPro.Scripts",
-        "Cinemachine"
+        "Cinemachine",
+        "DOTween.Modules"
     ],
     "includePlatforms": [
         "Editor"

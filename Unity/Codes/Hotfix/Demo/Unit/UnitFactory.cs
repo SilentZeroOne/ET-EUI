@@ -59,7 +59,7 @@ namespace ET
 
 	        unit.AddComponent<MyMoveComponent>();
 	        unit.AddComponent<ObjectWait>();
-	        
+
 	        Game.EventSystem.Publish(new EventType.AfterUnitCreate() {Unit = unit});
 	        return unit;
         }
