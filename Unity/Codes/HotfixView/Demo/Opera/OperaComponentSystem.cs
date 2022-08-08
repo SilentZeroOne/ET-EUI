@@ -21,21 +21,20 @@ namespace ET
         }
     }
     
+    public class OperaComponentFixedUpdateSystem : FixedUpdateSystem<OperaComponent>
+    {
+        public override void FixedUpdate(OperaComponent self)
+        {
+            self.FixedUpdate();
+        }
+    }
+
     [FriendClass(typeof(OperaComponent))]
     public static class OperaComponentSystem
     {
         public static void Update(this OperaComponent self)
         {
-            var inputX = InputHelper.GetXAxisRaw();
-            var inputY = InputHelper.GetYAxisRaw();
-
-            if (inputX != 0 && inputY != 0)
-            {
-                inputX *= 0.6f;
-                inputY *= 0.6f;
-            }
-
-            self.GetParent<Unit>().GetComponent<RigidBody2DComponent>().Move(new Vector2(inputX, inputY));
+            
 
             // if (InputHelper.GetMouseButtonDown(1))
             // {
@@ -66,6 +65,20 @@ namespace ET
             //     C2M_TransferMap c2MTransferMap = new C2M_TransferMap();
             //     self.ZoneScene().GetComponent<SessionComponent>().Session.Call(c2MTransferMap).Coroutine();
             // }
+        }
+
+        public static void FixedUpdate(this OperaComponent self)
+        {
+            var inputX = InputHelper.GetXAxisRaw();
+            var inputY = InputHelper.GetYAxisRaw();
+
+            if (inputX != 0 && inputY != 0)
+            {
+                inputX *= 0.6f;
+                inputY *= 0.6f;
+            }
+
+            self.GetParent<Unit>().GetComponent<RigidBody2DComponent>().Move(new Vector2(inputX, inputY));
         }
     }
 }

@@ -5,8 +5,8 @@ using UnityEngine;
 namespace ET
 {
 	[ComponentOf()]
-	public class OperaComponent: Entity, IAwake, IUpdate
-    {
+	public class OperaComponent: Entity, IAwake, IUpdate, IFixedUpdate
+	{
         public Vector3 ClickPoint;
 
 	    public int mapMask;

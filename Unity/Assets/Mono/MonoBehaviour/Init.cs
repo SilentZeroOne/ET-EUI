@@ -60,6 +60,11 @@ namespace ET
 			CodeLoader.Instance.LateUpdate?.Invoke();
 		}
 
+		private void FixedUpdate()
+		{
+			CodeLoader.Instance.FixedUpdate?.Invoke();
+		}
+
 		private void OnApplicationQuit()
 		{
 			CodeLoader.Instance.OnApplicationQuit?.Invoke();
