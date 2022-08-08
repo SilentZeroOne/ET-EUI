@@ -40,7 +40,7 @@ namespace HybridCLR
         public static List<string> MonoHotUpdateDllNames { get; } = new List<string>()
         {
             //"HotFix.dll",
-            //"HotfixMono.dll"
+            "HotfixMono.dll"
         };
 
         /// <summary>

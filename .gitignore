@@ -94,3 +94,4 @@ Unity/Assembly-CSharp-firstpass.csproj
 /Unity/BuildBundles
 Unity/DOTween.Modules.csproj
 Unity/HotfixMono.csproj
+Unity/Unity.HotfixMono.csproj

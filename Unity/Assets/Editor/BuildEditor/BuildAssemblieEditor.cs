@@ -52,7 +52,7 @@ namespace ET
 
             AfterCompiling();
 
-            //BuildHotfixMono(CodeOptimization.Debug);
+            BuildHotfixMono(CodeOptimization.Debug);
             
             AssetDatabase.Refresh();
         }
@@ -70,7 +70,7 @@ namespace ET
 
             AfterCompiling();
             
-            //BuildHotfixMono(CodeOptimization.Release);
+            BuildHotfixMono(CodeOptimization.Release);
             
             AssetDatabase.Refresh();
         }

@@ -9,7 +9,8 @@
         "Unity.ModelView",
         "Cinemachine",
         "DOTweenPro.Scripts",
-        "DOTween.Modules"
+        "DOTween.Modules",
+        "HotfixMono"
     ],
     "includePlatforms": [
         "Editor"

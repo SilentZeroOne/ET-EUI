@@ -7,7 +7,8 @@
         "Unity.ThirdParty",
         "DOTweenPro.Scripts",
         "Cinemachine",
-        "DOTween.Modules"
+        "DOTween.Modules",
+        "HotfixMono"
     ],
     "includePlatforms": [
         "Editor"

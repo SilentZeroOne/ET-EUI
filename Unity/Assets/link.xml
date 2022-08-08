@@ -9,6 +9,8 @@
     <assembly fullname="UnityEngine.VFXModule" preserve="all"/>
     <assembly fullname="UnityEngine.AssetBundleModule" preserve="all"/>
     <assembly fullname="System.Runtime.Serialization" preserve="all"/>
+    <assembly fullname="Unity.HotfixMono" preserve="all"/>
+    <assembly fullname="HotfixMono" preserve="all"/>
 
 
     <assembly fullname="Unity.NGUI" preserve="all" />

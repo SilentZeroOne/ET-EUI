@@ -100,10 +100,14 @@ namespace ET
 					byte[] assBytes = (await AssetComponent.LoadAsync<TextAsset>(BPath.Assets_Bundles_Code_Code__dll__bytes,"Code")).bytes;
 					
 					byte[] pdbBytes = (await AssetComponent.LoadAsync<TextAsset>(BPath.Assets_Bundles_Code_Code__pdb__bytes,"Code")).bytes;
+					
+					byte[] hotfixAssBytes = (await AssetComponent.LoadAsync<TextAsset>(BPath.Assets_Bundles_Code_HotfixMono__dll__bytes,"Code")).bytes;
+					
+					byte[] hotfixPdbBytes = (await AssetComponent.LoadAsync<TextAsset>(BPath.Assets_Bundles_Code_HotfixMono__pdb__bytes,"Code")).bytes;
 #if UNITY_EDITOR
 					AssetComponent.UnInitialize("Code");
 #endif
-					
+					var hotfixAssembly = Assembly.Load(hotfixAssBytes, hotfixPdbBytes);
 					assembly = Assembly.Load(assBytes, pdbBytes);
 					
 #if !UNITY_EDITOR

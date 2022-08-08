@@ -8,7 +8,7 @@ namespace ET
     {
         public override void Awake(TriggerFaderComponent self, GameObject a)
         {
-            self.Trigger = a.GetComponent<TriggerAction>();
+            self.Trigger = a.AddComponent<TriggerAction>();
             self.Trigger.OnTriggerEnter2DAction += self.FadeOut;
             self.Trigger.OnTriggerExit2DAction += self.FadeIn;
         }

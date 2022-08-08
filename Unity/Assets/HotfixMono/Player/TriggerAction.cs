@@ -6,8 +6,7 @@ public class TriggerAction : MonoBehaviour
     public Action<Collider2D> OnTriggerEnter2DAction;
     public Action<Collider2D> OnTriggerExit2DAction;
     public Action<Collider2D> OnTriggerStay2DAction;
-    
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         OnTriggerEnter2DAction?.Invoke(other);

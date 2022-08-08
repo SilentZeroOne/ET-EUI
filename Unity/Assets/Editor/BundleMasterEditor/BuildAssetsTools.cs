@@ -189,6 +189,7 @@ namespace BM
                 foreach (string assetPath in allAssetPaths)
                 {
                     string name = assetPath.Replace("/", "_");
+                    name = name.Replace("@", "_");
                     name = name.Replace(".", "__");
                     sb.Append("\t\tpublic const string " + name + " = \"" + assetPath + "\";\n");
                 }
