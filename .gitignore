@@ -95,3 +95,7 @@ Unity/Assembly-CSharp-firstpass.csproj
 Unity/DOTween.Modules.csproj
 Unity/HotfixMono.csproj
 Unity/Unity.HotfixMono.csproj
+Unity/Sirenix.OdinInspector.CompatibilityLayer.csproj
+Unity/Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj
+Unity/Sirenix.OdinInspector.Modules.UnityMathematics.csproj
+Unity/DOTweenPro.EditorScripts.csproj
