@@ -101,4 +101,6 @@
         <type fullname="UnityEngine.Networking.UnityWebRequest" preserve="all" />
         <type fullname="UnityEngine.Networking.DownloadHandler" preserve="all" />
     </assembly>
+
+    <assembly fullname="UnityEngine.Physics2DModule" preserve="all"/>
 </linker>

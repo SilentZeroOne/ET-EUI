@@ -6,5 +6,6 @@
         public const string FadeObject = "FadeObject";
         public const string Bound = "Bound";
         public const string Player = "Player";
+        public const string Item = "Item";
     }
 }

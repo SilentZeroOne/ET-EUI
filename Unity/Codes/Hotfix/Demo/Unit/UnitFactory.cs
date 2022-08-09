@@ -57,7 +57,7 @@ namespace ET
 		        numericComponent.Set(config.Id,config.BaseValue);
 	        }
 
-	        unit.AddComponent<MyMoveComponent>();
+	        unit.AddComponent<InventoryComponent>();
 	        unit.AddComponent<ObjectWait>();
 
 	        Game.EventSystem.Publish(new EventType.AfterUnitCreate() {Unit = unit});

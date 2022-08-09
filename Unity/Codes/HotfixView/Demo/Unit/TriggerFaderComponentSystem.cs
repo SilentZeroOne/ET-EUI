@@ -4,11 +4,17 @@ using UnityEngine;
 
 namespace ET
 {
-    public class TriggerFaderComponentAwakeSystem: AwakeSystem<TriggerFaderComponent,GameObject>
+    public class TriggerFaderComponentAwakeSystem: AwakeSystem<TriggerFaderComponent>
     {
-        public override void Awake(TriggerFaderComponent self, GameObject a)
+        public override void Awake(TriggerFaderComponent self)
         {
-            self.Trigger = a.AddComponent<TriggerAction>();
+            var go = self.GetParent<Unit>().GetComponent<GameObjectComponent>().GameObject;
+            self.Trigger = go.GetComponent<TriggerAction>();
+            if (self.Trigger == null)
+            {
+                self.Trigger = go.AddComponent<TriggerAction>();
+            }
+            
             self.Trigger.OnTriggerEnter2DAction += self.FadeOut;
             self.Trigger.OnTriggerExit2DAction += self.FadeIn;
         }
@@ -25,10 +31,6 @@ namespace ET
     [FriendClass(typeof (TriggerFaderComponent))]
     public static class TriggerFaderComponentSystem
     {
-        public static void Test(this TriggerFaderComponent self)
-        {
-        }
-
         /// <summary>
         /// 逐渐半透明
         /// </summary>
@@ -58,6 +60,5 @@ namespace ET
                 }
             }
         }
-        
     }
 }

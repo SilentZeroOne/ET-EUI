@@ -22,7 +22,8 @@ namespace ET
             args.Unit.AddComponent<GameObjectComponent>().GameObject = go;
             args.Unit.AddComponent<RigidBody2DComponent>().Rigidbody2D = go.GetComponent<Rigidbody2D>();
             args.Unit.AddComponent<OperaComponent>();
-            args.Unit.AddComponent<TriggerFaderComponent, GameObject>(go);
+            args.Unit.AddComponent<TriggerFaderComponent>();
+            args.Unit.AddComponent<ItemPickerComponent>();
             
             var cinemachineComponent = args.Unit.AddComponent<CinemachineComponent, GameObject>(go.Get<GameObject>("CM vcam1"));
 

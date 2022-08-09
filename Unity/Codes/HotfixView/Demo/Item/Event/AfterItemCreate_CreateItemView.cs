@@ -18,7 +18,9 @@ namespace ET
             GameObject go = UnityEngine.Object.Instantiate(prefab, GlobalComponent.Instance.Unit, true);
 
             a.Item.AddComponent<GameObjectComponent>().GameObject = go;
+            go.AddComponent<MonoBridge>().BelongToEntityId = a.Item.InstanceId;
             a.Item.AddComponent<ItemViewComponent>();
+            go.transform.position = new Vector3(2, 3, 0);
         }
     }
 }
