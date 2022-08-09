@@ -98,6 +98,11 @@ namespace ET
         {
             public Unit Unit;
         }
+
+        public struct AfterItemCreate
+        {
+            public Item Item;
+        }
         
         public struct MoveStart
         {

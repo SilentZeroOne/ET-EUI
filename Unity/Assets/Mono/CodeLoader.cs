@@ -98,13 +98,13 @@ namespace ET
 				case CodeMode.Mono:
 				case CodeMode.Wolong:
 				{
-					byte[] assBytes = (await AssetComponent.LoadAsync<TextAsset>(BPath.Assets_Bundles_Code_Code__dll__bytes,"Code")).bytes;
+					byte[] assBytes = (await AssetComponent.LoadAsync<TextAsset>("Assets/Bundles/Code/Code.dll.bytes","Code")).bytes;
 					
-					byte[] pdbBytes = (await AssetComponent.LoadAsync<TextAsset>(BPath.Assets_Bundles_Code_Code__pdb__bytes,"Code")).bytes;
+					byte[] pdbBytes = (await AssetComponent.LoadAsync<TextAsset>("Assets/Bundles/Code/Code.pdb.bytes","Code")).bytes;
 					
-					byte[] hotfixAssBytes = (await AssetComponent.LoadAsync<TextAsset>(BPath.Assets_Bundles_Code_HotfixMono__dll__bytes,"Code")).bytes;
+					byte[] hotfixAssBytes = (await AssetComponent.LoadAsync<TextAsset>("Assets/Bundles/Code/HotfixMono.dll.bytes","Code")).bytes;
 					
-					byte[] hotfixPdbBytes = (await AssetComponent.LoadAsync<TextAsset>(BPath.Assets_Bundles_Code_HotfixMono__pdb__bytes,"Code")).bytes;
+					byte[] hotfixPdbBytes = (await AssetComponent.LoadAsync<TextAsset>("Assets/Bundles/Code/HotfixMono.pdb.bytes","Code")).bytes;
 #if UNITY_EDITOR
 					AssetComponent.UnInitialize("Code");
 #endif

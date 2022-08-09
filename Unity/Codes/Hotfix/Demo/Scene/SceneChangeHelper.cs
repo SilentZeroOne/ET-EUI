@@ -22,7 +22,9 @@
             await zoneScene.GetComponent<ObjectWait>().Wait<WaitType.Wait_SceneLoaded>();
 
             Unit unit = UnitFactory.Create(currentScene);
-            unitComponent.Add(unit);
+            //unitComponent.Add(unit);
+
+            ItemFactory.Create(currentScene, 1005);
             
             
             Game.EventSystem.PublishAsync(new EventType.SceneChangeFinish() {ZoneScene = zoneScene, CurrentScene = currentScene}).Coroutine();

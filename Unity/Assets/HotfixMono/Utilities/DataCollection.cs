@@ -7,7 +7,9 @@ namespace ET
     {
         public int ItemId;
 
-        public string Name;
+        public string ItemName;
+
+        public ItemType ItemType;
 
         public Sprite ItemIcon;
 
@@ -15,7 +17,7 @@ namespace ET
 
         public string ItemDescription;
 
-        public int itemUseRadius;
+        public int ItemUseRadius;
 
         public bool CanPickedUp;
 

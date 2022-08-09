@@ -18,11 +18,11 @@ namespace ET
 		};
 
 		public static List<string> DllAotList = new List<string>() { 
-			$"{BPath.Assets_Bundles_Code_mscorlib__dll__bytes}", 
-			$"{BPath.Assets_Bundles_Code_System__dll__bytes}", 
-			$"{BPath.Assets_Bundles_Code_System__Core__dll__bytes}",
-			$"{BPath.Assets_Bundles_Code_Unity__Mono__dll__bytes}",
-			$"{BPath.Assets_Bundles_Code_Unity__ThirdParty__dll__bytes}"
+			"Assets/Bundles/Code/mscorlib.dll.bytes", 
+			"Assets/Bundles/Code/System.dll.bytes", 
+			"Assets/Bundles/Code/System.Core.dll.bytes",
+			"Assets/Bundles/Code/Unity.Mono.dll.bytes",
+			"Assets/Bundles/Code/Unity.ThirdParty.dll.bytes"
 		};
 
 #if UNITY_EDITOR && !ASYNC
