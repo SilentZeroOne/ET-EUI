@@ -59,6 +59,7 @@ namespace ET
 
 	        unit.AddComponent<InventoryComponent>();
 	        unit.AddComponent<ObjectWait>();
+	        currentScene.ZoneScene().GetComponent<PlayerComponent>().MyId = unit.Id;
 
 	        Game.EventSystem.Publish(new EventType.AfterUnitCreate() {Unit = unit});
 	        return unit;

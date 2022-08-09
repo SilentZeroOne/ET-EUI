@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
+using ProtoBuf;
 
 namespace ET
 {
@@ -21,6 +22,7 @@ namespace ET
     {
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         public long InstanceId
         {
             get;
@@ -33,10 +35,12 @@ namespace ET
 
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         private EntityStatus status = EntityStatus.None;
 
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         private bool IsFromPool
         {
             get => (this.status & EntityStatus.IsFromPool) == EntityStatus.IsFromPool;
@@ -55,6 +59,7 @@ namespace ET
 
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         protected bool IsRegister
         {
             get => (this.status & EntityStatus.IsRegister) == EntityStatus.IsRegister;
@@ -80,6 +85,7 @@ namespace ET
 
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         private bool IsComponent
         {
             get => (this.status & EntityStatus.IsComponent) == EntityStatus.IsComponent;
@@ -98,6 +104,7 @@ namespace ET
 
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         protected bool IsCreated
         {
             get => (this.status & EntityStatus.IsCreated) == EntityStatus.IsCreated;
@@ -116,6 +123,7 @@ namespace ET
         
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         protected bool IsNew
         {
             get => (this.status & EntityStatus.IsNew) == EntityStatus.IsNew;
@@ -134,15 +142,18 @@ namespace ET
 
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         public bool IsDisposed => this.InstanceId == 0;
 
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         protected Entity parent;
 
         // 可以改变parent，但是不能设置为null
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         public Entity Parent
         {
             get => this.parent;
@@ -185,6 +196,7 @@ namespace ET
         [IgnoreDataMember]
         // 该方法只能在AddComponent中调用，其他人不允许调用
         [BsonIgnore]
+        [ProtoIgnore]
         private Entity ComponentParent
         {
             set
@@ -240,10 +252,12 @@ namespace ET
 
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         protected Entity domain;
 
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         public Entity Domain
         {
             get
@@ -352,10 +366,12 @@ namespace ET
 
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         private Dictionary<long, Entity> children;
 
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         public Dictionary<long, Entity> Children
         {
             get
@@ -432,10 +448,12 @@ namespace ET
 
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         private Dictionary<Type, Entity> components;
 
         [IgnoreDataMember]
         [BsonIgnore]
+        [ProtoIgnore]
         public Dictionary<Type, Entity> Components
         {
             get

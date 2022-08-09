@@ -51,5 +51,18 @@ namespace ET
 	        }
 	        return o;
         }
+        
+        public static void SaveTo(Entity entity, string path)
+        {
+	        using FileStream stream = File.Create(path);
+	        Serializer.Serialize(stream, entity);
+        }
+
+        public static Entity Deserialize(byte[] bytes)
+        {
+	        using MemoryStream stream = new MemoryStream(bytes);
+            
+	        return Serializer.Deserialize<Entity>(stream);
+        }
     }
 }

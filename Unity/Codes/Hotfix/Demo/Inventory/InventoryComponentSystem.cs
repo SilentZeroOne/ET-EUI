@@ -19,17 +19,44 @@
             
             self.ItemDict.Clear();
             self.ItemMap.Clear();
+            self.ItemConfigIdMap.Clear();
+        }
+    }
+    
+    [FriendClassAttribute(typeof(ET.Item))]
+    public class InventoryComponentDeserializeSystem : DeserializeSystem<InventoryComponent>
+    {
+        public override void Deserialize(InventoryComponent self)
+        {
+            foreach (var entity in self.Children.Values)
+            {
+                self.AddContainer(entity as Item);
+                Log.Debug($"{(entity as Item).ConfigId}");
+            }
         }
     }
 
-    [FriendClass(typeof (InventoryComponent))]
+    [FriendClass(typeof(InventoryComponent))]
+    [FriendClassAttribute(typeof(ET.Item))]
     public static class InventoryComponentSystem
     {
+        public static bool IsMaxCapacity(this InventoryComponent self)
+        {
+            NumericComponent numericComponent = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<NumericComponent>();
+            return self.ItemDict.Count >= numericComponent.GetAsInt(NumericType.InventoryCapacity);
+        }
+
         public static bool AddItem(this InventoryComponent self, Item item)
         {
             if (item == null || item.IsDisposed)
             {
                 Log.Debug("Item 不存在");
+                return false;
+            }
+
+            if (self.IsMaxCapacity())
+            {
+                Log.Debug("背包已满");
                 return false;
             }
 
@@ -46,7 +73,7 @@
 
             return true;
         }
-        
+
         /// <summary>
         /// 添加进Inventory容器
         /// </summary>
@@ -62,14 +89,21 @@
 
             self.ItemDict.Add(item.Id, item);
             self.ItemMap.Add(item.Config.ItemType, item);
-
+            self.ItemConfigIdMap.Add(item.ConfigId, item);
             return true;
+        }
+
+        public static void RemoveItem(this InventoryComponent self, Item item)
+        {
+            self.RemoveContainer(item);
+            item.Dispose();
         }
 
         public static void RemoveContainer(this InventoryComponent self, Item item)
         {
             self.ItemDict.Remove(item.Id);
             self.ItemMap.Remove(item.Config.ItemType, item);
+            self.ItemConfigIdMap.Remove(item.ConfigId, item);
         }
     }
 }

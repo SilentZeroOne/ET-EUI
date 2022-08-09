@@ -2,7 +2,7 @@
 
 namespace ET
 {
-    public class Item: Entity, IAwake<int>, IDestroy
+    public class Item: Entity, IAwake<int>, IDestroy, ISerializeToEntity
     {
         public int ConfigId;
 
