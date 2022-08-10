@@ -20,7 +20,7 @@ namespace ET
         {
             try
             {
-                Sprite sprite = AssetComponent.Load<Sprite>(spriteName.StringToAB1());
+                Sprite sprite = AssetComponent.Load<Sprite>(spriteName.StringToAB());
                 if ( null == sprite )
                 {
                     Log.Error($"sprite is null: {spriteName}");
@@ -43,7 +43,7 @@ namespace ET
         {
             try
             {
-                Sprite sprite = await AssetComponent.LoadAsync<Sprite>(spriteName.StringToAB1());
+                Sprite sprite = await AssetComponent.LoadAsync<Sprite>(spriteName.StringToAB());
                 if (null == sprite)
                 {
                     Log.Error($"sprite is null: {spriteName}");

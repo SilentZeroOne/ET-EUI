@@ -31,7 +31,7 @@ namespace ET
 		public static void Refresh(this DlgInventory self)
 		{
 			self.AddUIScrollItems(ref self.ScrollItemInventorySlots, Settings.MaxInventorySlot);
-			self.View.E_SlotsLoopVerticalScrollRect.SetVisible(true, Settings.MaxInventorySlot / 2);
+			self.View.E_SlotsLoopVerticalScrollRect.SetVisible(true, Settings.MaxInventorySlot);
 		}
 
 		public static void OnInventoryItemSlotRefresh(this DlgInventory self, Transform transform, int index)
@@ -43,6 +43,9 @@ namespace ET
 				Item item = inventoryComponent.GetItemByConfigId(inventoryComponent.ItemConfigIdList[index]);
 				slot.E_ItemImage.sprite = IconHelper.LoadIconSprite(item.Config.ItemIcon);
 				slot.E_CountTextMeshProUGUI.text = inventoryComponent.GetItemCountByConfigId(inventoryComponent.ItemConfigIdList[index]).ToString();
+				
+				slot.E_ItemImage.SetVisible(true);
+				slot.E_CountTextMeshProUGUI.SetVisible(true);
 			}
 			else
 			{

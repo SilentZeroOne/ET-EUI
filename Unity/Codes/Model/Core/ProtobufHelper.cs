@@ -86,7 +86,7 @@ namespace ET
         {
 	        if (bytes == null || bytes.Length == 0)
 	        {
-		        Log.Error("Deserialze data is null!!!");
+		        //Log.Error("Deserialze data is null!!!");
 		        return null;
 	        }
 

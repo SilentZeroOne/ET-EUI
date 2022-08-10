@@ -303,12 +303,12 @@ namespace ET
         
         public static GameObject GetORedDotGameObjectFromPool(this RedDotComponent self)
         {
-            return GameObjectPoolMyHelper.GetObjectFromPool(BPath.Assets_Bundles_ResBundles_UI_Common_RedDot__prefab, true, 5);
+            return MyPoolObjHelper.GetObjectFromPool(BPath.Assets_Bundles_ResBundles_UI_Common_RedDot__prefab, true, 5);
         }
 
         public static void RecycleRedDotGameObject(this RedDotComponent self, GameObject go)
         {
-            GameObjectPoolMyHelper.ReturnTransformToPool(go.transform);
+            MyPoolObjHelper.ReturnTransformToPool(go.transform);
         }
     }
 }

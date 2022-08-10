@@ -48,7 +48,7 @@ namespace HybridCLR.Generators
                 "i8S8", "S8", "S40i8", "S16i8", "S24i8", "S16i8i4", "vi8i8i4i4", "i1i8i4",
                 "vi8i4i8", "i1", "i8i8i2i4", "vi8i4i8", "vi8S16", "i1i8i4i8", "vi8i4i4",
                 "vi8i8i4","i1i8i4i8","S4i8","i8i1","vi8S4","S1","vi8r4r4","vi8r4r4r4r4",
-                "S1i8","vi8r4r4r4"
+                "S1i8","vi8r4r4r4","i8i8vf4r4"
             };
         }
 

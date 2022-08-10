@@ -27,10 +27,10 @@ namespace UnityEngine.UI
             {
                 if(!inited)
                 {
-                    GameObjectPoolMyHelper.InitPool(prefabName, poolSize);
+                    MyPoolObjHelper.InitPool(prefabName, poolSize);
                     inited = true;
                 }
-                return GameObjectPoolMyHelper.GetObjectFromPool(prefabName);
+                return MyPoolObjHelper.GetObjectFromPool(prefabName);
             }
             catch (Exception e)
             {
@@ -49,7 +49,7 @@ namespace UnityEngine.UI
                 }
                 else
                 {
-                    GameObjectPoolMyHelper.ReturnObjectToPool(go.gameObject);
+                    MyPoolObjHelper.ReturnObjectToPool(go.gameObject);
                 }
             }
             catch (Exception e)

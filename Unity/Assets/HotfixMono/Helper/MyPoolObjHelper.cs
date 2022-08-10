@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ET
 {
-    public class GameObjectPoolMyHelper
+    public class MyPoolObjHelper
     {
         private static Dictionary<string, GameObjectPool> poolDict = new Dictionary<string, GameObjectPool>();
         
@@ -148,7 +148,7 @@ namespace ET
 
         public static GameObject GetGameObjectByResType( string poolName)
         {
-            return AssetComponent.Load<GameObject>(poolName.StringToAB());
+            return AssetComponent.Load<GameObject>(BMHelper.ToAB(poolName));
         }
     }
 }
