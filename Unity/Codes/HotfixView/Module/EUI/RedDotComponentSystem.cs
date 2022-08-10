@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BM;
 using UnityEngine;
 
 namespace ET
@@ -302,12 +303,12 @@ namespace ET
         
         public static GameObject GetORedDotGameObjectFromPool(this RedDotComponent self)
         {
-            return GameObjectPoolHelper.GetObjectFromPool("RedDot",true,5);
+            return GameObjectPoolMyHelper.GetObjectFromPool(BPath.Assets_Bundles_ResBundles_UI_Common_RedDot__prefab, true, 5);
         }
 
         public static void RecycleRedDotGameObject(this RedDotComponent self, GameObject go)
         {
-            GameObjectPoolHelper.ReturnTransformToPool(go.transform);
+            GameObjectPoolMyHelper.ReturnTransformToPool(go.transform);
         }
     }
 }

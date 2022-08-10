@@ -1,4 +1,5 @@
-﻿using ProtoBuf;
+﻿using System.Collections.Generic;
+using ProtoBuf;
 
 namespace ET
 {
@@ -6,13 +7,7 @@ namespace ET
     public partial class InventoryProto : Object
     {
         [ProtoMember(1)]
-        public int RpcId { get; set; }
-
-        [ProtoMember(2)]
-        public int Error { get; set; }
-
-        [ProtoMember(3)]
-        public string Message { get; set; }
+        public List<ItemInfo> ItemInfos = new List<ItemInfo>();
     }
 
     [ProtoContract]
@@ -20,5 +15,8 @@ namespace ET
     {
         [ProtoMember(1)]
         public int ConfigId;
+
+        [ProtoMember(2)]
+        public long ItemId;
     }
 }

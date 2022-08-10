@@ -280,7 +280,7 @@ namespace ET
             if(baseWindow.IsPreLoad)
             {
                 //Game.Scene.GetComponent<ResourcesComponent>()?.UnloadBundle(baseWindow.UIPrefabGameObject.name.StringToAB());
-                AssetComponent.UnLoadByPath(baseWindow.UIPrefabGameObject.name.StringToAB());
+                AssetComponent.UnLoadByPath(baseWindow.UIPrefabGameObject.name.StringToAB1());
                 UnityEngine.Object.Destroy( baseWindow.UIPrefabGameObject);
                 baseWindow.UIPrefabGameObject = null;
             }
@@ -486,7 +486,7 @@ namespace ET
             }
             //ResourcesComponent.Instance.LoadBundle(value.StringToAB());
             //GameObject go                      = ResourcesComponent.Instance.GetAsset(value.StringToAB(), value ) as GameObject;
-            GameObject go = AssetComponent.Load<GameObject>(value.StringToAB());
+            GameObject go = AssetComponent.Load<GameObject>(value.StringToAB1());
             baseWindow.UIPrefabGameObject      = UnityEngine.Object.Instantiate(go);
             baseWindow.UIPrefabGameObject.name = go.name;
             
@@ -514,7 +514,7 @@ namespace ET
             }
             //await ResourcesComponent.Instance.LoadBundleAsync(value.StringToAB());
             //GameObject go                      = ResourcesComponent.Instance.GetAsset(value.StringToAB(), value ) as GameObject;
-            GameObject go = await AssetComponent.LoadAsync<GameObject>(value.StringToAB());
+            GameObject go = await AssetComponent.LoadAsync<GameObject>(value.StringToAB1());
             baseWindow.UIPrefabGameObject      = UnityEngine.Object.Instantiate(go);
             baseWindow.UIPrefabGameObject.name = go.name;
             

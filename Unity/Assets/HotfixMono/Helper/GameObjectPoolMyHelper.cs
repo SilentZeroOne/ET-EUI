@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using BM;
 using UnityEngine;
 
 namespace ET
 {
-    public static class GameObjectPoolHelper
+    public class GameObjectPoolMyHelper
     {
         private static Dictionary<string, GameObjectPool> poolDict = new Dictionary<string, GameObjectPool>();
         
@@ -147,10 +148,7 @@ namespace ET
 
         public static GameObject GetGameObjectByResType( string poolName)
         {
-            GameObject pb = null;
-            Dictionary<string, UnityEngine.Object>  assetDict = AssetsBundleHelper.LoadBundle(poolName + ".unity3d").Item2;
-            pb = assetDict[poolName] as GameObject;
-            return pb;
+            return AssetComponent.Load<GameObject>(poolName.StringToAB());
         }
     }
 }

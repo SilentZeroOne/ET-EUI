@@ -8,7 +8,8 @@
         "DOTweenPro.Scripts",
         "Cinemachine",
         "DOTween.Modules",
-        "HotfixMono"
+        "HotfixMono",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [
         "Editor"

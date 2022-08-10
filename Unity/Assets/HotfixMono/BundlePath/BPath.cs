@@ -18,12 +18,16 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_TreePrefab_TreeYellow__prefab = "Assets/Bundles/ResBundles/TreePrefab/TreeYellow.prefab";
 		public const string Assets_Bundles_ResBundles_UI_UIHelp__prefab = "Assets/Bundles/ResBundles/UI/UIHelp.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Common_ESCommonUI__prefab = "Assets/Bundles/ResBundles/UI/Common/ESCommonUI.prefab";
+		public const string Assets_Bundles_ResBundles_UI_Common_ESItemSlot__prefab = "Assets/Bundles/ResBundles/UI/Common/ESItemSlot.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Common_ESReuseUI__prefab = "Assets/Bundles/ResBundles/UI/Common/ESReuseUI.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Common_RedDot__prefab = "Assets/Bundles/ResBundles/UI/Common/RedDot.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgHelper__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgHelper.prefab";
+		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgInventory__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgInventory.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgLobby__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgLobby.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgLogin__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgLogin.prefab";
+		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgMain__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgMain.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgRedDot__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgRedDot.prefab";
+		public const string Assets_Bundles_ResBundles_UI_Item_Item_InventorySlot__prefab = "Assets/Bundles/ResBundles/UI/Item/Item_InventorySlot.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Item_Item_serverTest__prefab = "Assets/Bundles/ResBundles/UI/Item/Item_serverTest.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Item_Item_test__prefab = "Assets/Bundles/ResBundles/UI/Item/Item_test.prefab";
 		public const string Assets_Bundles_ResBundles_Unit_Player__prefab = "Assets/Bundles/ResBundles/Unit/Player.prefab";

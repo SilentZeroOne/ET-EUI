@@ -41,6 +41,7 @@ namespace ET
                     {
                         player.GetComponent<InventoryComponent>().AddItem(item);
                         UnityEngine.Object.Destroy(other.gameObject);
+                        player.GetComponent<InventoryComponent>().SaveInventory();
                     }
                 }
             }

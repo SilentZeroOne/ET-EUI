@@ -8,5 +8,7 @@
         WindowID_Login,     //登录界面
         WindowID_RedDot,   //红点测试界面
         WindowID_Helper,   //提示界面
+        WindowID_Main,     //主界面
+        WindowID_Inventory,//背包界面
     }
 }

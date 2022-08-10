@@ -46,5 +46,13 @@ namespace ET
 
             }
         }
+
+        public static string InventorySavePath
+        {
+            get
+            {
+                return $"{AppHotfixResPath}/InventorySave.sav";
+            }
+        }
     }
 }

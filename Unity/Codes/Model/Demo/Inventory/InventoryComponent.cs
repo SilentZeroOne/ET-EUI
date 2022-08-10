@@ -24,5 +24,10 @@ namespace ET
         /// </summary>
         [ProtoIgnore]
         public MultiMap<int, Item> ItemConfigIdMap = new MultiMap<int, Item>();
+
+        /// <summary>
+        /// ConfigId列表
+        /// </summary>
+        public List<int> ItemConfigIdList = new List<int>();
     }
 }
