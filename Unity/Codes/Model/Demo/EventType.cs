@@ -113,5 +113,10 @@ namespace ET
         {
             public Unit Unit;
         }
+        
+        public struct RefreshInventory
+        {
+            public Scene ZoneScene;
+        }
     }
 }

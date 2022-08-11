@@ -20,7 +20,7 @@ namespace ET
             a.Item.AddComponent<GameObjectComponent>().GameObject = go;
             go.AddComponent<MonoBridge>().BelongToEntityId = a.Item.InstanceId;
             a.Item.AddComponent<ItemViewComponent>();
-            go.transform.position = new Vector3(2, 3, 0);
+            go.transform.position = new Vector3(RandomHelper.RandomNumber(-5,5), RandomHelper.RandomNumber(-5,5), 0);
         }
     }
 }

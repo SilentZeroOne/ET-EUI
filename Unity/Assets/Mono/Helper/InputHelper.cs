@@ -8,6 +8,11 @@ namespace ET
         {
             return Input.GetKeyDown((KeyCode) code);
         }
+
+        public static Vector2 GetMousePosition()
+        {
+            return Input.mousePosition;
+        }
         
         public static bool GetKeyDown(KeyCode code)
         {

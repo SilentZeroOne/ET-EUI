@@ -129,8 +129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabSource:
     prefabName: Item_InventorySlot
-    poolSize: 16
-  totalCount: 32
+    poolSize: 5
+  totalCount: 10
   reverseDirection: 0
   m_Content: {fileID: 3144198322201498349}
   m_Horizontal: 0

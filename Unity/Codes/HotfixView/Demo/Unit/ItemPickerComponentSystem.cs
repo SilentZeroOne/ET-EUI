@@ -42,6 +42,7 @@ namespace ET
                         player.GetComponent<InventoryComponent>().AddItem(item);
                         UnityEngine.Object.Destroy(other.gameObject);
                         player.GetComponent<InventoryComponent>().SaveInventory();
+                        Game.EventSystem.Publish(new EventType.RefreshInventory() { ZoneScene = self.ZoneScene() });
                     }
                 }
             }

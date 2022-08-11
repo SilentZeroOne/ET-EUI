@@ -10,5 +10,6 @@ namespace ET
 
 		public Dictionary<int, Scroll_Item_InventorySlot> ScrollItemInventorySlots = new Dictionary<int, Scroll_Item_InventorySlot>();
 
+		public int CurrentItemConfigId;
 	}
 }

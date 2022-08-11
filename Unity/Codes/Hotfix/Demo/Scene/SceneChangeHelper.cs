@@ -25,6 +25,7 @@
             //unitComponent.Add(unit);
 
             ItemFactory.Create(currentScene, 1009);
+            ItemFactory.Create(currentScene, 1008);
             
             
             Game.EventSystem.PublishAsync(new EventType.SceneChangeFinish() {ZoneScene = zoneScene, CurrentScene = currentScene}).Coroutine();
