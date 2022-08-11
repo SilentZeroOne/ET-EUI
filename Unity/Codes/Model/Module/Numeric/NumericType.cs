@@ -30,5 +30,7 @@
 	    public const int AOIFinalPct = AOI * 10 + 5;
 
 	    public const int InventoryCapacity = 1004;
+	    
+	    public const int CoinCount = 1005;
     }
 }

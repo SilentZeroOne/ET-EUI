@@ -10,13 +10,7 @@ namespace ET
             var uri = new Uri(url);
             using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
             {
-                UnityWebRequestAsyncOperation webRequestAsync = webRequest.SendWebRequest();
-                ETTask waitDown = ETTask.Create(true);
-                webRequestAsync.completed += (asyncOperation) =>
-                {
-                    waitDown.SetResult();
-                };
-                await waitDown;
+                await webRequest.SendWebRequest();
 #if UNITY_2020_1_OR_NEWER
                 if (webRequest.result != UnityWebRequest.Result.Success)
 #else

@@ -32,6 +32,13 @@ namespace ET
 		{
 			self.AddUIScrollItems(ref self.ScrollItemInventorySlots, Settings.MaxInventorySlot);
 			self.View.E_SlotsLoopVerticalScrollRect.SetVisible(true, Settings.MaxInventorySlot);
+			self.RefreshCoin();
+		}
+
+		public static void RefreshCoin(this DlgInventory self)
+		{
+			self.View.E_CoinCountTextMeshProUGUI.text = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<NumericComponent>()
+					.GetAsInt(NumericType.CoinCount).ToString();
 		}
 
 		public static void OnInventoryItemSlotRefresh(this DlgInventory self, Transform transform, int index)
