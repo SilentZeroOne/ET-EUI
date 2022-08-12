@@ -25,7 +25,8 @@ namespace ET
         }
     }
 
-    [FriendClass(typeof (ItemPickerComponent))]
+    [FriendClass(typeof(ItemPickerComponent))]
+    [FriendClassAttribute(typeof(ET.InventoryComponent))]
     public static class ItemPickerComponentSystem
     {
         public static void PickUpItem(this ItemPickerComponent self, Collider2D other)
@@ -39,7 +40,8 @@ namespace ET
                     Item item = Game.EventSystem.Get(bridge.BelongToEntityId) as Item;
                     if (item.Config.CanPickUp == 1)
                     {
-                        player.GetComponent<InventoryComponent>().AddItem(item);
+                        InventoryComponent inventoryComponent = player.GetComponent<InventoryComponent>();
+                        inventoryComponent.AddItemByIndex(item, inventoryComponent.ItemConfigIdList.Count);
                         UnityEngine.Object.Destroy(other.gameObject);
                         player.GetComponent<InventoryComponent>().SaveInventory();
                         Game.EventSystem.Publish(new EventType.RefreshInventory() { ZoneScene = self.ZoneScene() });

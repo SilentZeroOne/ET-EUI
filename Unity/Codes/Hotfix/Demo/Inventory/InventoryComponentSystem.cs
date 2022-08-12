@@ -2,11 +2,25 @@
 
 namespace ET
 {
+    public class InventoryComponentAwakeSystem1: AwakeSystem<InventoryComponent,string>
+    {
+        public override void Awake(InventoryComponent self, string a)
+        {
+            self.SavePath = a;
+            self.LoadInventory().Coroutine();
+        }
+    }
+    
     public class InventoryComponentAwakeSystem: AwakeSystem<InventoryComponent>
     {
         public override void Awake(InventoryComponent self)
         {
+#if NOT_UNITY
+            return;
+#else
+            self.SavePath = PathHelper.InventorySavePath;
             self.LoadInventory().Coroutine();
+#endif
         }
     }
 
@@ -23,6 +37,7 @@ namespace ET
             self.ItemMap.Clear();
             self.ItemConfigIdMap.Clear();
             self.ItemConfigIdList.Clear();
+            self.IndexConfigIdDict.Clear();
         }
     }
     
@@ -77,6 +92,14 @@ namespace ET
             return true;
         }
 
+        public static void AddItemByIndex(this InventoryComponent self, Item item, int index)
+        {
+            if (self.AddItem(item))
+            {
+                self.IndexConfigIdDict.Add(index, item.ConfigId);
+            }
+        }
+
         /// <summary>
         /// 添加进Inventory容器
         /// </summary>
@@ -117,6 +140,8 @@ namespace ET
                     self.ItemConfigIdList.Remove(item.ConfigId);
                 }
             }
+
+            self.IndexConfigIdDict.RemoveByValue(item.ConfigId);
         }
 
         public static Item GetItemById(this InventoryComponent self, long id)
@@ -141,6 +166,11 @@ namespace ET
             return 0;
         }
 
+        public static Item GetItemByIndex(this InventoryComponent self, int index)
+        {
+            return self.GetItemByConfigId(self.IndexConfigIdDict.GetValueByKey(index));
+        }
+
         #region Save/Load
 
         public static InventoryProto ToProto(this InventoryComponent self)
@@ -148,7 +178,9 @@ namespace ET
             InventoryProto proto = new InventoryProto();
             foreach (var item in self.ItemDict.Values)
             {
-                proto.ItemInfos.Add(item.ToProto());
+                ItemInfo info = item.ToProto();
+                info.IndexInInventory = self.IndexConfigIdDict.GetKeyByValue(item.ConfigId);
+                proto.ItemInfos.Add(info);
             }
 
             return proto;
@@ -159,7 +191,11 @@ namespace ET
             foreach (var item in proto.ItemInfos)
             {
                 Item temp = self.AddChild<Item>();
-                self.AddContainer(temp.FromProto(item));
+                temp.FromProto(item);
+
+                self.AddItemByIndex(temp, item.IndexInInventory);
+                
+                //self.AddContainer(temp.FromProto(item));
                 Log.Debug($"Add item {temp.Id} {temp.Config.ItemName} to Inventory form memory");
             }
         }
@@ -184,7 +220,7 @@ namespace ET
 #if NOT_UNITY
             return;
 #else
-            string path = PathHelper.InventorySavePath;
+            string path = self.SavePath;
             
             byte[] bytes = await FileReadHelper.DownloadData(path);
             InventoryProto proto = ProtobufHelper.Deserialize<InventoryProto>(bytes);

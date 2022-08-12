@@ -54,5 +54,13 @@ namespace ET
                 return $"{AppHotfixResPath}/InventorySave.sav";
             }
         }
+        
+        public static string ActionBarSavePath
+        {
+            get
+            {
+                return $"{AppHotfixResPath}/ActionBarSave.sav";
+            }
+        }
     }
 }

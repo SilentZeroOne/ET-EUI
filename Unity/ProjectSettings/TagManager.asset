@@ -9,6 +9,7 @@ TagManager:
   - FadeObject
   - Item
   - Land
+  - ItemSlot
   layers:
   - Default
   - TransparentFX

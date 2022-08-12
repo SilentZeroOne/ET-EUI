@@ -18,5 +18,8 @@ namespace ET
 
         [ProtoMember(2)]
         public long ItemId;
+
+        [ProtoMember(3)]
+        public int IndexInInventory;
     }
 }

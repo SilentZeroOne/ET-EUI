@@ -47,8 +47,11 @@ namespace ET
                         Y = worldPos.y,
                     });
                 
+                    //从Inventory中移除 但不要dispose
                     InventoryComponent inventoryComponent = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<InventoryComponent>();
                     inventoryComponent.RemoveItem(item, false);
+                    inventoryComponent.SaveInventory();
+                    //加入CurrentScene的Items中
                     ItemsComponent itemsComponent = self.ZoneScene().CurrentScene().GetComponent<ItemsComponent>();
                     itemsComponent.AddChild(item);
             

@@ -9,6 +9,7 @@ namespace ET
             zoneScene.AddComponent<UIPathComponent>();
             zoneScene.AddComponent<UIEventComponent>();
             zoneScene.AddComponent<RedDotComponent>();
+            zoneScene.AddComponent<InventoryComponent, string>(PathHelper.ActionBarSavePath); // For Action Bar.
             //zoneScene.AddComponent<ResourcesLoaderComponent>();
             
             zoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Main);
