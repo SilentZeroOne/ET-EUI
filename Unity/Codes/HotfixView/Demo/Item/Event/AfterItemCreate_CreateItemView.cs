@@ -16,11 +16,24 @@ namespace ET
             GameObject prefab = await AssetComponent.LoadAsync<GameObject>(BPath.Assets_Bundles_ResBundles_ItemPrefab_ItemBase__prefab);
 
             GameObject go = UnityEngine.Object.Instantiate(prefab, GlobalComponent.Instance.Unit, true);
-
-            a.Item.AddComponent<GameObjectComponent>().GameObject = go;
-            go.AddComponent<MonoBridge>().BelongToEntityId = a.Item.InstanceId;
-            a.Item.AddComponent<ItemViewComponent>();
-            go.transform.position = new Vector3(RandomHelper.RandomNumber(-5,5), RandomHelper.RandomNumber(-5,5), 0);
+            if (a.Item.GetComponent<GameObjectComponent>() == null)
+            {
+                a.Item.AddComponent<GameObjectComponent>();
+            }
+            
+            a.Item.GetComponent<GameObjectComponent>().GameObject = go;
+            
+            if (a.Item.GetComponent<ItemViewComponent>() == null)
+            {
+                a.Item.AddComponent<ItemViewComponent>();
+            }
+            else
+            {
+                a.Item.GetComponent<ItemViewComponent>().Init().Coroutine();
+            }
+            
+            go.transform.position = a.UsePos? new Vector3(a.X, a.Y)
+                    : new Vector3(RandomHelper.RandomNumber(-5, 5), RandomHelper.RandomNumber(-5, 5), 0);
         }
     }
 }

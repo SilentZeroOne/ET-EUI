@@ -1,5 +1,14 @@
 ﻿namespace ET
 {
+    
+    public class ItemAwake1System: AwakeSystem<Item>
+    {
+        
+        public override void Awake(Item self)
+        {
+           
+        }
+    }
     public class ItemAwakeSystem: AwakeSystem<Item,int>
     {
         

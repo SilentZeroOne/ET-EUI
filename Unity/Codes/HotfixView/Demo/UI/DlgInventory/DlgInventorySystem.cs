@@ -31,15 +31,15 @@ namespace ET
 
 		public static void Refresh(this DlgInventory self)
 		{
-			self.AddUIScrollItems(ref self.ScrollItemInventorySlots, Settings.MaxInventorySlot);
-			self.View.E_SlotsLoopVerticalScrollRect.SetVisible(true, Settings.MaxInventorySlot);
+			self.AddUIScrollItems(ref self.ScrollItemInventorySlots, UnitHelper.GetInventoryCapacityFormZoneScene(self.ZoneScene()));
+			self.View.E_SlotsLoopVerticalScrollRect.SetVisible(true, UnitHelper.GetInventoryCapacityFormZoneScene(self.ZoneScene()));
 			self.RefreshCoin();
 		}
 
 		public static void RefreshCoin(this DlgInventory self)
 		{
-			self.View.E_CoinCountTextMeshProUGUI.text = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<NumericComponent>()
-					.GetAsInt(NumericType.CoinCount).ToString();
+			self.View.E_CoinCountTextMeshProUGUI.text =
+					UnitHelper.GetMuUnitNumericComponentFromZoneScene(self.ZoneScene()).GetAsInt(NumericType.CoinCount).ToString();
 		}
 
 		/// <summary>
@@ -55,14 +55,17 @@ namespace ET
 			if (index <= inventoryComponent.ItemConfigIdList.Count - 1)
 			{
 				Item item = inventoryComponent.GetItemByConfigId(inventoryComponent.ItemConfigIdList[index]);
-				slot.E_ItemImage.sprite = IconHelper.LoadIconSprite(item.Config.ItemIcon);
-				slot.E_CountTextMeshProUGUI.text = inventoryComponent.GetItemCountByConfigId(inventoryComponent.ItemConfigIdList[index]).ToString();
+				if (item != null && !item.IsDisposed)
+				{
+					slot.E_ItemImage.sprite = IconHelper.LoadIconSprite(item.Config.ItemIcon);
+					slot.E_CountTextMeshProUGUI.text = inventoryComponent.GetItemCountByConfigId(inventoryComponent.ItemConfigIdList[index]).ToString();
 				
-				slot.E_ItemImage.SetVisible(true);
-				slot.E_CountTextMeshProUGUI.SetVisible(true);
-				slot.E_HightLightImage.gameObject.SetActive(item.ConfigId == self.CurrentItemConfigId);
-				slot.E_ItemEventTrigger.RegisterEvent(EventTriggerType.PointerClick, (data) => self.OnSlotClick(data, slot, item));
-				slot.RegisterEvent(item);
+					slot.E_ItemImage.SetVisible(true);
+					slot.E_CountTextMeshProUGUI.SetVisible(true);
+					slot.E_HightLightImage.gameObject.SetActive(item.ConfigId == self.CurrentItemConfigId);
+					slot.E_ItemEventTrigger.RegisterEvent(EventTriggerType.PointerClick, (data) => self.OnSlotClick(data, slot, item));
+					slot.RegisterEvent(item);
+				}
 			}
 			else
 			{

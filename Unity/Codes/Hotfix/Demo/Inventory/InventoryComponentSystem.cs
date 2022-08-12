@@ -46,7 +46,7 @@ namespace ET
         public static bool IsMaxCapacity(this InventoryComponent self)
         {
             NumericComponent numericComponent = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<NumericComponent>();
-            return self.ItemDict.Count >= numericComponent.GetAsInt(NumericType.InventoryCapacity);
+            return self.ItemConfigIdList.Count >= numericComponent.GetAsInt(NumericType.InventoryCapacity);
         }
 
         public static bool AddItem(this InventoryComponent self, Item item)
@@ -98,10 +98,11 @@ namespace ET
             return true;
         }
 
-        public static void RemoveItem(this InventoryComponent self, Item item)
+        public static void RemoveItem(this InventoryComponent self, Item item,bool dispose = true)
         {
             self.RemoveContainer(item);
-            item.Dispose();
+            if (dispose)
+                item.Dispose();
         }
 
         public static void RemoveContainer(this InventoryComponent self, Item item)
@@ -109,7 +110,13 @@ namespace ET
             self.ItemDict.Remove(item.Id);
             self.ItemMap.Remove(item.Config.ItemType, item);
             self.ItemConfigIdMap.Remove(item.ConfigId, item);
-            self.ItemConfigIdList.Remove(item.ConfigId);
+            if (self.ItemConfigIdMap.TryGetValue(item.ConfigId, out var list))
+            {
+                if (list.Count <= 0)
+                {
+                    self.ItemConfigIdList.Remove(item.ConfigId);
+                }
+            }
         }
 
         public static Item GetItemById(this InventoryComponent self, long id)
@@ -121,7 +128,7 @@ namespace ET
         public static Item GetItemByConfigId(this InventoryComponent self, int configId)
         {
             self.ItemConfigIdMap.TryGetValue(configId, out var item);
-            return item[0];
+            return item?[0];
         }
 
         public static int GetItemCountByConfigId(this InventoryComponent self, int configId)
@@ -151,7 +158,7 @@ namespace ET
         {
             foreach (var item in proto.ItemInfos)
             {
-                Item temp = new Item();
+                Item temp = self.AddChild<Item>();
                 self.AddContainer(temp.FromProto(item));
                 Log.Debug($"Add item {temp.Id} {temp.Config.ItemName} to Inventory form memory");
             }

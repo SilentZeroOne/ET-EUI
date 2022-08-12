@@ -25,7 +25,8 @@ namespace ET
         {
             Item item = self.GetParent<Item>();
             var go = item.GetComponent<GameObjectComponent>().GameObject;
-
+            go.AddComponent<MonoBridge>().BelongToEntityId = item.InstanceId;
+            
             self.SpriteRenderer = go.GetComponentInChildren<SpriteRenderer>();
             self.BoxCollider2D = go.GetComponent<BoxCollider2D>();
 

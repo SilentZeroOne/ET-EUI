@@ -2,6 +2,6 @@
 {"_t":"PlayerNumericConfig","_id":1000,"Name":"速度","BaseValue":10},
 {"_t":"PlayerNumericConfig","_id":1001,"Name":"当前血量","BaseValue":100},
 {"_t":"PlayerNumericConfig","_id":1002,"Name":"最大血量","BaseValue":100},
-{"_t":"PlayerNumericConfig","_id":1004,"Name":"背包容量","BaseValue":200},
+{"_t":"PlayerNumericConfig","_id":1004,"Name":"背包容量","BaseValue":32},
 {"_t":"PlayerNumericConfig","_id":1005,"Name":"金币数","BaseValue":100},
 ]}

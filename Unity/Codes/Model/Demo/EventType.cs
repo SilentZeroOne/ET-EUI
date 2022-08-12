@@ -102,6 +102,9 @@ namespace ET
         public struct AfterItemCreate
         {
             public Item Item;
+            public bool UsePos;
+            public float X;
+            public float Y;
         }
         
         public struct MoveStart

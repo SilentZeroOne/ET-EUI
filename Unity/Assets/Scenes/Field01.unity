@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 256503897}
   m_Layer: 0
   m_Name: Ground Top
-  m_TagString: Untagged
+  m_TagString: Land
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8551,7 +8551,7 @@ GameObject:
   - component: {fileID: 870844680}
   m_Layer: 0
   m_Name: Front 1
-  m_TagString: Untagged
+  m_TagString: Land
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9663,7 +9663,7 @@ GameObject:
   - component: {fileID: 1616799906}
   m_Layer: 0
   m_Name: Ground Bottom
-  m_TagString: Untagged
+  m_TagString: Land
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26493,7 +26493,7 @@ GameObject:
   - component: {fileID: 1684089588}
   m_Layer: 0
   m_Name: Ground Middle
-  m_TagString: Untagged
+  m_TagString: Land
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38203,7 +38203,7 @@ GameObject:
   - component: {fileID: 2037148634}
   m_Layer: 0
   m_Name: Front 2
-  m_TagString: Untagged
+  m_TagString: Land
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

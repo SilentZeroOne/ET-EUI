@@ -7,5 +7,6 @@
         public const string Bound = "Bound";
         public const string Player = "Player";
         public const string Item = "Item";
+        public const string Land = "Land";
     }
 }

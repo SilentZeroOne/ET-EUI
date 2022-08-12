@@ -8,6 +8,7 @@ TagManager:
   - Bound
   - FadeObject
   - Item
+  - Land
   layers:
   - Default
   - TransparentFX

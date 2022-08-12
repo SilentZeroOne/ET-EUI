@@ -289,6 +289,7 @@ public partial class UICodeSpawner
         strBuilder.AppendFormat("\t\tpublic override void Awake({0} self)\n",strDlgComponentName);
         strBuilder.AppendLine("\t\t{");
         strBuilder.AppendLine("\t\t\tself.uiTransform = self.GetParent<UIBaseWindow>().uiTransform;");
+        strBuilder.AppendLine("\t\t\tself.uiRectTransform = self.uiTransform.GetComponent<RectTransform>();");
         strBuilder.AppendLine("\t\t}");
         strBuilder.AppendLine("\t}");
         strBuilder.AppendLine("\n");
@@ -342,6 +343,7 @@ public partial class UICodeSpawner
 	    
 	    CreateDeclareCode(ref strBuilder);
 	    strBuilder.AppendFormat("\t\tpublic Transform uiTransform = null;\r\n");
+	    strBuilder.AppendFormat("\t\tpublic RectTransform uiRectTransform = null;\r\n");
 	    strBuilder.AppendLine("\t}");
 	    strBuilder.AppendLine("}");
         

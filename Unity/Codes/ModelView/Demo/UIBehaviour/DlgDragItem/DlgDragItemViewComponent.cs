@@ -32,5 +32,6 @@ namespace ET
 
 		private UnityEngine.UI.Image m_E_ItemImage = null;
 		public Transform uiTransform = null;
+		public RectTransform uiRectTransform = null;
 	}
 }
