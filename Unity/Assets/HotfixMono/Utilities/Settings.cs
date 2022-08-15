@@ -4,6 +4,6 @@
     {
         public static float FadeDuration = 0.3f;
         public static float FadeAlpha = 0.45f;
-        public static int MaxInventorySlot = 32;
+        public static int MaxActionBarSlot = 10;
     }
 }

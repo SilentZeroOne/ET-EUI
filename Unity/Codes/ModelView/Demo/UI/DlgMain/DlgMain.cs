@@ -10,5 +10,6 @@ namespace ET
 
 		public List<ESItemSlot> Slots = new List<ESItemSlot>(10);
 
+		public int CurrentItemConfigId { get; set; }
 	}
 }

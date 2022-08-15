@@ -5,7 +5,7 @@ namespace ET
 {
     [ComponentOf()]
     [ChildType(typeof(Item))]
-    public class InventoryComponent: Entity, IAwake,IAwake<string>, IDestroy,IDeserialize
+    public class InventoryComponent: Entity, IAwake,IAwake<string,InventoryType>, IDestroy,IDeserialize
     {
         /// <summary>
         /// ItemId与Item
@@ -35,6 +35,17 @@ namespace ET
         /// <summary>
         /// 存储位置
         /// </summary>
-        public string SavePath;
+        public string SavePath { get; set; }
+
+        /// <summary>
+        /// Inventory 类型
+        /// </summary>
+        public InventoryType Type { get; set; }
+    }
+
+    public enum InventoryType
+    {
+        Inventory, //背包
+        ActionBar, //快捷栏
     }
 }

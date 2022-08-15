@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2153741288499310872}
   m_Layer: 5
   m_Name: E_HightLight
-  m_TagString: Untagged
+  m_TagString: InventoryItemSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 6403007407519630001}
   m_Layer: 5
   m_Name: E_Item
-  m_TagString: Untagged
+  m_TagString: InventoryItemSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 7742663508671818793}
   m_Layer: 5
   m_Name: ItemSlot
-  m_TagString: Untagged
+  m_TagString: InventoryItemSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -247,7 +247,7 @@ GameObject:
   - component: {fileID: 8512782048988861746}
   m_Layer: 5
   m_Name: Item_InventorySlot
-  m_TagString: ItemSlot
+  m_TagString: InventoryItemSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 6615975849810246732}
   m_Layer: 5
   m_Name: E_Slot
-  m_TagString: Untagged
+  m_TagString: InventoryItemSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 50162651450433891}
   m_Layer: 5
   m_Name: E_Count
-  m_TagString: Untagged
+  m_TagString: InventoryItemSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

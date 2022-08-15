@@ -10,7 +10,7 @@ namespace ET
         {
             self.E_ItemEventTrigger.RegisterEvent(EventTriggerType.BeginDrag, (data) => self.OnSlotBeginDrag(data, item));
             self.E_ItemEventTrigger.RegisterEvent(EventTriggerType.Drag, (data) => self.OnSlotDrag((PointerEventData)data, item));
-            self.E_ItemEventTrigger.RegisterEvent(EventTriggerType.EndDrag, (data) => self.OnSlotEndDrag((PointerEventData)data, item));
+            self.E_ItemEventTrigger.RegisterEvent(EventTriggerType.EndDrag, (data) => self.OnSlotEndDrag((PointerEventData)data, item).Coroutine());
         }
 
         public static void OnSlotBeginDrag(this Scroll_Item_InventorySlot self,BaseEventData eventData,Item item)
@@ -23,10 +23,10 @@ namespace ET
             self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgDragItem>().SyncPosition(eventData.position);
         }
 
-        public static void OnSlotEndDrag(this Scroll_Item_InventorySlot self, PointerEventData eventData,Item item)
+        public static async ETTask OnSlotEndDrag(this Scroll_Item_InventorySlot self, PointerEventData eventData,Item item)
         {
             self.ZoneScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_DragItem);
-            //如果是陆地 生成Item到陆地上
+            //如果是快捷栏 拖入快捷栏 否则生成在地面上
             var worldPos = Camera.main.ScreenToWorldPoint(eventData.position);
             if (eventData.pointerCurrentRaycast.gameObject != null)
             {
@@ -34,13 +34,33 @@ namespace ET
                 {
                     long id = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<MonoBridge>().BelongToEntityId;
                     ESItemSlot slot = Game.EventSystem.Get(id) as ESItemSlot;
+                    
                     InventoryComponent inventoryComponent = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<InventoryComponent>();
                     inventoryComponent.RemoveItem(item, false);
+                    inventoryComponent.SaveInventory();
+                    
                     InventoryComponent actionBarInventoryComponent = self.ZoneScene().GetComponent<InventoryComponent>();
                     actionBarInventoryComponent.AddItemByIndex(item, (int)slot.DataId);
-                    slot.Init(item);
+                    actionBarInventoryComponent.SaveInventory();
                     
-                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgInventory>().Refresh();
+                    await TimerComponent.Instance.WaitAsync(100);
+                    
+                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgInventory>().RefreshSlots();
+                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgMain>().Refresh();
+                }
+
+                if (eventData.pointerCurrentRaycast.gameObject.CompareTag(TagManager.InventoryItemSlot))
+                {
+                    long id = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<MonoBridge>().BelongToEntityId;
+                    Scroll_Item_InventorySlot slot = Game.EventSystem.Get(id) as Scroll_Item_InventorySlot;
+                    
+                    InventoryComponent inventoryComponent = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<InventoryComponent>();
+                    inventoryComponent.AddItemByIndex(item, (int)slot.DataId);
+                    inventoryComponent.SaveInventory();
+                    
+                    await TimerComponent.Instance.WaitAsync(100);
+                    
+                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgInventory>().RefreshSlots();
                 }
             }
             else
@@ -63,7 +83,9 @@ namespace ET
                     ItemsComponent itemsComponent = self.ZoneScene().CurrentScene().GetComponent<ItemsComponent>();
                     itemsComponent.AddChild(item);
             
-                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgInventory>().Refresh();
+                    await TimerComponent.Instance.WaitAsync(100);
+                    
+                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgInventory>().RefreshSlots();
                 }
             }
             

@@ -9,7 +9,7 @@ namespace ET
             UIComponent uiComponent = a.ZoneScene.GetComponent<UIComponent>();
             if (uiComponent.IsWindowVisible(WindowID.WindowID_Inventory))
             {
-                uiComponent.GetDlgLogic<DlgInventory>().Refresh();
+                uiComponent.GetDlgLogic<DlgInventory>().RefreshSlots();
             }
         }
     }

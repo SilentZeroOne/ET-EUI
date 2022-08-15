@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace ET
 {
     [FriendClass(typeof(DlgMain))]
     [FriendClassAttribute(typeof(ET.ESItemSlot))]
+    [FriendClassAttribute(typeof(ET.Item))]
     public static class DlgMainSystem
     {
 
@@ -35,15 +37,22 @@ namespace ET
             }
         }
 
-        public static void OnSlotBeginDrag(this DlgMain self, ESItemSlot slot)
+        public static void OnSlotClick(this DlgMain self, BaseEventData evt, ESItemSlot slot, Item item)
         {
-
+            var isSelected = slot.E_HightLightImage.gameObject.activeInHierarchy;
+            slot.E_HightLightImage.gameObject.SetActive(!isSelected);
+            self.CurrentItemConfigId = isSelected ? 0 : item.ConfigId;
+            for (int i = 0; i < self.Slots.Count; i++)
+            {
+                if (i != slot.DataId)
+                {
+                    self.Slots[i].E_HightLightImage.SetVisible(false);
+                }
+            }
         }
 
         public static void InitSlots(this DlgMain self)
         {
-            InventoryComponent inventoryComponent = self.ZoneScene().GetComponent<InventoryComponent>();
-            
             self.Slots.Add(self.View.ESItemSlot);
             self.Slots.Add(self.View.ESItemSlot1);
             self.Slots.Add(self.View.ESItemSlot2);
@@ -57,9 +66,30 @@ namespace ET
 
             for (int i = 0; i < self.Slots.Count; i++)
             {
-                self.Slots[i].uiTransform.gameObject.AddComponent<MonoBridge>().BelongToEntityId = self.Slots[i].InstanceId;
-                self.Slots[i].Init(inventoryComponent.GetItemByIndex(i));
+                self.Slots[i].uiTransform.gameObject.GetOrAddComponent<MonoBridge>().BelongToEntityId = self.Slots[i].InstanceId;
                 self.Slots[i].DataId = i;
+            }
+            
+            self.Refresh();
+        }
+
+        public static void Refresh(this DlgMain self)
+        {
+            InventoryComponent inventoryComponent = self.ZoneScene().GetComponent<InventoryComponent>();
+
+            for (int i = 0; i < self.Slots.Count; i++)
+            {
+                ESItemSlot slot = self.Slots[i];
+                Item item = inventoryComponent.GetItemByIndex(i);
+                slot.Init(item, inventoryComponent);
+                if (item != null && !item.IsDisposed)
+                {
+                    slot.E_ItemEventTrigger.RegisterEvent(EventTriggerType.PointerClick, (evt) => self.OnSlotClick(evt, slot, item));
+                }
+                else
+                {
+                    slot.E_ItemEventTrigger.triggers.Clear();
+                }
             }
         }
     }

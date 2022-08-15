@@ -8,7 +8,7 @@ namespace ET
     public class MonoBridge: MonoBehaviour
     {
         /// <summary>
-        /// 属于哪个Entity
+        /// 属于哪个Entity,InstanceId
         /// </summary>
         public long BelongToEntityId;
     }

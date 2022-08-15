@@ -31,5 +31,16 @@ namespace ET
             }
             return com;
         }
+
+        public static T GetOrAddComponent<T>(this GameObject gameObject) where T : Component
+        {
+            T comp = gameObject.GetComponent<T>();
+            if (comp != null)
+            {
+                return comp;
+            }
+
+            return gameObject.AddComponent<T>();
+        }
     }
 }
