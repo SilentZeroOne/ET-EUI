@@ -99,9 +99,9 @@ public partial class UICodeSpawner
         strBuilder.AppendFormat("\tpublic  class {0} : Entity,ET.IAwake<UnityEngine.Transform>,IDestroy \r\n", strDlgName)
             .AppendLine("\t{");
         
-       
+        strBuilder.AppendLine("\t\tpublic long DataId {get;set;}");
         CreateWidgetBindCode(ref strBuilder, objPanel.transform);
-        CreateDestroyWidgetCode(ref strBuilder);
+        CreateDestroyWidgetCode(ref strBuilder,true);
         CreateDeclareCode(ref strBuilder);
         strBuilder.AppendLine("\t\tpublic Transform uiTransform = null;");
         strBuilder.AppendLine("\t}");

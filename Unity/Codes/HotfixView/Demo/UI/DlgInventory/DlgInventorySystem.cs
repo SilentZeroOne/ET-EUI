@@ -51,21 +51,20 @@ namespace ET
 		public static void OnInventoryItemSlotRefresh(this DlgInventory self, Transform transform, int index)
 		{
 			Scroll_Item_InventorySlot slot = self.ScrollItemInventorySlots[index].BindTrans(transform);
+			slot.DataId = index;
 			InventoryComponent inventoryComponent = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<InventoryComponent>();
-			if (index <= inventoryComponent.ItemConfigIdList.Count - 1)
+			
+			Item item = inventoryComponent.GetItemByIndex(index);
+			if (item != null && !item.IsDisposed)
 			{
-				Item item = inventoryComponent.GetItemByConfigId(inventoryComponent.ItemConfigIdList[index]);
-				if (item != null && !item.IsDisposed)
-				{
-					slot.E_ItemImage.sprite = IconHelper.LoadIconSprite(item.Config.ItemIcon);
-					slot.E_CountTextMeshProUGUI.text = inventoryComponent.GetItemCountByConfigId(inventoryComponent.ItemConfigIdList[index]).ToString();
-				
-					slot.E_ItemImage.SetVisible(true);
-					slot.E_CountTextMeshProUGUI.SetVisible(true);
-					slot.E_HightLightImage.gameObject.SetActive(item.ConfigId == self.CurrentItemConfigId);
-					slot.E_ItemEventTrigger.RegisterEvent(EventTriggerType.PointerClick, (data) => self.OnSlotClick(data, slot, item));
-					slot.RegisterEvent(item);
-				}
+				slot.E_ItemImage.sprite = IconHelper.LoadIconSprite(item.Config.ItemIcon);
+				slot.E_CountTextMeshProUGUI.text = inventoryComponent.GetItemCountByConfigId(inventoryComponent.ItemConfigIdList[index]).ToString();
+
+				slot.E_ItemImage.SetVisible(true);
+				slot.E_CountTextMeshProUGUI.SetVisible(true);
+				slot.E_HightLightImage.gameObject.SetActive(item.ConfigId == self.CurrentItemConfigId);
+				slot.E_ItemEventTrigger.RegisterEvent(EventTriggerType.PointerClick, (data) => self.OnSlotClick(data, slot, item));
+				slot.RegisterEvent(item);
 			}
 			else
 			{
@@ -76,14 +75,12 @@ namespace ET
 			}
 		}
 
-		public static void OnSlotClick(this DlgInventory self, BaseEventData eventData,Scroll_Item_InventorySlot itemSlot,Item item)
+		public static void OnSlotClick(this DlgInventory self, BaseEventData eventData, Scroll_Item_InventorySlot itemSlot, Item item)
 		{
 			var isSelected = itemSlot.E_HightLightImage.gameObject.activeInHierarchy;
 			itemSlot.E_HightLightImage.gameObject.SetActive(!isSelected);
 			self.CurrentItemConfigId = isSelected? 0 : item.ConfigId;
 			self.View.E_SlotsLoopVerticalScrollRect.RefillCells();
 		}
-		
-
 	}
 }

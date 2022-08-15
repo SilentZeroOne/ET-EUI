@@ -6,6 +6,7 @@ namespace ET
 	[EnableMethod]
 	public  class ESItemSlot : Entity,ET.IAwake<UnityEngine.Transform>,IDestroy 
 	{
+		public long DataId {get;set;}
 		public UnityEngine.UI.Button E_SlotButton
      	{
      		get
@@ -117,6 +118,7 @@ namespace ET
 			this.m_E_CountTextMeshProUGUI = null;
 			this.m_E_HightLightImage = null;
 			this.uiTransform = null;
+			this.DataId = 0;
 		}
 
 		private UnityEngine.UI.Button m_E_SlotButton = null;

@@ -43,16 +43,24 @@ namespace ET
         public static void InitSlots(this DlgMain self)
         {
             InventoryComponent inventoryComponent = self.ZoneScene().GetComponent<InventoryComponent>();
-            var index = 0;
-            foreach (var slot in self.View.Children.Values)
+            
+            self.Slots.Add(self.View.ESItemSlot);
+            self.Slots.Add(self.View.ESItemSlot1);
+            self.Slots.Add(self.View.ESItemSlot2);
+            self.Slots.Add(self.View.ESItemSlot3);
+            self.Slots.Add(self.View.ESItemSlot4);
+            self.Slots.Add(self.View.ESItemSlot5);
+            self.Slots.Add(self.View.ESItemSlot6);
+            self.Slots.Add(self.View.ESItemSlot7);
+            self.Slots.Add(self.View.ESItemSlot8);
+            self.Slots.Add(self.View.ESItemSlot9);
+
+            for (int i = 0; i < self.Slots.Count; i++)
             {
-                ESItemSlot itemSlot = slot as ESItemSlot;
-                itemSlot.uiTransform.gameObject.AddComponent<MonoBridge>().BelongToEntityId = itemSlot.InstanceId;
-                itemSlot.Init(inventoryComponent.GetItemByIndex(index));
-                self.Slots.Add(itemSlot);
-                index++;
+                self.Slots[i].uiTransform.gameObject.AddComponent<MonoBridge>().BelongToEntityId = self.Slots[i].InstanceId;
+                self.Slots[i].Init(inventoryComponent.GetItemByIndex(i));
+                self.Slots[i].DataId = i;
             }
         }
-
     }
 }

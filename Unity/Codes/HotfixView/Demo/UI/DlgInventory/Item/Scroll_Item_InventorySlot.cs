@@ -30,9 +30,17 @@ namespace ET
             var worldPos = Camera.main.ScreenToWorldPoint(eventData.position);
             if (eventData.pointerCurrentRaycast.gameObject != null)
             {
-                if (eventData.pointerCurrentRaycast.gameObject.CompareTag(TagManager.Land))
+                if (eventData.pointerCurrentRaycast.gameObject.CompareTag(TagManager.ItemSlot))
                 {
+                    long id = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<MonoBridge>().BelongToEntityId;
+                    ESItemSlot slot = Game.EventSystem.Get(id) as ESItemSlot;
+                    InventoryComponent inventoryComponent = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<InventoryComponent>();
+                    inventoryComponent.RemoveItem(item, false);
+                    InventoryComponent actionBarInventoryComponent = self.ZoneScene().GetComponent<InventoryComponent>();
+                    actionBarInventoryComponent.AddItemByIndex(item, (int)slot.DataId);
+                    slot.Init(item);
                     
+                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgInventory>().Refresh();
                 }
             }
             else

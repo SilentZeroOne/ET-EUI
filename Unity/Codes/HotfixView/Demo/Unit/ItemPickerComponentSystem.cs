@@ -41,10 +41,12 @@ namespace ET
                     if (item.Config.CanPickUp == 1)
                     {
                         InventoryComponent inventoryComponent = player.GetComponent<InventoryComponent>();
-                        inventoryComponent.AddItemByIndex(item, inventoryComponent.ItemConfigIdList.Count);
-                        UnityEngine.Object.Destroy(other.gameObject);
-                        player.GetComponent<InventoryComponent>().SaveInventory();
-                        Game.EventSystem.Publish(new EventType.RefreshInventory() { ZoneScene = self.ZoneScene() });
+                        if (inventoryComponent.AddItem(item) == ErrorCode.ERR_Success)
+                        {
+                            UnityEngine.Object.Destroy(other.gameObject);
+                            player.GetComponent<InventoryComponent>().SaveInventory();
+                            Game.EventSystem.Publish(new EventType.RefreshInventory() { ZoneScene = self.ZoneScene() });
+                        }
                     }
                 }
             }

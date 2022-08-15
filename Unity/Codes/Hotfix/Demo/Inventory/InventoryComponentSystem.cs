@@ -64,40 +64,85 @@ namespace ET
             return self.ItemConfigIdList.Count >= numericComponent.GetAsInt(NumericType.InventoryCapacity);
         }
 
-        public static bool AddItem(this InventoryComponent self, Item item)
+        public static int AddItem(this InventoryComponent self, Item item,bool autoIndex = true)
         {
             if (item == null || item.IsDisposed)
             {
                 Log.Debug("Item 不存在");
-                return false;
+                return ErrorCode.ERR_ItemNotExist;
             }
 
             if (self.IsMaxCapacity())
             {
                 Log.Debug("背包已满");
-                return false;
+                return ErrorCode.ERR_BagOverCapacity;
             }
 
             if (!self.AddContainer(item))
             {
                 Log.Debug("Item 添加失败");
-                return false;
+                return ErrorCode.ERR_ItemAlreadyInInventory;
             }
+
+            if (autoIndex)
+                self.AddItemInAutoIndex(item);
 
             if (item.Parent != self)
             {
                 self.AddChild(item);
             }
 
-            return true;
+            return ErrorCode.ERR_Success;
         }
 
-        public static void AddItemByIndex(this InventoryComponent self, Item item, int index)
+        private static void AddItemInAutoIndex(this InventoryComponent self, Item item)
         {
-            if (self.AddItem(item))
+            if (!self.IndexConfigIdDict.ContainsValue(item.ConfigId))
             {
+                var index = self.GetEmptySlotIndex();
                 self.IndexConfigIdDict.Add(index, item.ConfigId);
+                Log.Debug($"Add item {item.Config.ItemName} in index {index}");
             }
+        }
+
+        public static bool AddItemByIndex(this InventoryComponent self, Item item, int index)
+        {
+            int errorCode = self.AddItem(item, false);
+            
+            if (errorCode == ErrorCode.ERR_Success)
+            {
+                if (!self.IndexConfigIdDict.Contains(index, item.ConfigId))
+                {
+                    self.IndexConfigIdDict.Add(index, item.ConfigId);
+                    Log.Debug($"Add item {item.Config.ItemName} in index {index}");
+                }
+
+                return true;
+            }
+
+            if(errorCode == ErrorCode.ERR_ItemAlreadyInInventory)
+            {
+                self.IndexConfigIdDict.RemoveByValue(item.ConfigId);
+                self.IndexConfigIdDict.Add(index, item.ConfigId);
+                Log.Debug($"Item {item.Config.ItemName} already in inventory,swap to index {index}");
+                return true;
+            }
+
+            return false;
+        }
+
+        public static int GetEmptySlotIndex(this InventoryComponent self)
+        {
+            int capacity = UnitHelper.GetInventoryCapacityFormZoneScene(self.ZoneScene());
+            for (int i = 0; i < capacity; i++)
+            {
+                if (!self.IndexConfigIdDict.ContainsKey(i))
+                {
+                    return i;
+                }
+            }
+
+            return 999;
         }
 
         /// <summary>
@@ -133,15 +178,11 @@ namespace ET
             self.ItemDict.Remove(item.Id);
             self.ItemMap.Remove(item.Config.ItemType, item);
             self.ItemConfigIdMap.Remove(item.ConfigId, item);
-            if (self.ItemConfigIdMap.TryGetValue(item.ConfigId, out var list))
+            if (!self.ItemConfigIdMap.TryGetValue(item.ConfigId, out _))
             {
-                if (list.Count <= 0)
-                {
-                    self.ItemConfigIdList.Remove(item.ConfigId);
-                }
+                self.ItemConfigIdList.Remove(item.ConfigId);
+                self.IndexConfigIdDict.RemoveByValue(item.ConfigId);
             }
-
-            self.IndexConfigIdDict.RemoveByValue(item.ConfigId);
         }
 
         public static Item GetItemById(this InventoryComponent self, long id)
@@ -196,7 +237,7 @@ namespace ET
                 self.AddItemByIndex(temp, item.IndexInInventory);
                 
                 //self.AddContainer(temp.FromProto(item));
-                Log.Debug($"Add item {temp.Id} {temp.Config.ItemName} to Inventory form memory");
+                Log.Debug($"Add item {temp.Id} {temp.Config.ItemName} to in {item.IndexInInventory} Inventory form memory");
             }
         }
 
