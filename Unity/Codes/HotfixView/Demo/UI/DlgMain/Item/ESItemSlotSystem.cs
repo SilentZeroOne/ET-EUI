@@ -33,6 +33,8 @@ namespace ET
             self.E_ItemEventTrigger.RegisterEvent(EventTriggerType.BeginDrag, (data) => self.OnSlotBeginDrag(data, item));
             self.E_ItemEventTrigger.RegisterEvent(EventTriggerType.Drag, (data) => self.OnSlotDrag((PointerEventData)data, item));
             self.E_ItemEventTrigger.RegisterEvent(EventTriggerType.EndDrag, (data) => self.OnSlotEndDrag((PointerEventData)data, item).Coroutine());
+            self.E_ItemEventTrigger.RegisterEvent(EventTriggerType.PointerEnter, (data) => self.OnSlotPointerEnter((PointerEventData)data, item));
+            self.E_ItemEventTrigger.RegisterEvent(EventTriggerType.PointerExit, (data) => self.OnSlotPointerExit((PointerEventData)data, item));
         }
 
         public static void OnSlotBeginDrag(this ESItemSlot self,BaseEventData eventData,Item item)
@@ -111,6 +113,16 @@ namespace ET
                     self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgMain>().Refresh();
                 }
             }
+        }
+        
+        private static void OnSlotPointerEnter(this ESItemSlot self, PointerEventData eventData, Item item)
+        {
+            self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_ItemTooltip, new ShowWindowData() { contextData = item });
+        }
+        
+        private static void OnSlotPointerExit(this ESItemSlot self, PointerEventData eventData, Item item)
+        {
+            self.ZoneScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_ItemTooltip);
         }
     }
 }

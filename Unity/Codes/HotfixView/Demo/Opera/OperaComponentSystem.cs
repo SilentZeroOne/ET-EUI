@@ -79,6 +79,16 @@ namespace ET
             }
 
             self.GetParent<Unit>().GetComponent<RigidBody2DComponent>().Move(new Vector2(inputX, inputY));
+            self.GetParent<Unit>().GetComponent<AnimatorComponent>().SetMoveParmas(inputX, inputY);
+            if (inputX != 0 || inputY != 0)
+            {
+                self.GetParent<Unit>().GetComponent<AnimatorComponent>().Play(MotionType.IsMoving);
+            }
+            else
+            {
+                self.GetParent<Unit>().GetComponent<AnimatorComponent>()
+                        .ForEveryAnimator(AnimatorControlType.ResetTrigger, MotionType.IsMoving.ToString());
+            }
         }
     }
 }

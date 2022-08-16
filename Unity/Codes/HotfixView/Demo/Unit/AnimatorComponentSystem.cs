@@ -28,7 +28,7 @@ namespace ET
 		{
 			self.animationClips = null;
 			self.Parameter = null;
-			self.Animator = null;
+			self.Animators.Clear();
 		}
 	}
 
@@ -37,28 +37,49 @@ namespace ET
 	{
 		public static void Awake(this AnimatorComponent self)
 		{
-			Animator animator = self.Parent.GetComponent<GameObjectComponent>().GameObject.GetComponent<Animator>();
+			var go = self.Parent.GetComponent<GameObjectComponent>().GameObject;
+			Animator bodyAnimator = go.GetComponentFormRC<Animator>("Body");
+			Animator armAnimator = go.GetComponentFormRC<Animator>("Arm");
+			Animator hairAnimator = go.GetComponentFormRC<Animator>("Hair");
 
-			if (animator == null)
+			if (bodyAnimator == null || armAnimator == null || hairAnimator == null)
 			{
 				return;
 			}
+			
+			self.Animators.Add(bodyAnimator);
+			self.Animators.Add(armAnimator);
+			self.Animators.Add(hairAnimator);
 
-			if (animator.runtimeAnimatorController == null)
+			for (int i = 0; i < self.Animators.Count; i++)
 			{
-				return;
+				if (self.Animators[i].runtimeAnimatorController == null)
+				{
+					return;
+				}
+			}
+			
+			for (int i = 0; i < self.Animators.Count; i++)
+			{
+				if (self.Animators[i].runtimeAnimatorController.animationClips == null)
+				{
+					return;
+				}
 			}
 
-			if (animator.runtimeAnimatorController.animationClips == null)
+			self.BodyAnimator = bodyAnimator;
+			self.ArmAnimator = armAnimator;
+			self.HairAnimator = hairAnimator;
+
+			for (int i = 0; i < self.Animators.Count; i++)
 			{
-				return;
+				foreach (AnimationClip animationClip in self.Animators[i].runtimeAnimatorController.animationClips)
+				{
+					self.animationClips[animationClip.name] = animationClip;
+				}
 			}
-			self.Animator = animator;
-			foreach (AnimationClip animationClip in animator.runtimeAnimatorController.animationClips)
-			{
-				self.animationClips[animationClip.name] = animationClip;
-			}
-			foreach (AnimatorControllerParameter animatorControllerParameter in animator.parameters)
+			
+			foreach (AnimatorControllerParameter animatorControllerParameter in bodyAnimator.parameters)
 			{
 				self.Parameter.Add(animatorControllerParameter.name);
 			}
@@ -78,9 +99,11 @@ namespace ET
 
 			try
 			{
-				self.Animator.SetFloat("MotionSpeed", self.MontionSpeed);
+				self.ForEveryAnimator(AnimatorControlType.SetFloat, "MotionSpeed", self.MontionSpeed.ToString());
+				self.ForEveryAnimator(AnimatorControlType.SetFloat, "InputX", self.InputX.ToString());
+				self.ForEveryAnimator(AnimatorControlType.SetFloat, "InputY", self.InputY.ToString());
 
-				self.Animator.SetTrigger(self.MotionType.ToString());
+				self.ForEveryAnimator(AnimatorControlType.SetTrigger, self.MotionType.ToString());
 
 				self.MontionSpeed = 1;
 				self.MotionType = MotionType.None;
@@ -142,12 +165,12 @@ namespace ET
 			}
 			self.isStop = true;
 
-			if (self.Animator == null)
+			if (self.CurrentControlAnimator == null)
 			{
 				return;
 			}
-			self.stopSpeed = self.Animator.speed;
-			self.Animator.speed = 0;
+			self.stopSpeed = self.CurrentControlAnimator.speed;
+			self.CurrentControlAnimator.speed = 0;
 		}
 
 		public static void RunAnimator(this AnimatorComponent self)
@@ -159,11 +182,11 @@ namespace ET
 
 			self.isStop = false;
 
-			if (self.Animator == null)
+			if (self.CurrentControlAnimator == null)
 			{
 				return;
 			}
-			self.Animator.speed = self.stopSpeed;
+			self.CurrentControlAnimator.speed = self.stopSpeed;
 		}
 
 		public static void SetBoolValue(this AnimatorComponent self, string name, bool state)
@@ -173,7 +196,7 @@ namespace ET
 				return;
 			}
 
-			self.Animator.SetBool(name, state);
+			self.CurrentControlAnimator.SetBool(name, state);
 		}
 
 		public static void SetFloatValue(this AnimatorComponent self, string name, float state)
@@ -183,7 +206,7 @@ namespace ET
 				return;
 			}
 
-			self.Animator.SetFloat(name, state);
+			self.CurrentControlAnimator.SetFloat(name, state);
 		}
 
 		public static void SetIntValue(this AnimatorComponent self, string name, int value)
@@ -193,7 +216,7 @@ namespace ET
 				return;
 			}
 
-			self.Animator.SetInteger(name, value);
+			self.CurrentControlAnimator.SetInteger(name, value);
 		}
 
 		public static void SetTrigger(this AnimatorComponent self, string name)
@@ -203,18 +226,74 @@ namespace ET
 				return;
 			}
 
-			self.Animator.SetTrigger(name);
+			self.CurrentControlAnimator.SetTrigger(name);
+		}
+		
+		public static void ResetTrigger(this AnimatorComponent self, string name)
+		{
+			if (!self.HasParameter(name))
+			{
+				return;
+			}
+
+			self.CurrentControlAnimator.ResetTrigger(name);
 		}
 
 		public static void SetAnimatorSpeed(this AnimatorComponent self, float speed)
 		{
-			self.stopSpeed = self.Animator.speed;
-			self.Animator.speed = speed;
+			self.stopSpeed = self.CurrentControlAnimator.speed;
+			self.CurrentControlAnimator.speed = speed;
 		}
 
 		public static void ResetAnimatorSpeed(this AnimatorComponent self)
 		{
-			self.Animator.speed = self.stopSpeed;
+			self.CurrentControlAnimator.speed = self.stopSpeed;
+		}
+
+		public static void SetMoveParmas(this AnimatorComponent self, float inputX, float inputY)
+		{
+			self.InputX = inputX;
+			self.InputY = inputY;
+		}
+
+		public static void ForEveryAnimator(this AnimatorComponent self,AnimatorControlType controlType,params string[] pars)
+		{
+			for (int i = 0; i < self.Animators.Count; i++)
+			{
+				self.CurrentControlAnimator = self.Animators[i];
+				switch (controlType)
+				{
+					case AnimatorControlType.SetTrigger:
+						self.SetTrigger(pars[0]);
+						break;
+					case AnimatorControlType.ResetTrigger:
+						self.ResetTrigger(pars[0]);
+						break;
+					case AnimatorControlType.SetBool:
+						self.SetBoolValue(pars[0], bool.Parse(pars[1]));
+						break;
+					case AnimatorControlType.SetInt:
+						self.SetIntValue(pars[0], int.Parse(pars[1]));
+						break;
+					case AnimatorControlType.SetFloat:
+						self.SetFloatValue(pars[0],float.Parse(pars[1]));
+						break;
+					case AnimatorControlType.SetSpeed:
+						self.SetAnimatorSpeed(float.Parse(pars[0]));
+						break;
+					case AnimatorControlType.ResetSpeed:
+						self.ResetAnimatorSpeed();
+						break;
+					case AnimatorControlType.RunAnimator:
+						self.RunAnimator();
+						break;
+					case AnimatorControlType.PauseAnimator:
+						self.PauseAnimator();
+						break;
+					default:
+						throw new ArgumentOutOfRangeException(nameof (controlType), controlType, null);
+				}
+			}
 		}
 	}
 }

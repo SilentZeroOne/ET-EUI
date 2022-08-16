@@ -21,6 +21,7 @@ namespace ET
             go.transform.position = args.Unit.Position;
             args.Unit.AddComponent<GameObjectComponent>().GameObject = go;
             args.Unit.AddComponent<RigidBody2DComponent>().Rigidbody2D = go.GetComponent<Rigidbody2D>();
+            args.Unit.AddComponent<AnimatorComponent>();
             args.Unit.AddComponent<OperaComponent>();
             args.Unit.AddComponent<TriggerFaderComponent>();
             args.Unit.AddComponent<ItemPickerComponent>();

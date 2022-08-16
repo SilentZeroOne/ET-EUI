@@ -6,8 +6,20 @@ namespace ET
 	public enum MotionType
 	{
 		None,
-		Idle,
-		Run,
+		IsMoving,
+	}
+
+	public enum AnimatorControlType
+	{
+		SetTrigger,
+		ResetTrigger,
+		SetBool,
+		SetInt,
+		SetFloat,
+		SetSpeed,
+		ResetSpeed,
+		RunAnimator,
+		PauseAnimator
 	}
 
 	[ComponentOf(typeof(Unit))]
@@ -18,8 +30,14 @@ namespace ET
 
 		public MotionType MotionType;
 		public float MontionSpeed;
+		public float InputX;
+		public float InputY;
 		public bool isStop;
 		public float stopSpeed;
-		public Animator Animator;
+		public Animator BodyAnimator;
+		public Animator ArmAnimator;
+		public Animator HairAnimator;
+		public Animator CurrentControlAnimator;
+		public List<Animator> Animators = new List<Animator>(3);
 	}
 }

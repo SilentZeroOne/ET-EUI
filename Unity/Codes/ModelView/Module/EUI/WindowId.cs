@@ -11,5 +11,6 @@
         WindowID_Main,     //主界面
         WindowID_Inventory,//背包界面
         WindowID_DragItem, //拖拽物品图片
+        WindowID_ItemTooltip, //物品详情Tip
     }
 }

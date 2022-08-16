@@ -11,19 +11,21 @@ namespace ET
             self.E_ItemEventTrigger.RegisterEvent(EventTriggerType.BeginDrag, (data) => self.OnSlotBeginDrag(data, item));
             self.E_ItemEventTrigger.RegisterEvent(EventTriggerType.Drag, (data) => self.OnSlotDrag((PointerEventData)data, item));
             self.E_ItemEventTrigger.RegisterEvent(EventTriggerType.EndDrag, (data) => self.OnSlotEndDrag((PointerEventData)data, item).Coroutine());
+            self.E_ItemEventTrigger.RegisterEvent(EventTriggerType.PointerEnter, (data) => self.OnSlotPointerEnter((PointerEventData)data, item));
+            self.E_ItemEventTrigger.RegisterEvent(EventTriggerType.PointerExit, (data) => self.OnSlotPointerExit((PointerEventData)data, item));
         }
 
-        public static void OnSlotBeginDrag(this Scroll_Item_InventorySlot self,BaseEventData eventData,Item item)
+        private static void OnSlotBeginDrag(this Scroll_Item_InventorySlot self,BaseEventData eventData,Item item)
         {
             self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_DragItem, new ShowWindowData() { contextData = item });
         }
 
-        public static void OnSlotDrag(this Scroll_Item_InventorySlot self, PointerEventData eventData,Item item)
+        private static void OnSlotDrag(this Scroll_Item_InventorySlot self, PointerEventData eventData,Item item)
         {
             self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgDragItem>().SyncPosition(eventData.position);
         }
 
-        public static async ETTask OnSlotEndDrag(this Scroll_Item_InventorySlot self, PointerEventData eventData,Item item)
+        private static async ETTask OnSlotEndDrag(this Scroll_Item_InventorySlot self, PointerEventData eventData,Item item)
         {
             self.ZoneScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_DragItem);
             //如果是快捷栏 拖入快捷栏 否则生成在地面上
@@ -89,6 +91,16 @@ namespace ET
                 }
             }
             
+        }
+
+        private static void OnSlotPointerEnter(this Scroll_Item_InventorySlot self, PointerEventData eventData, Item item)
+        {
+            self.ZoneScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_ItemTooltip, new ShowWindowData() { contextData = item });
+        }
+        
+        private static void OnSlotPointerExit(this Scroll_Item_InventorySlot self, PointerEventData eventData, Item item)
+        {
+            self.ZoneScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_ItemTooltip);
         }
         
     }
