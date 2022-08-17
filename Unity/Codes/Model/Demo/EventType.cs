@@ -121,5 +121,12 @@ namespace ET
         {
             public Scene ZoneScene;
         }
+
+        public struct OnItemSelected
+        {
+            public Scene ZoneScene;
+            public Item Item;
+            public bool Carried;
+        }
     }
 }

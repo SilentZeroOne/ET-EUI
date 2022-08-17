@@ -8,6 +8,20 @@ namespace ET
 		None,
 		IsMoving,
 	}
+	
+	public enum AnimatorType
+	{
+		Arm,
+		Body,
+		Hair
+	}
+
+	//TODO: 每次添加新的状态需要在这加
+	public enum AnimatorStatus
+	{
+		None,
+		Carried
+	}
 
 	public enum AnimatorControlType
 	{
@@ -34,10 +48,7 @@ namespace ET
 		public float InputY;
 		public bool isStop;
 		public float stopSpeed;
-		public Animator BodyAnimator;
-		public Animator ArmAnimator;
-		public Animator HairAnimator;
 		public Animator CurrentControlAnimator;
-		public List<Animator> Animators = new List<Animator>(3);
+		public Dictionary<AnimatorType, Animator> Animators = new Dictionary<AnimatorType, Animator>(3);
 	}
 }

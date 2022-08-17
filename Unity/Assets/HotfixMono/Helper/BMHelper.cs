@@ -6,7 +6,7 @@ namespace ET
     {
         public static string StringToAB(this string self)
         {
-            var replace = self.Replace("@", "_");
+            var replace = self.Replace("@", "_").Replace(".", "__");
             foreach (var fieldInfo in typeof (BPath).GetFields())
             {
                 if (fieldInfo.Name.Contains(replace))

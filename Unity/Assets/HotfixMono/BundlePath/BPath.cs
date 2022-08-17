@@ -12,6 +12,15 @@ namespace BM
 		public const string Assets_Bundles_Code_System__dll__bytes = "Assets/Bundles/Code/System.dll.bytes";
 		public const string Assets_Bundles_Code_Unity__Mono__dll__bytes = "Assets/Bundles/Code/Unity.Mono.dll.bytes";
 		public const string Assets_Bundles_Code_Unity__ThirdParty__dll__bytes = "Assets/Bundles/Code/Unity.ThirdParty.dll.bytes";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_SlotHighLight__controller = "Assets/Bundles/ResBundles/Animators/Controller/SlotHighLight.controller";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_TreeGreen__controller = "Assets/Bundles/ResBundles/Animators/Controller/TreeGreen.controller";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_TreePink__controller = "Assets/Bundles/ResBundles/Animators/Controller/TreePink.controller";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_TreeYellow__controller = "Assets/Bundles/ResBundles/Animators/Controller/TreeYellow.controller";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm_Hold__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm_Hold.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_BaseContorller__controller = "Assets/Bundles/ResBundles/Animators/Controller/Player/BaseContorller.controller";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Body__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Body.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Hair__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Hair.overrideController";
 		public const string Assets_Bundles_ResBundles_ItemPrefab_ItemBase__prefab = "Assets/Bundles/ResBundles/ItemPrefab/ItemBase.prefab";
 		public const string Assets_Bundles_ResBundles_TreePrefab_TreeGreen__prefab = "Assets/Bundles/ResBundles/TreePrefab/TreeGreen.prefab";
 		public const string Assets_Bundles_ResBundles_TreePrefab_TreePink__prefab = "Assets/Bundles/ResBundles/TreePrefab/TreePink.prefab";
@@ -154,6 +163,7 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_Items_Woods_BroadleafWood_Harvest__png = "Assets/Bundles/ResBundles/Items/Woods/BroadleafWood_Harvest.png";
 		public const string Assets_Bundles_ResBundles_Items_Woods_NeedieWood_Harvest__png = "Assets/Bundles/ResBundles/Items/Woods/NeedieWood_Harvest.png";
 		public const string Assets_Bundles_Config_AIConfigCategory__bytes = "Assets/Bundles/Config/AIConfigCategory.bytes";
+		public const string Assets_Bundles_Config_AnimatorControllerConfigCategory__bytes = "Assets/Bundles/Config/AnimatorControllerConfigCategory.bytes";
 		public const string Assets_Bundles_Config_GameSceneConfigCategory__bytes = "Assets/Bundles/Config/GameSceneConfigCategory.bytes";
 		public const string Assets_Bundles_Config_ItemConfigCategory__bytes = "Assets/Bundles/Config/ItemConfigCategory.bytes";
 		public const string Assets_Bundles_Config_PlayerNumericConfigCategory__bytes = "Assets/Bundles/Config/PlayerNumericConfigCategory.bytes";

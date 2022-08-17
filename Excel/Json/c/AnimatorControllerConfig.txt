@@ -1,0 +1,4 @@
+{"list":[
+{"_t":"AnimatorControllerConfig","_id":1,"AnimatorName":"Arm","AniamtorStatus":0,"OverrideControllerName":"Arm.overrideController"},
+{"_t":"AnimatorControllerConfig","_id":2,"AnimatorName":"Arm","AniamtorStatus":1,"OverrideControllerName":"Arm_Hold.overrideController"},
+]}

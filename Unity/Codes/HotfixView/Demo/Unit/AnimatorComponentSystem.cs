@@ -46,39 +46,35 @@ namespace ET
 			{
 				return;
 			}
-			
-			self.Animators.Add(bodyAnimator);
-			self.Animators.Add(armAnimator);
-			self.Animators.Add(hairAnimator);
 
-			for (int i = 0; i < self.Animators.Count; i++)
+			self.Animators.Add(AnimatorType.Body, bodyAnimator);
+			self.Animators.Add(AnimatorType.Arm, armAnimator);
+			self.Animators.Add(AnimatorType.Hair, hairAnimator);
+
+			foreach (var animator in self.Animators.Values)
 			{
-				if (self.Animators[i].runtimeAnimatorController == null)
+				if (animator.runtimeAnimatorController == null)
 				{
 					return;
 				}
 			}
 			
-			for (int i = 0; i < self.Animators.Count; i++)
+			foreach (var animator in self.Animators.Values)
 			{
-				if (self.Animators[i].runtimeAnimatorController.animationClips == null)
+				if (animator.runtimeAnimatorController.animationClips == null)
 				{
 					return;
 				}
 			}
 
-			self.BodyAnimator = bodyAnimator;
-			self.ArmAnimator = armAnimator;
-			self.HairAnimator = hairAnimator;
-
-			for (int i = 0; i < self.Animators.Count; i++)
+			foreach (var animator in self.Animators.Values)
 			{
-				foreach (AnimationClip animationClip in self.Animators[i].runtimeAnimatorController.animationClips)
+				foreach (AnimationClip animationClip in animator.runtimeAnimatorController.animationClips)
 				{
 					self.animationClips[animationClip.name] = animationClip;
 				}
 			}
-			
+
 			foreach (AnimatorControllerParameter animatorControllerParameter in bodyAnimator.parameters)
 			{
 				self.Parameter.Add(animatorControllerParameter.name);
@@ -258,9 +254,9 @@ namespace ET
 
 		public static void ForEveryAnimator(this AnimatorComponent self,AnimatorControlType controlType,params string[] pars)
 		{
-			for (int i = 0; i < self.Animators.Count; i++)
+			foreach (var animator in self.Animators.Values)
 			{
-				self.CurrentControlAnimator = self.Animators[i];
+				self.CurrentControlAnimator = animator;
 				switch (controlType)
 				{
 					case AnimatorControlType.SetTrigger:
@@ -276,7 +272,7 @@ namespace ET
 						self.SetIntValue(pars[0], int.Parse(pars[1]));
 						break;
 					case AnimatorControlType.SetFloat:
-						self.SetFloatValue(pars[0],float.Parse(pars[1]));
+						self.SetFloatValue(pars[0], float.Parse(pars[1]));
 						break;
 					case AnimatorControlType.SetSpeed:
 						self.SetAnimatorSpeed(float.Parse(pars[0]));
@@ -293,6 +289,16 @@ namespace ET
 					default:
 						throw new ArgumentOutOfRangeException(nameof (controlType), controlType, null);
 				}
+			}
+		}
+
+		public static void OverrideAnimator(this AnimatorComponent self, AnimatorType type, string overrideAnimatorName)
+		{
+			if (self.Animators.ContainsKey(type))
+				self.Animators[type].runtimeAnimatorController = AnimatorHelper.LoadAnimatorController(overrideAnimatorName);
+			else
+			{
+				Log.Error($"Try to override animator {type.ToString()} but not exist");
 			}
 		}
 	}

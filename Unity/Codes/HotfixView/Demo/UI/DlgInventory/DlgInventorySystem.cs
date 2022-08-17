@@ -92,6 +92,9 @@ namespace ET
             itemSlot.E_HightLightImage.gameObject.SetActive(!isSelected);
             self.CurrentItemConfigId = isSelected ? 0 : item.ConfigId;
             self.View.E_SlotsLoopVerticalScrollRect.RefreshCells();
+            
+            //TODO:暂时没必要让背包能选择物品并举起 需要时在打开
+            //Game.EventSystem.Publish(new EventType.OnItemSelected() { ZoneScene = self.ZoneScene(), Item = item ,Carried = !isSelected});
         }
     }
 }

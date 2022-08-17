@@ -49,6 +49,8 @@ namespace ET
                     self.Slots[i].E_HightLightImage.SetVisible(false);
                 }
             }
+
+            Game.EventSystem.Publish(new EventType.OnItemSelected() { ZoneScene = self.ZoneScene(), Item = item ,Carried = !isSelected});
         }
 
         public static void InitSlots(this DlgMain self)
