@@ -38,10 +38,10 @@ namespace ET
         {
             if (other.CompareTag(TagManager.FadeObject))
             {
-                var sr = other.GetComponent<SpriteRenderer>();
-                if (sr)
+                var renderers = other.GetComponentsInChildren<SpriteRenderer>();
+                foreach (var spriteRenderer in renderers)
                 {
-                    sr.DOColor(new Color(1, 1, 1, Settings.FadeAlpha), Settings.FadeDuration);
+                    spriteRenderer.DOColor(new Color(1, 1, 1, Settings.FadeAlpha), Settings.FadeDuration);
                 }
             }
         }
@@ -53,10 +53,10 @@ namespace ET
         {
             if (other.CompareTag(TagManager.FadeObject))
             {
-                var sr = other.GetComponent<SpriteRenderer>();
-                if (sr)
+                var renderers = other.GetComponentsInChildren<SpriteRenderer>();
+                foreach (var spriteRenderer in renderers)
                 {
-                    sr.DOColor(new Color(1, 1, 1, 1), Settings.FadeDuration);
+                    spriteRenderer.DOColor(new Color(1, 1, 1, 1), Settings.FadeDuration);
                 }
             }
         }

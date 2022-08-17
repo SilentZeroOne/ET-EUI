@@ -14,6 +14,14 @@
         ReapableScenary,//可被割的
     }
 
+    public enum Season
+    {
+        Spring,
+        Summer,
+        Autumn,
+        Winter
+    }
+
     public static class EnumsHelper
     {
         public static string GetName(this ItemType self)
@@ -31,6 +39,18 @@
                 ItemType.ReapTool => "工具",
                 ItemType.WaterTool => "工具",
                 _ => "无",
+            };
+        }
+
+        public static string GetName(this Season self)
+        {
+            return self switch
+            {
+                Season.Spring => "春天",
+                Season.Summer => "夏天",
+                Season.Autumn => "秋天",
+                Season.Winter => "冬天",
+                _ => "无"
             };
         }
     }
