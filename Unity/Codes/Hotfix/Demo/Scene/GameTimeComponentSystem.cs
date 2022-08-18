@@ -24,7 +24,7 @@
 #if !NOT_UNITY
             self.GameYear = Settings.DefaultYear;
             self.Season = Season.Winter;
-            TimerComponent.Instance.NewRepeatedTimer((long)(Settings.SecondThreshold * 1000), TimerType.GameTimer, null);
+            TimerComponent.Instance.NewRepeatedTimer((long)(Settings.SecondThreshold * 1000), TimerType.GameTimer, self);
 #endif
         }
     }

@@ -22,6 +22,7 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Body__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Body.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Hair__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Hair.overrideController";
 		public const string Assets_Bundles_ResBundles_ItemPrefab_ItemBase__prefab = "Assets/Bundles/ResBundles/ItemPrefab/ItemBase.prefab";
+		public const string Assets_Bundles_ResBundles_TreePrefab_Tree01__prefab = "Assets/Bundles/ResBundles/TreePrefab/Tree01.prefab";
 		public const string Assets_Bundles_ResBundles_TreePrefab_TreeGreen__prefab = "Assets/Bundles/ResBundles/TreePrefab/TreeGreen.prefab";
 		public const string Assets_Bundles_ResBundles_TreePrefab_TreePink__prefab = "Assets/Bundles/ResBundles/TreePrefab/TreePink.prefab";
 		public const string Assets_Bundles_ResBundles_TreePrefab_TreeYellow__prefab = "Assets/Bundles/ResBundles/TreePrefab/TreeYellow.prefab";
