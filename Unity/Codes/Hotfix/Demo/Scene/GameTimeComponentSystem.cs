@@ -21,11 +21,9 @@
             self.MonthInSeason = 2;
             
             //每秒执行
-#if !NOT_UNITY
             self.GameYear = Settings.DefaultYear;
             self.Season = Season.Winter;
             TimerComponent.Instance.NewRepeatedTimer((long)(Settings.SecondThreshold * 1000), TimerType.GameTimer, self);
-#endif
         }
     }
 
@@ -42,7 +40,6 @@
     {
         public static void UpdateTime(this GameTimeComponent self)
         {
-#if !NOT_UNITY
             self.GameSecond++;
             if (self.GameSecond > Settings.SecondHold)
             {
@@ -92,9 +89,6 @@
             }
             
             Log.Info("Current Time "+$"{self.GameHour:00}:{self.GameMinute:00}:{self.GameSecond:00}");
-#endif
         }
-
-        
     }
 }

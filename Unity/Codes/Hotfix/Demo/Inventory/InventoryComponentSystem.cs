@@ -67,10 +67,8 @@ namespace ET
                 case InventoryType.Inventory:
                     NumericComponent numericComponent = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<NumericComponent>();
                     return self.ItemConfigIdList.Count >= numericComponent.GetAsInt(NumericType.InventoryCapacity);
-#if !NOT_UNITY
                 case InventoryType.ActionBar:
                     return self.ItemConfigIdList.Count >= Settings.MaxActionBarSlot;
-#endif
             }
 
             return true;

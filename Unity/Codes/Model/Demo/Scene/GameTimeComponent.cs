@@ -11,9 +11,6 @@
         public int GameYear;
 
         public int MonthInSeason;
-#if !NOT_UNITY
         public Season Season;
-#endif
-        
     }
 }

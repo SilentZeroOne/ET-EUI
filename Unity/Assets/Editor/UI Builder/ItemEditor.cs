@@ -142,11 +142,11 @@ public class ItemEditor : EditorWindow
         });
         
         var itemTypeEnum = row1Container.Q<EnumField>("ItemType");
-        itemTypeEnum.Init(ItemType.Seed);
+        itemTypeEnum.Init(MonoItemType.Seed);
         itemTypeEnum.value = _activeItem.ItemType;
         itemTypeEnum.RegisterValueChangedCallback(evt =>
         {
-            _activeItem.ItemType = evt.newValue is ItemType type? type : ItemType.Seed;
+            _activeItem.ItemType = evt.newValue is MonoItemType type? type : MonoItemType.Seed;
         });
 
         row2Container.Q<TextField>("ItemDescription").value = _activeItem.ItemDescription;
