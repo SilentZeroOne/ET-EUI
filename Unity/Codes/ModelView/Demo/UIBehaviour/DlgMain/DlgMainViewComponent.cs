@@ -221,6 +221,125 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.RectTransform EG_SunRiseRectTransform
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EG_SunRiseRectTransform == null )
+     			{
+		    		this.m_EG_SunRiseRectTransform = UIFindHelper.FindDeepChild<UnityEngine.RectTransform>(this.uiTransform.gameObject,"GameTime/Mask/EG_SunRise");
+     			}
+     			return this.m_EG_SunRiseRectTransform;
+     		}
+     	}
+
+		public UnityEngine.RectTransform EG_TimeRectTransform
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EG_TimeRectTransform == null )
+     			{
+		    		this.m_EG_TimeRectTransform = UIFindHelper.FindDeepChild<UnityEngine.RectTransform>(this.uiTransform.gameObject,"GameTime/EG_Time");
+     			}
+     			return this.m_EG_TimeRectTransform;
+     		}
+     	}
+
+		public TMPro.TextMeshProUGUI E_YearMonthDayTextMeshProUGUI
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_YearMonthDayTextMeshProUGUI == null )
+     			{
+		    		this.m_E_YearMonthDayTextMeshProUGUI = UIFindHelper.FindDeepChild<TMPro.TextMeshProUGUI>(this.uiTransform.gameObject,"GameTime/E_YearMonthDay");
+     			}
+     			return this.m_E_YearMonthDayTextMeshProUGUI;
+     		}
+     	}
+
+		public TMPro.TextMeshProUGUI E_CurrentTimeTextMeshProUGUI
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_CurrentTimeTextMeshProUGUI == null )
+     			{
+		    		this.m_E_CurrentTimeTextMeshProUGUI = UIFindHelper.FindDeepChild<TMPro.TextMeshProUGUI>(this.uiTransform.gameObject,"GameTime/E_YearMonthDay/CurrentTimeBG/E_CurrentTime");
+     			}
+     			return this.m_E_CurrentTimeTextMeshProUGUI;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_SeasonImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_SeasonImage == null )
+     			{
+		    		this.m_E_SeasonImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"GameTime/E_YearMonthDay/CurrentTimeBG/SeasonBG/E_Season");
+     			}
+     			return this.m_E_SeasonImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_SettingButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_SettingButton == null )
+     			{
+		    		this.m_E_SettingButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"GameTime/E_Setting");
+     			}
+     			return this.m_E_SettingButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_SettingImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_SettingImage == null )
+     			{
+		    		this.m_E_SettingImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"GameTime/E_Setting");
+     			}
+     			return this.m_E_SettingImage;
+     		}
+     	}
+
 		public void DestroyWidget()
 		{
 			this.m_E_InventoryButton = null;
@@ -245,6 +364,13 @@ namespace ET
 			this.m_esitemslot8 = null;
 			this.m_esitemslot9?.Dispose();
 			this.m_esitemslot9 = null;
+			this.m_EG_SunRiseRectTransform = null;
+			this.m_EG_TimeRectTransform = null;
+			this.m_E_YearMonthDayTextMeshProUGUI = null;
+			this.m_E_CurrentTimeTextMeshProUGUI = null;
+			this.m_E_SeasonImage = null;
+			this.m_E_SettingButton = null;
+			this.m_E_SettingImage = null;
 			this.uiTransform = null;
 		}
 
@@ -260,6 +386,14 @@ namespace ET
 		private ESItemSlot m_esitemslot7 = null;
 		private ESItemSlot m_esitemslot8 = null;
 		private ESItemSlot m_esitemslot9 = null;
+		private UnityEngine.RectTransform m_EG_SunRiseRectTransform = null;
+		private UnityEngine.RectTransform m_EG_TimeRectTransform = null;
+		private TMPro.TextMeshProUGUI m_E_YearMonthDayTextMeshProUGUI = null;
+		private TMPro.TextMeshProUGUI m_E_CurrentTimeTextMeshProUGUI = null;
+		private UnityEngine.UI.Image m_E_SeasonImage = null;
+		private UnityEngine.UI.Button m_E_SettingButton = null;
+		private UnityEngine.UI.Image m_E_SettingImage = null;
 		public Transform uiTransform = null;
+		public RectTransform uiRectTransform = null;
 	}
 }

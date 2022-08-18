@@ -9,6 +9,7 @@ namespace ET
 		public override void Awake(DlgMainViewComponent self)
 		{
 			self.uiTransform = self.GetParent<UIBaseWindow>().uiTransform;
+			self.uiRectTransform = self.uiTransform.GetComponent<RectTransform>();
 		}
 	}
 
