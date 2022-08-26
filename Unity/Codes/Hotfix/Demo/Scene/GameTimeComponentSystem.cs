@@ -16,10 +16,10 @@
             self.GameSecond = 0;
             self.GameMinute = 0;
             self.GameHour = 0;
-            self.GameDay = 0;
+            self.GameDay = 1;
             self.GameMonth = 1;
             self.MonthInSeason = 2;
-            
+
             //每秒执行
             self.GameYear = Settings.DefaultYear;
             self.Season = Season.Winter;
@@ -31,7 +31,6 @@
     {
         public override void Destroy(GameTimeComponent self)
         {
-
         }
     }
 
@@ -45,14 +44,22 @@
             {
                 self.GameSecond = 0;
                 self.GameMinute++;
+
+                Game.EventSystem.Publish(new EventType.UpdateGameMinute() { ZoneScene = self.ZoneScene(), Time = self });
+
                 if (self.GameMinute > Settings.MinuteHold)
                 {
                     self.GameMinute = 0;
                     self.GameHour++;
+
+                    Game.EventSystem.Publish(new EventType.UpdateGameHour() { ZoneScene = self.ZoneScene(), Time = self });
+
                     if (self.GameHour > Settings.HourHold)
                     {
                         self.GameHour = 0;
                         self.GameDay++;
+
+                        Game.EventSystem.Publish(new EventType.UpdateGameDay() { ZoneScene = self.ZoneScene(), Time = self });
 
                         if (self.GameDay > Settings.DayHold)
                         {
@@ -82,13 +89,15 @@
                                 }
 
                                 self.Season = (Season)currentSeason;
+                                Game.EventSystem.Publish(new EventType.UpdateGameSeason() { ZoneScene = self.ZoneScene(), Time = self });
                             }
                         }
                     }
                 }
             }
-            
-            Log.Info("Current Time "+$"{self.GameHour:00}:{self.GameMinute:00}:{self.GameSecond:00}");
+
+            Game.EventSystem.Publish(new EventType.UpdateGameSecond() { ZoneScene = self.ZoneScene(), Time = self });
+            //Log.Info("Current Time "+$"{self.GameHour:00}:{self.GameMinute:00}:{self.GameSecond:00}");
         }
     }
 }

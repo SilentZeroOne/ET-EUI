@@ -128,5 +128,35 @@ namespace ET
             public Item Item;
             public bool Carried;
         }
+        
+        public struct UpdateGameSecond
+        {
+            public Scene ZoneScene;
+            public GameTimeComponent Time;
+        }
+        
+        public struct UpdateGameSeason
+        {
+            public Scene ZoneScene;
+            public GameTimeComponent Time;
+        }
+        
+        public struct UpdateGameMinute
+        {
+            public Scene ZoneScene;
+            public GameTimeComponent Time;
+        }
+        
+        public struct UpdateGameHour
+        {
+            public Scene ZoneScene;
+            public GameTimeComponent Time;
+        }
+        
+        public struct UpdateGameDay
+        {
+            public Scene ZoneScene;
+            public GameTimeComponent Time;
+        }
     }
 }

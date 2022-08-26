@@ -8,7 +8,7 @@
 
         //时间相关
         public const int DefaultYear = 2022;
-        public const float SecondThreshold = 0.5f;  //数值越小 时间越快(不能小于0.1)
+        public const float SecondThreshold = 0.1f;  //数值越小 时间越快(不能小于0.1)
         public const int SecondHold = 59;
         public const int MinuteHold = 59;
         public const int HourHold = 23;

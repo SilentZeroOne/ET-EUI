@@ -33,5 +33,18 @@
             // 通知等待场景切换的协程
             zoneScene.GetComponent<ObjectWait>().Notify(new WaitType.Wait_SceneChangeFinish());
         }
+
+        public static async ETTask SceneChangeTo(Scene zoneScene, string sceneName, long sceneInstanceId,bool useTargetPosition)
+        {
+            CurrentScenesComponent currentScenesComponent = zoneScene.GetComponent<CurrentScenesComponent>();
+            //获得之前的Unit  加入新的CurrentScene
+            Unit unit = UnitHelper.GetMyUnitFromCurrentScene(currentScenesComponent.Scene);
+            
+            Scene currentScene = SceneFactory.CreateCurrentScene(sceneInstanceId, zoneScene.Zone, sceneName, currentScenesComponent);
+            UnitComponent unitComponent = currentScene.AddComponent<UnitComponent>();
+            unitComponent.AddChild(unit);
+            
+            currentScenesComponent.Scene?.Dispose(); // 删除之前的CurrentScene，创建新的
+        }
     }
 }

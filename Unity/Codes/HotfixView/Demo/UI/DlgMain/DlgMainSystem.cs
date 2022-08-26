@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,6 +11,7 @@ namespace ET
     [FriendClass(typeof(DlgMain))]
     [FriendClassAttribute(typeof(ET.ESItemSlot))]
     [FriendClassAttribute(typeof(ET.Item))]
+    [FriendClassAttribute(typeof(ET.GameTimeComponent))]
     public static class DlgMainSystem
     {
 
@@ -21,6 +23,17 @@ namespace ET
         public static void ShowWindow(this DlgMain self, Entity contextData = null)
         {
             self.InitSlots();
+            self.RefreshAllTimeUI();
+        }
+
+        public static void RefreshAllTimeUI(this DlgMain self)
+        {
+            var gameTimeComponent = self.ZoneScene().GetComponent<GameTimeComponent>();
+            self.RefreshDayText(gameTimeComponent);
+            self.RefreshSeasonImage(gameTimeComponent);
+            self.RefreshTimeImage(gameTimeComponent);
+            self.RefreshSunRiseImage(gameTimeComponent);
+            self.RefreshTimeUI(gameTimeComponent);
         }
 
         public static void OnInventoryButtonClick(this DlgMain self)
@@ -50,7 +63,7 @@ namespace ET
                 }
             }
 
-            Game.EventSystem.Publish(new EventType.OnItemSelected() { ZoneScene = self.ZoneScene(), Item = item ,Carried = !isSelected});
+            Game.EventSystem.Publish(new EventType.OnItemSelected() { ZoneScene = self.ZoneScene(), Item = item, Carried = !isSelected });
         }
 
         public static void InitSlots(this DlgMain self)
@@ -71,7 +84,7 @@ namespace ET
                 self.Slots[i].uiTransform.gameObject.GetOrAddComponent<MonoBridge>().BelongToEntityId = self.Slots[i].InstanceId;
                 self.Slots[i].DataId = i;
             }
-            
+
             self.Refresh();
         }
 
@@ -93,6 +106,63 @@ namespace ET
                     slot.E_ItemEventTrigger.triggers.Clear();
                 }
             }
+        }
+
+        /// <summary>
+        /// 游戏内每秒更新
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="gameTimeComponent"></param>
+        public static void RefreshTimeUI(this DlgMain self, GameTimeComponent gameTimeComponent)
+        {
+            self.View.E_CurrentTimeTextMeshProUGUI.SetText($"{gameTimeComponent.GameHour:00}:{gameTimeComponent.GameMinute:00}:{gameTimeComponent.GameSecond:00}");
+        }
+        
+        /// <summary>
+        /// 游戏内每天更新
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="gameTimeComponent"></param>
+        public static void RefreshDayText(this DlgMain self, GameTimeComponent gameTimeComponent)
+        {
+            self.View.E_YearMonthDayTextMeshProUGUI.SetText($"{gameTimeComponent.GameYear}年{gameTimeComponent.GameMonth:00}月{gameTimeComponent.GameDay:00}日");
+        }
+
+        /// <summary>
+        /// 游戏内每分钟或每10分钟更新
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="gameTimeComponent"></param>
+        public static void RefreshTimeImage(this DlgMain self, GameTimeComponent gameTimeComponent)
+        {
+            int gameTimeImgShowCount = Mathf.FloorToInt(((float)gameTimeComponent.GameMinute) / 10);
+            var gameTimeImages = self.View.EG_TimeRectTransform.childCount;
+
+            for (int i = 0; i < gameTimeImages; i++)
+            {
+                self.View.EG_TimeRectTransform.GetChild(i).SetVisible(i <= gameTimeImgShowCount);
+            }
+        }
+
+        /// <summary>
+        /// 游戏内每季度更新
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="gameTimeComponent"></param>
+        public static void RefreshSeasonImage(this DlgMain self, GameTimeComponent gameTimeComponent)
+        {
+            self.View.E_SeasonImage.sprite = IconHelper.LoadIconSprite($"ui_time_{gameTimeComponent.Season.ToString()}");
+        }
+
+        /// <summary>
+        /// 游戏内每小时更新
+        /// </summary>
+        /// <param name="self"></param>
+        /// <param name="gameTimeComponent"></param>
+        public static void RefreshSunRiseImage(this DlgMain self, GameTimeComponent gameTimeComponent)
+        {
+            var targetRotate = new Vector3(0, 0, gameTimeComponent.GameHour * 15 - 90);
+            self.View.EG_SunRiseRectTransform.DORotate(targetRotate, 1f);
         }
     }
 }
