@@ -21,8 +21,12 @@ namespace ET
             SceneChangeComponent sceneChangeComponent = null;
             try
             {
-                sceneChangeComponent = Game.Scene.GetComponent<SceneChangeComponent>();
+                sceneChangeComponent = Game.Scene.AddComponent<SceneChangeComponent>();
                 {
+                    if (!string.IsNullOrEmpty(args.PreviousSceneName))
+                    {
+                        await sceneChangeComponent.RemovePreviousScene(args.PreviousSceneName);
+                    }
                     await sceneChangeComponent.ChangeSceneAsync(currentScene.Name, LoadSceneMode.Additive);
                 }
             }

@@ -10,5 +10,6 @@
         public const string Land = "Land";
         public const string ItemSlot = "ItemSlot";
         public const string InventoryItemSlot = "InventoryItemSlot";
+        public const string TpPoint = "TpPoint";
     }
 }

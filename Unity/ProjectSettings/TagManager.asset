@@ -11,6 +11,7 @@ TagManager:
   - Land
   - ItemSlot
   - InventoryItemSlot
+  - TpPoint
   layers:
   - Default
   - TransparentFX

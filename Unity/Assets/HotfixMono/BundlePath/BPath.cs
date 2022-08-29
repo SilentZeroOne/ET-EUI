@@ -218,6 +218,7 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_Unit_Unit__prefab = "Assets/Bundles/ResBundles/Unit/Unit.prefab";
 		public const string Assets_Scenes_Game__unity = "Assets/Scenes/Game.unity";
 		public const string Assets_Scenes_Field01__unity = "Assets/Scenes/Field01.unity";
+		public const string Assets_Scenes_Field02__unity = "Assets/Scenes/Field02.unity";
 		public const string Assets_Bundles_Config_AIConfigCategory__bytes = "Assets/Bundles/Config/AIConfigCategory.bytes";
 		public const string Assets_Bundles_Config_AnimatorControllerConfigCategory__bytes = "Assets/Bundles/Config/AnimatorControllerConfigCategory.bytes";
 		public const string Assets_Bundles_Config_GameSceneConfigCategory__bytes = "Assets/Bundles/Config/GameSceneConfigCategory.bytes";
@@ -227,6 +228,7 @@ namespace BM
 		public const string Assets_Bundles_Config_StartProcessConfigCategory__bytes = "Assets/Bundles/Config/StartProcessConfigCategory.bytes";
 		public const string Assets_Bundles_Config_StartSceneConfigCategory__bytes = "Assets/Bundles/Config/StartSceneConfigCategory.bytes";
 		public const string Assets_Bundles_Config_StartZoneConfigCategory__bytes = "Assets/Bundles/Config/StartZoneConfigCategory.bytes";
+		public const string Assets_Bundles_Config_TeleportConfigCategory__bytes = "Assets/Bundles/Config/TeleportConfigCategory.bytes";
 		public const string Assets_Bundles_Config_UnitConfigCategory__bytes = "Assets/Bundles/Config/UnitConfigCategory.bytes";
 	}
 }

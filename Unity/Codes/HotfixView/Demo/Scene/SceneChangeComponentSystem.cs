@@ -50,6 +50,15 @@ namespace ET
             await self.tcs;
         }
 
+        public static async ETTask RemovePreviousScene(this SceneChangeComponent self,string sceneName)
+        {
+            self.tcs = ETTask.Create(true);
+            
+            self.loadMapOperation = SceneManager.UnloadSceneAsync(sceneName);
+            
+            await self.tcs;
+        }
+
         public static int Process(this SceneChangeComponent self)
         {
             if (self.loadMapOperation == null)

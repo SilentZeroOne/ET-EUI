@@ -1,0 +1,4 @@
+{"list":[
+{"_t":"TeleportConfig","_id":1,"SceneName":"Field01","PointName":"Tp01","TargetSceneName":"Field02","TargetPosX":"-2.5","TargetPosY":"-8","TargetPosZ":"0"},
+{"_t":"TeleportConfig","_id":2,"SceneName":"Field02","PointName":"Tp02","TargetSceneName":"Field01","TargetPosX":"12.7","TargetPosY":"-6","TargetPosZ":"0"},
+]}

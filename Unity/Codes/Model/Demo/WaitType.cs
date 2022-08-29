@@ -39,5 +39,14 @@
                 set;
             }
         }
+        
+        public struct Wait_TeleportEnd: IWaitType
+        {
+            public int Error
+            {
+                get;
+                set;
+            }
+        }
     }
 }

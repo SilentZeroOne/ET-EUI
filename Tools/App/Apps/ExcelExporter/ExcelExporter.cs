@@ -576,7 +576,6 @@ namespace ET
                 case "int32":
                 case "int64":
                 case "long":
-                case "float":
                 case "double":
                     {
                         value = value.Replace("{", "").Replace("}", "");
@@ -586,6 +585,12 @@ namespace ET
                         }
                         return value;
                     }
+                case "float":
+                    if (value == "")
+                    {
+                        return "0";
+                    }
+                    return $"\"{value}\"";
                 case "string":
                     return $"\"{value}\"";
                 case "AttrConfig":
