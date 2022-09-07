@@ -59,6 +59,12 @@ namespace ET
 		        Log.Error("Save path is Null!");
 		        return;
 	        }
+
+	        DirectoryInfo df = new DirectoryInfo(path);
+	        if (!df.Parent.Exists)
+	        {
+		        df.Parent.Create();
+	        }
 	        
 	        if (File.Exists(path))
 	        {

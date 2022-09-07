@@ -3,7 +3,8 @@
 namespace ET
 {
     public static class PathHelper
-    {     /// <summary>
+    {
+        /// <summary>
         ///应用程序外部资源路径存放路径(热更新资源路径)
         /// </summary>
         public static string AppHotfixResPath
@@ -47,11 +48,23 @@ namespace ET
             }
         }
 
+        public static string SavingPath
+        {
+            get
+            {
+#if UNITY_EDITOR
+                return $"{AppResPath}/Saving";
+#else
+                return $"{AppHotfixResPath}/Saving";
+#endif
+            }
+        }
+        
         public static string InventorySavePath
         {
             get
             {
-                return $"{AppHotfixResPath}/InventorySave.sav";
+                return $"{SavingPath}/InventorySave.sav";
             }
         }
         
@@ -59,8 +72,9 @@ namespace ET
         {
             get
             {
-                return $"{AppHotfixResPath}/ActionBarSave.sav";
+                return $"{SavingPath}/ActionBarSave.sav";
             }
         }
+        
     }
 }
