@@ -596,6 +596,7 @@ public partial class UICodeSpawner
         WidgetInterfaceList.Add( "Image");
         WidgetInterfaceList.Add("RawImage");
         WidgetInterfaceList.Add("Canvas");
+        WidgetInterfaceList.Add("CanvasGroup");
         WidgetInterfaceList.Add("UIWarpContent");
         WidgetInterfaceList.Add("LoopVerticalScrollRect");
         WidgetInterfaceList.Add("LoopHorizontalScrollRect");
