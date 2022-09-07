@@ -8,6 +8,7 @@
         public const int SessionAcceptTimeout = 1003;
 
         public const int GameTimer = 1004;
+        public const int LoadingUITimer = 1005;
         // 不能超过10000
     }
 }

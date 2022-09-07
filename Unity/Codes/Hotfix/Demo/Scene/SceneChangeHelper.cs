@@ -13,8 +13,7 @@ namespace ET
             currentScenesComponent.Scene?.Dispose(); // 删除之前的CurrentScene，创建新的
             Scene currentScene = SceneFactory.CreateCurrentScene(sceneInstanceId, zoneScene.Zone, sceneName, currentScenesComponent);
             UnitComponent unitComponent = currentScene.AddComponent<UnitComponent>();
-         
-            // TODO 可以订阅这个事件中创建Loading界面
+            
             Game.EventSystem.Publish(new EventType.SceneChangeStart() {ZoneScene = zoneScene});
 
             // 等待CreateMyUnit的消息
@@ -61,7 +60,6 @@ namespace ET
 
             previousCurrentScene?.Dispose();// 删除之前的CurrentScene
             
-            // TODO 可以订阅这个事件中创建Loading界面
             Game.EventSystem.Publish(new EventType.SceneChangeStart() { ZoneScene = zoneScene, PreviousSceneName = previousName });
             
             await zoneScene.GetComponent<ObjectWait>().Wait<WaitType.Wait_SceneLoaded>();
@@ -69,7 +67,9 @@ namespace ET
             //Move unit to target position
             unit.Position = new Vector3(targetPosX, targetPosY, targetPosZ);
             
-            //TODO 订阅这个事件 关闭Loading
+            //Test loading scene with long time
+            await TimerComponent.Instance.WaitAsync(2000);
+            
             Game.EventSystem.PublishAsync(new EventType.SceneChangeFinish() {ZoneScene = zoneScene, CurrentScene = currentScene}).Coroutine();
             zoneScene.GetComponent<ObjectWait>().Notify(new WaitType.Wait_TeleportEnd());
         }
