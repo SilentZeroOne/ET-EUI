@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace ET
 {
+    [FriendClassAttribute(typeof(ET.Item))]
     public class AfterItemCreate_CreateItemView : AEvent<AfterItemCreate>
     {
         protected override void Run(AfterItemCreate a)
@@ -20,9 +21,9 @@ namespace ET
             {
                 a.Item.AddComponent<GameObjectComponent>();
             }
-            
+
             a.Item.GetComponent<GameObjectComponent>().GameObject = go;
-            
+
             if (a.Item.GetComponent<ItemViewComponent>() == null)
             {
                 a.Item.AddComponent<ItemViewComponent>();
@@ -31,9 +32,13 @@ namespace ET
             {
                 a.Item.GetComponent<ItemViewComponent>().Init().Coroutine();
             }
-            
-            go.transform.position = a.UsePos? new Vector3(a.X, a.Y)
+
+            go.transform.position = a.UsePos ? new Vector3(a.X, a.Y)
                     : new Vector3(RandomHelper.RandomNumber(-5, 5), RandomHelper.RandomNumber(-5, 5), 0);
+            a.Item.Position = go.transform.position;
+            
+            if (a.SaveInScene)
+                a.Item.ZoneScene().CurrentScene().GetComponent<ItemsComponent>().SaveItemsComponent();
         }
     }
 }

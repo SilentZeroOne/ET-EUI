@@ -104,6 +104,7 @@ namespace ET
         {
             public Item Item;
             public bool UsePos;
+            public bool SaveInScene;
             public float X;
             public float Y;
         }

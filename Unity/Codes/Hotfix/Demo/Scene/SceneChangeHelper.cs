@@ -13,6 +13,8 @@ namespace ET
             currentScenesComponent.Scene?.Dispose(); // 删除之前的CurrentScene，创建新的
             Scene currentScene = SceneFactory.CreateCurrentScene(sceneInstanceId, zoneScene.Zone, sceneName, currentScenesComponent);
             UnitComponent unitComponent = currentScene.AddComponent<UnitComponent>();
+
+            currentScenesComponent.HaveCache = await currentScene.GetComponent<ItemsComponent>().LoadItemsComponent();
             
             Game.EventSystem.Publish(new EventType.SceneChangeStart() {ZoneScene = zoneScene});
 
@@ -25,10 +27,12 @@ namespace ET
             Unit unit = UnitFactory.Create(currentScene);
             //unitComponent.Add(unit);
 
-            ItemFactory.Create(currentScene, 1009);
-            ItemFactory.Create(currentScene, 1008);
-            
-            
+            if (!currentScenesComponent.HaveCache)
+            {
+                ItemFactory.Create(currentScene, 1009);
+                ItemFactory.Create(currentScene, 1008);
+            }
+
             Game.EventSystem.PublishAsync(new EventType.SceneChangeFinish() {ZoneScene = zoneScene, CurrentScene = currentScene}).Coroutine();
 
             // 通知等待场景切换的协程
@@ -52,9 +56,12 @@ namespace ET
             Unit unit = UnitHelper.GetMyUnitFromCurrentScene(currentScenesComponent.Scene);
             var previousCurrentScene = currentScenesComponent.Scene;
             var previousName = previousCurrentScene.Name;
-            //currentScenesComponent.Scene?.Dispose(); // 删除之前的CurrentScene，创建新的
-            
+
             Scene currentScene = SceneFactory.CreateCurrentScene(sceneInstanceId, zoneScene.Zone, sceneName, currentScenesComponent);
+            
+            //Read items cache
+            currentScenesComponent.HaveCache = await currentScene.GetComponent<ItemsComponent>().LoadItemsComponent();
+            
             UnitComponent unitComponent = currentScene.AddComponent<UnitComponent>();
             unitComponent.AddChild(unit);
 

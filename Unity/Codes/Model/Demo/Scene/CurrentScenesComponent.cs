@@ -5,5 +5,6 @@
     public class CurrentScenesComponent: Entity, IAwake
     {
         public Scene Scene { get; set; }
+        public bool HaveCache { get; set; }
     }
 }

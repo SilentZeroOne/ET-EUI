@@ -39,12 +39,10 @@ namespace ET
                     
                     InventoryComponent inventoryComponent = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<InventoryComponent>();
                     inventoryComponent.RemoveItem(item, false);
-                    inventoryComponent.SaveInventory();
-                    
+
                     InventoryComponent actionBarInventoryComponent = self.ZoneScene().GetComponent<InventoryComponent>();
                     actionBarInventoryComponent.AddItemByIndex(item, (int)slot.DataId);
-                    actionBarInventoryComponent.SaveInventory();
-                    
+
                     await TimerComponent.Instance.WaitAsync(100);
                     
                     self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgInventory>().RefreshSlots();
@@ -58,8 +56,7 @@ namespace ET
                     
                     InventoryComponent inventoryComponent = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<InventoryComponent>();
                     inventoryComponent.AddItemByIndex(item, (int)slot.DataId);
-                    inventoryComponent.SaveInventory();
-                    
+
                     await TimerComponent.Instance.WaitAsync(100);
                     
                     self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgInventory>().RefreshSlots();
@@ -69,21 +66,22 @@ namespace ET
             {
                 if (item.Config.CanDropped == 1)
                 {
+                    //从Inventory中移除 但不要dispose
+                    InventoryComponent inventoryComponent = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<InventoryComponent>();
+                    inventoryComponent.RemoveItem(item, false);
+                    
+                    //加入CurrentScene的Items中
+                    ItemsComponent itemsComponent = self.ZoneScene().CurrentScene().GetComponent<ItemsComponent>();
+                    itemsComponent.AddItem(item);
+                    
                     Game.EventSystem.Publish(new EventType.AfterItemCreate()
                     {
                         Item = item,
                         UsePos = true,
                         X = worldPos.x,
                         Y = worldPos.y,
+                        SaveInScene = true
                     });
-                
-                    //从Inventory中移除 但不要dispose
-                    InventoryComponent inventoryComponent = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<InventoryComponent>();
-                    inventoryComponent.RemoveItem(item, false);
-                    inventoryComponent.SaveInventory();
-                    //加入CurrentScene的Items中
-                    ItemsComponent itemsComponent = self.ZoneScene().CurrentScene().GetComponent<ItemsComponent>();
-                    itemsComponent.AddChild(item);
             
                     await TimerComponent.Instance.WaitAsync(100);
                     

@@ -102,6 +102,7 @@ namespace ET
                 self.AddChild(item);
             }
 
+            self.SaveInventory();
             return ErrorCode.ERR_Success;
         }
 
@@ -134,6 +135,7 @@ namespace ET
                     Log.Debug($"Re-add in new index {newIndex}");
                 }
 
+                self.SaveInventory();
                 return true;
             }
 
@@ -158,6 +160,7 @@ namespace ET
                     self.IndexConfigIdDict.Add(oldIndex, anotherItemConfigId);
                 }
                
+                self.SaveInventory();
                 return true;
             }
 
@@ -204,6 +207,7 @@ namespace ET
             self.RemoveContainer(item);
             if (dispose)
                 item.Dispose();
+            self.SaveInventory();
         }
 
         public static void RemoveContainer(this InventoryComponent self, Item item)
@@ -247,9 +251,9 @@ namespace ET
 
         #region Save/Load
 
-        public static InventoryProto ToProto(this InventoryComponent self)
+        public static ItemListProto ToProto(this InventoryComponent self)
         {
-            InventoryProto proto = new InventoryProto();
+            ItemListProto proto = new ItemListProto();
             foreach (var item in self.ItemDict.Values)
             {
                 ItemInfo info = item.ToProto();
@@ -260,17 +264,14 @@ namespace ET
             return proto;
         }
 
-        public static void FromProto(this InventoryComponent self, InventoryProto proto)
+        public static void FromProto(this InventoryComponent self, ItemListProto proto)
         {
             foreach (var item in proto.ItemInfos)
             {
-                Item temp = self.AddChild<Item>();
+                Item temp = self.AddChildWithId<Item>(item.ItemId);
                 temp.FromProto(item);
 
                 self.AddItemByIndex(temp, item.IndexInInventory);
-                
-                //self.AddContainer(temp.FromProto(item));
-                Log.Debug($"Add item {temp.Id} {temp.Config.ItemName} to in {item.IndexInInventory} Inventory form memory");
             }
         }
 
@@ -286,19 +287,19 @@ namespace ET
 #endif
             }
             
-            Log.Debug($"Save inventory in {path}");
             ProtobufHelper.SaveTo(self.ToProto(), path);
         }
 
         public static async ETTask LoadInventory(this InventoryComponent self)
         {
 #if NOT_UNITY
+            await ETTask.CompletedTask;
             return;
 #else
             string path = self.SavePath;
             
             byte[] bytes = await FileReadHelper.DownloadData(path);
-            InventoryProto proto = ProtobufHelper.Deserialize<InventoryProto>(bytes);
+            ItemListProto proto = ProtobufHelper.Deserialize<ItemListProto>(bytes);
             if (proto != null)
                 self.FromProto(proto);
 #endif

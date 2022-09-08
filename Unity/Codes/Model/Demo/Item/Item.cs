@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
+using UnityEngine;
 
 namespace ET
 {
@@ -8,5 +9,7 @@ namespace ET
 
         [BsonIgnore]
         public ItemConfig Config => ItemConfigCategory.Instance.Get(this.ConfigId);
+
+        public Vector3 Position { get; set; }
     }
 }

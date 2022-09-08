@@ -36,8 +36,11 @@
 
         public static Item FromProto(this Item self, ItemInfo proto)
         {
-            self.Id = proto.ItemId;
             self.ConfigId = proto.ConfigId;
+            if (proto.WorldPosition != null)
+            {
+                self.Position = proto.WorldPosition.ToVector3();
+            }
 
             return self;
         }
