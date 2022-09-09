@@ -41,6 +41,8 @@ namespace ET
         /// Inventory 类型
         /// </summary>
         public InventoryType Type { get; set; }
+        
+        public bool Loaded { get; set; }
     }
 
     public enum InventoryType

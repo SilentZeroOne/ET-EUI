@@ -1,0 +1,11 @@
+{"list":[
+{"_t":"CursorConfig","_id":1,"CursorImage":"cursor_11","CorrespondItemType":[-1]},
+{"_t":"CursorConfig","_id":2,"CursorImage":"cursor_2","CorrespondItemType":[-2]},
+{"_t":"CursorConfig","_id":3,"CursorImage":"cursor_3","CorrespondItemType":[0]},
+{"_t":"CursorConfig","_id":4,"CursorImage":"cursor_4","CorrespondItemType":[-2]},
+{"_t":"CursorConfig","_id":5,"CursorImage":"cursor_5","CorrespondItemType":[1]},
+{"_t":"CursorConfig","_id":6,"CursorImage":"cursor_6","CorrespondItemType":[-2]},
+{"_t":"CursorConfig","_id":7,"CursorImage":"cursor_7","CorrespondItemType":[-2]},
+{"_t":"CursorConfig","_id":8,"CursorImage":"cursor_8","CorrespondItemType":[3,4,5,6,7,8]},
+{"_t":"CursorConfig","_id":9,"CursorImage":"cursor_9","CorrespondItemType":[-2]},
+]}

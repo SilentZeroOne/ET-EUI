@@ -11,6 +11,7 @@ namespace ET
         Fixed,     // 固定窗口
         PopUp,     // 弹出窗口
         Other,      //其他窗口
+        Cursor,     //鼠标
     }
     
     public class WindowCoreData : Entity,IAwake

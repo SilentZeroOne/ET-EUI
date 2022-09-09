@@ -40,6 +40,15 @@
             }
         }
         
+        public struct Wait_SceneInventoryLoaded: IWaitType
+        {
+            public int Error
+            {
+                get;
+                set;
+            }
+        }
+        
         public struct Wait_TeleportEnd: IWaitType
         {
             public int Error

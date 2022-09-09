@@ -29,6 +29,10 @@ namespace ET
             {
                 return Game.Scene.GetComponent<GlobalComponent>().OtherRoot;
             }
+            else if (type == UIWindowType.Cursor)
+            {
+                return Game.Scene.GetComponent<GlobalComponent>().CursorRoot;
+            }
 
             Log.Error("uiroot type is error: " + type.ToString());
             return null;

@@ -13,5 +13,6 @@
         WindowID_DragItem, //拖拽物品图片
         WindowID_ItemTooltip, //物品详情Tip
         WindowID_Loading,    //加载界面
+        WindowID_Cursor,      //鼠标
     }
 }

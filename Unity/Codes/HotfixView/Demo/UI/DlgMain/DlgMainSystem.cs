@@ -85,13 +85,18 @@ namespace ET
                 self.Slots[i].DataId = i;
             }
 
-            self.Refresh();
+            self.Refresh().Coroutine();
         }
 
-        public static void Refresh(this DlgMain self)
+        public static async ETTask Refresh(this DlgMain self)
         {
             InventoryComponent inventoryComponent = self.ZoneScene().GetComponent<InventoryComponent>();
 
+            while (!inventoryComponent.Loaded)
+            {
+                await TimerComponent.Instance.WaitAsync(50);
+            }
+            
             for (int i = 0; i < self.Slots.Count; i++)
             {
                 ESItemSlot slot = self.Slots[i];

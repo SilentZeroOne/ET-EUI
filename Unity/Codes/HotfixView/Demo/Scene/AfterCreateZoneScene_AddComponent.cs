@@ -12,6 +12,7 @@ namespace ET
             zoneScene.AddComponent<InventoryComponent, string, InventoryType>(PathHelper.ActionBarSavePath, InventoryType.ActionBar); // For Action Bar.
             //zoneScene.AddComponent<ResourcesLoaderComponent>();
             
+            zoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Cursor);
             zoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Loading);
             zoneScene.GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Main);
 

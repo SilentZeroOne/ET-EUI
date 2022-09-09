@@ -15,6 +15,7 @@ namespace ET
         public Transform FixedRoot{ get; set; }
         public Transform PoolRoot{ get; set; }
         public Transform OtherRoot{ get; set; }
+        public Transform CursorRoot{ get; set; }
         public Camera UICamera { get; set; }
     }
 }

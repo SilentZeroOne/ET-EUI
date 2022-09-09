@@ -16,6 +16,7 @@ namespace ET
             self.PopUpRoot = GameObject.Find("Global/UIRoot/PopUpRoot").transform;
             self.FixedRoot = GameObject.Find("Global/UIRoot/FixedRoot").transform;
             self.OtherRoot = GameObject.Find("Global/UIRoot/OtherRoot").transform;
+            self.CursorRoot = GameObject.Find("Global/UIRoot/CursorRoot").transform;
             self.PoolRoot =  GameObject.Find("Global/PoolRoot").transform;
             self.UICamera = GameObject.Find("Global/UICamera").GetComponent<Camera>();
         }

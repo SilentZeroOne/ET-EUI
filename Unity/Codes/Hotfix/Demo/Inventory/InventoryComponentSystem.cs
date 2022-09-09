@@ -6,6 +6,7 @@ namespace ET
     {
         public override void Awake(InventoryComponent self, string a,InventoryType b)
         {
+            self.Loaded = false;
             self.SavePath = a;
             self.Type = b;
             self.LoadInventory().Coroutine();
@@ -19,6 +20,7 @@ namespace ET
 #if NOT_UNITY
             return;
 #else
+            self.Loaded = false;
             self.SavePath = PathHelper.InventorySavePath;
             self.Type = InventoryType.Inventory;
             self.LoadInventory().Coroutine();
@@ -302,6 +304,8 @@ namespace ET
             ItemListProto proto = ProtobufHelper.Deserialize<ItemListProto>(bytes);
             if (proto != null)
                 self.FromProto(proto);
+
+            self.Loaded = true;
 #endif
         }
 
