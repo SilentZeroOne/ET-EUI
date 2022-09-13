@@ -68,7 +68,7 @@ namespace ET
                     await TimerComponent.Instance.WaitAsync(100);
                     
                     self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgInventory>().RefreshSlots();
-                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgMain>().Refresh();
+                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgMain>().Refresh().Coroutine();
                 }
 
                 if (eventData.pointerCurrentRaycast.gameObject.CompareTag(TagManager.ItemSlot))
@@ -81,7 +81,7 @@ namespace ET
 
                     await TimerComponent.Instance.WaitAsync(100);
                     
-                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgMain>().Refresh();
+                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgMain>().Refresh().Coroutine();
                 }
             }
             else
@@ -107,7 +107,7 @@ namespace ET
                     
                     await TimerComponent.Instance.WaitAsync(100);
                     
-                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgMain>().Refresh();
+                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgMain>().Refresh().Coroutine();
                 }
             }
         }

@@ -46,7 +46,7 @@ namespace ET
                     await TimerComponent.Instance.WaitAsync(100);
                     
                     self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgInventory>().RefreshSlots();
-                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgMain>().Refresh();
+                    self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgMain>().Refresh().Coroutine();
                 }
 
                 if (eventData.pointerCurrentRaycast.gameObject.CompareTag(TagManager.InventoryItemSlot))

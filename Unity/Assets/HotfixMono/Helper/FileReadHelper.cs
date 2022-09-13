@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 using UnityEngine.Networking;
 
 namespace ET
@@ -17,7 +18,11 @@ namespace ET
                 if (!string.IsNullOrEmpty(webRequest.error))
 #endif
                 {
+#if UNITY_EDITOR
+                    Debug.Log($"下载Bundle失败 重试\n {webRequest.error} \nURl: {url}");
+#else
                     Log.Debug("下载Bundle失败 重试\n" + webRequest.error + "\nURL：" + url);
+#endif
                     return null;
                 }
                 return webRequest.downloadHandler.data;
