@@ -18,8 +18,8 @@ namespace ET
 			self.SyncPosition();
             if (!self.InteractWithUI())
             {
-                self.CheckCursorVaild();
                 self.SetCursor(self.CurrentCursor);
+                self.CheckCursorVaild();
             }
             else
             {
@@ -55,9 +55,12 @@ namespace ET
             }
         }
 
-        public static void SetCursorImage(this DlgCursor self, int itemType = -1)
+        public static void SetCursorImage(this DlgCursor self, Item item = null)
         {
-            CursorConfig config = itemType == -1 ? CursorConfigCategory.Instance.GetDefaultCursor() : CursorConfigCategory.Instance.GetCursorConfigByItemType(itemType);
+            self.CurrentItem = item;
+
+            CursorConfig config = item == null? CursorConfigCategory.Instance.GetDefaultCursor() :
+                    CursorConfigCategory.Instance.GetCursorConfigByItemType(item.Config.ItemType);
 
             if (config != null)
             {
@@ -70,8 +73,9 @@ namespace ET
             if (self.View.E_CursorImage.sprite != sprite)
             {
                 self.View.E_CursorImage.sprite = sprite;
-                self.View.E_CursorImage.color = Color.white;
             }
+
+            self.CursorEnable = true;
         }
 
         public static void SyncPosition(this DlgCursor self)
@@ -86,14 +90,44 @@ namespace ET
 
         public static void CheckCursorVaild(this DlgCursor self)
         {
-            var gridMapManage = self.ZoneScene().CurrentScene().GetComponent<GridMapManageComponent>();
+            if (self.CurrentItem == null) return;
+
+            var currentScene = self.ZoneScene().CurrentScene();
+            var gridMapManage = currentScene.GetComponent<GridMapManageComponent>();
             if (gridMapManage != null && gridMapManage.MapDataLoaded && gridMapManage.CurrentGrid != null)
             {
                 var inputPos = InputHelper.GetMousePosition();
                 var worldPos = Camera.main.ScreenToWorldPoint(new Vector3(inputPos.x, inputPos.y, -Camera.main.gameObject.transform.position.z));
                 var cellPos = gridMapManage.CurrentGrid.WorldToCell(worldPos);
 
-                Log.Debug($"World {worldPos}  CellPos {cellPos}");
+                var playerGridPos = gridMapManage.CurrentGrid.WorldToCell(UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene())
+                        .GetComponent<GameObjectComponent>().GameObject.transform.position);
+
+                if (Mathf.Abs(cellPos.x - playerGridPos.x) > self.CurrentItem.Config.ItemUseRadius ||
+                    Mathf.Abs(cellPos.y - playerGridPos.y) > self.CurrentItem.Config.ItemUseRadius)
+                {
+                    self.CursorEnable = false;
+                    return;
+                }
+
+                TileDetails currentTile = gridMapManage.GetTileDetails($"{cellPos.x}x{cellPos.y}y{currentScene.Name}");
+                if (currentTile != null)
+                {
+                    //TODO:添加其他类型的Item case
+                    switch ((ItemType) self.CurrentItem.Config.ItemType)
+                    {
+                        case ItemType.Commodity:
+                            self.CursorEnable = self.CurrentItem.Config.CanDropped == 1 && currentTile.CanDropItem;
+                            break;
+                        case ItemType.Seed:
+                            self.CursorEnable = currentTile.CanDig;
+                            break;
+                    }
+                }
+                else
+                {
+                    self.CursorEnable = false;
+                }
             }
         }
 

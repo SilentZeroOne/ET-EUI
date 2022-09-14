@@ -6,7 +6,7 @@ namespace ET
     {
         protected override void Run(OnItemSelected a)
         {
-            a.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgCursor>().SetCursorImage(a.Carried? a.Item.Config.ItemType : -1);
+            a.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgCursor>().SetCursorImage(a.Carried? a.Item : null);
         }
     }
 }
