@@ -20,11 +20,8 @@ namespace ET
         {
             if (!Application.IsPlaying(this))
             {
-                if (string.IsNullOrEmpty(this._savePath))
-                {
-                    this._savePath = Path.Combine(PathHelper.SavingPath, $"{this.SceneName}_{this.Type}_data.sav");
-                }
-                
+                this._savePath = Path.Combine(PathHelper.BundlePath, $"MapData/{this.SceneName}_{this.Type}_data.bytes");
+
                 if (this.MapData == null)
                 {
                     var data = await FileReadHelper.DownloadData(this._savePath);

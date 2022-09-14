@@ -47,6 +47,17 @@ namespace ET
 
             }
         }
+        
+        /// <summary>
+        /// Bundle资源路径存放路径
+        /// </summary>
+        public static string BundlePath
+        {
+            get
+            {
+                return Application.dataPath + "/Bundles";
+            }
+        }
 
         public static string SavingPath
         {

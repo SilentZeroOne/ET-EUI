@@ -6,6 +6,7 @@ namespace ET
         {
             Scene currentScene = args.CurrentScene;
             currentScene.AddComponent<UIComponent>();
+            currentScene.AddComponent<GridMapManageComponent>();
             //currentScene.AddComponent<ResourcesLoaderComponent>();
         }
     }

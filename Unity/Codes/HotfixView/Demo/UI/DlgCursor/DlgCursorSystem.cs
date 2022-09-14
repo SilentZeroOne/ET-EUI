@@ -18,6 +18,7 @@ namespace ET
 			self.SyncPosition();
             if (!self.InteractWithUI())
             {
+                self.CheckCursorVaild();
                 self.SetCursor(self.CurrentCursor);
             }
             else
@@ -29,6 +30,7 @@ namespace ET
 
     [FriendClass(typeof(DlgCursor))]
     [FriendClassAttribute(typeof(ET.DlgCursorViewComponent))]
+    [FriendClassAttribute(typeof(ET.GridMapManageComponent))]
     public static class DlgCursorSystem
     {
 
@@ -80,6 +82,19 @@ namespace ET
                 GlobalComponent.Instance.UICamera, out pos);
 
             self.View.E_CursorImage.transform.localPosition = pos;
+        }
+
+        public static void CheckCursorVaild(this DlgCursor self)
+        {
+            var gridMapManage = self.ZoneScene().CurrentScene().GetComponent<GridMapManageComponent>();
+            if (gridMapManage != null && gridMapManage.MapDataLoaded && gridMapManage.CurrentGrid != null)
+            {
+                var inputPos = InputHelper.GetMousePosition();
+                var worldPos = Camera.main.ScreenToWorldPoint(new Vector3(inputPos.x, inputPos.y, -Camera.main.gameObject.transform.position.z));
+                var cellPos = gridMapManage.CurrentGrid.WorldToCell(worldPos);
+
+                Log.Debug($"World {worldPos}  CellPos {cellPos}");
+            }
         }
 
         public static bool InteractWithUI(this DlgCursor self)
