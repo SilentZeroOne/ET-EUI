@@ -107,6 +107,7 @@ namespace ET
             public bool SaveInScene;
             public float X;
             public float Y;
+            public bool Bounced;
         }
         
         public struct MoveStart

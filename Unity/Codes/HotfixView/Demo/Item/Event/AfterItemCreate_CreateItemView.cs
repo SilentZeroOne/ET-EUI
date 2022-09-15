@@ -28,15 +28,24 @@ namespace ET
             {
                 a.Item.AddComponent<ItemViewComponent>();
             }
-            else
+
+            if (!a.Bounced)
             {
                 a.Item.GetComponent<ItemViewComponent>().Init().Coroutine();
             }
+            else
+            {
+                await a.Item.GetComponent<ItemViewComponent>().Init();
 
-            go.transform.position = a.UsePos ? new Vector3(a.X, a.Y)
+                await a.Item.AddComponent<ItemBounceComponent, float, float>(a.X, a.Y).MoveAsync();
+                
+                a.Item.RemoveComponent<ItemBounceComponent>();
+            }
+
+            go.transform.position = a.UsePos? new Vector3(a.X, a.Y)
                     : new Vector3(RandomHelper.RandomNumber(-5, 5), RandomHelper.RandomNumber(-5, 5), 0);
             a.Item.Position = go.transform.position;
-            
+
             if (a.SaveInScene)
                 a.Item.ZoneScene().CurrentScene().GetComponent<ItemsComponent>().SaveItemsComponent();
         }

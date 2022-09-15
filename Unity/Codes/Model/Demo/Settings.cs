@@ -5,6 +5,7 @@
         public const float FadeDuration = 0.3f;
         public const float FadeAlpha = 0.45f;
         public const int MaxActionBarSlot = 10;
+        public const float ItemBounceGravity = -7;
 
         //时间相关
         public const int DefaultYear = 2022;

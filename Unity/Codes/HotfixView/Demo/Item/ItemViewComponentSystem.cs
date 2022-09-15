@@ -6,7 +6,7 @@ namespace ET
     {
         public override void Awake(ItemViewComponent self)
         {
-            self.Init().Coroutine();
+            //self.Init().Coroutine();
         }
     }
 
@@ -21,13 +21,17 @@ namespace ET
     [FriendClass(typeof (ItemViewComponent))]
     public static class ItemViewComponentSystem
     {
+        /// <summary>
+        /// 每次都需要手动调用，方便await
+        /// </summary>
+        /// <param name="self"></param>
         public static async ETTask Init(this ItemViewComponent self)
         {
             Item item = self.GetParent<Item>();
             var go = item.GetComponent<GameObjectComponent>().GameObject;
             go.AddComponent<MonoBridge>().BelongToEntityId = item.InstanceId;
             
-            self.SpriteRenderer = go.GetComponentInChildren<SpriteRenderer>();
+            self.SpriteRenderer = go.GetComponentFormRC<SpriteRenderer>("Sprite");
             self.BoxCollider2D = go.GetComponent<BoxCollider2D>();
 
             Sprite sprite = await IconHelper.LoadIconSpriteAsync(string.IsNullOrEmpty(item.Config.ItemOnWorldSprite)?

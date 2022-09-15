@@ -31,7 +31,8 @@ namespace ET
                             UsePos = true,
                             X = a.X,
                             Y = a.Y,
-                            SaveInScene = true
+                            SaveInScene = true,
+                            Bounced = true
                         });
 
                         await TimerComponent.Instance.WaitAsync(100);

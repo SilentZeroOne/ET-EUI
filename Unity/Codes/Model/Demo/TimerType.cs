@@ -9,6 +9,7 @@
 
         public const int GameTimer = 1004;
         public const int LoadingUITimer = 1005;
+        public const int ItemBounceTimer = 1006;
         // 不能超过10000
     }
 }
