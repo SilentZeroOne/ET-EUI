@@ -12,6 +12,8 @@ TagManager:
   - ItemSlot
   - InventoryItemSlot
   - TpPoint
+  - DigMap
+  - WaterMap
   layers:
   - Default
   - TransparentFX

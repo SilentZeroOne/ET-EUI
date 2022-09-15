@@ -34,7 +34,6 @@ namespace ET
             if (collider.CompareTag(TagManager.TpPoint))
             {
                 var config = TeleportConfigCategory.Instance.GetConfigBySceneNameAndPointName(self.ZoneScene().CurrentScene().Name, collider.name);
-                //TODO Display Loading Picture
 
                 SceneChangeHelper.SceneChangeTo(self.ZoneScene(), config.TargetSceneName, IdGenerater.Instance.GenerateInstanceId(), config.TargetPosX,
                     config.TargetPosY, config.TargetPosZ).Coroutine();

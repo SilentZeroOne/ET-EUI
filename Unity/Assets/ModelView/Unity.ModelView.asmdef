@@ -9,7 +9,8 @@
         "Cinemachine",
         "DOTween.Modules",
         "HotfixMono",
-        "Unity.TextMeshPro"
+        "Unity.TextMeshPro",
+        "Unity.2D.Tilemap.Extras"
     ],
     "includePlatforms": [
         "Editor"

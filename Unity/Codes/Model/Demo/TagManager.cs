@@ -11,5 +11,7 @@
         public const string ItemSlot = "ItemSlot";
         public const string InventoryItemSlot = "InventoryItemSlot";
         public const string TpPoint = "TpPoint";
+        public const string DigMap = "DigMap";
+        public const string WaterMap = "WaterMap";
     }
 }

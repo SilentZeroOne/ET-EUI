@@ -115,14 +115,20 @@ namespace ET
                 TileDetails currentTile = gridMapManage.GetTileDetails($"{cellPos.x}x{cellPos.y}y{currentScene.Name}");
                 if (currentTile != null)
                 {
-                    //TODO:添加其他类型的Item case
+                    //WORKFLOW:添加其他类型的Item case
                     switch ((ItemType)self.CurrentItem.Config.ItemType)
                     {
                         case ItemType.Commodity:
                             self.CursorEnable = self.CurrentItem.Config.CanDropped == 1 && currentTile.CanDropItem;
                             break;
                         case ItemType.Seed:
+                            self.CursorEnable = currentTile.DaysSinceDug != -1;
+                            break;
+                        case ItemType.HoeTool:
                             self.CursorEnable = currentTile.CanDig;
+                            break;
+                        case ItemType.WaterTool:
+                            self.CursorEnable = currentTile.DaysSinceDug != -1 && currentTile.DaysSinceWatered == -1;
                             break;
                     }
                 }

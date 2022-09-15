@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace ET
 {
@@ -13,5 +14,11 @@ namespace ET
         public Grid CurrentGrid;
 
         public bool MapDataLoaded { get; set; }
+
+        public Tilemap DigTilemap;
+        public Tilemap WaterTilemap;
+        
+        public RuleTile WaterTile;
+        public RuleTile DigTile;
     }
 }

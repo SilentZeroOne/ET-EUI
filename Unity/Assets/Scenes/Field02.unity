@@ -13619,7 +13619,7 @@ GameObject:
   - component: {fileID: 1652631622}
   m_Layer: 0
   m_Name: Dig
-  m_TagString: Untagged
+  m_TagString: DigMap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17804,7 +17804,7 @@ GameObject:
   - component: {fileID: 2024386084}
   m_Layer: 0
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: WaterMap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

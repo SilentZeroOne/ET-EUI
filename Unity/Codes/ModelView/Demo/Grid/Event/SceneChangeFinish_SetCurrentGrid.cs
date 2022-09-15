@@ -1,5 +1,6 @@
 ﻿using ET.EventType;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace ET
 {
@@ -8,7 +9,10 @@ namespace ET
     {
         protected override async ETTask Run(SceneChangeFinish a)
         {
-            a.CurrentScene.GetComponent<GridMapManageComponent>().CurrentGrid = UnityEngine.Object.FindObjectOfType<Grid>();
+            var gridMapManager = a.CurrentScene.GetComponent<GridMapManageComponent>();
+            gridMapManager.CurrentGrid = UnityEngine.Object.FindObjectOfType<Grid>();
+            gridMapManager.DigTilemap = GameObject.FindGameObjectWithTag(TagManager.DigMap).GetComponent<Tilemap>();
+            gridMapManager.WaterTilemap = GameObject.FindGameObjectWithTag(TagManager.WaterMap).GetComponent<Tilemap>();
             await ETTask.CompletedTask;
         }
     }

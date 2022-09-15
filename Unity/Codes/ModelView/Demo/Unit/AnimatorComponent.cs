@@ -16,7 +16,7 @@ namespace ET
 		Hair
 	}
 
-	//TODO: 每次添加新的状态需要在这加
+	//WORKFLOW: 每次添加新的状态需要在这加
 	public enum AnimatorStatus
 	{
 		None,

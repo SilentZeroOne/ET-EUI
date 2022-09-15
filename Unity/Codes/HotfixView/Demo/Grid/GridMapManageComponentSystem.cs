@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BM;
 using UnityEngine;
 
 namespace ET
@@ -10,6 +11,8 @@ namespace ET
         {
             self.MapDataLoaded = false;
             self.DataLoader = new MapDataLoader();
+            self.DigTile = AssetComponent.Load<RuleTile>(BPath.Assets_Bundles_ResBundles_RuleTiles_DigTile__asset);
+            self.WaterTile = AssetComponent.Load<RuleTile>(BPath.Assets_Bundles_ResBundles_RuleTiles_WaterTile__asset);
             self.LoadMapData();
         }
     }
@@ -88,5 +91,22 @@ namespace ET
             return tileDetails;
         }
 
+        public static void SetDigTile(this GridMapManageComponent self, TileDetails tileDetail)
+        {
+            if (self.DigTilemap != null)
+            {
+                var pos = new Vector3Int(tileDetail.GridX, tileDetail.GridY, 0);
+                self.DigTilemap.SetTile(pos, self.DigTile);
+            }
+        }
+        
+        public static void SetWaterTile(this GridMapManageComponent self, TileDetails tileDetail)
+        {
+            if (self.WaterTilemap != null)
+            {
+                var pos = new Vector3Int(tileDetail.GridX, tileDetail.GridY, 0);
+                self.WaterTilemap.SetTile(pos, self.WaterTile);
+            }
+        }
     }
 }

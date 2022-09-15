@@ -29,8 +29,10 @@ namespace ET
 
             if (!currentScenesComponent.HaveCache)
             {
-                ItemFactory.Create(currentScene, 1009);
+                ItemFactory.Create(currentScene, 1010);
                 ItemFactory.Create(currentScene, 1008);
+                ItemFactory.Create(currentScene, 1002);
+                ItemFactory.Create(currentScene, 1005);
             }
 
             Game.EventSystem.PublishAsync(new EventType.SceneChangeFinish() {ZoneScene = zoneScene, CurrentScene = currentScene}).Coroutine();
