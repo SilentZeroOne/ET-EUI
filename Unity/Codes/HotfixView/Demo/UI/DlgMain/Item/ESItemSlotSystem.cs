@@ -7,7 +7,7 @@ namespace ET
     [FriendClassAttribute(typeof(ET.Item))]
     public static class ESItemSlotSystem
     {
-        public static void Init(this ESItemSlot self, Item item,InventoryComponent inventoryComponent)
+        public static void Init(this ESItemSlot self, Item item,InventoryComponent inventoryComponent,int currentItemConfigId)
         {
             self.E_ItemEventTrigger.triggers.Clear();
             if (item != null && !item.IsDisposed)
@@ -17,7 +17,7 @@ namespace ET
                 
                 self.E_ItemImage.SetVisible(true);
                 self.E_CountTextMeshProUGUI.SetVisible(true);
-                self.E_HightLightImage.gameObject.SetActive(false);
+                self.E_HightLightImage.gameObject.SetActive(currentItemConfigId == item.ConfigId);
                 self.RegisterEvent(item);
             }
             else

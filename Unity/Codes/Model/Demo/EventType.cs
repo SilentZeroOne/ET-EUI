@@ -160,5 +160,13 @@ namespace ET
             public Scene ZoneScene;
             public GameTimeComponent Time;
         }
+
+        public struct LeftMouseClick
+        {
+            public Scene ZoneScene;
+            public Item Item;
+            public float X;
+            public float Y;
+        }
     }
 }

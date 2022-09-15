@@ -48,8 +48,7 @@ namespace ET
                     self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgInventory>().RefreshSlots();
                     self.ZoneScene().GetComponent<UIComponent>().GetDlgLogic<DlgMain>().Refresh().Coroutine();
                 }
-
-                if (eventData.pointerCurrentRaycast.gameObject.CompareTag(TagManager.InventoryItemSlot))
+                else if (eventData.pointerCurrentRaycast.gameObject.CompareTag(TagManager.InventoryItemSlot))
                 {
                     long id = eventData.pointerCurrentRaycast.gameObject.GetComponentInParent<MonoBridge>().BelongToEntityId;
                     Scroll_Item_InventorySlot slot = Game.EventSystem.Get(id) as Scroll_Item_InventorySlot;

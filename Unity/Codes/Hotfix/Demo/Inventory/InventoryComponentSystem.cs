@@ -171,7 +171,12 @@ namespace ET
 
         public static int GetEmptySlotIndex(this InventoryComponent self)
         {
-            int capacity = UnitHelper.GetInventoryCapacityFormZoneScene(self.ZoneScene());
+            int capacity = 0;
+            if (self.Type == InventoryType.ActionBar)
+                capacity = Settings.MaxActionBarSlot;
+            else if (self.Type == InventoryType.Inventory)
+                capacity = UnitHelper.GetInventoryCapacityFormZoneScene(self.ZoneScene());
+            
             for (int i = 0; i < capacity; i++)
             {
                 if (!self.IndexConfigIdDict.ContainsKey(i))

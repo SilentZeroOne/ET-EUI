@@ -101,7 +101,7 @@ namespace ET
             {
                 ESItemSlot slot = self.Slots[i];
                 Item item = inventoryComponent.GetItemByIndex(i);
-                slot.Init(item, inventoryComponent);
+                slot.Init(item, inventoryComponent, self.CurrentItemConfigId);
                 if (item != null && !item.IsDisposed)
                 {
                     slot.E_ItemEventTrigger.RegisterEvent(EventTriggerType.PointerClick, (evt) => self.OnSlotClick(evt, slot, item));

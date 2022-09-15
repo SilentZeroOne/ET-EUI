@@ -20,6 +20,7 @@ namespace ET
             {
                 self.SetCursor(self.CurrentCursor);
                 self.CheckCursorVaild();
+                self.CheckPlayerLeftMouseInput();
             }
             else
             {
@@ -31,6 +32,7 @@ namespace ET
     [FriendClass(typeof(DlgCursor))]
     [FriendClassAttribute(typeof(ET.DlgCursorViewComponent))]
     [FriendClassAttribute(typeof(ET.GridMapManageComponent))]
+    [FriendClassAttribute(typeof(ET.Item))]
     public static class DlgCursorSystem
     {
 
@@ -59,7 +61,7 @@ namespace ET
         {
             self.CurrentItem = item;
 
-            CursorConfig config = item == null? CursorConfigCategory.Instance.GetDefaultCursor() :
+            CursorConfig config = item == null ? CursorConfigCategory.Instance.GetDefaultCursor() :
                     CursorConfigCategory.Instance.GetCursorConfigByItemType(item.Config.ItemType);
 
             if (config != null)
@@ -114,7 +116,7 @@ namespace ET
                 if (currentTile != null)
                 {
                     //TODO:添加其他类型的Item case
-                    switch ((ItemType) self.CurrentItem.Config.ItemType)
+                    switch ((ItemType)self.CurrentItem.Config.ItemType)
                     {
                         case ItemType.Commodity:
                             self.CursorEnable = self.CurrentItem.Config.CanDropped == 1 && currentTile.CanDropItem;
@@ -127,6 +129,33 @@ namespace ET
                 else
                 {
                     self.CursorEnable = false;
+                }
+            }
+        }
+
+        public static void CheckPlayerLeftMouseInput(this DlgCursor self)
+        {
+            if (self.CurrentItem != null && self.CursorEnable && InputHelper.GetMouseButtonDown(0))
+            {
+                var inputPos = InputHelper.GetMousePosition();
+                var worldPos = Camera.main.ScreenToWorldPoint(new Vector3(inputPos.x, inputPos.y, -Camera.main.gameObject.transform.position.z));
+                Game.EventSystem.Publish(new EventType.LeftMouseClick()
+                {
+                    ZoneScene = self.ZoneScene(),
+                    Item = self.CurrentItem,
+                    X = worldPos.x,
+                    Y = worldPos.y
+                });
+
+                InventoryComponent inventoryComponent = self.ZoneScene().GetComponent<InventoryComponent>();
+                var newItem = inventoryComponent.GetItemByConfigId(self.CurrentItem.ConfigId);
+                if (newItem != null)
+                {
+                    self.CurrentItem = newItem;
+                }
+                else
+                {
+                    Game.EventSystem.Publish(new EventType.OnItemSelected() { ZoneScene = self.ZoneScene(), Item = self.CurrentItem, Carried = false });
                 }
             }
         }
