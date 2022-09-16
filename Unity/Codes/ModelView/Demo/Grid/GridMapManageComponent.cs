@@ -20,5 +20,7 @@ namespace ET
         
         public RuleTile WaterTile;
         public RuleTile DigTile;
+
+        public SavedMapData SavedMapData;
     }
 }

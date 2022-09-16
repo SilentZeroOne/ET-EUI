@@ -66,6 +66,13 @@ namespace ET
             //     C2M_TransferMap c2MTransferMap = new C2M_TransferMap();
             //     self.ZoneScene().GetComponent<SessionComponent>().Session.Call(c2MTransferMap).Coroutine();
             // }
+
+            //TODO:正式发布时删除
+            //游戏天数加一
+            if (InputHelper.GetKeyDown(KeyCode.T))
+            {
+                self.ZoneScene().GetComponent<GameTimeComponent>().FlashDay();
+            }
         }
 
         public static void FixedUpdate(this OperaComponent self)

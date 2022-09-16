@@ -99,5 +99,16 @@
             Game.EventSystem.Publish(new EventType.UpdateGameSecond() { ZoneScene = self.ZoneScene(), Time = self });
             //Log.Info("Current Time "+$"{self.GameHour:00}:{self.GameMinute:00}:{self.GameSecond:00}");
         }
+
+        /// <summary>
+        /// 飞跃一天
+        /// </summary>
+        /// <param name="self"></param>
+        public static void FlashDay(this GameTimeComponent self)
+        {
+            self.GameDay++;
+
+            Game.EventSystem.Publish(new EventType.UpdateGameDay() { ZoneScene = self.ZoneScene(), Time = self });
+        }
     }
 }

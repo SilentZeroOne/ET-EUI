@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace ET
 {
+    #region Item
     [ProtoContract]
     public partial class ItemListProto : Object
     {
@@ -27,7 +28,44 @@ namespace ET
         public ProtoVector3 WorldPosition;
 
     }
+    
+    #endregion
 
+    #region Grid
+    public partial class TileDetails: Object
+    {
+        [ProtoMember(1)]
+        public int GridX;
+        [ProtoMember(2)]
+        public int GridY;
+        [ProtoMember(3)]
+        public bool CanDig;
+        [ProtoMember(4)]
+        public bool CanDropItem;
+        [ProtoMember(5)]
+        public bool CanPlaceFurniture;
+        [ProtoMember(6)]
+        public bool IsNPCObstacle;
+        [ProtoMember(7)]
+        public int DaysSinceDug = -1;
+        [ProtoMember(8)]
+        public int DaysSinceWatered = -1;
+        [ProtoMember(9)]
+        public int SeedItemId = -1;
+        [ProtoMember(10)]
+        public int GrowthDays = -1;
+        [ProtoMember(11)]
+        public int DaysSinceLastHarvest = -1;
+    }
+
+    public partial class SavedMapData: Object
+    {
+        [ProtoMember(1)]
+        public List<TileDetails> TileDetailsList = new List<TileDetails>();
+    }
+
+    #endregion
+    
     [ProtoContract]
     public partial class ProtoVector3: Object
     {

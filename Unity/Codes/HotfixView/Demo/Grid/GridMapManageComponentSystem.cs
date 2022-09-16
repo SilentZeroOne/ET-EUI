@@ -13,7 +13,7 @@ namespace ET
             self.DataLoader = new MapDataLoader();
             self.DigTile = AssetComponent.Load<RuleTile>(BPath.Assets_Bundles_ResBundles_RuleTiles_DigTile__asset);
             self.WaterTile = AssetComponent.Load<RuleTile>(BPath.Assets_Bundles_ResBundles_RuleTiles_WaterTile__asset);
-            self.LoadMapData();
+            self.LoadMapData().Coroutine();
         }
     }
 
@@ -29,21 +29,29 @@ namespace ET
     [FriendClass(typeof (GridMapManageComponent))]
     public static class GridMapManageComponentSystem
     {
-        public static void LoadMapData(this GridMapManageComponent self)
+        public static async ETTask LoadMapData(this GridMapManageComponent self)
         {
             List<byte[]> mapDatas = new List<byte[]>();
             var sceneName = self.GetParent<Scene>().Name;
-            self.DataLoader.GetSceneMapDataBytes(mapDatas, sceneName);
-
-            foreach (var mapData in mapDatas)
+            self.SavedMapData = await self.DataLoader.GetSceneSavedMapData(sceneName);
+            if (self.SavedMapData != null)//有存档 读取存档数据
             {
-                MapData data = ProtobufHelper.Deserialize<MapData>(mapData);
-                if (data.Tiles != null && data.Tiles.Count > 0)
+                self.FillTileDetailsMap();
+            }
+            else//读取初始数据
+            {
+                self.DataLoader.GetSceneMapDataBytes(mapDatas, sceneName);
+
+                foreach (var mapData in mapDatas)
                 {
-                    self.FillTileDetailsMap(data);
+                    MapData data = ProtobufHelper.Deserialize<MapData>(mapData);
+                    if (data.Tiles != null && data.Tiles.Count > 0)
+                    {
+                        self.FillTileDetailsMap(data);
+                    }
                 }
             }
-
+            
             self.MapDataLoaded = true;
         }
 
@@ -75,6 +83,19 @@ namespace ET
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
+        private static void FillTileDetailsMap(this GridMapManageComponent self)
+        {
+            var sceneName = self.GetParent<Scene>().Name;
+            foreach (var tile in self.SavedMapData.TileDetailsList)
+            {
+                var key = tile.GridX + "x" + tile.GridY + "y" + sceneName;
+                if (!self.TileDetailsMap.ContainsKey(key))
+                {
+                    self.TileDetailsMap.Add(key, tile);
                 }
             }
         }
