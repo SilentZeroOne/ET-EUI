@@ -30,6 +30,7 @@ namespace ET
     }
 
     [FriendClass(typeof(OperaComponent))]
+    [FriendClassAttribute(typeof(ET.Unit))]
     public static class OperaComponentSystem
     {
         public static void Update(this OperaComponent self)
@@ -69,6 +70,10 @@ namespace ET
 
         public static void FixedUpdate(this OperaComponent self)
         {
+            Unit player = self.GetParent<Unit>();
+            if (player.InputDisabled) return;
+
+            //TODO:增加InputDisable
             var inputX = InputHelper.GetXAxisRaw();
             var inputY = InputHelper.GetYAxisRaw();
 
@@ -78,16 +83,15 @@ namespace ET
                 inputY *= 0.6f;
             }
 
-            self.GetParent<Unit>().GetComponent<RigidBody2DComponent>().Move(new Vector2(inputX, inputY));
-            self.GetParent<Unit>().GetComponent<AnimatorComponent>().SetMoveParmas(inputX, inputY);
+            player.GetComponent<RigidBody2DComponent>().Move(new Vector2(inputX, inputY));
+            player.GetComponent<AnimatorComponent>().SetMoveParmas(inputX, inputY);
             if (inputX != 0 || inputY != 0)
             {
-                self.GetParent<Unit>().GetComponent<AnimatorComponent>().Play(MotionType.IsMoving);
+                player.GetComponent<AnimatorComponent>().Play(MotionType.IsMoving);
             }
             else
             {
-                self.GetParent<Unit>().GetComponent<AnimatorComponent>()
-                        .ForEveryAnimator(AnimatorControlType.ResetTrigger, MotionType.IsMoving.ToString());
+                player.GetComponent<AnimatorComponent>().ForEveryAnimator(AnimatorControlType.ResetTrigger, MotionType.IsMoving.ToString());
             }
         }
     }

@@ -19,9 +19,15 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_Animators_Controller_UILoadingController__controller = "Assets/Bundles/ResBundles/Animators/Controller/UILoadingController.controller";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm_Hold__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm_Hold.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm_Water__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm_Water.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_BaseContorller__controller = "Assets/Bundles/ResBundles/Animators/Controller/Player/BaseContorller.controller";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Body__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Body.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Body_Water__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Body_Water.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Hair__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Hair.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Hair_Water__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Hair_Water.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Tool_Tool__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Tool/Tool.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Tool_Tool_Hoe__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Tool/Tool_Hoe.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Tool_Tool_Water__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Tool/Tool_Water.overrideController";
 		public const string Assets_Bundles_ResBundles_Cursor_cursor_1__png = "Assets/Bundles/ResBundles/Cursor/cursor_1.png";
 		public const string Assets_Bundles_ResBundles_Cursor_cursor_10__png = "Assets/Bundles/ResBundles/Cursor/cursor_10.png";
 		public const string Assets_Bundles_ResBundles_Cursor_cursor_11__png = "Assets/Bundles/ResBundles/Cursor/cursor_11.png";

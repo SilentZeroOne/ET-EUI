@@ -1,4 +1,12 @@
 {"list":[
 {"_t":"AnimatorControllerConfig","_id":1,"AnimatorName":"Arm","AniamtorStatus":0,"OverrideControllerName":"Arm.overrideController"},
 {"_t":"AnimatorControllerConfig","_id":2,"AnimatorName":"Arm","AniamtorStatus":1,"OverrideControllerName":"Arm_Hold.overrideController"},
+{"_t":"AnimatorControllerConfig","_id":3,"AnimatorName":"Arm","AniamtorStatus":2,"OverrideControllerName":"Arm_Water.overrideController"},
+{"_t":"AnimatorControllerConfig","_id":4,"AnimatorName":"Tool","AniamtorStatus":0,"OverrideControllerName":"Tool.overrideController"},
+{"_t":"AnimatorControllerConfig","_id":5,"AnimatorName":"Tool","AniamtorStatus":3,"OverrideControllerName":"Tool_Hoe.overrideController"},
+{"_t":"AnimatorControllerConfig","_id":6,"AnimatorName":"Body","AniamtorStatus":0,"OverrideControllerName":"Body.overrideController"},
+{"_t":"AnimatorControllerConfig","_id":7,"AnimatorName":"Body","AniamtorStatus":2,"OverrideControllerName":"Body_Water.overrideController"},
+{"_t":"AnimatorControllerConfig","_id":8,"AnimatorName":"Hair","AniamtorStatus":0,"OverrideControllerName":"Hair.overrideController"},
+{"_t":"AnimatorControllerConfig","_id":9,"AnimatorName":"Hair","AniamtorStatus":2,"OverrideControllerName":"Hair_Water.overrideController"},
+{"_t":"AnimatorControllerConfig","_id":10,"AnimatorName":"Tool","AniamtorStatus":2,"OverrideControllerName":"Tool_Water.overrideController"},
 ]}

@@ -7,20 +7,24 @@ namespace ET
 	{
 		None,
 		IsMoving,
+		UseTool
 	}
 	
 	public enum AnimatorType
 	{
 		Arm,
 		Body,
-		Hair
+		Hair,
+		Tool
 	}
 
 	//WORKFLOW: 每次添加新的状态需要在这加
 	public enum AnimatorStatus
 	{
 		None,
-		Carried
+		Carried,
+		Water,
+		Hoe
 	}
 
 	public enum AnimatorControlType
@@ -46,6 +50,8 @@ namespace ET
 		public float MontionSpeed;
 		public float InputX;
 		public float InputY;
+		public float MouseX;
+		public float MouseY;
 		public bool isStop;
 		public float stopSpeed;
 		public Animator CurrentControlAnimator;

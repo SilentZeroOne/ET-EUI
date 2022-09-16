@@ -41,8 +41,9 @@ namespace ET
 			Animator bodyAnimator = go.GetComponentFormRC<Animator>("Body");
 			Animator armAnimator = go.GetComponentFormRC<Animator>("Arm");
 			Animator hairAnimator = go.GetComponentFormRC<Animator>("Hair");
+			Animator toolAnimator = go.GetComponentFormRC<Animator>("Tool");
 
-			if (bodyAnimator == null || armAnimator == null || hairAnimator == null)
+			if (bodyAnimator == null || armAnimator == null || hairAnimator == null || toolAnimator == null)
 			{
 				return;
 			}
@@ -50,6 +51,7 @@ namespace ET
 			self.Animators.Add(AnimatorType.Body, bodyAnimator);
 			self.Animators.Add(AnimatorType.Arm, armAnimator);
 			self.Animators.Add(AnimatorType.Hair, hairAnimator);
+			self.Animators.Add(AnimatorType.Tool, toolAnimator);
 
 			foreach (var animator in self.Animators.Values)
 			{
@@ -98,6 +100,8 @@ namespace ET
 				self.ForEveryAnimator(AnimatorControlType.SetFloat, "MotionSpeed", self.MontionSpeed.ToString());
 				self.ForEveryAnimator(AnimatorControlType.SetFloat, "InputX", self.InputX.ToString());
 				self.ForEveryAnimator(AnimatorControlType.SetFloat, "InputY", self.InputY.ToString());
+				self.ForEveryAnimator(AnimatorControlType.SetFloat, "MouseX", self.MouseX.ToString());
+				self.ForEveryAnimator(AnimatorControlType.SetFloat, "MouseY", self.MouseY.ToString());
 
 				self.ForEveryAnimator(AnimatorControlType.SetTrigger, self.MotionType.ToString());
 
@@ -250,6 +254,24 @@ namespace ET
 		{
 			self.InputX = inputX;
 			self.InputY = inputY;
+		}
+		
+		public static void SetMouseParmas(this AnimatorComponent self, float mouseX, float mouseY)
+		{
+			Vector3 playerPos = self.GetParent<Unit>().GetComponent<GameObjectComponent>().GameObject.transform.position;
+			var x = mouseX - playerPos.x;
+			var y = mouseY - playerPos.y;
+			if (Mathf.Abs(x) > Mathf.Abs(y))
+			{
+				y = 0;
+			}
+			else
+			{
+				x = 0;
+			}
+			
+			self.MouseX = x;
+			self.MouseY = y;
 		}
 
 		public static void ForEveryAnimator(this AnimatorComponent self,AnimatorControlType controlType,params string[] pars)

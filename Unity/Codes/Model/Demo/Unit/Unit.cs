@@ -44,5 +44,18 @@ namespace ET
                 Game.EventSystem.PublishClass(EventType.ChangeRotation.Instance);
             }
         }
+
+        private bool _useTool;
+
+        public bool UseTool
+        {
+            get => this._useTool;
+            set
+            {
+                this.InputDisabled = value;
+                this._useTool = value;
+            }
+        }
+        public bool InputDisabled;
     }
 }
