@@ -122,7 +122,7 @@ namespace ET
                             self.CursorEnable = self.CurrentItem.Config.CanDropped == 1 && currentTile.CanDropItem;
                             break;
                         case ItemType.Seed:
-                            self.CursorEnable = currentTile.DaysSinceDug != -1;
+                            self.CursorEnable = currentTile.DaysSinceDug != -1 && currentTile.SeedItemId == -1;
                             break;
                         case ItemType.HoeTool:
                             self.CursorEnable = currentTile.CanDig;
