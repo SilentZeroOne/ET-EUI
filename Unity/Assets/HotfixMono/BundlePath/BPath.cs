@@ -304,6 +304,7 @@ namespace BM
 		public const string Assets_Scenes_Field02__unity = "Assets/Scenes/Field02.unity";
 		public const string Assets_Bundles_Config_AIConfigCategory__bytes = "Assets/Bundles/Config/AIConfigCategory.bytes";
 		public const string Assets_Bundles_Config_AnimatorControllerConfigCategory__bytes = "Assets/Bundles/Config/AnimatorControllerConfigCategory.bytes";
+		public const string Assets_Bundles_Config_CropConfigCategory__bytes = "Assets/Bundles/Config/CropConfigCategory.bytes";
 		public const string Assets_Bundles_Config_CursorConfigCategory__bytes = "Assets/Bundles/Config/CursorConfigCategory.bytes";
 		public const string Assets_Bundles_Config_GameSceneConfigCategory__bytes = "Assets/Bundles/Config/GameSceneConfigCategory.bytes";
 		public const string Assets_Bundles_Config_ItemConfigCategory__bytes = "Assets/Bundles/Config/ItemConfigCategory.bytes";
