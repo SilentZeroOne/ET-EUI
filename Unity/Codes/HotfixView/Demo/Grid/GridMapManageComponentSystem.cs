@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using BM;
 using UnityEngine;
 
@@ -21,7 +22,7 @@ namespace ET
     {
         public override void Destroy(GridMapManageComponent self)
         {
-
+            self.SaveMapData();
         }
     }
     
@@ -63,7 +64,15 @@ namespace ET
                 var key = tile.TileCoordinate.X + "x" + tile.TileCoordinate.Y + "y" + sceneName;
                 if (!self.TileDetailsMap.ContainsKey(key))
                 {
-                    TileDetails detail = new() { GridX = tile.TileCoordinate.X, GridY = tile.TileCoordinate.Y };
+                    TileDetails detail = new() { 
+                        GridX = tile.TileCoordinate.X, 
+                        GridY = tile.TileCoordinate.Y,
+                        DaysSinceDug = -1,
+                        DaysSinceWatered = -1,
+                        DaysSinceLastHarvest = -1,
+                        GrowthDays = -1,
+                        SeedItemId = -1
+                    };
                     self.TileDetailsMap.Add(key, detail);
                 }
 
@@ -100,6 +109,56 @@ namespace ET
             }
         }
 
+        public static void SaveMapData(this GridMapManageComponent self)
+        {
+            if (self.SavedMapData == null) self.SavedMapData = new SavedMapData();
+            else
+            {
+                self.SavedMapData.TileDetailsList.Clear();
+            }
+            var sceneName = self.GetParent<Scene>().Name;
+            var path = Path.Combine(PathHelper.SavingPath, $"{sceneName}_MapData.sav");
+
+            foreach (var tile in self.TileDetailsMap.Values)
+            {
+                self.SavedMapData.TileDetailsList.Add(tile);
+            }
+
+            ProtobufHelper.SaveTo(self.SavedMapData, path);
+        }
+
+        public static void RefreshMap(this GridMapManageComponent self)
+        {
+            if (self.DigTilemap != null)
+            {
+                self.DigTilemap.ClearAllTiles();
+            }
+
+            if (self.WaterTilemap != null)
+            {
+                self.WaterTilemap.ClearAllTiles();
+            }
+            
+            self.DisplayMap();
+        }
+        
+        public static void DisplayMap(this GridMapManageComponent self)
+        {
+            foreach (var tile in self.SavedMapData.TileDetailsList)
+            {
+                if (tile.DaysSinceDug != -1)
+                {
+                    self.SetDigTile(tile);
+                }
+
+                if (tile.DaysSinceWatered != -1)
+                {
+                    self.SetWaterTile(tile);
+                }
+                //TODO:种子
+            }
+        }
+
         /// <summary>
         /// 获取特定TileDetail
         /// </summary>
@@ -110,6 +169,33 @@ namespace ET
         {
             self.TileDetailsMap.TryGetValue(key, out var tileDetails);
             return tileDetails;
+        }
+
+        public static void UpdateTileWithDayChange(this GridMapManageComponent self, GameTimeComponent time, int updateTime, bool needRefreshMap = true)
+        {
+            foreach (var tile in self.TileDetailsMap.Values)
+            {
+                if (tile.DaysSinceWatered > -1)
+                {
+                    tile.DaysSinceWatered = -1;
+                }
+
+                if (tile.DaysSinceDug > -1)
+                {
+                    tile.DaysSinceDug += updateTime;
+                }
+
+                //超期删除挖坑
+                if (tile.DaysSinceDug > 5 && tile.SeedItemId == -1)
+                {
+                    tile.CanDig = true;
+                    tile.CanDropItem = true;
+                    tile.DaysSinceDug = -1;
+                }
+            }
+
+            if (needRefreshMap)
+                self.RefreshMap();
         }
 
         public static void SetDigTile(this GridMapManageComponent self, TileDetails tileDetail)

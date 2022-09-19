@@ -13,6 +13,10 @@ namespace ET
             gridMapManager.CurrentGrid = UnityEngine.Object.FindObjectOfType<Grid>();
             gridMapManager.DigTilemap = GameObject.FindGameObjectWithTag(TagManager.DigMap).GetComponent<Tilemap>();
             gridMapManager.WaterTilemap = GameObject.FindGameObjectWithTag(TagManager.WaterMap).GetComponent<Tilemap>();
+            gridMapManager.UpdateTileWithDayChange(null, a.CurrentScene.DaysSinceInThisScene, false);
+            gridMapManager.DisplayMap();
+            
+            a.CurrentScene.DaysSinceInThisScene = 0;
             await ETTask.CompletedTask;
         }
     }

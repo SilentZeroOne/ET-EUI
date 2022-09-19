@@ -32,6 +32,7 @@ namespace ET
     #endregion
 
     #region Grid
+    [ProtoContract]
     public partial class TileDetails: Object
     {
         [ProtoMember(1)]
@@ -47,17 +48,18 @@ namespace ET
         [ProtoMember(6)]
         public bool IsNPCObstacle;
         [ProtoMember(7)]
-        public int DaysSinceDug = -1;
+        public int DaysSinceDug;
         [ProtoMember(8)]
-        public int DaysSinceWatered = -1;
+        public int DaysSinceWatered;
         [ProtoMember(9)]
-        public int SeedItemId = -1;
+        public int SeedItemId;
         [ProtoMember(10)]
-        public int GrowthDays = -1;
+        public int GrowthDays;
         [ProtoMember(11)]
-        public int DaysSinceLastHarvest = -1;
+        public int DaysSinceLastHarvest;
     }
 
+    [ProtoContract]
     public partial class SavedMapData: Object
     {
         [ProtoMember(1)]

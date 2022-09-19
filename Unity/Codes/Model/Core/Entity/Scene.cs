@@ -18,6 +18,11 @@
             get;
             set;
         }
+        
+        /// <summary>
+        /// 用来记录在当前场景经过了多少天
+        /// </summary>
+        public int DaysSinceInThisScene { get; set; }
 
         public Scene(long instanceId, int zone, SceneType sceneType, string name, Entity parent)
         {

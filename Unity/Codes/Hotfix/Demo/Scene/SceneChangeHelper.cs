@@ -58,12 +58,14 @@ namespace ET
             Unit unit = UnitHelper.GetMyUnitFromCurrentScene(currentScenesComponent.Scene);
             var previousCurrentScene = currentScenesComponent.Scene;
             var previousName = previousCurrentScene.Name;
-
+            var daysSinceInThisScene = previousCurrentScene.DaysSinceInThisScene;
+            
             Scene currentScene = SceneFactory.CreateCurrentScene(sceneInstanceId, zoneScene.Zone, sceneName, currentScenesComponent);
             
             //Read items cache
             currentScenesComponent.HaveCache = await currentScene.GetComponent<ItemsComponent>().LoadItemsComponent();
-            
+            currentScene.DaysSinceInThisScene = daysSinceInThisScene;
+
             UnitComponent unitComponent = currentScene.AddComponent<UnitComponent>();
             unitComponent.AddChild(unit);
 

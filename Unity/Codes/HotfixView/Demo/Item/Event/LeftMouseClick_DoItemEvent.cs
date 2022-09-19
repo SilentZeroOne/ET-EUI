@@ -74,7 +74,7 @@ namespace ET
                         currentTile.DaysSinceDug = 0;
                         currentTile.CanDropItem = false;
                         gridMapManage.SetDigTile(currentTile);
-
+                        //gridMapManage.SaveMapData();
                         await TimerComponent.Instance.WaitAsync(350);
                         //动画结束
                         player.GetComponent<AnimatorComponent>().ForEveryAnimator(AnimatorControlType.ResetTrigger, MotionType.UseTool.ToString());
@@ -101,7 +101,7 @@ namespace ET
                         //TODO:音效
                         currentTile.DaysSinceWatered = 0;
                         gridMapManage.SetWaterTile(currentTile);
-                        
+                        //gridMapManage.SaveMapData();
                         await TimerComponent.Instance.WaitAsync(500);
                         //动画结束
                         player.GetComponent<AnimatorComponent>().ForEveryAnimator(AnimatorControlType.ResetTrigger, MotionType.UseTool.ToString());
