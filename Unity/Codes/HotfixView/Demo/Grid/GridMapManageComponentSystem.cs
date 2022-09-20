@@ -25,9 +25,10 @@ namespace ET
             self.SaveMapData();
         }
     }
-    
 
-    [FriendClass(typeof (GridMapManageComponent))]
+
+    [FriendClass(typeof(GridMapManageComponent))]
+    [FriendClassAttribute(typeof(ET.GridTile))]
     public static class GridMapManageComponentSystem
     {
         public static async ETTask LoadMapData(this GridMapManageComponent self)
@@ -52,43 +53,38 @@ namespace ET
                     }
                 }
             }
-            
+
             self.MapDataLoaded = true;
         }
 
+        /// <summary>
+        /// 填充初始数据
+        /// </summary>
         private static void FillTileDetailsMap(this GridMapManageComponent self, MapData data)
         {
             var sceneName = self.GetParent<Scene>().Name;
             foreach (var tile in data.Tiles)
             {
                 var key = tile.TileCoordinate.X + "x" + tile.TileCoordinate.Y + "y" + sceneName;
-                if (!self.TileDetailsMap.ContainsKey(key))
+                if (!self.GridTilesMap.ContainsKey(key))
                 {
-                    TileDetails detail = new() { 
-                        GridX = tile.TileCoordinate.X, 
-                        GridY = tile.TileCoordinate.Y,
-                        DaysSinceDug = -1,
-                        DaysSinceWatered = -1,
-                        DaysSinceLastHarvest = -1,
-                        GrowthDays = -1,
-                        SeedItemId = -1
-                    };
-                    self.TileDetailsMap.Add(key, detail);
+                    var gridTile = self.AddChild<GridTile, int, int>(tile.TileCoordinate.X, tile.TileCoordinate.Y);
+                    self.GridTilesMap.Add(key, gridTile);
                 }
 
-                switch ((GridType) tile.GridType)
+                switch ((GridType)tile.GridType)
                 {
                     case GridType.Digable:
-                        self.TileDetailsMap[key].CanDig = tile.Value;
+                        self.GridTilesMap[key].CanDig = tile.Value;
                         break;
                     case GridType.DropItem:
-                        self.TileDetailsMap[key].CanDropItem = tile.Value;
+                        self.GridTilesMap[key].CanDropItem = tile.Value;
                         break;
                     case GridType.PlaceFurniture:
-                        self.TileDetailsMap[key].CanPlaceFurniture = tile.Value;
+                        self.GridTilesMap[key].CanPlaceFurniture = tile.Value;
                         break;
                     case GridType.NPCObstacle:
-                        self.TileDetailsMap[key].IsNPCObstacle = tile.Value;
+                        self.GridTilesMap[key].IsNPCObstacle = tile.Value;
                         break;
                     default:
                         throw new ArgumentOutOfRangeException();
@@ -102,9 +98,11 @@ namespace ET
             foreach (var tile in self.SavedMapData.TileDetailsList)
             {
                 var key = tile.GridX + "x" + tile.GridY + "y" + sceneName;
-                if (!self.TileDetailsMap.ContainsKey(key))
+                if (!self.GridTilesMap.ContainsKey(key))
                 {
-                    self.TileDetailsMap.Add(key, tile);
+                    var gridTile = self.AddChild<GridTile>();
+                    gridTile.FromProto(tile);
+                    self.GridTilesMap.Add(key, gridTile);
                 }
             }
         }
@@ -119,9 +117,9 @@ namespace ET
             var sceneName = self.GetParent<Scene>().Name;
             var path = Path.Combine(PathHelper.SavingPath, $"{sceneName}_MapData.sav");
 
-            foreach (var tile in self.TileDetailsMap.Values)
+            foreach (var tile in self.GridTilesMap.Values)
             {
-                self.SavedMapData.TileDetailsList.Add(tile);
+                self.SavedMapData.TileDetailsList.Add(tile.ToProto());
             }
 
             ProtobufHelper.SaveTo(self.SavedMapData, path);
@@ -138,13 +136,13 @@ namespace ET
             {
                 self.WaterTilemap.ClearAllTiles();
             }
-            
+
             self.DisplayMap();
         }
-        
+
         public static void DisplayMap(this GridMapManageComponent self)
         {
-            foreach (var tile in self.SavedMapData.TileDetailsList)
+            foreach (var tile in self.GridTilesMap.Values)
             {
                 if (tile.DaysSinceDug != -1)
                 {
@@ -165,17 +163,24 @@ namespace ET
         /// <param name="self"></param>
         /// <param name="key">x+y+SceneName</param>
         /// <returns></returns>
-        public static TileDetails GetTileDetails(this GridMapManageComponent self, string key)
+        public static GridTile GetGridTile(this GridMapManageComponent self, string key)
         {
-            self.TileDetailsMap.TryGetValue(key, out var tileDetails);
-            return tileDetails;
+            self.GridTilesMap.TryGetValue(key, out var gridTile);
+            return gridTile;
+        }
+
+        public static GridTile GetGridTile(this GridMapManageComponent self, int x, int y)
+        {
+            var currentName = self.GetParent<Scene>().Name;
+            var key = $"{x}x{y}y{currentName}";
+            return self.GetGridTile(key);
         }
 
         public static void UpdateTileWithDayChange(this GridMapManageComponent self, GameTimeComponent time, int updateTime, bool needRefreshMap = true)
         {
-            foreach (var tile in self.TileDetailsMap.Values)
+            foreach (var tile in self.GridTilesMap.Values)
             {
-                if (tile.DaysSinceWatered > -1)
+                if (tile.DaysSinceWatered > -1 && updateTime > 0)
                 {
                     tile.DaysSinceWatered = -1;
                 }
@@ -186,7 +191,7 @@ namespace ET
                 }
 
                 //超期删除挖坑
-                if (tile.DaysSinceDug > 5 && tile.SeedItemId == -1)
+                if (tile.DaysSinceDug > 5 && tile.Crop == null)
                 {
                     tile.CanDig = true;
                     tile.CanDropItem = true;
@@ -198,20 +203,20 @@ namespace ET
                 self.RefreshMap();
         }
 
-        public static void SetDigTile(this GridMapManageComponent self, TileDetails tileDetail)
+        public static void SetDigTile(this GridMapManageComponent self, GridTile gridTile)
         {
             if (self.DigTilemap != null)
             {
-                var pos = new Vector3Int(tileDetail.GridX, tileDetail.GridY, 0);
+                var pos = new Vector3Int(gridTile.GridX, gridTile.GridY, 0);
                 self.DigTilemap.SetTile(pos, self.DigTile);
             }
         }
-        
-        public static void SetWaterTile(this GridMapManageComponent self, TileDetails tileDetail)
+
+        public static void SetWaterTile(this GridMapManageComponent self, GridTile gridTile)
         {
             if (self.WaterTilemap != null)
             {
-                var pos = new Vector3Int(tileDetail.GridX, tileDetail.GridY, 0);
+                var pos = new Vector3Int(gridTile.GridX, gridTile.GridY, 0);
                 self.WaterTilemap.SetTile(pos, self.WaterTile);
             }
         }

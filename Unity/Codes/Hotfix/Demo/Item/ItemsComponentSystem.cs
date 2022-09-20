@@ -86,7 +86,7 @@ namespace ET
                 path = "";
 #else
                 var currentSceneName = self.ZoneScene().CurrentScene().Name;
-                path = Path.Combine(PathHelper.SavingPath, currentSceneName + "Save.sav");
+                path = Path.Combine(PathHelper.SavingPath, currentSceneName + "_ItemsSave.sav");
 #endif
             }
 
@@ -101,7 +101,7 @@ namespace ET
             return false;
 #else
             var currentSceneName = self.ZoneScene().CurrentScene().Name;
-            string path = Path.Combine(PathHelper.SavingPath, currentSceneName + "Save.sav");
+            string path = Path.Combine(PathHelper.SavingPath, currentSceneName + "_ItemsSave.sav");
 
             byte[] bytes = await FileReadHelper.DownloadData(path);
             ItemListProto proto = ProtobufHelper.Deserialize<ItemListProto>(bytes);

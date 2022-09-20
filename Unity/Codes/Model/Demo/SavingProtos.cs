@@ -31,6 +31,17 @@ namespace ET
     
     #endregion
 
+    [ProtoContract]
+    public partial class CropInfo: Object
+    {
+        [ProtoMember(1)]
+        public int ConfigId;
+
+        [ProtoMember(2)]
+        public long CropId;
+    }
+    
+    
     #region Grid
     [ProtoContract]
     public partial class TileDetails: Object
@@ -52,11 +63,11 @@ namespace ET
         [ProtoMember(8)]
         public int DaysSinceWatered;
         [ProtoMember(9)]
-        public int SeedItemId;
-        [ProtoMember(10)]
         public int GrowthDays;
-        [ProtoMember(11)]
+        [ProtoMember(10)]
         public int DaysSinceLastHarvest;
+        [ProtoMember(11)]
+        public CropInfo Crop;
     }
 
     [ProtoContract]

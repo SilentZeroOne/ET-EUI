@@ -33,6 +33,7 @@ namespace ET
     [FriendClassAttribute(typeof(ET.DlgCursorViewComponent))]
     [FriendClassAttribute(typeof(ET.GridMapManageComponent))]
     [FriendClassAttribute(typeof(ET.Item))]
+    [FriendClassAttribute(typeof(ET.GridTile))]
     public static class DlgCursorSystem
     {
 
@@ -112,7 +113,7 @@ namespace ET
                     return;
                 }
 
-                TileDetails currentTile = gridMapManage.GetTileDetails($"{cellPos.x}x{cellPos.y}y{currentScene.Name}");
+                GridTile currentTile = gridMapManage.GetGridTile(cellPos.x, cellPos.y);
                 if (currentTile != null)
                 {
                     //WORKFLOW:添加其他类型的Item case
@@ -122,7 +123,7 @@ namespace ET
                             self.CursorEnable = self.CurrentItem.Config.CanDropped == 1 && currentTile.CanDropItem;
                             break;
                         case ItemType.Seed:
-                            self.CursorEnable = currentTile.DaysSinceDug != -1 && currentTile.SeedItemId == -1;
+                            self.CursorEnable = currentTile.DaysSinceDug != -1 && currentTile.Crop == null;
                             break;
                         case ItemType.HoeTool:
                             self.CursorEnable = currentTile.CanDig;

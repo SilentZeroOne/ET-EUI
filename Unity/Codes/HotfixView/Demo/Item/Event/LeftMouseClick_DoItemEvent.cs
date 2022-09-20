@@ -5,6 +5,7 @@ namespace ET
 {
     [FriendClassAttribute(typeof(ET.GridMapManageComponent))]
     [FriendClassAttribute(typeof(ET.Unit))]
+    [FriendClassAttribute(typeof(ET.GridTile))]
     public class LeftMouseClick_DoItemEvent : AEvent<LeftMouseClick>
     {
         protected override void Run(LeftMouseClick a)
@@ -18,7 +19,7 @@ namespace ET
             {
                 var gridMapManage = a.ZoneScene.CurrentScene().GetComponent<GridMapManageComponent>();
                 var cellPos = gridMapManage.CurrentGrid.WorldToCell(new Vector3(a.X, a.Y, 0));
-                TileDetails currentTile = gridMapManage.GetTileDetails($"{cellPos.x}x{cellPos.y}y{a.ZoneScene.CurrentScene().Name}");
+                GridTile currentTile = gridMapManage.GetGridTile(cellPos.x, cellPos.y);
 
                 Unit player = UnitHelper.GetMyUnitFromCurrentScene(a.ZoneScene.CurrentScene());
 
@@ -87,17 +88,17 @@ namespace ET
                         var bodyConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Body.ToString(), (int)AnimatorStatus.Water);
                         var hairConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Hair.ToString(), (int)AnimatorStatus.Water);
                         toolConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Tool.ToString(), (int)AnimatorStatus.Water);
-                        
+
                         player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Tool, toolConfig.OverrideControllerName);
                         player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Arm, armConfig.OverrideControllerName);
                         player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Body, bodyConfig.OverrideControllerName);
                         player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Hair, hairConfig.OverrideControllerName);
-                        
+
                         player.GetComponent<AnimatorComponent>().Play(MotionType.UseTool);
-                        
+
                         //动画总长度 800  300时 正好开始浇水
                         await TimerComponent.Instance.WaitAsync(300);
-                        
+
                         //TODO:音效
                         currentTile.DaysSinceWatered = 0;
                         gridMapManage.SetWaterTile(currentTile);

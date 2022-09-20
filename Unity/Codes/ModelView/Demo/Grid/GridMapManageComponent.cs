@@ -5,9 +5,10 @@ using UnityEngine.Tilemaps;
 namespace ET
 {
     [ComponentOf(typeof(Scene))]
+    [ChildType(typeof(GridTile))]
     public class GridMapManageComponent: Entity, IAwake, IDestroy
     {
-        public Dictionary<string, TileDetails> TileDetailsMap = new Dictionary<string, TileDetails>();
+        public Dictionary<string, GridTile> GridTilesMap = new Dictionary<string, GridTile>();
 
         public IMapDataLoader DataLoader;
 
