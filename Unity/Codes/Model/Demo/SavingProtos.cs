@@ -39,6 +39,9 @@ namespace ET
 
         [ProtoMember(2)]
         public long CropId;
+
+        [ProtoMember(3)]
+        public int LastStage;
     }
     
     

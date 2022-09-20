@@ -13,5 +13,6 @@
         public const string TpPoint = "TpPoint";
         public const string DigMap = "DigMap";
         public const string WaterMap = "WaterMap";
+        public const string Crop = "Crop";
     }
 }

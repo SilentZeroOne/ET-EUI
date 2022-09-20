@@ -8,5 +8,7 @@ namespace ET
 
         [BsonIgnore]
         public CropConfig Config => CropConfigCategory.Instance.Get(this.ConfigId);
+        
+        public int LastStage { get; set; }
     }
 }

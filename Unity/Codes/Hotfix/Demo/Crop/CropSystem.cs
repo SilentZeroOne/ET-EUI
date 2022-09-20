@@ -26,6 +26,7 @@
         public static void FromProto(this Crop self, CropInfo proto)
         {
             self.ConfigId = proto.ConfigId;
+            self.LastStage = proto.LastStage;
         }
         
         public static CropInfo ToProto(this Crop self)
@@ -35,7 +36,8 @@
             return new CropInfo()
             {
                 CropId = self.Id,
-                ConfigId = self.ConfigId
+                ConfigId = self.ConfigId,
+                LastStage = self.LastStage
             };
         }
     }

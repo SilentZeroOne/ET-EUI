@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using BM;
+using UnityEngine;
 
 namespace ET
 {
@@ -26,10 +27,35 @@ namespace ET
         {
             Crop crop = self.GetParent<Crop>();
             var go = crop.GetComponent<GameObjectComponent>().GameObject;
-            go.AddComponent<MonoBridge>().BelongToEntityId = crop.InstanceId;
+            var currentStage = self.GetCurrentStage();
+            if (crop.LastStage != currentStage)
+            {
+                crop.LastStage = currentStage;
+                
+                if (go != null)
+                {
+                    UnityEngine.Object.Destroy(go);
+                }
 
-            self.SpriteRenderer = go.GetComponentFormRC<SpriteRenderer>("Sprite");
-            self.BoxCollider2D = go.GetComponent<BoxCollider2D>();
+                var prefab = await AssetComponent.LoadAsync<GameObject>(crop.Config.GrowthPrefabs.Length == 1? crop.Config.GrowthPrefabs[0]
+                        : crop.Config.GrowthPrefabs[currentStage]);
+                
+                go = UnityEngine.Object.Instantiate(prefab, GlobalComponent.Instance.CropRoot, true);
+                
+                go.tag = TagManager.Crop;
+                go.AddComponent<MonoBridge>().BelongToEntityId = crop.InstanceId;
+                
+                self.SpriteRenderer = go.GetComponentFormRC<SpriteRenderer>("Sprite");
+                self.BoxCollider2D = go.GetComponent<BoxCollider2D>();
+
+                Sprite sprite = await IconHelper.LoadIconSpriteAsync(crop.Config.GrowthSprites[currentStage]);
+                self.SpriteRenderer.sprite = sprite;
+
+                //修改boxcollider尺寸
+                Vector2 newSize = new Vector2(sprite.bounds.size.x, sprite.bounds.size.y);
+                self.BoxCollider2D.size = newSize;
+                self.BoxCollider2D.offset = new Vector2(0, sprite.bounds.center.y);
+            }
         }
 
         public static int GetCurrentStage(this CropViewComponent self)
