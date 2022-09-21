@@ -319,5 +319,6 @@ namespace BM
 		public const string Assets_Bundles_MapData_Field01_DropItem_data__bytes = "Assets/Bundles/MapData/Field01_DropItem_data.bytes";
 		public const string Assets_Bundles_MapData_Field02_DropItem_data__bytes = "Assets/Bundles/MapData/Field02_DropItem_data.bytes";
 		public const string Assets_Bundles_MapData_Field02_PlaceFurniture_data__bytes = "Assets/Bundles/MapData/Field02_PlaceFurniture_data.bytes";
+		public const string Assets_Scenes_Map1__unity = "Assets/Scenes/Map1.unity";
 	}
 }

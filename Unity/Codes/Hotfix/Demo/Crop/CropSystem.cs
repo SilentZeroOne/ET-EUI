@@ -5,6 +5,7 @@
         public override void Awake(Crop self,int configId)
         {
             self.ConfigId = configId;
+            self.LastStage = -1;
         }
     }
 

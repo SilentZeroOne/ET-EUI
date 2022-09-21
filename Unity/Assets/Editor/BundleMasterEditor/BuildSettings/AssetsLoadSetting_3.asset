@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BuildName: MapData
   BuildIndex: 0
-  BundleVariant: 
+  BundleVariant: unity3d
   NameByHash: 0
   BuildAssetBundleOptions: 1
   EncryptAssets: 0
@@ -22,4 +22,5 @@ MonoBehaviour:
   AssetPath:
   - Assets/Bundles/MapData
   AssetGroupPaths: []
-  Scene: []
+  Scene:
+  - {fileID: 102900000, guid: a5294483f20f40d449699101bb428cda, type: 3}

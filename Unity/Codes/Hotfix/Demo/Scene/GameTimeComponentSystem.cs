@@ -107,8 +107,38 @@
         public static void FlashDay(this GameTimeComponent self)
         {
             self.GameDay++;
-
             Game.EventSystem.Publish(new EventType.UpdateGameDay() { ZoneScene = self.ZoneScene(), Time = self });
+            if (self.GameDay > Settings.DayHold)
+            {
+                self.GameDay = 1;
+                self.GameMonth++;
+
+                if (self.GameMonth > Settings.MonthHold)
+                {
+                    self.GameMonth = 1;
+                    self.GameYear++;
+
+                    if (self.GameYear > 9999)
+                    {
+                        self.GameYear = Settings.DefaultYear;
+                    }
+                }
+
+                self.MonthInSeason--;
+                if (self.MonthInSeason == 0)
+                {
+                    self.MonthInSeason = Settings.SeasonHold;
+                    var currentSeason = (int)self.Season;
+                    currentSeason++;
+                    if (currentSeason > 3)
+                    {
+                        currentSeason = 0;
+                    }
+
+                    self.Season = (Season)currentSeason;
+                    Game.EventSystem.Publish(new EventType.UpdateGameSeason() { ZoneScene = self.ZoneScene(), Time = self });
+                }
+            }
         }
     }
 }

@@ -23,12 +23,13 @@ namespace ET
     [FriendClassAttribute(typeof(ET.GridTile))]
     public static class CropViewComponentSystem
     {
-        public static async ETTask Init(this CropViewComponent self)
+        public static async ETTask Init(this CropViewComponent self,bool forceDisplay)
         {
             Crop crop = self.GetParent<Crop>();
+            var tile = crop.GetParent<GridTile>();
             var go = crop.GetComponent<GameObjectComponent>().GameObject;
             var currentStage = self.GetCurrentStage();
-            if (crop.LastStage != currentStage)
+            if (crop.LastStage != currentStage || forceDisplay)
             {
                 crop.LastStage = currentStage;
                 
@@ -37,10 +38,11 @@ namespace ET
                     UnityEngine.Object.Destroy(go);
                 }
 
-                var prefab = await AssetComponent.LoadAsync<GameObject>(crop.Config.GrowthPrefabs.Length == 1? crop.Config.GrowthPrefabs[0]
-                        : crop.Config.GrowthPrefabs[currentStage]);
-                
-                go = UnityEngine.Object.Instantiate(prefab, GlobalComponent.Instance.CropRoot, true);
+                var prefab = await AssetComponent.LoadAsync<GameObject>(crop.Config.GrowthPrefabs.Length == 1? crop.Config.GrowthPrefabs[0].StringToAB()
+                        : crop.Config.GrowthPrefabs[currentStage].StringToAB());
+
+                go = UnityEngine.Object.Instantiate(prefab, new Vector3(tile.GridX + 0.5f, tile.GridY + 0.5f, 0), Quaternion.identity,
+                    GlobalComponent.Instance.CropRoot);
                 
                 go.tag = TagManager.Crop;
                 go.AddComponent<MonoBridge>().BelongToEntityId = crop.InstanceId;

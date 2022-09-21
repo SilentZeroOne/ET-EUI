@@ -6,6 +6,8 @@ namespace ET
     [FriendClassAttribute(typeof(ET.GridMapManageComponent))]
     [FriendClassAttribute(typeof(ET.Unit))]
     [FriendClassAttribute(typeof(ET.GridTile))]
+    [FriendClassAttribute(typeof(ET.Item))]
+    [FriendClassAttribute(typeof(ET.GameTimeComponent))]
     public class LeftMouseClick_DoItemEvent : AEvent<LeftMouseClick>
     {
         protected override void Run(LeftMouseClick a)
@@ -71,9 +73,8 @@ namespace ET
                         await TimerComponent.Instance.WaitAsync(450);
 
                         //TODO:音效
-                        currentTile.CanDig = false;
-                        currentTile.DaysSinceDug = 0;
-                        currentTile.CanDropItem = false;
+                        currentTile.Drag();
+                        
                         gridMapManage.SetDigTile(currentTile);
                         //gridMapManage.SaveMapData();
                         await TimerComponent.Instance.WaitAsync(350);
@@ -108,6 +109,34 @@ namespace ET
                         player.GetComponent<AnimatorComponent>().ForEveryAnimator(AnimatorControlType.ResetTrigger, MotionType.UseTool.ToString());
 
                         player.UseTool = false;
+                        break;
+                    case ItemType.Seed://种种子
+                        var cropConfig = CropConfigCategory.Instance.Get(a.Item.ConfigId);
+                        if (cropConfig == null)
+                        {
+                            Log.Debug($"种子congfig不存在 id {a.Item.ConfigId}");
+                            return;
+                        }
+
+                        var gameTimeComponent = a.ZoneScene.GetComponent<GameTimeComponent>();
+                        var seasonAvailable = false;
+                        foreach (var season in cropConfig.Seasons)
+                        {
+                            if ((int)gameTimeComponent.Season == season)
+                            {
+                                seasonAvailable = true;
+                                break;
+                            }
+                        }
+
+                        if (!seasonAvailable)
+                        {
+                            Log.Debug("Season unavailable");
+                            //TODO:显示提示
+                            return;
+                        }
+
+                        currentTile.AddCrop(a.Item.ConfigId);
                         break;
                 }
             }

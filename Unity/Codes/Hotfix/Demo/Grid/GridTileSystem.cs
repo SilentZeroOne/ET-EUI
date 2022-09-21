@@ -1,4 +1,6 @@
-﻿namespace ET
+﻿using ET.EventType;
+
+namespace ET
 {
     public class GridTileAwakeSystem: AwakeSystem<GridTile,int,int>
     {
@@ -28,6 +30,21 @@
         {
         }
 
+        public static void AddCrop(this GridTile self, int cropConfigId)
+        {
+            self.Crop = self.AddChild<Crop, int>(cropConfigId);
+            self.GrowthDays = 0;
+
+            Game.EventSystem.Publish(new AfterCropCreate() { Crop = self.Crop, ForceDisplay = true });
+        }
+
+        public static void Drag(this GridTile self)
+        {
+            self.CanDig = false;
+            self.DaysSinceDug = 0;
+            self.CanDropItem = false;
+        }
+
         public static void FromProto(this GridTile self, TileDetails proto)
         {
             self.GridX = proto.GridX;
@@ -45,6 +62,8 @@
             {
                 self.Crop = self.AddChildWithId<Crop>(proto.Crop.CropId);
                 self.Crop.FromProto(proto.Crop);
+
+                Game.EventSystem.Publish(new AfterCropCreate() { Crop = self.Crop, ForceDisplay = true });
             }
         }
 

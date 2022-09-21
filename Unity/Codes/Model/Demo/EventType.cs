@@ -109,6 +109,12 @@ namespace ET
             public float Y;
             public bool Bounced;
         }
+
+        public struct AfterCropCreate
+        {
+            public Crop Crop;
+            public bool ForceDisplay;
+        }
         
         public struct MoveStart
         {

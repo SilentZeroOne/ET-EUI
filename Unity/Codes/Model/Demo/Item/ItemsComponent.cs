@@ -9,5 +9,7 @@ namespace ET
     {
         [BsonIgnore]
         public List<Item> ItemList = new List<Item>();
+        
+        public string CurrentSceneName { get; set; }
     }
 }
