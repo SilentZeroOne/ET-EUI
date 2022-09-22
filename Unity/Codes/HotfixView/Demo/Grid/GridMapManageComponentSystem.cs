@@ -196,6 +196,13 @@ namespace ET
                     tile.CanDig = true;
                     tile.CanDropItem = true;
                     tile.DaysSinceDug = -1;
+                    tile.GrowthDays = -1;
+                }
+
+                if (tile.Crop != null)
+                {
+                    tile.GrowthDays += updateTime;
+                    tile.Crop.GetComponent<CropViewComponent>().Init().Coroutine();
                 }
             }
 

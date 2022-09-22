@@ -23,7 +23,7 @@ namespace ET
     [FriendClassAttribute(typeof(ET.GridTile))]
     public static class CropViewComponentSystem
     {
-        public static async ETTask Init(this CropViewComponent self,bool forceDisplay)
+        public static async ETTask Init(this CropViewComponent self,bool forceDisplay = false)
         {
             Crop crop = self.GetParent<Crop>();
             var tile = crop.GetParent<GridTile>();
@@ -41,7 +41,8 @@ namespace ET
                 var prefab = await AssetComponent.LoadAsync<GameObject>(crop.Config.GrowthPrefabs.Length == 1? crop.Config.GrowthPrefabs[0].StringToAB()
                         : crop.Config.GrowthPrefabs[currentStage].StringToAB());
 
-                go = UnityEngine.Object.Instantiate(prefab, new Vector3(tile.GridX + 0.5f, tile.GridY + 0.5f, 0), Quaternion.identity,
+                crop.GetComponent<GameObjectComponent>().GameObject = go = UnityEngine.Object.Instantiate(prefab,
+                    new Vector3(tile.GridX + 0.5f, tile.GridY + 0.5f, 0), Quaternion.identity,
                     GlobalComponent.Instance.CropRoot);
                 
                 go.tag = TagManager.Crop;
@@ -74,6 +75,7 @@ namespace ET
                 if (tile.GrowthDays >= dayCount)
                 {
                     currentStage = i;
+                    return currentStage;
                 }
 
                 dayCount -= crop.Config.GrowthDays[i];

@@ -137,6 +137,12 @@ namespace ET
                         }
 
                         currentTile.AddCrop(a.Item.ConfigId);
+                        
+                        //从Inventory中移除Item
+                        var actionBar = a.Item.GetParent<InventoryComponent>();
+                        actionBar.RemoveItem(a.Item);
+                        Game.EventSystem.Publish(new RefreshInventory() { ZoneScene = a.ZoneScene });
+                        
                         break;
                 }
             }
