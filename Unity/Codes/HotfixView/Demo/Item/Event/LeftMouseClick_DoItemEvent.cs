@@ -170,6 +170,27 @@ namespace ET
 
                         player.UseTool = false;
                         break;
+                    case ItemType.ChopTool:
+                        player.UseTool = true;
+                        
+                        toolConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Tool.ToString(), (int)AnimatorStatus.Chop);
+                        player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Tool, toolConfig.OverrideControllerName);
+                        player.GetComponent<AnimatorComponent>().Play(MotionType.UseTool);
+                        
+                        //动画总长度 800 
+                        await TimerComponent.Instance.WaitAsync(400);
+
+                        //TODO:音效
+                        currentTile.Crop.ProcessToolAction(a.Item);
+                        
+                        await TimerComponent.Instance.WaitAsync(400);
+                        //动画结束 重置tool的animator
+                        toolConfig = AnimatorControllerConfigCategory.Instance.GetDefaultConfigByName(AnimatorType.Tool.ToString());
+                        player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Tool, toolConfig.OverrideControllerName);
+                        player.GetComponent<AnimatorComponent>().ForEveryAnimator(AnimatorControlType.ResetTrigger, MotionType.UseTool.ToString());
+                        
+                        player.UseTool = false;
+                        break;
                 }
             }
         }

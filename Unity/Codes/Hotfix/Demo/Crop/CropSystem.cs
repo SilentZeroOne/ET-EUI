@@ -29,11 +29,11 @@ namespace ET
             var value = self.CanHarvest(tool.ConfigId);
             if (value.Item1)
             {
-                //判断是否有动画  树木等
-
                 if (self.HarvestActionCount < self.Config.RequireActionCount[value.Item2])
                 {
                     self.HarvestActionCount++;
+                    
+                    //判断是否有动画  树木等
                 }
 
                 if (self.HarvestActionCount >= self.Config.RequireActionCount[value.Item2])
@@ -72,7 +72,7 @@ namespace ET
         /// <param name="self"></param>
         /// <param name="toolId"></param>
         /// <returns></returns>
-        private static (bool,int) CanHarvest(this Crop self, int toolId)
+        public static (bool,int) CanHarvest(this Crop self, int toolId)
         {
             var count = self.Config.HarvestToolItemIDs.Length;
             for (int i = 0; i < count; i++)

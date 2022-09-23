@@ -29,8 +29,8 @@ namespace ET
 
             if (!currentScenesComponent.HaveCache)
             {
-                ItemFactory.Create(currentScene, 1010);
-                ItemFactory.Create(currentScene, 1008);
+                ItemFactory.Create(currentScene, 1001);
+                ItemFactory.Create(currentScene, 1016);
                 ItemFactory.Create(currentScene, 1002);
                 ItemFactory.Create(currentScene, 1005);
                 ItemFactory.Create(currentScene, 1006);

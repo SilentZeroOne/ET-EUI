@@ -44,20 +44,43 @@ namespace ET
                 crop.GetComponent<GameObjectComponent>().GameObject = go = UnityEngine.Object.Instantiate(prefab,
                     new Vector3(tile.GridX + 0.5f, tile.GridY + 0.5f, 0), Quaternion.identity,
                     GlobalComponent.Instance.CropRoot);
+
+                if (crop.Config.CanFade == 1)
+                {
+                    if (crop.Config.FadeParent == 1)
+                    {
+                        go.tag = TagManager.FadeObject;
+                    }
+                    else
+                    {
+                        var childCount = go.transform.childCount;
+                        for (int i = 0; i < childCount; i++)
+                        {
+                            go.transform.GetChild(i).tag = TagManager.FadeObject;
+                        }
+                    }
+                }
+                else
+                {
+                    go.tag = TagManager.Crop;
+                }
                 
-                go.tag = TagManager.Crop;
+                
                 go.AddComponent<MonoBridge>().BelongToEntityId = crop.InstanceId;
-                
-                self.SpriteRenderer = go.GetComponentFormRC<SpriteRenderer>("Sprite");
-                self.BoxCollider2D = go.GetComponent<BoxCollider2D>();
 
-                Sprite sprite = await IconHelper.LoadIconSpriteAsync(crop.Config.GrowthSprites[currentStage]);
-                self.SpriteRenderer.sprite = sprite;
+                if (go.GetComponent<ReferenceCollector>() != null)
+                {
+                    self.SpriteRenderer = go.GetComponentFormRC<SpriteRenderer>("Sprite");
+                    self.BoxCollider2D = go.GetComponent<BoxCollider2D>();
 
-                //修改boxcollider尺寸
-                Vector2 newSize = new Vector2(sprite.bounds.size.x, sprite.bounds.size.y);
-                self.BoxCollider2D.size = newSize;
-                self.BoxCollider2D.offset = new Vector2(0, sprite.bounds.center.y);
+                    Sprite sprite = await IconHelper.LoadIconSpriteAsync(crop.Config.GrowthSprites[currentStage]);
+                    self.SpriteRenderer.sprite = sprite;
+
+                    //修改boxcollider尺寸
+                    Vector2 newSize = new Vector2(sprite.bounds.size.x, sprite.bounds.size.y);
+                    self.BoxCollider2D.size = newSize;
+                    self.BoxCollider2D.offset = new Vector2(0, sprite.bounds.center.y);
+                }
             }
         }
 

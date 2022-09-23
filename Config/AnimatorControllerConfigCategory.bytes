@@ -6,10 +6,13 @@
 !Tool"Tool.overrideController
 'Tool"Tool_Hoe.overrideController
 )Tool"Tool_Water.overrideController
-!Body"Body.overrideController
-)	Body"Body_Water.overrideController
+(Tool"Tool_Reap.overrideController
+(	Tool"Tool_Chop.overrideController
 +
-Body"Body_Collect.overrideController
-!Hair"Hair.overrideController
-)Hair"Hair_Water.overrideController
-+Hair"Hair_Collect.overrideController
+Tool"Tool_Pickaxe.overrideController
+!Body"Body.overrideController
+)Body"Body_Water.overrideController
++Body"Body_Collect.overrideController
+!Hair"Hair.overrideController
+)Hair"Hair_Water.overrideController
++Hair"Hair_Collect.overrideController

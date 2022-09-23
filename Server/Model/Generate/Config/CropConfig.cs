@@ -129,6 +129,12 @@ namespace ET
 		/// <summary>是否有特效</summary>
 		[ProtoMember(18)]
 		public int HasParticleEffect { get; set; }
+		/// <summary>是否能消失</summary>
+		[ProtoMember(19)]
+		public int CanFade { get; set; }
+		/// <summary>是否消失父物体</summary>
+		[ProtoMember(20)]
+		public int FadeParent { get; set; }
 
 	}
 }

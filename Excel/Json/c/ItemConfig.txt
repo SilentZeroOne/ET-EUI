@@ -14,4 +14,6 @@
 {"_t":"ItemConfig","_id":1013,"ItemName":"葡萄","ItemType":1,"ItemIcon":"icon_Grape","ItemOnWorldSprite":"Grape_grow_5","ItemDescription":"葡萄","ItemUseRadius":1,"CanPickUp":1,"CanDropped":0,"CanCarried":0,"ItemPrice":0,"SellPercentage":0},
 {"_t":"ItemConfig","_id":1014,"ItemName":"萝卜","ItemType":1,"ItemIcon":"icon_PinkRadish","ItemOnWorldSprite":"icon_PinkRadish","ItemDescription":"萝卜","ItemUseRadius":1,"CanPickUp":1,"CanDropped":0,"CanCarried":0,"ItemPrice":0,"SellPercentage":0},
 {"_t":"ItemConfig","_id":1015,"ItemName":"菜篮","ItemType":8,"ItemIcon":"icon_Basket","ItemOnWorldSprite":"icon_Basket","ItemDescription":"这是收菜的菜篮","ItemUseRadius":1,"CanPickUp":1,"CanDropped":0,"CanCarried":0,"ItemPrice":0,"SellPercentage":0},
+{"_t":"ItemConfig","_id":1016,"ItemName":"松子","ItemType":0,"ItemIcon":"icon_NeedieSeed","ItemOnWorldSprite":"icon_NeedieSeed","ItemDescription":"松子，可以贩卖也可以种下，也许会长成大树哦","ItemUseRadius":1,"CanPickUp":1,"CanDropped":0,"CanCarried":1,"ItemPrice":10,"SellPercentage":20},
+{"_t":"ItemConfig","_id":1017,"ItemName":"针叶树根","ItemType":9,"ItemIcon":"Tree01_Trunk","ItemOnWorldSprite":"Tree01_Trunk","ItemDescription":"针叶树砍倒后留下的树根","ItemUseRadius":0,"CanPickUp":0,"CanDropped":0,"CanCarried":0,"ItemPrice":0,"SellPercentage":0},
 ]}

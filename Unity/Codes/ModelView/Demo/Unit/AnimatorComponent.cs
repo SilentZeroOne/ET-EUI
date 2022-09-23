@@ -25,7 +25,10 @@ namespace ET
 		Carried,
 		Water,
 		Hoe,
-		Collect
+		Collect,
+		Reap,
+		Chop,
+		Pickaxe
 	}
 
 	public enum AnimatorControlType

@@ -29,7 +29,10 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Hair_Collect__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Hair_Collect.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Hair_Water__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Hair_Water.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Tool_Tool__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Tool/Tool.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Tool_Tool_Chop__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Tool/Tool_Chop.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Tool_Tool_Hoe__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Tool/Tool_Hoe.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Tool_Tool_Pickaxe__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Tool/Tool_Pickaxe.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Tool_Tool_Reap__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Tool/Tool_Reap.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Tool_Tool_Water__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Tool/Tool_Water.overrideController";
 		public const string Assets_Bundles_ResBundles_Cursor_cursor_1__png = "Assets/Bundles/ResBundles/Cursor/cursor_1.png";
 		public const string Assets_Bundles_ResBundles_Cursor_cursor_10__png = "Assets/Bundles/ResBundles/Cursor/cursor_10.png";

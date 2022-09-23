@@ -131,8 +131,17 @@ namespace ET
                         case ItemType.WaterTool:
                             self.CursorEnable = currentTile.DaysSinceDug != -1 && currentTile.DaysSinceWatered == -1;
                             break;
+                        case ItemType.ChopTool:
                         case ItemType.CollectionTool:
-                            self.CursorEnable = currentTile.Crop != null && currentTile.GrowthDays >= currentTile.Crop.Config.TotalGrowthDays;
+                            if (currentTile.Crop != null)
+                            {
+                                var canHarvest = currentTile.Crop.CanHarvest(self.CurrentItem.ConfigId);
+                                self.CursorEnable = currentTile.GrowthDays >= currentTile.Crop.Config.TotalGrowthDays && canHarvest.Item1;
+                            }
+                            else
+                            {
+                                self.CursorEnable = false;
+                            }
                             break;
                     }
                 }

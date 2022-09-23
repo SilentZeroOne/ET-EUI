@@ -28,6 +28,7 @@ namespace ET
             self.View.E_TypeTextMeshProUGUI.SetText(((ItemType)item.Config.ItemType).GetName());
             self.View.E_DescriptionTextMeshProUGUI.SetText(item.Config.ItemDescription);
             self.View.EG_BottomRectTransform.SetVisible(item.Config.ItemPrice > 0);
+            self.View.EG_SpaceRectTransform.SetVisible(!(item.Config.ItemPrice > 0));
             self.View.E_CoinText.SetText((item.Config.ItemPrice * ((float)item.Config.SellPercentage / 100)).ToString());
         }
 

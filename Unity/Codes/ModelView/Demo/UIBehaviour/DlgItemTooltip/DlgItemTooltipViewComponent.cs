@@ -75,6 +75,23 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.RectTransform EG_SpaceRectTransform
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EG_SpaceRectTransform == null )
+     			{
+		    		this.m_EG_SpaceRectTransform = UIFindHelper.FindDeepChild<UnityEngine.RectTransform>(this.uiTransform.gameObject,"EG_ItemTooltip/EG_Space");
+     			}
+     			return this.m_EG_SpaceRectTransform;
+     		}
+     	}
+
 		public UnityEngine.RectTransform EG_BottomRectTransform
      	{
      		get
@@ -115,6 +132,7 @@ namespace ET
 			this.m_E_NameTextMeshProUGUI = null;
 			this.m_E_TypeTextMeshProUGUI = null;
 			this.m_E_DescriptionTextMeshProUGUI = null;
+			this.m_EG_SpaceRectTransform = null;
 			this.m_EG_BottomRectTransform = null;
 			this.m_E_CoinText = null;
 			this.uiTransform = null;
@@ -124,6 +142,7 @@ namespace ET
 		private TMPro.TextMeshProUGUI m_E_NameTextMeshProUGUI = null;
 		private TMPro.TextMeshProUGUI m_E_TypeTextMeshProUGUI = null;
 		private TMPro.TextMeshProUGUI m_E_DescriptionTextMeshProUGUI = null;
+		private UnityEngine.RectTransform m_EG_SpaceRectTransform = null;
 		private UnityEngine.RectTransform m_EG_BottomRectTransform = null;
 		private UnityEngine.UI.Text m_E_CoinText = null;
 		public Transform uiTransform = null;
