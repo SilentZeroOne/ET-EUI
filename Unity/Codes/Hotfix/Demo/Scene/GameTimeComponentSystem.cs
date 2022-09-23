@@ -45,21 +45,15 @@
                 self.GameSecond = 0;
                 self.GameMinute++;
 
-                Game.EventSystem.Publish(new EventType.UpdateGameMinute() { ZoneScene = self.ZoneScene(), Time = self });
-
                 if (self.GameMinute > Settings.MinuteHold)
                 {
                     self.GameMinute = 0;
                     self.GameHour++;
 
-                    Game.EventSystem.Publish(new EventType.UpdateGameHour() { ZoneScene = self.ZoneScene(), Time = self });
-
                     if (self.GameHour > Settings.HourHold)
                     {
                         self.GameHour = 0;
                         self.GameDay++;
-
-                        Game.EventSystem.Publish(new EventType.UpdateGameDay() { ZoneScene = self.ZoneScene(), Time = self });
 
                         if (self.GameDay > Settings.DayHold)
                         {
@@ -92,8 +86,11 @@
                                 Game.EventSystem.Publish(new EventType.UpdateGameSeason() { ZoneScene = self.ZoneScene(), Time = self });
                             }
                         }
+                        Game.EventSystem.Publish(new EventType.UpdateGameDay() { ZoneScene = self.ZoneScene(), Time = self });
                     }
+                    Game.EventSystem.Publish(new EventType.UpdateGameHour() { ZoneScene = self.ZoneScene(), Time = self });
                 }
+                Game.EventSystem.Publish(new EventType.UpdateGameMinute() { ZoneScene = self.ZoneScene(), Time = self });
             }
 
             Game.EventSystem.Publish(new EventType.UpdateGameSecond() { ZoneScene = self.ZoneScene(), Time = self });
@@ -107,7 +104,6 @@
         public static void FlashDay(this GameTimeComponent self)
         {
             self.GameDay++;
-            Game.EventSystem.Publish(new EventType.UpdateGameDay() { ZoneScene = self.ZoneScene(), Time = self });
             if (self.GameDay > Settings.DayHold)
             {
                 self.GameDay = 1;
@@ -139,6 +135,7 @@
                     Game.EventSystem.Publish(new EventType.UpdateGameSeason() { ZoneScene = self.ZoneScene(), Time = self });
                 }
             }
+            Game.EventSystem.Publish(new EventType.UpdateGameDay() { ZoneScene = self.ZoneScene(), Time = self });
         }
     }
 }
