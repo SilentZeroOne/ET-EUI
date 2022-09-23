@@ -24,7 +24,8 @@ namespace ET
 		None,
 		Carried,
 		Water,
-		Hoe
+		Hoe,
+		Collect
 	}
 
 	public enum AnimatorControlType

@@ -131,6 +131,9 @@ namespace ET
                         case ItemType.WaterTool:
                             self.CursorEnable = currentTile.DaysSinceDug != -1 && currentTile.DaysSinceWatered == -1;
                             break;
+                        case ItemType.CollectionTool:
+                            self.CursorEnable = currentTile.Crop != null && currentTile.GrowthDays >= currentTile.Crop.Config.TotalGrowthDays;
+                            break;
                     }
                 }
                 else

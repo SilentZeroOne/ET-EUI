@@ -79,6 +79,8 @@ namespace ET
                         //gridMapManage.SaveMapData();
                         await TimerComponent.Instance.WaitAsync(350);
                         //动画结束
+                        toolConfig = AnimatorControllerConfigCategory.Instance.GetDefaultConfigByName(AnimatorType.Tool.ToString());
+                        player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Tool, toolConfig.OverrideControllerName);
                         player.GetComponent<AnimatorComponent>().ForEveryAnimator(AnimatorControlType.ResetTrigger, MotionType.UseTool.ToString());
 
                         player.UseTool = false;
@@ -105,7 +107,9 @@ namespace ET
                         gridMapManage.SetWaterTile(currentTile);
                         //gridMapManage.SaveMapData();
                         await TimerComponent.Instance.WaitAsync(500);
-                        //动画结束
+                        //动画结束 重置tool的animator
+                        toolConfig = AnimatorControllerConfigCategory.Instance.GetDefaultConfigByName(AnimatorType.Tool.ToString());
+                        player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Tool, toolConfig.OverrideControllerName);
                         player.GetComponent<AnimatorComponent>().ForEveryAnimator(AnimatorControlType.ResetTrigger, MotionType.UseTool.ToString());
 
                         player.UseTool = false;
@@ -143,6 +147,28 @@ namespace ET
                         actionBar.RemoveItem(a.Item);
                         Game.EventSystem.Publish(new RefreshInventory() { ZoneScene = a.ZoneScene });
                         
+                        break;
+                    case ItemType.CollectionTool://收集种的植物
+                        player.UseTool = true;
+                        
+                        armConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Arm.ToString(), (int)AnimatorStatus.Collect);
+                        bodyConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Body.ToString(), (int)AnimatorStatus.Collect);
+                        hairConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Hair.ToString(), (int)AnimatorStatus.Collect);
+                        
+                        player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Arm, armConfig.OverrideControllerName);
+                        player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Body, bodyConfig.OverrideControllerName);
+                        player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Hair, hairConfig.OverrideControllerName);
+                        player.GetComponent<AnimatorComponent>().Play(MotionType.UseTool);
+                        
+                        await TimerComponent.Instance.WaitAsync(300);
+                        //TODO:音效
+                        currentTile.Crop.ProcessToolAction(a.Item);
+                        
+                        await TimerComponent.Instance.WaitAsync(500);
+                        //动画结束
+                        player.GetComponent<AnimatorComponent>().ForEveryAnimator(AnimatorControlType.ResetTrigger, MotionType.UseTool.ToString());
+
+                        player.UseTool = false;
                         break;
                 }
             }

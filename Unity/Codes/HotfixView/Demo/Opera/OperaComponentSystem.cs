@@ -79,8 +79,7 @@ namespace ET
         {
             Unit player = self.GetParent<Unit>();
             if (player.InputDisabled) return;
-
-            //TODO:增加InputDisable
+            
             var inputX = InputHelper.GetXAxisRaw();
             var inputY = InputHelper.GetYAxisRaw();
 

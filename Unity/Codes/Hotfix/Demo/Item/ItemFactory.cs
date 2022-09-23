@@ -2,12 +2,13 @@
 {
     public static class ItemFactory
     {
-        public static Item Create(Scene currentScene, int id)
+        public static Item Create(Scene currentScene, int id, bool createView = true)
         {
             ItemsComponent itemsComponent = currentScene.GetComponent<ItemsComponent>();
             Item item = itemsComponent.AddItem(id);
 
-            Game.EventSystem.Publish(new EventType.AfterItemCreate() { Item = item ,UsePos = false,SaveInScene = true});
+            if (createView)
+                Game.EventSystem.Publish(new EventType.AfterItemCreate() { Item = item, UsePos = false, SaveInScene = true });
             return item;
         }
         

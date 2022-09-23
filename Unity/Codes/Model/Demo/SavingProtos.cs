@@ -42,6 +42,9 @@ namespace ET
 
         [ProtoMember(3)]
         public int LastStage;
+        
+        [ProtoMember(4)]
+        public int HarvestActionCount;
     }
     
     

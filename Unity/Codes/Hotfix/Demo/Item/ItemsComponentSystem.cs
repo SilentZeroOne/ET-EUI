@@ -49,7 +49,7 @@ namespace ET
                 self.ItemList.Remove(item);
             }
             
-            self.SaveItemsComponent();
+            //self.SaveItemsComponent();
         }
 
         #region Save/Load

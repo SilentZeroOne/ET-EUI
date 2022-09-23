@@ -37,5 +37,10 @@ namespace ET
 
             return null;
         }
+
+        public AnimatorControllerConfig GetDefaultConfigByName(string name)
+        {
+            return GetConfigByNameAndStatus(name, 0);
+        }
     }
 }

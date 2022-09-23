@@ -175,5 +175,11 @@ namespace ET
             public float X;
             public float Y;
         }
+
+        public struct HarvestCrop
+        {
+            public Scene ZoneScene;
+            public Crop Crop;
+        }
     }
 }
