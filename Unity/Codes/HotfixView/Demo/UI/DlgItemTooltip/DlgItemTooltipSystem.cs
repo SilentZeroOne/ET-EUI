@@ -31,7 +31,7 @@ namespace ET
             self.View.EG_SpaceRectTransform.SetVisible(!(item.Config.ItemPrice > 0));
             self.View.E_CoinText.SetText((item.Config.ItemPrice * ((float)item.Config.SellPercentage / 100)).ToString());
 
-            await TimerComponent.Instance.WaitAsync(100);
+            await TimerComponent.Instance.WaitAsync(10);
             LayoutRebuilder.ForceRebuildLayoutImmediate(self.View.EG_ItemTooltipRectTransform);
         }
 
