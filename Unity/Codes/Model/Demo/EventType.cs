@@ -108,6 +108,8 @@ namespace ET
             public float X;
             public float Y;
             public bool Bounced;
+            public float StartX;
+            public float StartY;
         }
 
         public struct AfterCropCreate
@@ -177,6 +179,12 @@ namespace ET
         }
 
         public struct HarvestCrop
+        {
+            public Scene ZoneScene;
+            public Crop Crop;
+        }
+        
+        public struct HarvestCropAnimation
         {
             public Scene ZoneScene;
             public Crop Crop;

@@ -6,8 +6,14 @@ namespace ET
 	public enum MotionType
 	{
 		None,
+		//Unit
 		IsMoving,
-		UseTool
+		UseTool,
+		//Tree
+		RotateLeft,
+		RotateRight,
+		FallLeft,
+		FallRight
 	}
 	
 	public enum AnimatorType
@@ -15,7 +21,8 @@ namespace ET
 		Arm,
 		Body,
 		Hair,
-		Tool
+		Tool,
+		General //通用Animator
 	}
 
 	//WORKFLOW: 每次添加新的状态需要在这加
@@ -44,7 +51,7 @@ namespace ET
 		PauseAnimator
 	}
 
-	[ComponentOf(typeof(Unit))]
+	[ComponentOf()]
 	public class AnimatorComponent : Entity, IAwake, IUpdate, IDestroy
 	{
 		public Dictionary<string, AnimationClip> animationClips = new Dictionary<string, AnimationClip>();

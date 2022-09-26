@@ -38,20 +38,32 @@ namespace ET
 		public static void Awake(this AnimatorComponent self)
 		{
 			var go = self.Parent.GetComponent<GameObjectComponent>().GameObject;
-			Animator bodyAnimator = go.GetComponentFormRC<Animator>("Body");
-			Animator armAnimator = go.GetComponentFormRC<Animator>("Arm");
-			Animator hairAnimator = go.GetComponentFormRC<Animator>("Hair");
-			Animator toolAnimator = go.GetComponentFormRC<Animator>("Tool");
-
-			if (bodyAnimator == null || armAnimator == null || hairAnimator == null || toolAnimator == null)
+			if (self.Parent is Unit)
 			{
-				return;
-			}
+				Animator bodyAnimator = go.GetComponentFormRC<Animator>("Body");
+				Animator armAnimator = go.GetComponentFormRC<Animator>("Arm");
+				Animator hairAnimator = go.GetComponentFormRC<Animator>("Hair");
+				Animator toolAnimator = go.GetComponentFormRC<Animator>("Tool");
 
-			self.Animators.Add(AnimatorType.Body, bodyAnimator);
-			self.Animators.Add(AnimatorType.Arm, armAnimator);
-			self.Animators.Add(AnimatorType.Hair, hairAnimator);
-			self.Animators.Add(AnimatorType.Tool, toolAnimator);
+				if (bodyAnimator == null || armAnimator == null || hairAnimator == null || toolAnimator == null)
+				{
+					return;
+				}
+
+				self.Animators.Add(AnimatorType.Body, bodyAnimator);
+				self.Animators.Add(AnimatorType.Arm, armAnimator);
+				self.Animators.Add(AnimatorType.Hair, hairAnimator);
+				self.Animators.Add(AnimatorType.Tool, toolAnimator);
+
+				self.CurrentControlAnimator = bodyAnimator;
+			}
+			else
+			{
+				self.CurrentControlAnimator = go.GetComponentInChildren<Animator>();
+				if (self.CurrentControlAnimator == null) return;
+				
+				self.Animators.Add(AnimatorType.General, self.CurrentControlAnimator);
+			}
 
 			foreach (var animator in self.Animators.Values)
 			{
@@ -77,7 +89,7 @@ namespace ET
 				}
 			}
 
-			foreach (AnimatorControllerParameter animatorControllerParameter in bodyAnimator.parameters)
+			foreach (AnimatorControllerParameter animatorControllerParameter in self.CurrentControlAnimator.parameters)
 			{
 				self.Parameter.Add(animatorControllerParameter.name);
 			}
@@ -97,11 +109,14 @@ namespace ET
 
 			try
 			{
-				self.ForEveryAnimator(AnimatorControlType.SetFloat, "MotionSpeed", self.MontionSpeed.ToString());
-				self.ForEveryAnimator(AnimatorControlType.SetFloat, "InputX", self.InputX.ToString());
-				self.ForEveryAnimator(AnimatorControlType.SetFloat, "InputY", self.InputY.ToString());
-				self.ForEveryAnimator(AnimatorControlType.SetFloat, "MouseX", self.MouseX.ToString());
-				self.ForEveryAnimator(AnimatorControlType.SetFloat, "MouseY", self.MouseY.ToString());
+				if (self.Parent is Unit)
+				{
+					self.ForEveryAnimator(AnimatorControlType.SetFloat, "MotionSpeed", self.MontionSpeed.ToString());
+					self.ForEveryAnimator(AnimatorControlType.SetFloat, "InputX", self.InputX.ToString());
+					self.ForEveryAnimator(AnimatorControlType.SetFloat, "InputY", self.InputY.ToString());
+					self.ForEveryAnimator(AnimatorControlType.SetFloat, "MouseX", self.MouseX.ToString());
+					self.ForEveryAnimator(AnimatorControlType.SetFloat, "MouseY", self.MouseY.ToString());
+				}
 
 				self.ForEveryAnimator(AnimatorControlType.SetTrigger, self.MotionType.ToString());
 

@@ -37,7 +37,15 @@ namespace ET
             {
                 await a.Item.GetComponent<ItemViewComponent>().Init();
 
-                await a.Item.AddComponent<ItemBounceComponent, float, float>(a.X, a.Y).MoveAsync();
+                if (a.StartX == 0 && a.StartY == 0)
+                {
+                    Unit player = UnitHelper.GetMyUnitFromCurrentScene(a.Item.ZoneScene());
+                    var playerPos = player.GetComponent<GameObjectComponent>().GameObject.transform.position;
+                    a.StartX = playerPos.x;
+                    a.StartY = playerPos.y;
+                }
+
+                await a.Item.AddComponent<ItemBounceComponent, Vector3, Vector3>(new Vector2(a.X, a.Y), new Vector2(a.StartX, a.StartY)).MoveAsync();
                 
                 a.Item.RemoveComponent<ItemBounceComponent>();
             }
@@ -46,8 +54,8 @@ namespace ET
                     : new Vector3(RandomHelper.RandomNumber(-5, 5), RandomHelper.RandomNumber(-5, 5), 0);
             a.Item.Position = go.transform.position;
 
-            if (a.SaveInScene)
-                a.Item.ZoneScene().CurrentScene().GetComponent<ItemsComponent>().SaveItemsComponent();
+            // if (a.SaveInScene)
+            //     a.Item.ZoneScene().CurrentScene().GetComponent<ItemsComponent>().SaveItemsComponent();
         }
     }
 }

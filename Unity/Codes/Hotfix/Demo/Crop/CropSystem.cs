@@ -34,14 +34,15 @@ namespace ET
                     self.HarvestActionCount++;
                     
                     //判断是否有动画  树木等
+                    if (self.Config.HasAnimation == 1)
+                    {
+                        Game.EventSystem.Publish(new HarvestCropAnimation() { Crop = self, ZoneScene = self.ZoneScene() });
+                    }
                 }
 
                 if (self.HarvestActionCount >= self.Config.RequireActionCount[value.Item2])
                 {
-                    if (self.Config.GenerateAtPlayerPos == 1)
-                    {
-                        Game.EventSystem.Publish(new HarvestCrop() { Crop = self, ZoneScene = self.ZoneScene() });
-                    }
+                    Game.EventSystem.Publish(new HarvestCrop() { Crop = self, ZoneScene = self.ZoneScene() });
                 }
             }
         }

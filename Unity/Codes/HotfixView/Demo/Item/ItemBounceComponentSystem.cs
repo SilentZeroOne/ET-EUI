@@ -11,11 +11,12 @@ namespace ET
         }
     }
     
-    public class ItemBounceComponentAwakeSystem: AwakeSystem<ItemBounceComponent,float,float>
+    public class ItemBounceComponentAwakeSystem: AwakeSystem<ItemBounceComponent,Vector3,Vector3>
     {
-        public override void Awake(ItemBounceComponent self, float x, float y)
+        public override void Awake(ItemBounceComponent self, Vector3 targetPos,Vector3 startPos)
         {
-            self.TargetPos = new Vector2(x, y);
+            self.TargetPos = targetPos;
+            self.StartPos = startPos;
             self.Init();
         }
     }
@@ -46,14 +47,12 @@ namespace ET
             self.ShadowRenderer.gameObject.SetActive(true);
             
             viewComponent.BoxCollider2D.enabled = false;
+            
+            self.Direction = (self.TargetPos - self.StartPos).normalized;
 
-            Unit unit = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene());
-            var playerPos = unit.GetComponent<GameObjectComponent>().GameObject.transform.position;
-            self.Direction = (self.TargetPos - playerPos).normalized;
-
-            self.ItemTransform.position = playerPos;
+            self.ItemTransform.position = self.StartPos;
             viewComponent.SpriteRenderer.transform.position += Vector3.up * 1.5f;
-            self.Distance = Vector3.Distance(playerPos, self.TargetPos);
+            self.Distance = Vector3.Distance(self.StartPos, self.TargetPos);
         }
 
         public static async ETTask MoveAsync(this ItemBounceComponent self)

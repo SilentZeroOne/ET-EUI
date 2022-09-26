@@ -12,10 +12,6 @@ namespace BM
 		public const string Assets_Bundles_Code_System__dll__bytes = "Assets/Bundles/Code/System.dll.bytes";
 		public const string Assets_Bundles_Code_Unity__Mono__dll__bytes = "Assets/Bundles/Code/Unity.Mono.dll.bytes";
 		public const string Assets_Bundles_Code_Unity__ThirdParty__dll__bytes = "Assets/Bundles/Code/Unity.ThirdParty.dll.bytes";
-		public const string Assets_Bundles_ResBundles_Animators_Controller_SlotHighLight__controller = "Assets/Bundles/ResBundles/Animators/Controller/SlotHighLight.controller";
-		public const string Assets_Bundles_ResBundles_Animators_Controller_TreeGreen__controller = "Assets/Bundles/ResBundles/Animators/Controller/TreeGreen.controller";
-		public const string Assets_Bundles_ResBundles_Animators_Controller_TreePink__controller = "Assets/Bundles/ResBundles/Animators/Controller/TreePink.controller";
-		public const string Assets_Bundles_ResBundles_Animators_Controller_TreeYellow__controller = "Assets/Bundles/ResBundles/Animators/Controller/TreeYellow.controller";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_UILoadingController__controller = "Assets/Bundles/ResBundles/Animators/Controller/UILoadingController.controller";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm_Collect__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm_Collect.overrideController";
@@ -34,6 +30,11 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Tool_Tool_Pickaxe__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Tool/Tool_Pickaxe.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Tool_Tool_Reap__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Tool/Tool_Reap.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Tool_Tool_Water__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Tool/Tool_Water.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Trees_HarvestTree__controller = "Assets/Bundles/ResBundles/Animators/Controller/Trees/HarvestTree.controller";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Trees_SlotHighLight__controller = "Assets/Bundles/ResBundles/Animators/Controller/Trees/SlotHighLight.controller";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Trees_TreeGreen__controller = "Assets/Bundles/ResBundles/Animators/Controller/Trees/TreeGreen.controller";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Trees_TreePink__controller = "Assets/Bundles/ResBundles/Animators/Controller/Trees/TreePink.controller";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Trees_TreeYellow__controller = "Assets/Bundles/ResBundles/Animators/Controller/Trees/TreeYellow.controller";
 		public const string Assets_Bundles_ResBundles_Cursor_cursor_1__png = "Assets/Bundles/ResBundles/Cursor/cursor_1.png";
 		public const string Assets_Bundles_ResBundles_Cursor_cursor_10__png = "Assets/Bundles/ResBundles/Cursor/cursor_10.png";
 		public const string Assets_Bundles_ResBundles_Cursor_cursor_11__png = "Assets/Bundles/ResBundles/Cursor/cursor_11.png";
@@ -51,6 +52,7 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_Cursor_cursor_8__png = "Assets/Bundles/ResBundles/Cursor/cursor_8.png";
 		public const string Assets_Bundles_ResBundles_Cursor_cursor_9__png = "Assets/Bundles/ResBundles/Cursor/cursor_9.png";
 		public const string Assets_Bundles_ResBundles_ItemPrefab_ItemBase__prefab = "Assets/Bundles/ResBundles/ItemPrefab/ItemBase.prefab";
+		public const string Assets_Bundles_ResBundles_ItemPrefab_Tree01_Trunk__prefab = "Assets/Bundles/ResBundles/ItemPrefab/Tree01_Trunk.prefab";
 		public const string Assets_Bundles_ResBundles_Pics_Items_Bushes_bushes_01__png = "Assets/Bundles/ResBundles/Pics/Items/Bushes/bushes_01.png";
 		public const string Assets_Bundles_ResBundles_Pics_Items_Bushes_bushes_02__png = "Assets/Bundles/ResBundles/Pics/Items/Bushes/bushes_02.png";
 		public const string Assets_Bundles_ResBundles_Pics_Items_Bushes_bushes_03__png = "Assets/Bundles/ResBundles/Pics/Items/Bushes/bushes_03.png";
