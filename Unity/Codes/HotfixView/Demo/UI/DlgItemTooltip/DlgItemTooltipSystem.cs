@@ -18,11 +18,11 @@ namespace ET
 
         public static void ShowWindow(this DlgItemTooltip self, Entity contextData = null)
         {
-            self.Refresh(contextData as Item);
+            self.Refresh(contextData as Item).Coroutine();
             self.AdjustTransform();
         }
 
-        public static void Refresh(this DlgItemTooltip self, Item item)
+        public static async ETTask Refresh(this DlgItemTooltip self, Item item)
         {
             self.View.E_NameTextMeshProUGUI.SetText(item.Config.ItemName);
             self.View.E_TypeTextMeshProUGUI.SetText(((ItemType)item.Config.ItemType).GetName());
@@ -30,6 +30,9 @@ namespace ET
             self.View.EG_BottomRectTransform.SetVisible(item.Config.ItemPrice > 0);
             self.View.EG_SpaceRectTransform.SetVisible(!(item.Config.ItemPrice > 0));
             self.View.E_CoinText.SetText((item.Config.ItemPrice * ((float)item.Config.SellPercentage / 100)).ToString());
+
+            await TimerComponent.Instance.WaitAsync(100);
+            LayoutRebuilder.ForceRebuildLayoutImmediate(self.View.EG_ItemTooltipRectTransform);
         }
 
         public static void AdjustTransform(this DlgItemTooltip self)

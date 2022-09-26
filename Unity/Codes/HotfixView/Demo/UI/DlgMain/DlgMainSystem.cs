@@ -105,6 +105,11 @@ namespace ET
                 if (item != null && !item.IsDisposed)
                 {
                     slot.E_ItemEventTrigger.RegisterEvent(EventTriggerType.PointerClick, (evt) => self.OnSlotClick(evt, slot, item));
+                    if (slot.GetComponent<ActivityButtonComponent>() == null)
+                    {
+                        var code = i == self.Slots.Count - 1? -1 : i;
+                        slot.AddComponent<ActivityButtonComponent, int>(code);
+                    }
                 }
                 else
                 {
