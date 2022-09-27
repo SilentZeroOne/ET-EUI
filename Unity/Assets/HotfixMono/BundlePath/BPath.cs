@@ -51,8 +51,11 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_Cursor_cursor_7__png = "Assets/Bundles/ResBundles/Cursor/cursor_7.png";
 		public const string Assets_Bundles_ResBundles_Cursor_cursor_8__png = "Assets/Bundles/ResBundles/Cursor/cursor_8.png";
 		public const string Assets_Bundles_ResBundles_Cursor_cursor_9__png = "Assets/Bundles/ResBundles/Cursor/cursor_9.png";
+		public const string Assets_Bundles_ResBundles_Effects_FallingLeaves01__prefab = "Assets/Bundles/ResBundles/Effects/FallingLeaves01.prefab";
+		public const string Assets_Bundles_ResBundles_Effects_FallingLeaves02__prefab = "Assets/Bundles/ResBundles/Effects/FallingLeaves02.prefab";
 		public const string Assets_Bundles_ResBundles_ItemPrefab_ItemBase__prefab = "Assets/Bundles/ResBundles/ItemPrefab/ItemBase.prefab";
 		public const string Assets_Bundles_ResBundles_ItemPrefab_Tree01_Trunk__prefab = "Assets/Bundles/ResBundles/ItemPrefab/Tree01_Trunk.prefab";
+		public const string Assets_Bundles_ResBundles_ItemPrefab_Tree02_Trunk__prefab = "Assets/Bundles/ResBundles/ItemPrefab/Tree02_Trunk.prefab";
 		public const string Assets_Bundles_ResBundles_Pics_Items_Bushes_bushes_01__png = "Assets/Bundles/ResBundles/Pics/Items/Bushes/bushes_01.png";
 		public const string Assets_Bundles_ResBundles_Pics_Items_Bushes_bushes_02__png = "Assets/Bundles/ResBundles/Pics/Items/Bushes/bushes_02.png";
 		public const string Assets_Bundles_ResBundles_Pics_Items_Bushes_bushes_03__png = "Assets/Bundles/ResBundles/Pics/Items/Bushes/bushes_03.png";
@@ -284,6 +287,7 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_RuleTiles_HouseKeeper__asset = "Assets/Bundles/ResBundles/RuleTiles/HouseKeeper.asset";
 		public const string Assets_Bundles_ResBundles_RuleTiles_WaterTile__asset = "Assets/Bundles/ResBundles/RuleTiles/WaterTile.asset";
 		public const string Assets_Bundles_ResBundles_TreePrefab_Tree01__prefab = "Assets/Bundles/ResBundles/TreePrefab/Tree01.prefab";
+		public const string Assets_Bundles_ResBundles_TreePrefab_Tree02__prefab = "Assets/Bundles/ResBundles/TreePrefab/Tree02.prefab";
 		public const string Assets_Bundles_ResBundles_TreePrefab_TreeGreen__prefab = "Assets/Bundles/ResBundles/TreePrefab/TreeGreen.prefab";
 		public const string Assets_Bundles_ResBundles_TreePrefab_TreePink__prefab = "Assets/Bundles/ResBundles/TreePrefab/TreePink.prefab";
 		public const string Assets_Bundles_ResBundles_TreePrefab_TreeYellow__prefab = "Assets/Bundles/ResBundles/TreePrefab/TreeYellow.prefab";

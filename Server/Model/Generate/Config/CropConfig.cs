@@ -135,6 +135,12 @@ namespace ET
 		/// <summary>是否消失父物体</summary>
 		[ProtoMember(20)]
 		public int FadeParent { get; set; }
+		/// <summary>特效Prefab</summary>
+		[ProtoMember(21)]
+		public string ParticlePrefab { get; set; }
+		/// <summary>特效生成位置</summary>
+		[ProtoMember(22)]
+		public int[] ParticlePos { get; set; }
 
 	}
 }

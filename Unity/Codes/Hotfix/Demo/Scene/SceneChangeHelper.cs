@@ -35,6 +35,7 @@ namespace ET
                 ItemFactory.Create(currentScene, 1005);
                 ItemFactory.Create(currentScene, 1006);
                 ItemFactory.Create(currentScene, 1015);
+                ItemFactory.Create(currentScene, 1019);
             }
 
             Game.EventSystem.PublishAsync(new EventType.SceneChangeFinish() {ZoneScene = zoneScene, CurrentScene = currentScene}).Coroutine();

@@ -16,4 +16,7 @@
 {"_t":"ItemConfig","_id":1015,"ItemName":"菜篮","ItemType":8,"ItemIcon":"icon_Basket","ItemOnWorldSprite":"icon_Basket","ItemDescription":"这是收菜的菜篮","ItemUseRadius":1,"CanPickUp":1,"CanDropped":0,"CanCarried":0,"ItemPrice":0,"SellPercentage":0},
 {"_t":"ItemConfig","_id":1016,"ItemName":"松子","ItemType":0,"ItemIcon":"icon_NeedieSeed","ItemOnWorldSprite":"icon_NeedieSeed","ItemDescription":"松子，可以贩卖也可以种下，也许会长成大树哦","ItemUseRadius":1,"CanPickUp":1,"CanDropped":0,"CanCarried":1,"ItemPrice":10,"SellPercentage":20},
 {"_t":"ItemConfig","_id":1017,"ItemName":"针叶树根","ItemType":9,"ItemIcon":"Tree01_Trunk","ItemOnWorldSprite":"Tree01_Trunk","ItemDescription":"针叶树砍倒后留下的树根","ItemUseRadius":0,"CanPickUp":0,"CanDropped":0,"CanCarried":0,"ItemPrice":0,"SellPercentage":0},
+{"_t":"ItemConfig","_id":1018,"ItemName":"阔叶原木","ItemType":1,"ItemIcon":"icon_BroadleafWood","ItemOnWorldSprite":"BroadleafWood_Harvest","ItemDescription":"阔叶原木","ItemUseRadius":2,"CanPickUp":1,"CanDropped":1,"CanCarried":1,"ItemPrice":15,"SellPercentage":25},
+{"_t":"ItemConfig","_id":1019,"ItemName":"阔叶种子","ItemType":0,"ItemIcon":"icon_BroadleafSeed","ItemOnWorldSprite":"icon_BroadleafSeed","ItemDescription":"阔叶种子，可以贩卖也可以种下，也许会长成大树哦","ItemUseRadius":1,"CanPickUp":1,"CanDropped":0,"CanCarried":1,"ItemPrice":10,"SellPercentage":20},
+{"_t":"ItemConfig","_id":1020,"ItemName":"阔叶树根","ItemType":9,"ItemIcon":"Tree02_Trunk","ItemOnWorldSprite":"Tree02_Trunk","ItemDescription":"阔叶树砍倒后留下的树根","ItemUseRadius":0,"CanPickUp":0,"CanDropped":0,"CanCarried":0,"ItemPrice":0,"SellPercentage":0},
 ]}

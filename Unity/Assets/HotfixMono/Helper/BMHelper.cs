@@ -31,9 +31,10 @@ namespace ET
             return "";
         }
         
+        //Avoid ambiguous
         public static string ToAB(string str)
         {
-            var replace = str.Replace("@", "_");
+            var replace = str.Replace("@", "_").Replace(".", "__");
             foreach (var fieldInfo in typeof (BPath).GetFields())
             {
                 if (fieldInfo.Name.Contains(replace))
