@@ -54,6 +54,8 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_Effects_FallingLeaves01__prefab = "Assets/Bundles/ResBundles/Effects/FallingLeaves01.prefab";
 		public const string Assets_Bundles_ResBundles_Effects_FallingLeaves02__prefab = "Assets/Bundles/ResBundles/Effects/FallingLeaves02.prefab";
 		public const string Assets_Bundles_ResBundles_ItemPrefab_ItemBase__prefab = "Assets/Bundles/ResBundles/ItemPrefab/ItemBase.prefab";
+		public const string Assets_Bundles_ResBundles_ItemPrefab_Rock01__prefab = "Assets/Bundles/ResBundles/ItemPrefab/Rock01.prefab";
+		public const string Assets_Bundles_ResBundles_ItemPrefab_Rock02__prefab = "Assets/Bundles/ResBundles/ItemPrefab/Rock02.prefab";
 		public const string Assets_Bundles_ResBundles_ItemPrefab_Tree01_Trunk__prefab = "Assets/Bundles/ResBundles/ItemPrefab/Tree01_Trunk.prefab";
 		public const string Assets_Bundles_ResBundles_ItemPrefab_Tree02_Trunk__prefab = "Assets/Bundles/ResBundles/ItemPrefab/Tree02_Trunk.prefab";
 		public const string Assets_Bundles_ResBundles_Pics_Items_Bushes_bushes_01__png = "Assets/Bundles/ResBundles/Pics/Items/Bushes/bushes_01.png";
