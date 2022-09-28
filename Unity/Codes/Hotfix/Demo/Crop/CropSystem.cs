@@ -53,6 +53,14 @@ namespace ET
             self.LastStage = proto.LastStage;
             self.HarvestActionCount = proto.HarvestActionCount;
         }
+        
+#if !NOT_UNITY
+        public static void FromProto(this Crop self, MonoCropInfo proto)
+        {
+            self.ConfigId = proto.ConfigId;
+            self.LastStage = proto.LastStage;
+        }
+#endif
 
         public static CropInfo ToProto(this Crop self)
         {

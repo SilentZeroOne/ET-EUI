@@ -35,7 +35,7 @@
                 ItemType.ChopTool => "工具",
                 ItemType.CollectionTool => "工具",
                 ItemType.HoeTool => "工具",
-                ItemType.ReapableScenary => "杂草",
+                ItemType.ReapableScenary => "杂物",
                 ItemType.ReapTool => "工具",
                 ItemType.WaterTool => "工具",
                 _ => "无",

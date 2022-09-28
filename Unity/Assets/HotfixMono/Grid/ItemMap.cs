@@ -1,20 +1,20 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.IO;
-using ProtoBuf;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEditor;
 
 namespace ET
 {
     [ExecuteInEditMode]
-    public class GridMap : MonoBehaviour
+    public class ItemMap : MonoBehaviour
     {
         public string SceneName;
         private MapData MapData;
         public GridType Type;
-        private Tilemap _currentTilemap;
+        private Grid _currentGrid;
         private string _savePath;
+        public List<SceneItem> SceneObjs = new List<SceneItem>();
 
         private async void OnEnable()
         {
@@ -36,10 +36,16 @@ namespace ET
                     }
                 }
 
-                if (this._currentTilemap == null)
+                if (this._currentGrid == null)
                 {
-                    this._currentTilemap = this.GetComponent<Tilemap>();
+                    this._currentGrid = FindObjectOfType<Grid>();
                 }
+
+                // this.SceneObjs.Clear();
+                // for (int i = 0; i < this.transform.childCount; i++)
+                // {
+                //     this.SceneObjs.Add(this.transform.GetChild(i).gameObject);
+                // }
             }
         }
 
@@ -47,9 +53,9 @@ namespace ET
         {
             if (!Application.IsPlaying(this))
             {
-                if (this._currentTilemap == null)
+                if (this._currentGrid == null)
                 {
-                    this._currentTilemap = this.GetComponent<Tilemap>();
+                    this._currentGrid = FindObjectOfType<Grid>();
                 }
                 
                 this.UpdateTileProperties();
@@ -64,36 +70,25 @@ namespace ET
 
         private void UpdateTileProperties()
         {
-            if (this._currentTilemap == null) return;
-            
-            this._currentTilemap.CompressBounds();
+            if (this._currentGrid == null) return;
 
             if (!Application.IsPlaying(this))
             {
-                //Proto 类貌似在Editor中 一直是null 但可以正常使用
-                // if (this.MapData != null)
-                // {
-                    var cellBounds = this._currentTilemap.cellBounds;
-                    Vector3Int startPos = cellBounds.min;
-                    Vector3Int endPos = cellBounds.max;
-
-                    for (int x = startPos.x; x < endPos.x; x++)
+                foreach (var obj in this.SceneObjs)
+                {
+                    Vector3Int pos = this._currentGrid.WorldToCell(obj.transform.position);
+                    TileProperty newTile = new TileProperty()
                     {
-                        for (int y = startPos.y; y < endPos.y; y++)
-                        {
-                            TileBase tile = this._currentTilemap.GetTile(new Vector3Int(x, y, 0));
-                            if (tile != null)
-                            {
-                                TileProperty newTile = new TileProperty()
-                                {
-                                    TileCoordinate = new ProtoVector2Int(x, y), GridType = (int)this.Type, Value = true
-                                };
-                                
-                                this.MapData.Tiles.Add(newTile);
-                            }
-                        }
-                    }
-                //}
+                        TileCoordinate = new ProtoVector2Int(pos.x, pos.y),
+                        GridType = (int)this.Type,
+                        Value = true,
+                        Crop = new MonoCropInfo() { ConfigId = obj.ConfigId, LastStage = obj.LastStage, IsItem = obj.IsItem },
+                        GrowthDays = obj.GrowthDays,
+                        DaysSinceDug = obj.DaysSinceDug
+                    };
+                    
+                    this.MapData.Tiles.Add(newTile);
+                }
             }
         }
     }

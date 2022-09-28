@@ -26,7 +26,7 @@ namespace ET
                 Unit player = UnitHelper.GetMyUnitFromCurrentScene(a.ZoneScene.CurrentScene());
 
                 if ((ItemType)a.Item.Config.ItemType != ItemType.Seed || (ItemType)a.Item.Config.ItemType != ItemType.Commodity ||
-                    (ItemType)a.Item.Config.ItemType != ItemType.Furniture || (ItemType)a.Item.Config.ItemType != ItemType.ReapableScenary)
+                    (ItemType)a.Item.Config.ItemType != ItemType.Furniture /*|| (ItemType)a.Item.Config.ItemType != ItemType.ReapableScenary*/)
                 {
                     if (player.UseTool) return;
 

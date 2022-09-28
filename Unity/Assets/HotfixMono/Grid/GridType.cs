@@ -5,6 +5,7 @@
         Digable,
         DropItem,
         PlaceFurniture,
-        NPCObstacle
+        NPCObstacle,
+        SceneItem
     }
 }

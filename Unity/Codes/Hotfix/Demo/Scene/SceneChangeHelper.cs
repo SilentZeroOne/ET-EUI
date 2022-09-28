@@ -29,13 +29,13 @@ namespace ET
 
             if (!currentScenesComponent.HaveCache)
             {
-                ItemFactory.Create(currentScene, 1001);
-                ItemFactory.Create(currentScene, 1016);
-                ItemFactory.Create(currentScene, 1002);
-                ItemFactory.Create(currentScene, 1005);
-                ItemFactory.Create(currentScene, 1006);
-                ItemFactory.Create(currentScene, 1015);
-                ItemFactory.Create(currentScene, 1019);
+                // ItemFactory.Create(currentScene, 1001);
+                // ItemFactory.Create(currentScene, 1016);
+                // ItemFactory.Create(currentScene, 1002);
+                // ItemFactory.Create(currentScene, 1005);
+                // ItemFactory.Create(currentScene, 1006);
+                // ItemFactory.Create(currentScene, 1015);
+                // ItemFactory.Create(currentScene, 1019);
             }
 
             Game.EventSystem.PublishAsync(new EventType.SceneChangeFinish() {ZoneScene = zoneScene, CurrentScene = currentScene}).Coroutine();

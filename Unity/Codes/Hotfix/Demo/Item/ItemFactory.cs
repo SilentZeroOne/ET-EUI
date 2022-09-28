@@ -12,6 +12,22 @@
             return item;
         }
         
+        public static Item Create(Scene currentScene, int id, float x, float y)
+        {
+            ItemsComponent itemsComponent = currentScene.GetComponent<ItemsComponent>();
+            Item item = itemsComponent.AddItem(id);
+
+            Game.EventSystem.Publish(new EventType.AfterItemCreate()
+            {
+                Item = item,
+                UsePos = true,
+                SaveInScene = true,
+                X = x,
+                Y = y
+            });
+            return item;
+        }
+        
         /// <summary>
         /// Used for read cache from load scene
         /// </summary>

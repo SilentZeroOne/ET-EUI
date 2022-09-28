@@ -15,6 +15,13 @@ namespace ET
         
         [ProtoMember(3)]
         public bool Value;
+        
+        [ProtoMember(4)]
+        public int DaysSinceDug;
+        [ProtoMember(5)]
+        public int GrowthDays;
+        [ProtoMember(6)]
+        public MonoCropInfo Crop;
     }
 
     [ProtoContract]
@@ -24,6 +31,19 @@ namespace ET
         public List<TileProperty> Tiles = new List<TileProperty>();
     }
     
+    [ProtoContract]
+    public partial class MonoCropInfo: Object
+    {
+        [ProtoMember(1)]
+        public int ConfigId;
+
+        [ProtoMember(2)]
+        public int LastStage;
+
+        [ProtoMember(3)]
+        public bool IsItem;
+    }
+
     [ProtoContract]
     public partial class ProtoVector2Int: Object
     {

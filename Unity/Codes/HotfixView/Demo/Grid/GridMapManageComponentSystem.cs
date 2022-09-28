@@ -86,6 +86,9 @@ namespace ET
                     case GridType.NPCObstacle:
                         self.GridTilesMap[key].IsNPCObstacle = tile.Value;
                         break;
+                    case GridType.SceneItem:
+                        self.GridTilesMap[key].FromProto(tile);
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }

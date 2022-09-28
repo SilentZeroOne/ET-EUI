@@ -329,6 +329,7 @@ namespace BM
 		public const string Assets_Bundles_Config_UnitConfigCategory__bytes = "Assets/Bundles/Config/UnitConfigCategory.bytes";
 		public const string Assets_Bundles_MapData_Field01_Digable_data__bytes = "Assets/Bundles/MapData/Field01_Digable_data.bytes";
 		public const string Assets_Bundles_MapData_Field01_DropItem_data__bytes = "Assets/Bundles/MapData/Field01_DropItem_data.bytes";
+		public const string Assets_Bundles_MapData_Field01_SceneItem_data__bytes = "Assets/Bundles/MapData/Field01_SceneItem_data.bytes";
 		public const string Assets_Bundles_MapData_Field02_DropItem_data__bytes = "Assets/Bundles/MapData/Field02_DropItem_data.bytes";
 		public const string Assets_Bundles_MapData_Field02_PlaceFurniture_data__bytes = "Assets/Bundles/MapData/Field02_PlaceFurniture_data.bytes";
 		public const string Assets_Scenes_Map1__unity = "Assets/Scenes/Map1.unity";

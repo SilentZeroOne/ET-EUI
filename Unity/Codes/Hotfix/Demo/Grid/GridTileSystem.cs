@@ -66,6 +66,29 @@ namespace ET
                 Game.EventSystem.Publish(new AfterCropCreate() { Crop = self.Crop, ForceDisplay = true });
             }
         }
+        
+#if !NOT_UNITY
+        public static void FromProto(this GridTile self, TileProperty proto)
+        {
+            self.GrowthDays = proto.GrowthDays;
+            self.DaysSinceDug = proto.DaysSinceDug;
+            self.DaysSinceWatered = -1;
+            self.DaysSinceLastHarvest = -1;
+
+            //proto.Crop不需要判空 因为一直是空
+            if (!proto.Crop.IsItem)
+            {
+                self.Crop = self.AddChild<Crop, int>(proto.Crop.ConfigId);
+                self.Crop.FromProto(proto.Crop);
+
+                Game.EventSystem.Publish(new AfterCropCreate() { Crop = self.Crop, ForceDisplay = true });
+            }
+            else
+            {
+                ItemFactory.Create(self.ZoneScene().CurrentScene(), proto.Crop.ConfigId, self.GridX, self.GridY);
+            }
+        }
+#endif
 
         public static TileDetails ToProto(this GridTile self)
         {
