@@ -41,11 +41,9 @@ namespace ET
                     this._currentGrid = FindObjectOfType<Grid>();
                 }
 
-                // this.SceneObjs.Clear();
-                // for (int i = 0; i < this.transform.childCount; i++)
-                // {
-                //     this.SceneObjs.Add(this.transform.GetChild(i).gameObject);
-                // }
+                this.SceneObjs.Clear();
+                var sceneItems = this.GetComponentsInChildren<SceneItem>();
+                this.SceneObjs.AddRange(sceneItems);
             }
         }
 
