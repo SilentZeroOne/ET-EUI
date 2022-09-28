@@ -119,7 +119,8 @@ namespace ET
                     }
                     
                     tile.DaysSinceLastHarvest = -1;
-                    tile.DaysSinceDug = 0; //回到第一次挖洞的时候
+                    if (tile.DaysSinceDug != -1)
+                        tile.DaysSinceDug = 0; //回到第一次挖洞的时候
                     crop.Dispose();
                 }
             }

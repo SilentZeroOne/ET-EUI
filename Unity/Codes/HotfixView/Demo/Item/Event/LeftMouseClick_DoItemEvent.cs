@@ -171,9 +171,17 @@ namespace ET
                         player.UseTool = false;
                         break;
                     case ItemType.ChopTool:
+                    case ItemType.BreakTool:
                         player.UseTool = true;
-                        
-                        toolConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Tool.ToString(), (int)AnimatorStatus.Chop);
+
+                        int status = (ItemType)a.Item.Config.ItemType switch
+                        {
+                            ItemType.ChopTool => (int)AnimatorStatus.Chop,
+                            ItemType.BreakTool => (int)AnimatorStatus.Pickaxe,
+                            _ => 0
+                        };
+
+                        toolConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Tool.ToString(), status);
                         player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Tool, toolConfig.OverrideControllerName);
                         player.GetComponent<AnimatorComponent>().Play(MotionType.UseTool);
                         

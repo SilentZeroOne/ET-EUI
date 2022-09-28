@@ -39,9 +39,12 @@ namespace ET
             self.SpriteRenderer.sprite = sprite;
 
             //修改boxcollider尺寸
-            Vector2 newSize = new Vector2(sprite.bounds.size.x, sprite.bounds.size.y);
-            self.BoxCollider2D.size = newSize;
-            self.BoxCollider2D.offset = new Vector2(0, sprite.bounds.center.y);
+            if (self.BoxCollider2D.isTrigger)//不是Trigger说明提前设置好了对应的大小
+            {
+                Vector2 newSize = new Vector2(sprite.bounds.size.x, sprite.bounds.size.y);
+                self.BoxCollider2D.size = newSize;
+                self.BoxCollider2D.offset = new Vector2(0, sprite.bounds.center.y);
+            }
         }
     }
 }

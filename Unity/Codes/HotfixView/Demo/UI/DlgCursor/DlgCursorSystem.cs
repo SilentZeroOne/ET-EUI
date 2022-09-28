@@ -133,6 +133,7 @@ namespace ET
                             break;
                         case ItemType.ChopTool:
                         case ItemType.CollectionTool:
+                        case ItemType.BreakTool:
                             if (currentTile.Crop != null)
                             {
                                 var canHarvest = currentTile.Crop.CanHarvest(self.CurrentItem.ConfigId);

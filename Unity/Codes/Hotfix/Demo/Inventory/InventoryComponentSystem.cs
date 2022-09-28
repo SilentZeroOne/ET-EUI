@@ -62,15 +62,17 @@ namespace ET
     [FriendClassAttribute(typeof(ET.Item))]
     public static class InventoryComponentSystem
     {
-        public static bool IsMaxCapacity(this InventoryComponent self)
+        public static bool IsMaxCapacity(this InventoryComponent self, Item item)
         {
             switch (self.Type)
             {
                 case InventoryType.Inventory:
                     NumericComponent numericComponent = UnitHelper.GetMyUnitFromZoneScene(self.ZoneScene()).GetComponent<NumericComponent>();
-                    return self.ItemConfigIdList.Count >= numericComponent.GetAsInt(NumericType.InventoryCapacity);
+                    return self.ItemConfigIdList.Count >= numericComponent.GetAsInt(NumericType.InventoryCapacity) &&
+                            !self.ItemConfigIdList.Contains(item.ConfigId);
                 case InventoryType.ActionBar:
-                    return self.ItemConfigIdList.Count >= Settings.MaxActionBarSlot;
+                    return self.ItemConfigIdList.Count >= Settings.MaxActionBarSlot &&
+                            !self.ItemConfigIdList.Contains(item.ConfigId);
             }
 
             return true;
@@ -84,7 +86,7 @@ namespace ET
                 return ErrorCode.ERR_ItemNotExist;
             }
 
-            if (self.IsMaxCapacity())
+            if (self.IsMaxCapacity(item))
             {
                 Log.Debug("背包已满");
                 return ErrorCode.ERR_BagOverCapacity;
