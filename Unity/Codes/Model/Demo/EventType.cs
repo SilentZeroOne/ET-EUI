@@ -189,5 +189,11 @@ namespace ET
             public Scene ZoneScene;
             public Crop Crop;
         }
+        
+        public struct HarvestCropParticle
+        {
+            public Scene ZoneScene;
+            public Crop Crop;
+        }
     }
 }

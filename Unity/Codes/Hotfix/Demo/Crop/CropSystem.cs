@@ -38,6 +38,11 @@ namespace ET
                     {
                         Game.EventSystem.Publish(new HarvestCropAnimation() { Crop = self, ZoneScene = self.ZoneScene() });
                     }
+
+                    if (self.Config.HasParticleEffect == 1)
+                    {
+                        Game.EventSystem.Publish(new HarvestCropParticle() { Crop = self, ZoneScene = self.ZoneScene() });
+                    }
                 }
 
                 if (self.HarvestActionCount >= self.Config.RequireActionCount[value.Item2])
