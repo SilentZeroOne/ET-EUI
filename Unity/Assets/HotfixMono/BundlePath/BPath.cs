@@ -16,13 +16,16 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm_Collect__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm_Collect.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm_Hold__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm_Hold.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm_Reap__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm_Reap.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm_Water__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm_Water.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_BaseContorller__controller = "Assets/Bundles/ResBundles/Animators/Controller/Player/BaseContorller.controller";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Body__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Body.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Body_Collect__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Body_Collect.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Body_Reap__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Body_Reap.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Body_Water__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Body_Water.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Hair__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Hair.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Hair_Collect__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Hair_Collect.overrideController";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Hair_Reap__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Hair_Reap.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Hair_Water__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Hair_Water.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Tool_Tool__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Tool/Tool.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Tool_Tool_Chop__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Tool/Tool_Chop.overrideController";
@@ -53,6 +56,7 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_Cursor_cursor_9__png = "Assets/Bundles/ResBundles/Cursor/cursor_9.png";
 		public const string Assets_Bundles_ResBundles_Effects_FallingLeaves01__prefab = "Assets/Bundles/ResBundles/Effects/FallingLeaves01.prefab";
 		public const string Assets_Bundles_ResBundles_Effects_FallingLeaves02__prefab = "Assets/Bundles/ResBundles/Effects/FallingLeaves02.prefab";
+		public const string Assets_Bundles_ResBundles_Effects_ReapParticle__prefab = "Assets/Bundles/ResBundles/Effects/ReapParticle.prefab";
 		public const string Assets_Bundles_ResBundles_Effects_RockParticle__prefab = "Assets/Bundles/ResBundles/Effects/RockParticle.prefab";
 		public const string Assets_Bundles_ResBundles_ItemPrefab_ItemBase__prefab = "Assets/Bundles/ResBundles/ItemPrefab/ItemBase.prefab";
 		public const string Assets_Bundles_ResBundles_ItemPrefab_Rock01__prefab = "Assets/Bundles/ResBundles/ItemPrefab/Rock01.prefab";

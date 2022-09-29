@@ -26,6 +26,19 @@ namespace ET
 
                 await TimerComponent.Instance.WaitAsync(1200);//等待动画播完
             }
+
+            //没有生成物 直接dispose
+            if (a.Crop.Config.ProducedItemIDs == null)
+            {
+                var tile = a.Crop.GetParent<GridTile>();
+                tile.DaysSinceLastHarvest = -1;
+                if (tile.DaysSinceDug != -1)
+                    tile.DaysSinceDug = 0; //回到第一次挖洞的时候
+                tile.Crop = null;
+                
+                a.Crop.Dispose();
+                return;
+            }
             
             for (int i = 0; i < a.Crop.Config.ProducedItemIDs.Length; i++)
             {

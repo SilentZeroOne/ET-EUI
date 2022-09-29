@@ -33,6 +33,15 @@ namespace ET
                     //给Animator设置XY
                     player.GetComponent<AnimatorComponent>().SetMouseParmas(a.X, a.Y);
                 }
+                
+                int status = (ItemType)a.Item.Config.ItemType switch
+                {
+                    ItemType.ChopTool => (int)AnimatorStatus.Chop,
+                    ItemType.BreakTool => (int)AnimatorStatus.Pickaxe,
+                    ItemType.WaterTool => (int)AnimatorStatus.Water,
+                    ItemType.ReapTool => (int)AnimatorStatus.Reap,
+                    _ => 0
+                };
 
                 //WORKFLOW: 添加对应Type的Item使用
                 switch ((ItemType)a.Item.Config.ItemType)
@@ -86,11 +95,12 @@ namespace ET
                         player.UseTool = false;
                         break;
                     case ItemType.WaterTool://浇水
+                    case ItemType.ReapTool://除草
                         player.UseTool = true;
-                        var armConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Arm.ToString(), (int)AnimatorStatus.Water);
-                        var bodyConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Body.ToString(), (int)AnimatorStatus.Water);
-                        var hairConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Hair.ToString(), (int)AnimatorStatus.Water);
-                        toolConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Tool.ToString(), (int)AnimatorStatus.Water);
+                        var armConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Arm.ToString(), status);
+                        var bodyConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Body.ToString(), status);
+                        var hairConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Hair.ToString(), status);
+                        toolConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Tool.ToString(), status);
 
                         player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Tool, toolConfig.OverrideControllerName);
                         player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Arm, armConfig.OverrideControllerName);
@@ -103,9 +113,16 @@ namespace ET
                         await TimerComponent.Instance.WaitAsync(300);
 
                         //TODO:音效
-                        currentTile.DaysSinceWatered = 0;
-                        gridMapManage.SetWaterTile(currentTile);
-                        //gridMapManage.SaveMapData();
+                        if (status == (int)AnimatorStatus.Water)
+                        {
+                            currentTile.DaysSinceWatered = 0;
+                            gridMapManage.SetWaterTile(currentTile);
+                        }
+                        else if (status == (int)AnimatorStatus.Reap)
+                        {
+                            currentTile.Crop.ProcessToolAction(a.Item);
+                        }
+
                         await TimerComponent.Instance.WaitAsync(500);
                         //动画结束 重置tool的animator
                         toolConfig = AnimatorControllerConfigCategory.Instance.GetDefaultConfigByName(AnimatorType.Tool.ToString());
@@ -173,13 +190,6 @@ namespace ET
                     case ItemType.ChopTool:
                     case ItemType.BreakTool:
                         player.UseTool = true;
-
-                        int status = (ItemType)a.Item.Config.ItemType switch
-                        {
-                            ItemType.ChopTool => (int)AnimatorStatus.Chop,
-                            ItemType.BreakTool => (int)AnimatorStatus.Pickaxe,
-                            _ => 0
-                        };
 
                         toolConfig = AnimatorControllerConfigCategory.Instance.GetConfigByNameAndStatus(AnimatorType.Tool.ToString(), status);
                         player.GetComponent<AnimatorComponent>().OverrideAnimator(AnimatorType.Tool, toolConfig.OverrideControllerName);

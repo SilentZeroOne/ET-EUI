@@ -134,6 +134,7 @@ namespace ET
                         case ItemType.ChopTool:
                         case ItemType.CollectionTool:
                         case ItemType.BreakTool:
+                        case ItemType.ReapTool:
                             if (currentTile.Crop != null)
                             {
                                 var canHarvest = currentTile.Crop.CanHarvest(self.CurrentItem.ConfigId);
