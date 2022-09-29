@@ -22,5 +22,4 @@ MonoBehaviour:
   AssetPath:
   - Assets/Bundles/MapData
   AssetGroupPaths: []
-  Scene:
-  - {fileID: 102900000, guid: a5294483f20f40d449699101bb428cda, type: 3}
+  Scene: []
