@@ -11,5 +11,7 @@ namespace ET
         
         public int LastStage { get; set; }
         public int HarvestActionCount { get; set; }
+        
+        public bool IsPlayingAnimation { get; set; }
     }
 }

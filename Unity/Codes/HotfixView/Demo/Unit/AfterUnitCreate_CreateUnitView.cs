@@ -23,7 +23,7 @@ namespace ET
             args.Unit.AddComponent<RigidBody2DComponent>().Rigidbody2D = go.GetComponent<Rigidbody2D>();
             args.Unit.AddComponent<AnimatorComponent>();
             args.Unit.AddComponent<OperaComponent>();
-            args.Unit.AddComponent<TriggerFaderComponent>();
+            args.Unit.AddComponent<TriggerComponent>();
             args.Unit.AddComponent<ItemPickerComponent>();
             args.Unit.AddComponent<TeleportComponent>();
             
