@@ -11,6 +11,9 @@ namespace ET
     public class GridMap : MonoBehaviour
     {
         public string SceneName;
+        public Vector2Int GridSize;
+        public Vector2Int StartNode;
+        
         private MapData MapData;
         public GridType Type;
         private Tilemap _currentTilemap;
@@ -33,6 +36,8 @@ namespace ET
                     else
                     {
                         this.MapData = new MapData();
+                        this.MapData.GridSize = new ProtoVector2Int(this.GridSize.x, this.GridSize.y);
+                        this.MapData.StartNode = new ProtoVector2Int(this.StartNode.x, this.StartNode.y);
                     }
                 }
 

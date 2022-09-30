@@ -1,9 +1,10 @@
 ﻿namespace ET
 {
-    [ChildType(typeof(Crop))]
+    [ChildType()]
     public class GridTile: Entity, IAwake,IAwake<int, int>, IDestroy
     {
         public Crop Crop;
+        public Node Node;
         public int GridX;
         public int GridY;
         public bool CanDig;

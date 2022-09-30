@@ -12,6 +12,7 @@ namespace ET
             self.DaysSinceWatered = -1;
             self.DaysSinceLastHarvest = -1;
             self.GrowthDays = -1;
+            self.Node = self.AddNode();
         }
     }
 
@@ -36,6 +37,11 @@ namespace ET
             self.GrowthDays = 0;
 
             Game.EventSystem.Publish(new AfterCropCreate() { Crop = self.Crop, ForceDisplay = true });
+        }
+
+        public static Node AddNode(this GridTile self)
+        {
+            return self.AddChild<Node, int, int>(self.GridX, self.GridY);
         }
 
         public static void Drag(this GridTile self)
@@ -65,6 +71,8 @@ namespace ET
 
                 Game.EventSystem.Publish(new AfterCropCreate() { Crop = self.Crop, ForceDisplay = true });
             }
+            
+            self.Node = self.AddNode();
         }
         
 #if !NOT_UNITY

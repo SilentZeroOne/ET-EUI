@@ -29,6 +29,12 @@ namespace ET
     {
         [ProtoMember(1)]
         public List<TileProperty> Tiles = new List<TileProperty>();
+
+        [ProtoMember(2)]
+        public ProtoVector2Int GridSize;
+        
+        [ProtoMember(3)]
+        public ProtoVector2Int StartNode;
     }
     
     [ProtoContract]

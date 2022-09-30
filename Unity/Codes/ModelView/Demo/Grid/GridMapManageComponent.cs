@@ -23,5 +23,8 @@ namespace ET
         public RuleTile DigTile;
 
         public SavedMapData SavedMapData;
+
+        public Vector2Int GridSize;
+        public Vector2Int StartNode;
     }
 }

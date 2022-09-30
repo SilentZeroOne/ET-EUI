@@ -14,7 +14,7 @@ namespace ET
             self.DataLoader = new MapDataLoader();
             self.DigTile = AssetComponent.Load<RuleTile>(BPath.Assets_Bundles_ResBundles_RuleTiles_DigTile__asset);
             self.WaterTile = AssetComponent.Load<RuleTile>(BPath.Assets_Bundles_ResBundles_RuleTiles_WaterTile__asset);
-            self.LoadMapData().Coroutine();
+            //self.LoadMapData().Coroutine();
         }
     }
 
@@ -36,8 +36,11 @@ namespace ET
             List<byte[]> mapDatas = new List<byte[]>();
             var sceneName = self.GetParent<Scene>().Name;
             self.SavedMapData = await self.DataLoader.GetSceneSavedMapData(sceneName);
+            
             if (self.SavedMapData != null)//有存档 读取存档数据
             {
+                self.GridSize = new Vector2Int((int)self.SavedMapData.GridSize.X, (int)self.SavedMapData.GridSize.Y);
+                self.StartNode = new Vector2Int((int)self.SavedMapData.StartNode.X, (int)self.SavedMapData.StartNode.Y);
                 self.FillTileDetailsMap();
             }
             else//读取初始数据
@@ -47,6 +50,9 @@ namespace ET
                 foreach (var mapData in mapDatas)
                 {
                     MapData data = ProtobufHelper.Deserialize<MapData>(mapData);
+                    self.GridSize = new Vector2Int(data.GridSize.X, data.GridSize.Y);
+                    self.StartNode = new Vector2Int(data.StartNode.X, data.StartNode.Y);
+                    
                     if (data.Tiles != null && data.Tiles.Count > 0)
                     {
                         self.FillTileDetailsMap(data);
@@ -89,8 +95,6 @@ namespace ET
                     case GridType.SceneItem:
                         self.GridTilesMap[key].FromProto(tile);
                         break;
-                    default:
-                        throw new ArgumentOutOfRangeException();
                 }
             }
         }
@@ -124,6 +128,9 @@ namespace ET
             {
                 self.SavedMapData.TileDetailsList.Add(tile.ToProto());
             }
+
+            self.SavedMapData.GridSize = new ProtoVector3(self.GridSize.x, self.GridSize.y, 0);
+            self.SavedMapData.StartNode = new ProtoVector3(self.StartNode.x, self.StartNode.y, 0);
 
             ProtobufHelper.SaveTo(self.SavedMapData, path);
         }
@@ -215,9 +222,14 @@ namespace ET
 
         public static void SetDigTile(this GridMapManageComponent self, GridTile gridTile)
         {
+            self.SetDigTile(gridTile.GridX, gridTile.GridY);
+        }
+
+        public static void SetDigTile(this GridMapManageComponent self, int x, int y)
+        {
             if (self.DigTilemap != null)
             {
-                var pos = new Vector3Int(gridTile.GridX, gridTile.GridY, 0);
+                var pos = new Vector3Int(x, y, 0);
                 self.DigTilemap.SetTile(pos, self.DigTile);
             }
         }

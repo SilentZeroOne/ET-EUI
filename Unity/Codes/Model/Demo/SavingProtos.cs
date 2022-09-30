@@ -81,6 +81,12 @@ namespace ET
     {
         [ProtoMember(1)]
         public List<TileDetails> TileDetailsList = new List<TileDetails>();
+        
+        [ProtoMember(2)]
+        public ProtoVector3 GridSize;
+        
+        [ProtoMember(3)]
+        public ProtoVector3 StartNode;
     }
 
     #endregion

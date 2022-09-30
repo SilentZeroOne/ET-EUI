@@ -2,6 +2,7 @@
 {
     public enum GridType
     {
+        None,
         Digable,
         DropItem,
         PlaceFurniture,
