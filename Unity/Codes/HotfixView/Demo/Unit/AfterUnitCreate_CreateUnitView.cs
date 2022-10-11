@@ -15,23 +15,31 @@ namespace ET
             // GameObject bundleGameObject = (GameObject)ResourcesComponent.Instance.GetAsset("Unit.unity3d", "Unit");
             // GameObject prefab = bundleGameObject.Get<GameObject>("Skeleton");
 
-            GameObject prefab = AssetComponent.Load<GameObject>(BPath.Assets_Bundles_ResBundles_Unit_Player__prefab);
+            GameObject prefab = AssetComponent.Load<GameObject>(args.Unit.Config.PrefabName.StringToAB());
 
             GameObject go = UnityEngine.Object.Instantiate(prefab, GlobalComponent.Instance.Unit, true);
-            go.transform.position = args.Unit.Position;
+            var startPos = args.Unit.Config.StartPosition;
+            Vector3 pos = Vector3.zero;
+            if (startPos.Length > 0)
+                pos = new Vector3(float.Parse(startPos[0]), float.Parse(startPos[1]), float.Parse(startPos[2]));
+
             args.Unit.AddComponent<GameObjectComponent>().GameObject = go;
+            args.Unit.Position = pos;
+            
             args.Unit.AddComponent<RigidBody2DComponent>().Rigidbody2D = go.GetComponent<Rigidbody2D>();
             args.Unit.AddComponent<AnimatorComponent>();
-            args.Unit.AddComponent<OperaComponent>();
             args.Unit.AddComponent<TriggerComponent>();
-            args.Unit.AddComponent<ItemPickerComponent>();
-            args.Unit.AddComponent<TeleportComponent>();
-            
-            var cinemachineComponent = args.Unit.AddComponent<CinemachineComponent, GameObject>(go.Get<GameObject>("CM vcam1"));
 
-            cinemachineComponent.SetConfinerBounding(args.Unit.ZoneScene().CurrentScene().GetComponent<BoundComponent>().Bounds);
+            if (args.Unit.Config.Type == (int)UnitType.Player)
+            {
+                args.Unit.AddComponent<OperaComponent>();
+                args.Unit.AddComponent<ItemPickerComponent>();
+                args.Unit.AddComponent<TeleportComponent>();
             
-            //args.Unit.AddComponent<AnimatorComponent>();
+                var cinemachineComponent = args.Unit.AddComponent<CinemachineComponent, GameObject>(go.Get<GameObject>("CM vcam1"));
+
+                cinemachineComponent.SetConfinerBounding(args.Unit.ZoneScene().CurrentScene().GetComponent<BoundComponent>().Bounds);
+            }
         }
     }
 }

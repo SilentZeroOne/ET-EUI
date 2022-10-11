@@ -1,4 +1,6 @@
-﻿namespace ET
+﻿using System;
+
+namespace ET
 {
     [ComponentOf(typeof(Scene))]
     public class GameTimeComponent: Entity, IAwake, IDestroy
@@ -12,5 +14,6 @@
 
         public int MonthInSeason;
         public Season Season;
+        public TimeSpan GameTime => new TimeSpan(this.GameDay, this.GameHour, this.GameMinute, this.GameSecond);
     }
 }

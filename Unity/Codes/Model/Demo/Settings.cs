@@ -17,5 +17,8 @@
         public const int SeasonHold = 3;
         public const int MonthHold = 12;
 
+        public const int GridSize = 1;
+        public const float GridDiagonalSize = 1.41f;
+
     }
 }

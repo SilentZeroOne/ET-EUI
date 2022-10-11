@@ -90,6 +90,9 @@ namespace ET
 		/// <summary>预制体名称</summary>
 		[ProtoMember(5)]
 		public string PrefabName { get; set; }
+		/// <summary>初始位置</summary>
+		[ProtoMember(6)]
+		public string[] StartPosition { get; set; }
 
 	}
 }

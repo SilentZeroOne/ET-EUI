@@ -13,6 +13,7 @@ namespace BM
 		public const string Assets_Bundles_Code_Unity__Mono__dll__bytes = "Assets/Bundles/Code/Unity.Mono.dll.bytes";
 		public const string Assets_Bundles_Code_Unity__ThirdParty__dll__bytes = "Assets/Bundles/Code/Unity.ThirdParty.dll.bytes";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_UILoadingController__controller = "Assets/Bundles/ResBundles/Animators/Controller/UILoadingController.controller";
+		public const string Assets_Bundles_ResBundles_Animators_Controller_NPC_NPC_MayorController__controller = "Assets/Bundles/ResBundles/Animators/Controller/NPC/NPC_MayorController.controller";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm_Collect__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm_Collect.overrideController";
 		public const string Assets_Bundles_ResBundles_Animators_Controller_Player_Arm_Hold__overrideController = "Assets/Bundles/ResBundles/Animators/Controller/Player/Arm_Hold.overrideController";
@@ -316,6 +317,7 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_UI_Item_Item_InventorySlot__prefab = "Assets/Bundles/ResBundles/UI/Item/Item_InventorySlot.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Item_Item_serverTest__prefab = "Assets/Bundles/ResBundles/UI/Item/Item_serverTest.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Item_Item_test__prefab = "Assets/Bundles/ResBundles/UI/Item/Item_test.prefab";
+		public const string Assets_Bundles_ResBundles_Unit_NPC_Mayor__prefab = "Assets/Bundles/ResBundles/Unit/NPC_Mayor.prefab";
 		public const string Assets_Bundles_ResBundles_Unit_Player__prefab = "Assets/Bundles/ResBundles/Unit/Player.prefab";
 		public const string Assets_Bundles_ResBundles_Unit_Unit__prefab = "Assets/Bundles/ResBundles/Unit/Unit.prefab";
 		public const string Assets_Scenes_Game__unity = "Assets/Scenes/Game.unity";
@@ -339,5 +341,9 @@ namespace BM
 		public const string Assets_Bundles_MapData_Field01_None_data__bytes = "Assets/Bundles/MapData/Field01_None_data.bytes";
 		public const string Assets_Bundles_MapData_Field01_NPCObstacle_data__bytes = "Assets/Bundles/MapData/Field01_NPCObstacle_data.bytes";
 		public const string Assets_Bundles_MapData_Field01_SceneItem_data__bytes = "Assets/Bundles/MapData/Field01_SceneItem_data.bytes";
+		public const string Assets_Bundles_MapData_Field02_DropItem_data__bytes = "Assets/Bundles/MapData/Field02_DropItem_data.bytes";
+		public const string Assets_Bundles_MapData_Field02_None_data__bytes = "Assets/Bundles/MapData/Field02_None_data.bytes";
+		public const string Assets_Bundles_MapData_Field02_NPCObstacle_data__bytes = "Assets/Bundles/MapData/Field02_NPCObstacle_data.bytes";
+		public const string Assets_Bundles_MapData_Field02_PlaceFurniture_data__bytes = "Assets/Bundles/MapData/Field02_PlaceFurniture_data.bytes";
 	}
 }

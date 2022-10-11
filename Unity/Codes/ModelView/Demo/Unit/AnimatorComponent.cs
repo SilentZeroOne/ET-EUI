@@ -9,6 +9,8 @@ namespace ET
 		//Unit
 		IsMoving,
 		UseTool,
+		EventAnimation,
+		Exit,
 		//Tree
 		RotateLeft,
 		RotateRight,

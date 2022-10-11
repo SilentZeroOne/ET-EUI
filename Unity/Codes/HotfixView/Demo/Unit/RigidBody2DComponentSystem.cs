@@ -23,7 +23,8 @@ namespace ET
         public static void Move(this RigidBody2DComponent self, Vector2 movementInput)
         {
             int speed = self.GetParent<Unit>().GetComponent<NumericComponent>().GetAsInt(NumericType.Speed);
-            self.Rigidbody2D.MovePosition(self.Rigidbody2D.position + movementInput * speed * Time.deltaTime);
+            self.GetParent<Unit>().Position += (Vector3)movementInput * speed * Time.deltaTime;
+            //self.Rigidbody2D.MovePosition(self.Rigidbody2D.position + movementInput * speed * Time.deltaTime);
         }
     }
 }

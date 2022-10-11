@@ -81,6 +81,9 @@ namespace ET
 		/// <summary>场景名字</summary>
 		[ProtoMember(2)]
 		public string SceneName { get; set; }
+		/// <summary>场景内NPC</summary>
+		[ProtoMember(3)]
+		public int[] NPCsInScene { get; set; }
 
 	}
 }

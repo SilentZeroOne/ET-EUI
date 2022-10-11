@@ -17,7 +17,7 @@ namespace ET
                 var steps = new Stack<MovementStep>();
                 var gridManager = a.ZoneScene.CurrentScene().GetComponent<GridMapManageComponent>();
                 var cellPos = gridManager.CurrentGrid.WorldToCell(new Vector3(a.X, a.Y, 0));
-                var playerCellPos=gridManager.CurrentGrid.WorldToCell(playTran.position);
+                var playerCellPos = gridManager.CurrentGrid.WorldToCell(playTran.position);
 
                 aStar.BuildPath(playerCellPos.x, playerCellPos.y, cellPos.x, cellPos.y, steps);
 
@@ -25,7 +25,7 @@ namespace ET
                 {
                     var step = steps.Pop();
 
-                    Log.Debug($"X:{step.GridX} Y:{step.GridY}");
+                    //Log.Debug($"X:{step.GridX} Y:{step.GridY}");
                     gridManager.SetDigTile(step.GridX, step.GridY);
                 }
             }

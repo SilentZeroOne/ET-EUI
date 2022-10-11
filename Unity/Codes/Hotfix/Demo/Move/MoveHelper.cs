@@ -28,5 +28,13 @@ namespace ET
             bool ret = await moveComponent.MoveToAsync(path, speed);
             return ret;
         }
+        
+        public static async ETTask<bool> MoveToAsync(this Unit unit, Stack<MovementStep> steps,ETCancellationToken cancellationToken = null)
+        {
+            //float speed = unit.GetComponent<NumericComponent>().GetAsFloat(NumericType.Speed);
+            Move2DComponent moveComponent = unit.GetComponent<Move2DComponent>();
+            bool ret = await moveComponent.MoveToAsync(steps, 4, cancellationToken);
+            return ret;
+        }
     }
 }

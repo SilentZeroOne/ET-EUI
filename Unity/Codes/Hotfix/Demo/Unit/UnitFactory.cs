@@ -45,6 +45,11 @@ namespace ET
             return unit;
         }
 
+        /// <summary>
+        /// 创建Player
+        /// </summary>
+        /// <param name="currentScene"></param>
+        /// <returns></returns>
         public static Unit Create(Scene currentScene)
         {
 	        UnitComponent unitComponent = currentScene.GetComponent<UnitComponent>();
@@ -63,6 +68,34 @@ namespace ET
 
 	        Game.EventSystem.Publish(new EventType.AfterUnitCreate() {Unit = unit});
 	        return unit;
+        }
+
+        public static void CreateNPC(Scene currentScene)
+        {
+	        UnitComponent unitComponent = currentScene.GetComponent<UnitComponent>();
+	        var npcIds = GameSceneConfigCategory.Instance.GetBySceneName(currentScene.Name).NPCsInScene;
+
+	        foreach (var npcId in npcIds)
+	        {
+		        Unit unit = unitComponent.AddChild<Unit, int>(npcId);
+		        unitComponent.Add(unit);
+		        
+		        //unit.AddComponent<InventoryComponent>();
+		        unit.AddComponent<ObjectWait>();
+		        unit.AddComponent<Move2DComponent>();
+		        unit.AddComponent<AIComponent, int>(3);
+
+		        Game.EventSystem.Publish(new EventType.AfterUnitCreate() {Unit = unit});
+	        }
+	        
+	        
+
+	        //TODO:添加NPC的Numeric
+	        // NumericComponent numericComponent = unit.AddComponent<NumericComponent>();
+	        // foreach (var config in PlayerNumericConfigCategory.Instance.GetAll().Values)
+	        // {
+		       //  numericComponent.Set(config.Id,config.BaseValue);
+	        // }
         }
     }
 }

@@ -90,6 +90,9 @@ namespace ET
 		/// <summary>节点参数</summary>
 		[ProtoMember(5)]
 		public int[] NodeParams { get; set; }
+		/// <summary>目标点</summary>
+		[ProtoMember(6)]
+		public int[] TargetPos { get; set; }
 
 	}
 }

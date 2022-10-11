@@ -1,4 +1,6 @@
-﻿namespace ET
+﻿using UnityEngine;
+
+namespace ET
 {
     public class MovementStep
     {
@@ -8,5 +10,7 @@
         public int Second;
         public int GridX;
         public int GridY;
+
+        public Vector2 Position => new Vector2(this.GridX, this.GridY);
     }
 }

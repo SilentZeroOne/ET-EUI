@@ -34,6 +34,9 @@
         <Compile Include="..\..\Server\Model\Config\ConfigLoader.cs">
           <Link>Config\ConfigLoader.cs</Link>
         </Compile>
+        <Compile Include="..\..\Unity\Codes\Model\Generate\ConfigPartial\GameSceneConfigCategory.cs">
+          <Link>Generate\ConfigPartial\GameSceneConfigCategory.cs</Link>
+        </Compile>
         <Compile Include="..\..\Unity\Codes\Model\Generate\ConfigPartial\UnitConfigPartial.cs">
           <Link>Generate\ConfigPartial\UnitConfigPartial.cs</Link>
         </Compile>

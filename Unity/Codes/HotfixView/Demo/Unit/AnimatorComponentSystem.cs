@@ -38,7 +38,7 @@ namespace ET
 		public static void Awake(this AnimatorComponent self)
 		{
 			var go = self.Parent.GetComponent<GameObjectComponent>().GameObject;
-			if (self.Parent is Unit)
+			if (self.Parent is Unit unit && unit.Config.Type == (int)UnitType.Player)
 			{
 				Animator bodyAnimator = go.GetComponentFormRC<Animator>("Body");
 				Animator armAnimator = go.GetComponentFormRC<Animator>("Arm");

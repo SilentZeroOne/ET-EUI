@@ -12,7 +12,7 @@ namespace ET
             CurrentScenesComponent currentScenesComponent = zoneScene.GetComponent<CurrentScenesComponent>();
             currentScenesComponent.Scene?.Dispose(); // 删除之前的CurrentScene，创建新的
             Scene currentScene = SceneFactory.CreateCurrentScene(sceneInstanceId, zoneScene.Zone, sceneName, currentScenesComponent);
-            UnitComponent unitComponent = currentScene.AddComponent<UnitComponent>();
+            currentScene.AddComponent<UnitComponent>();
 
             currentScenesComponent.HaveCache = await currentScene.GetComponent<ItemsComponent>().LoadItemsComponent();
             
@@ -24,19 +24,8 @@ namespace ET
 
             await zoneScene.GetComponent<ObjectWait>().Wait<WaitType.Wait_SceneLoaded>();
 
+            UnitFactory.CreateNPC(currentScene);
             Unit unit = UnitFactory.Create(currentScene);
-            //unitComponent.Add(unit);
-
-            if (!currentScenesComponent.HaveCache)
-            {
-                // ItemFactory.Create(currentScene, 1001);
-                // ItemFactory.Create(currentScene, 1016);
-                // ItemFactory.Create(currentScene, 1002);
-                // ItemFactory.Create(currentScene, 1005);
-                // ItemFactory.Create(currentScene, 1006);
-                // ItemFactory.Create(currentScene, 1015);
-                // ItemFactory.Create(currentScene, 1019);
-            }
 
             Game.EventSystem.PublishAsync(new EventType.SceneChangeFinish() {ZoneScene = zoneScene, CurrentScene = currentScene}).Coroutine();
 
