@@ -50,10 +50,10 @@ namespace ET
     {
         public override void FixedUpdate(Move2DComponent self)
         {
-            if (self.Steps != null)
-            {
-                self.MoveForward(false);
-            }
+            // if (self.Steps != null)
+            // {
+            //     self.MoveForward(false);
+            // }
         }
     }
     
@@ -122,6 +122,7 @@ namespace ET
                         unit.Position = newPos;
                     }
                     //TODO: 调整面向
+                    Game.EventSystem.Publish(new EventType.ChangeUnitDir() { Unit = unit, Dir = self.GetFaceV() });
                 }
 
                 moveTime -= self.NeedTime;
@@ -136,6 +137,9 @@ namespace ET
                 if (self.Steps.Count <= 0)//最后一个点了
                 {
                     unit.Position = self.CurrentStep.Position + Vector2.one / 2;
+                    Game.EventSystem.Publish(new EventType.ChangeUnitDir() { Unit = unit, Dir = Vector3.down });//强制面向下 脸朝屏幕
+                    Game.EventSystem.Publish(new EventType.ChangeUnitDir() { Unit = unit, Dir = Vector3.zero });//进入Idle
+                    
                     Action<bool> callback = self.Callback;
                     self.Callback = null;
 
@@ -155,7 +159,7 @@ namespace ET
             self.StartTime = self.BeginTime;
             
             self.SetNextStep();
-            //self.MoveTimer = TimerComponent.Instance.NewFrameTimer(TimerType.Move2DTimer, self);
+            self.MoveTimer = TimerComponent.Instance.NewFrameTimer(TimerType.Move2DTimer, self);
         }
 
         public static void SetNextStep(this Move2DComponent self)

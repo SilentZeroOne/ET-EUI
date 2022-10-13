@@ -109,5 +109,25 @@ namespace ET
 
             return dotValue < 0f;
         }
+
+        public static int GetRawX(this Vector3 vector3)
+        {
+	        return vector3.x switch
+	        {
+		        < 0 => -1,
+		        > 0 => 1,
+		        _ => (int)vector3.x
+	        };
+        }
+
+        public static int GetRawY(this Vector3 vector3)
+        {
+	        return vector3.y switch
+	        {
+		        < 0 => -1,
+		        > 0 => 1,
+		        _ => (int)vector3.y
+	        };
+        }
 	}
 }

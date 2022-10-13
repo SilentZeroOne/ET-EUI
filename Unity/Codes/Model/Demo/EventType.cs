@@ -195,5 +195,11 @@ namespace ET
             public Scene ZoneScene;
             public Crop Crop;
         }
+
+        public struct ChangeUnitDir
+        {
+            public Unit Unit;
+            public Vector3 Dir;
+        }
     }
 }
