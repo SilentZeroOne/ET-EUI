@@ -1,4 +1,4 @@
 {"list":[
-{"_t":"UnitConfig","_id":1001,"Type":1,"Name":"杰克","Desc":"带有强力攻击技能","PrefabName":"Player.prefab","StartPosition":["0","0","0"]},
-{"_t":"UnitConfig","_id":1002,"Type":3,"Name":"弗雷","Desc":"老村长","PrefabName":"NPC_Mayor.prefab","StartPosition":["12","-7","0"]},
+{"_t":"UnitConfig","_id":1001,"Type":1,"Name":"杰克","Desc":"带有强力攻击技能","PrefabName":"Player.prefab","StartPosition":["0","0","0"],"AIConfigId":0},
+{"_t":"UnitConfig","_id":1002,"Type":3,"Name":"弗雷","Desc":"老村长","PrefabName":"NPC_Mayor.prefab","StartPosition":["12","-7","0"],"AIConfigId":3},
 ]}

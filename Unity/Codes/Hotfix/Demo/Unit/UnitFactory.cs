@@ -83,7 +83,7 @@ namespace ET
 		        //unit.AddComponent<InventoryComponent>();
 		        unit.AddComponent<ObjectWait>();
 		        unit.AddComponent<Move2DComponent>();
-		        unit.AddComponent<AIComponent, int>(3);
+		        unit.AddComponent<AIComponent, int>(unit.Config.AIConfigId);
 
 		        Game.EventSystem.Publish(new EventType.AfterUnitCreate() {Unit = unit});
 	        }

@@ -93,6 +93,9 @@ namespace ET
 		/// <summary>初始位置</summary>
 		[ProtoMember(6)]
 		public string[] StartPosition { get; set; }
+		/// <summary>AI配置ID</summary>
+		[ProtoMember(7)]
+		public int AIConfigId { get; set; }
 
 	}
 }

@@ -34,8 +34,7 @@ namespace ET
             {
                 args.Unit.AddComponent<OperaComponent>();
                 args.Unit.AddComponent<ItemPickerComponent>();
-                args.Unit.AddComponent<TeleportComponent>();
-            
+
                 var cinemachineComponent = args.Unit.AddComponent<CinemachineComponent, GameObject>(go.Get<GameObject>("CM vcam1"));
 
                 cinemachineComponent.SetConfinerBounding(args.Unit.ZoneScene().CurrentScene().GetComponent<BoundComponent>().Bounds);

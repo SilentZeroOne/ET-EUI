@@ -28,11 +28,13 @@ namespace ET
         }
     }
 
-    [FriendClass(typeof (TriggerComponent))]
+    [FriendClass(typeof(TriggerComponent))]
+    [FriendClassAttribute(typeof(ET.BoundComponent))]
     public static class TriggerFaderComponentSystem
     {
         public static void OnTriggerEnter(this TriggerComponent self, Collider2D other)
         {
+            Unit unit = self.GetParent<Unit>();
             if (other.CompareTag(TagManager.FadeObject))
             {
                 // 逐渐半透明
@@ -40,6 +42,26 @@ namespace ET
                 foreach (var spriteRenderer in renderers)
                 {
                     spriteRenderer.DOColor(new Color(1, 1, 1, Settings.FadeAlpha), Settings.FadeDuration);
+                }
+            }
+
+            if (other.CompareTag(TagManager.TpPoint))
+            {
+                var config = TeleportConfigCategory.Instance.GetConfigBySceneNameAndPointName(self.ZoneScene().CurrentScene().Name, other.name);
+
+                switch ((UnitType)unit.Config.Type)
+                {
+                    case UnitType.Player:
+                        SceneChangeHelper.SceneChangeTo(self.ZoneScene(), config.TargetSceneName, IdGenerater.Instance.GenerateInstanceId(), config.TargetPosX,
+                            config.TargetPosY, config.TargetPosZ).Coroutine();
+
+                        self.WaitEndAndSetCameraBound().Coroutine();
+                        break;
+                    case UnitType.Monster:
+                        break;
+                    case UnitType.NPC:
+                        
+                        break;
                 }
             }
 
@@ -65,26 +87,26 @@ namespace ET
                     spriteRenderer.DOColor(new Color(1, 1, 1, 1), Settings.FadeDuration);
                 }
             }
-            
+
             var monoBridge = other.GetComponent<MonoBridge>();
             if (monoBridge)
             {
                 Entity entity = Game.EventSystem.Get(monoBridge.BelongToEntityId);
                 if (entity is Crop crop)
                 {
-                    self.GrassDoAnimation(crop,other.gameObject.transform).Coroutine();
+                    self.GrassDoAnimation(crop, other.gameObject.transform).Coroutine();
                 }
             }
         }
 
-        private static async ETTask GrassDoAnimation(this TriggerComponent self,Crop crop, Transform other)
+        private static async ETTask GrassDoAnimation(this TriggerComponent self, Crop crop, Transform other)
         {
             if (crop.CanHarvest(1004).Item1 && !crop.IsPlayingAnimation) //能被镰刀收割，说明是杂草
             {
                 var player = self.GetParent<Unit>().GetComponent<GameObjectComponent>().GameObject.transform;
 
                 crop.IsPlayingAnimation = true;
-                int dotV = player.position.x < other.position.x? 1 : -1;
+                int dotV = player.position.x < other.position.x ? 1 : -1;
 
                 other.DORotate(new Vector3(0, 0, 8 * dotV), 0.16f);
                 await TimerComponent.Instance.WaitAsync(160);
@@ -94,6 +116,14 @@ namespace ET
 
                 crop.IsPlayingAnimation = false;
             }
+        }
+
+        private static async ETTask WaitEndAndSetCameraBound(this TriggerComponent self)
+        {
+            await self.ZoneScene().GetComponent<ObjectWait>().Wait<WaitType.Wait_TeleportEnd>();
+            var cinemachineComponent = self.Parent.GetComponent<CinemachineComponent>();
+
+            cinemachineComponent.SetConfinerBounding(self.ZoneScene().CurrentScene().GetComponent<BoundComponent>().Bounds);
         }
     }
 }
