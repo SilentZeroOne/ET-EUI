@@ -1,1 +1,0 @@
-dotnet publish -r win-x64 --no-self-contained --no-dependencies -c Release -o D:\UnityProject\MyET\ETLearning\ET-EUI\Publish\Win
