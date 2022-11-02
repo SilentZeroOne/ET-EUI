@@ -17,9 +17,10 @@ namespace ET
 
             long instanceId = a.TargetUnit.InstanceId;
             
+            await TimerComponent.Instance.WaitAsync(200);
             a.TargetUnit.GetComponent<GameObjectComponent>().SpriteRenderer.color = Color.red;
 
-            await TimerComponent.Instance.WaitAsync(300);
+            await TimerComponent.Instance.WaitAsync(100);
 
             if (instanceId != a.TargetUnit.InstanceId)
             {
