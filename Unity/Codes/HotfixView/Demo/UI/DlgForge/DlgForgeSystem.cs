@@ -90,7 +90,7 @@ namespace ET
 			for (int i = 0; i < config.ConsumIds.Length; i++)
 			{
 				sb.Append(PlayerNumericConfigCategory.Instance.Get(config.ConsumIds[i]).Name);
-				if (i != config.ConsumIds.Length)
+				if (i != config.ConsumIds.Length - 1)
 				{
 					sb.Append(",");
 				}
@@ -110,7 +110,7 @@ namespace ET
 			for (int i = 0; i < config.ConsumCounts.Length; i++)
 			{
 				sb.Append(config.ConsumCounts[i]);
-				if (i != config.ConsumIds.Length)
+				if (i != config.ConsumIds.Length - 1)
 				{
 					sb.Append(",");
 				}
