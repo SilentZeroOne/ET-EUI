@@ -362,9 +362,11 @@ namespace ET
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
+// 帐号
 		[ProtoMember(1)]
 		public string Account { get; set; }
 
+// 密码
 		[ProtoMember(2)]
 		public string Password { get; set; }
 
@@ -490,6 +492,52 @@ namespace ET
 
 		[ProtoMember(92)]
 		public string Message { get; set; }
+
+	}
+
+	[ResponseType(nameof(A2C_LoginAccount))]
+	[Message(OuterOpcode.C2A_LoginAccount)]
+	[ProtoContract]
+	public partial class C2A_LoginAccount: Object, IActorRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public string AccountName { get; set; }
+
+		[ProtoMember(3)]
+		public string AccountPassword { get; set; }
+
+	}
+
+	[Message(OuterOpcode.A2C_LoginAccount)]
+	[ProtoContract]
+	public partial class A2C_LoginAccount: Object, IResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+		[ProtoMember(1)]
+		public long AccountId { get; set; }
+
+		[ProtoMember(2)]
+		public string Token { get; set; }
+
+	}
+
+	[Message(OuterOpcode.A2C_Disconnect)]
+	[ProtoContract]
+	public partial class A2C_Disconnect: Object, IMessage
+	{
+		[ProtoMember(1)]
+		public int Error { get; set; }
 
 	}
 
