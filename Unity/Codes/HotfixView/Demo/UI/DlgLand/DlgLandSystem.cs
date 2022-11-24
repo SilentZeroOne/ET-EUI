@@ -36,16 +36,20 @@ namespace ET
 				
 				if (errCode != ErrorCode.ERR_Success)
 				{
-					Log.Error(errCode.ToString());
+					self.IsLogining = false;
 					return;
 				}
 
 				self.DomainScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Land);
 				//TODO 展示下一个界面或者场景
+
+
+				self.IsLogining = false;
 			}
 			catch (Exception e)
 			{
 				Log.Error(e.ToString());
+				self.IsLogining = false;
 				throw;
 			}
 			

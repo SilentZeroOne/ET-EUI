@@ -31,6 +31,8 @@ namespace ET
             Game.Scene.AddComponent<ActorMessageDispatcherComponent>();
             // 数值订阅组件
             Game.Scene.AddComponent<NumericWatcherComponent>();
+
+            Game.Scene.AddComponent<DBManagerComponent>();
             
             Game.Scene.AddComponent<NetThreadComponent>();
             

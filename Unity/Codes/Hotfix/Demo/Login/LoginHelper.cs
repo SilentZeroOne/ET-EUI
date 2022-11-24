@@ -3,6 +3,7 @@ using System;
 
 namespace ET
 {
+    [FriendClassAttribute(typeof(ET.AccountInfoComponent))]
     public static class LoginHelper
     {
         public static async ETTask<int> Login(Scene zoneScene, string address, string account, string password)
@@ -24,7 +25,23 @@ namespace ET
                 return ErrorCode.ERR_NetworkError;
             }
 
+            if (a2CLoginAccount.Error != ErrorCode.ERR_Success)
+            {
+                accountSession?.Dispose();
+                Log.Error(a2CLoginAccount.Error.ToString());
+                return a2CLoginAccount.Error;
+            }
+
+            zoneScene.GetComponent<SessionComponent>().Session = accountSession;//保持连接
+            zoneScene.GetComponent<SessionComponent>().Session.AddComponent<PingComponent>();
+
+            var accountInfo = zoneScene.GetComponent<AccountInfoComponent>();
+            accountInfo.Token = a2CLoginAccount.Token;
+            accountInfo.AccountId = a2CLoginAccount.AccountId;
+
+            Log.Debug($"Login Account! {accountInfo.Token} {accountInfo.AccountId}");
+            
             return ErrorCode.ERR_Success;
-        } 
+        }
     }
 }

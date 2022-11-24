@@ -234,7 +234,7 @@ message M2C_TransferMap // IActorLocationResponse
 }
 
 //ResponseType A2C_LoginAccount
-message C2A_LoginAccount // IActorRequest
+message C2A_LoginAccount // IRequest
 {
 	int32 RpcId = 1;
 	string AccountName = 2;

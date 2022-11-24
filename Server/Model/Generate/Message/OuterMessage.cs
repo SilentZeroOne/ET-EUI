@@ -498,7 +498,7 @@ namespace ET
 	[ResponseType(nameof(A2C_LoginAccount))]
 	[Message(OuterOpcode.C2A_LoginAccount)]
 	[ProtoContract]
-	public partial class C2A_LoginAccount: Object, IActorRequest
+	public partial class C2A_LoginAccount: Object, IRequest
 	{
 		[ProtoMember(1)]
 		public int RpcId { get; set; }

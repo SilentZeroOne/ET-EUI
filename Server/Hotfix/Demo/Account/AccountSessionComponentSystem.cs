@@ -1,26 +1,26 @@
 ﻿namespace ET
 {
-    public class AccountSessionComponentAwakeSystem: AwakeSystem<AccountSessionComponent>
+    public class AccountSessionComponentAwakeSystem: AwakeSystem<AccountSessionsComponent>
     {
-        public override void Awake(AccountSessionComponent self)
+        public override void Awake(AccountSessionsComponent self)
         {
 
         }
     }
 
-    public class AccountSessionComponentDestroySystem: DestroySystem<AccountSessionComponent>
+    public class AccountSessionComponentDestroySystem: DestroySystem<AccountSessionsComponent>
     {
-        public override void Destroy(AccountSessionComponent self)
+        public override void Destroy(AccountSessionsComponent self)
         {
             self.AccountSessionDictionary.Clear();
         }
     }
     
 
-    [FriendClass(typeof (AccountSessionComponent))]
+    [FriendClass(typeof (AccountSessionsComponent))]
     public static class AccountSessionComponentSystem
     {
-        public static void Add(this AccountSessionComponent self,long accountId,long sessionInstanceId)
+        public static void Add(this AccountSessionsComponent self,long accountId,long sessionInstanceId)
         {
             if (self.AccountSessionDictionary.ContainsKey(accountId))
             {
@@ -32,13 +32,13 @@
             }
         }
 
-        public static long Get(this AccountSessionComponent self,long accountId)
+        public static long Get(this AccountSessionsComponent self,long accountId)
         {
             self.AccountSessionDictionary.TryGetValue(accountId, out var instanceId);
             return instanceId;
         }
         
-        public static void Remove(this AccountSessionComponent self,long accountId)
+        public static void Remove(this AccountSessionsComponent self,long accountId)
         {
             if (self.AccountSessionDictionary.ContainsKey(accountId))
             {

@@ -72,25 +72,33 @@ namespace ET
                             return;
                         }
 
-                        long sessionInstanceId = session.DomainScene().GetComponent<AccountSessionComponent>().Get(account.Id);
+                        long sessionInstanceId = session.DomainScene().GetComponent<AccountSessionsComponent>().Get(account.Id);
                         Session otherSession = Game.EventSystem.Get(sessionInstanceId) as Session;
                         otherSession?.Send(new A2C_Disconnect(){Error = ErrorCode.ERR_OtherAccountLogin});
                         otherSession?.Disconnect().Coroutine();
 
-                        session.DomainScene().GetComponent<AccountSessionComponent>().Add(account.Id, session.InstanceId);
-                        //TODO AccountCheckOutTimeComponent
+                        session.DomainScene().GetComponent<AccountSessionsComponent>().Add(account.Id, session.InstanceId);
+                        session.AddComponent<AccountCheckOutTimeComponent, long>(account.Id);
+
+                        string token = TimeHelper.ServerNow() + RandomHelper.RandomNumber(int.MinValue, int.MaxValue).ToString();
+                        var tokenComponent = session.DomainScene().GetComponent<TokenComponent>();
+                        tokenComponent.Remove(account.Id);
+                        tokenComponent.Add(account.Id, token);
+
+                        response.Token = token;
+                        response.AccountId = account.Id;
+                        reply();
+                        
+                        account?.Dispose();
                     }
                     else
                     {
                         response.Error = ErrorCode.ERR_NoSuchAccountError;
                         reply();
                         session.Disconnect().Coroutine();
-                        return;
                     }
                 }
             }
-            
-            reply();
         }
     }
 }
