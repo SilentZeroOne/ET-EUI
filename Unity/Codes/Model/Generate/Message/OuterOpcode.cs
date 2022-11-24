@@ -35,5 +35,9 @@ namespace ET
 		 public const ushort C2A_LoginAccount = 10032;
 		 public const ushort A2C_LoginAccount = 10033;
 		 public const ushort A2C_Disconnect = 10034;
+		 public const ushort C2A_RegisterAccount = 10035;
+		 public const ushort A2C_RegisterAccount = 10036;
+		 public const ushort C2A_GetRealm = 10037;
+		 public const ushort A2C_GetRealm = 10038;
 	}
 }

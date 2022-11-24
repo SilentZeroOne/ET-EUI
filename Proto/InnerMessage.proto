@@ -157,3 +157,18 @@ message G2M_SessionDisconnect // IActorLocationMessage
 	int32 RpcId = 90;
 }
 
+//ResponseType R2A_GetRealmKey
+message A2R_GetRealmKey // IActorRequest
+{
+	int32 RpcId = 1;
+	int64 AccountId = 2;
+}
+
+message R2A_GetRealmKey // IActorResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string RealmKey = 1;
+}
+

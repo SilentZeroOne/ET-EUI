@@ -255,3 +255,35 @@ message A2C_Disconnect // IMessage
 	int32 Error = 1;
 }
 
+//ResponseType A2C_RegisterAccount
+message C2A_RegisterAccount // IRequest
+{
+	int32 RpcId = 1;
+	string AccountName = 2;
+	string AccountPassword = 3;
+}
+
+message A2C_RegisterAccount // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+//ResponseType A2C_GetRealm
+message C2A_GetRealm // IRequest
+{
+	int32 RpcId = 1;
+	string Token = 2;
+	int64 AccountId = 3;
+}
+
+message A2C_GetRealm // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string RealmKey = 1;
+	string RealmAddress = 2;
+}
+

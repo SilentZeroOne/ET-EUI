@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +23,7 @@ namespace ET
 
 		public static async ETTask OnLoginBtnClick(this DlgLand self)
 		{
-			if (self.IsLogining || self.IsDisposed)
+			if (self.IsLogining || self.IsDisposed || self.IsRegistering)
 			{
 				return;
 			}
@@ -31,8 +32,10 @@ namespace ET
 
 			try
 			{
-				int errCode = await LoginHelper.Login(self.ZoneScene(), ConstValue.LoginAddress, self.View.E_AccountInputField.text,
-					self.View.E_PasswordInputField.text);
+				var accountName = self.View.E_AccountInputField.text.Trim();
+				var accountPassword = self.View.E_PasswordInputField.text;
+
+				int errCode = await LoginHelper.Login(self.ZoneScene(), ConstValue.LoginAddress, accountName, accountPassword);
 				
 				if (errCode != ErrorCode.ERR_Success)
 				{
@@ -40,6 +43,14 @@ namespace ET
 					return;
 				}
 
+				errCode = await LoginHelper.GetRealm(self.ZoneScene());
+				if (errCode != ErrorCode.ERR_Success)
+				{
+					self.IsLogining = false;
+					return;
+				}
+
+				
 				self.DomainScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Land);
 				//TODO 展示下一个界面或者场景
 
@@ -58,16 +69,55 @@ namespace ET
 		
 		public static async ETTask OnRegisterBtnClick(this DlgLand self)
 		{
-			if (self.IsRegistering || self.IsDisposed)
+			if (self.IsRegistering || self.IsDisposed || self.IsLogining)
 			{
 				return;
 			}
 
 			self.IsRegistering = true;
 			
-			await ETTask.CompletedTask;
+			var accountName = self.View.E_AccountInputField.text.Trim();
+			var accountPassword = self.View.E_PasswordInputField.text;
+			
+			if (string.IsNullOrEmpty(accountName) || string.IsNullOrEmpty(accountPassword))
+			{
+				Log.Error("Account name or password can't be empty");
+				return;
+			}
+
+			if (!Regex.IsMatch(accountName, @"^(?=.*[a-z].*)(?=.*[A-Z].*).{4,15}$"))
+			{
+				Log.Error("Account name must contains a-zA-z and more than 3 characters");
+				return;
+			}
+
+			if (!Regex.IsMatch(accountPassword, @"^[A-Za-z0-9]+$"))
+			{
+				Log.Error("Password must contains a-zA-z0-9");
+				return;
+			}
+			
+			try
+			{
+				int errCode = await LoginHelper.Register(self.ZoneScene(), ConstValue.LoginAddress, accountName, accountPassword);
+				
+				if (errCode != ErrorCode.ERR_Success)
+				{
+					self.IsRegistering = false;
+					return;
+				}
+				
+				self.IsRegistering = false;
+				
+				//注册结束直接进入登陆流程
+				self.OnLoginBtnClick().Coroutine();
+			}
+			catch (Exception e)
+			{
+				Log.Error(e.ToString());
+				self.IsRegistering = false;
+				throw;
+			}
 		}
-
-
 	}
 }
