@@ -50,6 +50,12 @@ namespace ET
 					return;
 				}
 
+				errCode = await LoginHelper.EnterGame(self.ZoneScene());
+				if (errCode != ErrorCode.ERR_Success)
+				{
+					self.IsLogining = false;
+					return;
+				}
 				
 				self.DomainScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Land);
 				//TODO 展示下一个界面或者场景

@@ -339,6 +339,7 @@ public class MessageClass
 
     [ToggleGroup("Enabled", CollapseOthersOnExpand = false)]
     [LabelText("消息类型")]
+    [OnValueChanged("OnMessageTypeChanged")]
     public ETMessageType MessageType;
 
     [ToggleGroup("Enabled", CollapseOthersOnExpand = false)]
@@ -367,6 +368,48 @@ public class MessageClass
             return (MessageType == ETMessageType.IRequest || MessageType == ETMessageType.IActorRequest ||
                 MessageType == ETMessageType.IActorLocationRequest || MessageType == ETMessageType.IActorRankInfoRequest ||
                 MessageType == ETMessageType.IActorChatInfoRequest);
+        }
+    }
+
+    private void OnMessageTypeChanged()
+    {
+        if (MessageType == ETMessageType.IResponse || MessageType == ETMessageType.IActorResponse ||
+                MessageType == ETMessageType.IActorLocationResponse || MessageType == ETMessageType.IActorRankInfoResponse ||
+                MessageType == ETMessageType.IActorChatInfoResponse)
+        {
+            var rpcId = new MessageParamConfig();
+            rpcId.ParamName = "RpcId";
+            rpcId.ParamType = Proto3Type.Int32;
+            rpcId.MemberID = "90";
+
+            var error = new MessageParamConfig();
+            error.ParamName = "Error";
+            error.ParamType = Proto3Type.Int32;
+            error.MemberID = "91";
+            
+            var message = new MessageParamConfig();
+            message.ParamName = "Message";
+            message.ParamType = Proto3Type.String;
+            message.MemberID = "92";
+            
+            MessageParamConfigs.Add(rpcId);
+            MessageParamConfigs.Add(error);
+            MessageParamConfigs.Add(message);
+        }
+        else if (MessageType == ETMessageType.IRequest || MessageType == ETMessageType.IActorRequest ||
+                 MessageType == ETMessageType.IActorLocationRequest || MessageType == ETMessageType.IActorRankInfoRequest ||
+                 MessageType == ETMessageType.IActorChatInfoRequest)
+        {
+            var rpcId = new MessageParamConfig();
+            rpcId.ParamName = "RpcId";
+            rpcId.ParamType = Proto3Type.Int32;
+            rpcId.MemberID = "1";
+            
+            MessageParamConfigs.Add(rpcId);
+        }
+        else
+        {
+            MessageParamConfigs.Clear();
         }
     }
 }

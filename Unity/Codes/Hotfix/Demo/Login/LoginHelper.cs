@@ -177,6 +177,7 @@ namespace ET
                 return g2CLoginGameGate.Error;
             }
             
+            Log.Debug("登陆Gate成功！");
             
             
             return ErrorCode.ERR_Success;

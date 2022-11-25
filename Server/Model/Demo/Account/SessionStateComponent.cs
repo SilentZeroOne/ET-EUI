@@ -6,7 +6,7 @@
         Game
     }
     
-    [ComponentOf(typeof(Scene))]
+    [ComponentOf(typeof(Session))]
     public class SessionStateComponent: Entity, IAwake, IDestroy
     {
         public SessionState State { get; set; }
