@@ -178,7 +178,29 @@ namespace ET
             }
             
             Log.Debug("登陆Gate成功！");
+
+            G2C_EnterGame g2CEnterGame = null;
+            try
+            {
+                g2CEnterGame = (G2C_EnterGame)await gateSession.Call(new C2G_EnterGame());
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                gateSession?.Dispose();
+                return ErrorCode.ERR_NetworkError;
+            }
+                    
+            if (g2CEnterGame.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(g2CEnterGame.Error.ToString());
+                gateSession?.Dispose();
+                return g2CEnterGame.Error;
+            }
+
+            zoneScene.GetComponent<PlayerComponent>().MyId = g2CEnterGame.UnitId;
             
+            await zoneScene.GetComponent<ObjectWait>().Wait<WaitType.Wait_SceneChangeFinish>();
             
             return ErrorCode.ERR_Success;
         }
