@@ -25,5 +25,7 @@ namespace ET
 		 public const ushort G2M_SessionDisconnect = 20022;
 		 public const ushort A2R_GetRealmKey = 20023;
 		 public const ushort R2A_GetRealmKey = 20024;
+		 public const ushort G2M_RequestExitGame = 20025;
+		 public const ushort M2G_RequestExitGame = 20026;
 	}
 }

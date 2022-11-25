@@ -17,11 +17,10 @@ namespace ET
                 return;
             }
 
-            if (session.GetComponent<SessionLockComponent>() != null)
+            if (session.GetComponent<SessionLockingComponent>() != null)
             {
                 response.Error = ErrorCode.ERR_RepeatedRequestError;
                 reply();
-                session.Disconnect().Coroutine();
                 return;
             }
 
@@ -43,7 +42,7 @@ namespace ET
                 return;
             }
 
-            using (session.AddComponent<SessionLockComponent>())
+            using (session.AddComponent<SessionLockingComponent>())
             {
                 using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.LoginAccount, request.AccountName.Trim().GetHashCode()))
                 {

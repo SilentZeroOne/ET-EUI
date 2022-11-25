@@ -16,11 +16,10 @@ namespace ET
                 return;
             }
 
-            if (session.GetComponent<SessionLockComponent>() != null)
+            if (session.GetComponent<SessionLockingComponent>() != null)
             {
                 response.Error = ErrorCode.ERR_RepeatedRequestError;
                 reply();
-                session.Disconnect().Coroutine();
                 return;
             }
 
@@ -42,7 +41,7 @@ namespace ET
                 return;
             }
 
-            using (session.AddComponent<SessionLockComponent>())
+            using (session.AddComponent<SessionLockingComponent>())
             {
                 using (await CoroutineLockComponent.Instance.Wait(CoroutineLockType.LoginAccount, request.AccountName.Trim().GetHashCode()))
                 {
@@ -72,6 +71,8 @@ namespace ET
                             return;
                         }
 
+                        //TODO 确认Gate上有没有已经存在的Player playerofflinetimeoutComponent相关
+                        
                         long sessionInstanceId = session.DomainScene().GetComponent<AccountSessionsComponent>().Get(account.Id);
                         Session otherSession = Game.EventSystem.Get(sessionInstanceId) as Session;
                         otherSession?.Send(new A2C_Disconnect(){Error = ErrorCode.ERR_OtherAccountLogin});

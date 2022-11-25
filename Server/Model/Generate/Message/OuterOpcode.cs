@@ -39,5 +39,11 @@ namespace ET
 		 public const ushort A2C_RegisterAccount = 10036;
 		 public const ushort C2A_GetRealm = 10037;
 		 public const ushort A2C_GetRealm = 10038;
+		 public const ushort C2R_LoginRealm = 10039;
+		 public const ushort R2C_LoginRealm = 10040;
+		 public const ushort R2G_GetLoginGateKey = 10041;
+		 public const ushort G2R_GetLoginGateKey = 10042;
+		 public const ushort C2G_LoginGameGate = 10043;
+		 public const ushort G2C_LoginGameGate = 10044;
 	}
 }

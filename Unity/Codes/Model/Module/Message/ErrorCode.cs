@@ -37,5 +37,6 @@ namespace ET
         public const int ERR_NoSuchAccountError = 200022;
         public const int ERR_AccountOverTimeError = 200023;
         public const int ERR_AccountAlreadyRegisteredError = 200024;
+        public const int ERR_PlayerSessionError = 200025;
     }
 }

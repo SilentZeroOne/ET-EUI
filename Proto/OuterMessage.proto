@@ -287,3 +287,51 @@ message A2C_GetRealm // IResponse
 	string RealmAddress = 2;
 }
 
+//ResponseType R2C_LoginRealm
+message C2R_LoginRealm // IRequest
+{
+	int32 RpcId = 1;
+	int64 AccountId = 2;
+	string Token = 3;
+}
+
+message R2C_LoginRealm // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string GateSessionKey = 1;
+	string GateAddress = 2;
+}
+
+//ResponseType G2R_GetLoginGateKey
+message R2G_GetLoginGateKey // IActorRequest
+{
+	int32 RpcId = 1;
+	int64 AccountId = 2;
+}
+
+message G2R_GetLoginGateKey // IActorResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	string GateSessionKey = 1;
+}
+
+//ResponseType G2C_LoginGameGate
+message C2G_LoginGameGate // IRequest
+{
+	int32 RpcId = 1;
+	int64 AccountId = 2;
+	string GateSessionKey = 3;
+}
+
+message G2C_LoginGameGate // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	int64 PlayerId = 1;
+}
+

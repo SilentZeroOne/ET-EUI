@@ -121,5 +121,65 @@ namespace ET
                 return ErrorCode.ERR_NetworkError;
             }
         }
+
+        public static async ETTask<int> EnterGame(Scene zoneScene)
+        {
+            R2C_LoginRealm r2CLoginRealm = null;
+            Session realmSession = null;
+            var accountInfo = zoneScene.GetComponent<AccountInfoComponent>();
+            try
+            {
+                //先登录realm获取Gate信息
+                realmSession = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(accountInfo.RealmAddress));
+                r2CLoginRealm = (R2C_LoginRealm)await realmSession.Call(new C2R_LoginRealm()
+                                {
+                                    AccountId = accountInfo.AccountId, 
+                                    Token = accountInfo.RealmKey
+                                });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                realmSession?.Dispose();
+                return ErrorCode.ERR_NetworkError;
+            }
+            realmSession?.Dispose();
+            
+            if (r2CLoginRealm.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(r2CLoginRealm.Error.ToString());
+                return r2CLoginRealm.Error;
+            }
+            
+            Log.Debug($"Gate address {r2CLoginRealm.GateAddress}");
+            
+            //连接Gate
+            G2C_LoginGameGate g2CLoginGameGate = null;
+            Session gateSession = zoneScene.GetComponent<NetKcpComponent>().Create(NetworkHelper.ToIPEndPoint(r2CLoginRealm.GateAddress));
+            try
+            {
+                g2CLoginGameGate = (G2C_LoginGameGate)await gateSession.Call(new C2G_LoginGameGate()
+                {
+                    AccountId = accountInfo.AccountId, GateSessionKey = r2CLoginRealm.GateSessionKey
+                });
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                gateSession?.Dispose();
+                return ErrorCode.ERR_NetworkError;
+            }
+            
+            if (g2CLoginGameGate.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(g2CLoginGameGate.Error.ToString());
+                gateSession?.Dispose();
+                return g2CLoginGameGate.Error;
+            }
+            
+            
+            
+            return ErrorCode.ERR_Success;
+        }
     }
 }

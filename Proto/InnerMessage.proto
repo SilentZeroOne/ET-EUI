@@ -172,3 +172,16 @@ message R2A_GetRealmKey // IActorResponse
 	string RealmKey = 1;
 }
 
+//ResponseType M2G_RequestExitGame
+message G2M_RequestExitGame // IActorLocationRequest
+{
+	int32 RpcId = 1;
+}
+
+message M2G_RequestExitGame // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+

@@ -356,4 +356,29 @@ namespace ET
 
 	}
 
+	[ResponseType(nameof(M2G_RequestExitGame))]
+	[Message(InnerOpcode.G2M_RequestExitGame)]
+	[ProtoContract]
+	public partial class G2M_RequestExitGame: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+	}
+
+	[Message(InnerOpcode.M2G_RequestExitGame)]
+	[ProtoContract]
+	public partial class M2G_RequestExitGame: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
 }

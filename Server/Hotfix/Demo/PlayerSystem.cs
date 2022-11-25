@@ -4,11 +4,11 @@
     public static class PlayerSystem
     {
         [ObjectSystem]
-        public class PlayerAwakeSystem : AwakeSystem<Player, string>
+        public class PlayerAwakeSystem : AwakeSystem<Player, long>
         {
-            public override void Awake(Player self, string a)
+            public override void Awake(Player self, long accountId)
             {
-                self.Account = a;
+                self.AccountId = accountId;
             }
         }
     }
