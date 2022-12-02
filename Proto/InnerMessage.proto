@@ -185,3 +185,47 @@ message M2G_RequestExitGame // IActorLocationResponse
 	string Message = 92;
 }
 
+//ResponseType UnitCache2Other_AddOrUpdateUnit
+message Other2UnitCache_AddOrUpdateUnit // IActorRequest
+{
+	int32 RpcId = 1;
+	int64 UnitId = 2;
+	repeated string EntityTypes = 3;
+	repeated bytes EntityBytes = 4;
+}
+
+/// <summary>
+/// 增加或者更新Unit缓存
+/// </summary>
+message UnitCache2Other_AddOrUpdateUnit // IActorResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+/// <summary>
+/// 获取Unit缓存
+/// </summary>
+//ResponseType UnitCache2Other_GetUnit
+message Other2UnitCache_GetUnit // IActorRequest
+{
+	int32 RpcId = 1;
+	int64 UnitId = 2;
+	repeated string ComponentNameList = 3;
+}
+
+//ResponseType UnitCache2Other_DeleteUnit
+message Other2UnitCache_DeleteUnit // IActorRequest
+{
+	int32 RpcId = 1;
+	int64 UnitId = 2;
+}
+
+message UnitCache2Other_DeleteUnit // IActorResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+

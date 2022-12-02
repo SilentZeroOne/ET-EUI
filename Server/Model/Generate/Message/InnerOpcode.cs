@@ -27,5 +27,10 @@ namespace ET
 		 public const ushort R2A_GetRealmKey = 20024;
 		 public const ushort G2M_RequestExitGame = 20025;
 		 public const ushort M2G_RequestExitGame = 20026;
+		 public const ushort Other2UnitCache_AddOrUpdateUnit = 20027;
+		 public const ushort UnitCache2Other_AddOrUpdateUnit = 20028;
+		 public const ushort Other2UnitCache_GetUnit = 20029;
+		 public const ushort Other2UnitCache_DeleteUnit = 20030;
+		 public const ushort UnitCache2Other_DeleteUnit = 20031;
 	}
 }

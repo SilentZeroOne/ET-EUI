@@ -42,6 +42,9 @@ namespace ET
                     scene.AddComponent<AccountSessionsComponent>();
                     scene.AddComponent<TokenComponent>();
                     break;
+                case SceneType.UnitCache:
+                    scene.AddComponent<UnitCacheComponent>();
+                    break;
             }
 
             return scene;

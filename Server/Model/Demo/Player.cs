@@ -4,7 +4,8 @@
 	{
 		Disconnect,
 		Gate,
-		Game
+		Game,
+		Lobby
 	}
 
 	public sealed class Player : Entity, IAwake<long>
