@@ -1,0 +1,5 @@
+{"list":[
+{"_t":"PlayerNumericConfig","_id":3001,"Name":"欢乐豆","isNeedShow":1,"isPrecent":0},
+{"_t":"PlayerNumericConfig","_id":3002,"Name":"钻石","isNeedShow":1,"isPrecent":0},
+{"_t":"PlayerNumericConfig","_id":3003,"Name":"背包容量","isNeedShow":0,"isPrecent":0},
+]}

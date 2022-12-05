@@ -65,6 +65,27 @@ namespace ET
 
                 try
                 {
+                    //从数据库或者缓存中加载出Unit实体及其相关组件
+                    (bool isNewPlayer, Unit unit) = await UnitHelper.LoadUnit(player);
+                    
+                    unit.AddComponent<UnitGateComponent, long>(player.InstanceId);
+
+                    response.UnitId = unit.Id;
+                    reply();
+                    
+                    //传送unit从gate到lobby map
+                    StartSceneConfig config = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Lobby");
+
+                    await TransferHelper.Transfer(unit, config.InstanceId, config.Name);
+                    
+                    SessionStateComponent SessionStateComponent = session.GetComponent<SessionStateComponent>();
+                    if (SessionStateComponent == null)
+                    {
+                        SessionStateComponent = session.AddComponent<SessionStateComponent>();
+                    }
+                    SessionStateComponent.State = SessionState.Game;
+
+                    player.PlayerState = PlayerState.Lobby;
                     
                 }
                 catch (Exception e)
@@ -75,11 +96,7 @@ namespace ET
                     await DisconnectHelper.KickPlayer(player, true);
                     session.Disconnect().Coroutine();
                 }
-                
             }
-
-
-            await ETTask.CompletedTask;
         }
     }
 }

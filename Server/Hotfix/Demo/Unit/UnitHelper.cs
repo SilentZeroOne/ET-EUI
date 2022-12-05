@@ -6,6 +6,7 @@ namespace ET
     [FriendClass(typeof(Unit))]
     [FriendClass(typeof(MoveComponent))]
     [FriendClass(typeof(NumericComponent))]
+    [FriendClassAttribute(typeof(ET.GateMapComponent))]
     public static class UnitHelper
     {
         public static UnitInfo CreateUnitInfo(Unit unit)
@@ -24,21 +25,21 @@ namespace ET
             unitInfo.ForwardY = forward.y;
             unitInfo.ForwardZ = forward.z;
 
-            MoveComponent moveComponent = unit.GetComponent<MoveComponent>();
-            if (moveComponent != null)
-            {
-                if (!moveComponent.IsArrived())
-                {
-                    unitInfo.MoveInfo = new MoveInfo();
-                    for (int i = moveComponent.N; i < moveComponent.Targets.Count; ++i)
-                    {
-                        Vector3 pos = moveComponent.Targets[i];
-                        unitInfo.MoveInfo.X.Add(pos.x);
-                        unitInfo.MoveInfo.Y.Add(pos.y);
-                        unitInfo.MoveInfo.Z.Add(pos.z);
-                    }
-                }
-            }
+            // MoveComponent moveComponent = unit.GetComponent<MoveComponent>();
+            // if (moveComponent != null)
+            // {
+            //     if (!moveComponent.IsArrived())
+            //     {
+            //         unitInfo.MoveInfo = new MoveInfo();
+            //         for (int i = moveComponent.N; i < moveComponent.Targets.Count; ++i)
+            //         {
+            //             Vector3 pos = moveComponent.Targets[i];
+            //             unitInfo.MoveInfo.X.Add(pos.x);
+            //             unitInfo.MoveInfo.Y.Add(pos.y);
+            //             unitInfo.MoveInfo.Z.Add(pos.z);
+            //         }
+            //     }
+            // }
 
             foreach ((int key, long value) in nc.NumericDic)
             {
@@ -48,25 +49,44 @@ namespace ET
 
             return unitInfo;
         }
-        
+
         // 获取看见unit的玩家，主要用于广播
         public static Dictionary<long, AOIEntity> GetBeSeePlayers(this Unit self)
         {
             return self.GetComponent<AOIEntity>().GetBeSeePlayers();
         }
-        
+
         public static void NoticeUnitAdd(Unit unit, Unit sendUnit)
         {
             M2C_CreateUnits createUnits = new M2C_CreateUnits();
             createUnits.Units.Add(CreateUnitInfo(sendUnit));
             MessageHelper.SendToClient(unit, createUnits);
         }
-        
+
         public static void NoticeUnitRemove(Unit unit, Unit sendUnit)
         {
             M2C_RemoveUnits removeUnits = new M2C_RemoveUnits();
             removeUnits.Units.Add(sendUnit.Id);
             MessageHelper.SendToClient(unit, removeUnits);
+        }
+
+        public static async ETTask<(bool, Unit)> LoadUnit(Player player)
+        {
+            GateMapComponent gateMapComponent = player.AddComponent<GateMapComponent>();
+            gateMapComponent.Scene = await SceneFactory.Create(gateMapComponent, "GateMap", SceneType.Map);
+
+            Unit unit = await UnitCacheHelper.GetUnitCache(gateMapComponent.Scene, player.AccountId);
+
+            var isNewPlayer = unit == null;
+            if (isNewPlayer)
+            {
+                unit = UnitFactory.Create(gateMapComponent.Scene, player.AccountId, UnitType.Player);
+
+
+                await UnitCacheHelper.AddOrUpdateAllUnitCache(unit);
+            }
+
+            return (isNewPlayer, unit);
         }
     }
 }
