@@ -32,7 +32,7 @@ namespace ET
     {
         public override void Awake(UnitDBSaveComponent self)
         {
-            self.Timer = TimerComponent.Instance.NewRepeatedTimer(10000, TimerType.SaveChangeDB, this);
+            self.Timer = TimerComponent.Instance.NewRepeatedTimer(10000, TimerType.SaveChangeDB, self);
         }
     }
 

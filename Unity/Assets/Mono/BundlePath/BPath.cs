@@ -28,9 +28,12 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgLobby__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgLobby.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgLogin__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgLogin.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgRedDot__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgRedDot.prefab";
+		public const string Assets_Bundles_ResBundles_UI_Item_HandCard__prefab = "Assets/Bundles/ResBundles/UI/Item/HandCard.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Item_Item_serverTest__prefab = "Assets/Bundles/ResBundles/UI/Item/Item_serverTest.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Item_Item_test__prefab = "Assets/Bundles/ResBundles/UI/Item/Item_test.prefab";
+		public const string Assets_Bundles_ResBundles_UI_Item_PlayCard__prefab = "Assets/Bundles/ResBundles/UI/Item/PlayCard.prefab";
 		public const string Assets_Bundles_ResBundles_Unit_Unit__prefab = "Assets/Bundles/ResBundles/Unit/Unit.prefab";
+		public const string Assets_Scenes_Lobby__unity = "Assets/Scenes/Lobby.unity";
 		public const string Assets_Bundles_Config_AIConfigCategory__bytes = "Assets/Bundles/Config/AIConfigCategory.bytes";
 		public const string Assets_Bundles_Config_PlayerNumericConfigCategory__bytes = "Assets/Bundles/Config/PlayerNumericConfigCategory.bytes";
 		public const string Assets_Bundles_Config_StartMachineConfigCategory__bytes = "Assets/Bundles/Config/StartMachineConfigCategory.bytes";

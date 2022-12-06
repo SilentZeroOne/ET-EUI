@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OuterMessage
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -971,12 +971,12 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-    - ParamName: IsNewUser
-      ParamType: 0
+    - ParamName: RoleInfo
+      ParamType: 5
       MemberID: 3
       Custom: 0
       CustomMessageClassName: 
-      MessageClassName: 
+      MessageClassName: RoleInfoProto
       Comment: 
   - Enabled: 1
     MessageType: 1
@@ -1262,6 +1262,13 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
+    - ParamName: RoleInfoId
+      ParamType: 1
+      MemberID: 4
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
   - Enabled: 1
     MessageType: 3
     ClassName: G2C_LoginGameGate
@@ -1448,6 +1455,13 @@ MonoBehaviour:
     - ParamName: CreateTime
       ParamType: 1
       MemberID: 5
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Id
+      ParamType: 1
+      MemberID: 6
       Custom: 0
       CustomMessageClassName: 
       MessageClassName: 
