@@ -74,9 +74,9 @@ namespace ET
                     reply();
                     
                     //传送unit从gate到lobby map
-                    //StartSceneConfig config = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Lobby");
+                    StartSceneConfig config = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Lobby");
 
-                    //await TransferHelper.Transfer(unit, config.InstanceId, config.Name);
+                    await TransferHelper.Transfer(unit, config.InstanceId, config.Name);
                     
                     SessionStateComponent SessionStateComponent = session.GetComponent<SessionStateComponent>();
                     if (SessionStateComponent == null)
