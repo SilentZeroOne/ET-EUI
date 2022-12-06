@@ -50,7 +50,12 @@ namespace ET
             accountInfo.Token = a2CLoginAccount.Token;
             accountInfo.AccountId = a2CLoginAccount.AccountId;
 
-            Log.Debug($"Login Account! {accountInfo.Token} {accountInfo.AccountId}");
+            if (a2CLoginAccount.RoleInfo != null)
+            {
+                var infoComponent = zoneScene.GetComponent<RoleInfoComponent>();
+                infoComponent.RoleInfo = infoComponent.AddChild<RoleInfo>();
+                infoComponent.RoleInfo.FromMessage(a2CLoginAccount.RoleInfo);
+            }
             
             return ErrorCode.ERR_Success;
         }
@@ -89,6 +94,33 @@ namespace ET
             return ErrorCode.ERR_Success;
         }
 
+        public static async ETTask<int> CreateRole(Scene zoneScene, string nickName)
+        {
+            A2C_CreateRole a2CCreateRole = null;
+            Session accountSession = zoneScene.GetComponent<SessionComponent>().Session;
+            try
+            {
+                var accountInfo = zoneScene.GetComponent<AccountInfoComponent>();
+                a2CCreateRole =
+                        (A2C_CreateRole)await accountSession.Call(new C2A_CreateRole()
+                        {
+                            AccountId = accountInfo.AccountId, NickName = nickName, Token = accountInfo.Token
+                        });
+
+                var infoComponent = zoneScene.GetComponent<RoleInfoComponent>();
+                var roleInfo = infoComponent.AddChild<RoleInfo>();
+                roleInfo.FromMessage(a2CCreateRole.RoleInfo);
+                infoComponent.RoleInfo = roleInfo;
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                return ErrorCode.ERR_NetworkError;
+            }
+
+            return ErrorCode.ERR_Success;
+        }
+        
         public static async ETTask<int> GetRealm(Scene zoneScene)
         {
             A2C_GetRealm a2CGetRealm = null;
@@ -127,6 +159,7 @@ namespace ET
             R2C_LoginRealm r2CLoginRealm = null;
             Session realmSession = null;
             var accountInfo = zoneScene.GetComponent<AccountInfoComponent>();
+            var roleInfo = zoneScene.GetComponent<RoleInfoComponent>();
             try
             {
                 //先登录realm获取Gate信息
@@ -160,7 +193,8 @@ namespace ET
             {
                 g2CLoginGameGate = (G2C_LoginGameGate)await gateSession.Call(new C2G_LoginGameGate()
                 {
-                    AccountId = accountInfo.AccountId, GateSessionKey = r2CLoginRealm.GateSessionKey
+                    AccountId = accountInfo.AccountId, GateSessionKey = r2CLoginRealm.GateSessionKey,
+                    RoleInfoId = roleInfo.RoleInfo.Id
                 });
             }
             catch (Exception e)

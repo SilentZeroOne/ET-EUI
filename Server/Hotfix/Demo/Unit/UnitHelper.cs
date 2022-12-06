@@ -75,13 +75,15 @@ namespace ET
             GateMapComponent gateMapComponent = player.AddComponent<GateMapComponent>();
             gateMapComponent.Scene = await SceneFactory.Create(gateMapComponent, "GateMap", SceneType.Map);
 
-            Unit unit = await UnitCacheHelper.GetUnitCache(gateMapComponent.Scene, player.AccountId);
+            Unit unit = await UnitCacheHelper.GetUnitCache(gateMapComponent.Scene, player.Id);
 
             var isNewPlayer = unit == null;
             if (isNewPlayer)
             {
-                unit = UnitFactory.Create(gateMapComponent.Scene, player.AccountId, UnitType.Player);
-
+                unit = UnitFactory.Create(gateMapComponent.Scene, player.Id, UnitType.Player);
+                
+                var roleInfos = await DBManagerComponent.Instance.GetZoneDB(player.DomainZone()).Query<RoleInfo>(d => d.Id == player.Id);
+                unit.AddComponent(roleInfos[0]);
 
                 await UnitCacheHelper.AddOrUpdateAllUnitCache(unit);
             }

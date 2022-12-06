@@ -59,7 +59,7 @@ namespace ET
                 Player player = gateScene.GetComponent<PlayerComponent>().Get(request.AccountId);
                 if (player == null)
                 {
-                    player = gateScene.GetComponent<PlayerComponent>().AddChildWithId<Player, long>(request.AccountId, request.AccountId);
+                    player = gateScene.GetComponent<PlayerComponent>().AddChildWithId<Player, long>(request.RoleInfoId, request.AccountId);
                     player.PlayerState = PlayerState.Gate;
                     gateScene.GetComponent<PlayerComponent>().Add(player);
                     session.AddComponent<MailBoxComponent, MailboxType>(MailboxType.GateSession);

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MongoMessage
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -83,5 +83,46 @@ MonoBehaviour:
       Custom: 0
       CustomMessageClassName: Entity
       MessageClassName: Entity
+      Comment: 
+  - Enabled: 1
+    MessageType: 6
+    ClassName: UnitCache2Other_GetUnit
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: RpcId
+      ParamType: 0
+      MemberID: 90
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Error
+      ParamType: 0
+      MemberID: 91
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: Message
+      ParamType: 3
+      MemberID: 92
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: EntityList
+      ParamType: 11
+      MemberID: 1
+      Custom: 1
+      CustomMessageClassName: Entity
+      MessageClassName: 
+      Comment: 
+    - ParamName: ComponentNameList
+      ParamType: 9
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
       Comment: 
   ImportMessagesGroup: 1

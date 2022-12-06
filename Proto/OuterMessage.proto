@@ -248,6 +248,7 @@ message A2C_LoginAccount // IResponse
 	string Message = 92;
 	int64 AccountId = 1;
 	string Token = 2;
+	RoleInfoProto RoleInfo = 3;
 }
 
 message A2C_Disconnect // IMessage
@@ -325,6 +326,7 @@ message C2G_LoginGameGate // IRequest
 	int32 RpcId = 1;
 	int64 AccountId = 2;
 	string GateSessionKey = 3;
+	int64 RoleInfoId = 4;
 }
 
 message G2C_LoginGameGate // IResponse
@@ -347,5 +349,32 @@ message G2C_EnterGame // IResponse
 	int32 Error = 91;
 	string Message = 92;
 	int64 UnitId = 1;
+}
+
+//ResponseType A2C_CreateRole
+message C2A_CreateRole // IRequest
+{
+	int32 RpcId = 1;
+	int64 AccountId = 2;
+	string NickName = 3;
+	string Token = 4;
+}
+
+message A2C_CreateRole // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	RoleInfoProto RoleInfo = 1;
+}
+
+message RoleInfoProto
+{
+	string NickName = 1;
+	int32 State = 2;
+	int64 AccountId = 3;
+	int64 LastLoginTime = 4;
+	int64 CreateTime = 5;
+	int64 Id = 6;
 }
 

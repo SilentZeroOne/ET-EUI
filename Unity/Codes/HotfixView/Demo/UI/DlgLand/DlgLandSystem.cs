@@ -19,6 +19,8 @@ namespace ET
 
 		public static void ShowWindow(this DlgLand self, Entity contextData = null)
 		{
+			self.View.E_AccountInputField.text = PlayerPrefs.GetString("AccountName");
+			self.View.E_PasswordInputField.text = PlayerPrefs.GetString("AccountPassword");
 		}
 
 		public static async ETTask OnLoginBtnClick(this DlgLand self)
@@ -43,23 +45,14 @@ namespace ET
 					return;
 				}
 
-				errCode = await LoginHelper.GetRealm(self.ZoneScene());
-				if (errCode != ErrorCode.ERR_Success)
-				{
-					self.IsLogining = false;
-					return;
-				}
+				PlayerPrefs.SetString("AccountName", accountName);
+				PlayerPrefs.SetString("AccountPassword", accountPassword);
 
-				errCode = await LoginHelper.EnterGame(self.ZoneScene());
-				if (errCode != ErrorCode.ERR_Success)
-				{
-					self.IsLogining = false;
-					return;
-				}
-				
 				self.DomainScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_Land);
-				//TODO 展示下一个界面或者场景
-
+				
+				var infoComponent = self.ZoneScene().GetComponent<RoleInfoComponent>();
+				self.DomainScene().GetComponent<UIComponent>()
+						.ShowWindow(infoComponent.RoleInfo == null? WindowID.WindowID_LandCreateRole : WindowID.WindowID_LandLobby);
 
 				self.IsLogining = false;
 			}

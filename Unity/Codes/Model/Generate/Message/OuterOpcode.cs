@@ -47,5 +47,8 @@ namespace ET
 		 public const ushort G2C_LoginGameGate = 10044;
 		 public const ushort C2G_EnterGame = 10045;
 		 public const ushort G2C_EnterGame = 10046;
+		 public const ushort C2A_CreateRole = 10047;
+		 public const ushort A2C_CreateRole = 10048;
+		 public const ushort RoleInfoProto = 10049;
 	}
 }

@@ -5,7 +5,7 @@
         // 场景切换协程
         public static async ETTask SceneChangeTo(Scene zoneScene, string sceneName, long sceneInstanceId)
         {
-            zoneScene.RemoveComponent<AIComponent>();
+            //zoneScene.RemoveComponent<AIComponent>();
             
             CurrentScenesComponent currentScenesComponent = zoneScene.GetComponent<CurrentScenesComponent>();
             currentScenesComponent.Scene?.Dispose(); // 删除之前的CurrentScene，创建新的
@@ -21,7 +21,7 @@
             Unit unit = UnitFactory.Create(currentScene, m2CCreateMyUnit.Unit);
             unitComponent.Add(unit);
             
-            zoneScene.RemoveComponent<AIComponent>();
+            //zoneScene.RemoveComponent<AIComponent>();
             
             Game.EventSystem.PublishAsync(new EventType.SceneChangeFinish() {ZoneScene = zoneScene, CurrentScene = currentScene}).Coroutine();
 

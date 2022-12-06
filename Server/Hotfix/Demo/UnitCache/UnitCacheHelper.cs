@@ -36,8 +36,7 @@
                 return null;
             }
 
-            UnitComponent unitComponent = scene.GetComponent<UnitComponent>();
-            unitComponent.Add(unit);
+            scene.GetComponent<UnitComponent>().AddChild(unit);
             foreach (var entity in queryUnit.EntityList)
             {
                 if (entity == null || entity is Unit)

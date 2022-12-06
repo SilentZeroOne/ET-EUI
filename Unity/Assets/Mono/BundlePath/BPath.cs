@@ -9,6 +9,7 @@ namespace BM
 		public const string Assets_Bundles_Code_System__Core__dll__bytes = "Assets/Bundles/Code/System.Core.dll.bytes";
 		public const string Assets_Bundles_Code_System__dll__bytes = "Assets/Bundles/Code/System.dll.bytes";
 		public const string Assets_Bundles_Code_Unity__Mono__dll__bytes = "Assets/Bundles/Code/Unity.Mono.dll.bytes";
+		public const string Assets_Bundles_ResBundles_Atlas_Poker__png = "Assets/Bundles/ResBundles/Atlas/Poker.png";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_AllCommon__spriteatlas = "Assets/Bundles/ResBundles/Atlas/Common/AllCommon.spriteatlas";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_Axe__png = "Assets/Bundles/ResBundles/Atlas/Common/Axe.png";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_Gold__gif = "Assets/Bundles/ResBundles/Atlas/Common/Gold.gif";
@@ -22,6 +23,8 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_UI_Common_RedDot__prefab = "Assets/Bundles/ResBundles/UI/Common/RedDot.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgHelper__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgHelper.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgLand__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgLand.prefab";
+		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgLandCreateRole__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgLandCreateRole.prefab";
+		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgLandLobby__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgLandLobby.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgLobby__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgLobby.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgLogin__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgLogin.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgRedDot__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgRedDot.prefab";
@@ -29,6 +32,7 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_UI_Item_Item_test__prefab = "Assets/Bundles/ResBundles/UI/Item/Item_test.prefab";
 		public const string Assets_Bundles_ResBundles_Unit_Unit__prefab = "Assets/Bundles/ResBundles/Unit/Unit.prefab";
 		public const string Assets_Bundles_Config_AIConfigCategory__bytes = "Assets/Bundles/Config/AIConfigCategory.bytes";
+		public const string Assets_Bundles_Config_PlayerNumericConfigCategory__bytes = "Assets/Bundles/Config/PlayerNumericConfigCategory.bytes";
 		public const string Assets_Bundles_Config_StartMachineConfigCategory__bytes = "Assets/Bundles/Config/StartMachineConfigCategory.bytes";
 		public const string Assets_Bundles_Config_StartProcessConfigCategory__bytes = "Assets/Bundles/Config/StartProcessConfigCategory.bytes";
 		public const string Assets_Bundles_Config_StartSceneConfigCategory__bytes = "Assets/Bundles/Config/StartSceneConfigCategory.bytes";

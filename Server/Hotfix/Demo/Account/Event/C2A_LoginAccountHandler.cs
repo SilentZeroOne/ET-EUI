@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 namespace ET
 {
     [FriendClassAttribute(typeof(ET.Account))]
+    [FriendClassAttribute(typeof(ET.RoleInfo))]
     public class C2A_LoginAccountHandler : AMRpcHandler<C2A_LoginAccount, A2C_LoginAccount>
     {
         protected override async ETTask Run(Session session, C2A_LoginAccount request, A2C_LoginAccount response, Action reply)
@@ -52,8 +53,8 @@ namespace ET
                     {
                         account = accountList[0];
                         session.AddChild(account);
-                        
-                        if (account.AccountType == (int) AccountType.BlackList)
+
+                        if (account.AccountType == (int)AccountType.BlackList)
                         {
                             response.Error = ErrorCode.ERR_BlacklistError;
                             reply();
@@ -72,10 +73,10 @@ namespace ET
                         }
 
                         //TODO 确认Gate上有没有已经存在的Player playerofflinetimeoutComponent相关
-                        
+
                         long sessionInstanceId = session.DomainScene().GetComponent<AccountSessionsComponent>().Get(account.Id);
                         Session otherSession = Game.EventSystem.Get(sessionInstanceId) as Session;
-                        otherSession?.Send(new A2C_Disconnect(){Error = ErrorCode.ERR_OtherAccountLogin});
+                        otherSession?.Send(new A2C_Disconnect() { Error = ErrorCode.ERR_OtherAccountLogin });
                         otherSession?.Disconnect().Coroutine();
 
                         session.DomainScene().GetComponent<AccountSessionsComponent>().Add(account.Id, session.InstanceId);
@@ -88,8 +89,20 @@ namespace ET
 
                         response.Token = token;
                         response.AccountId = account.Id;
+
+                        var roleInfoList = await DBManagerComponent.Instance.GetZoneDB(session.DomainZone())
+                                .Query<RoleInfo>(r => r.AccountId == account.Id);
+
+                        RoleInfoProto roleInfo = null;
+                        if (roleInfoList != null && roleInfoList.Count > 0)
+                        {
+                            roleInfo = roleInfoList[0].ToMessage();
+                        }
+
+                        response.RoleInfo = roleInfo;
+
                         reply();
-                        
+
                         account?.Dispose();
                     }
                     else
