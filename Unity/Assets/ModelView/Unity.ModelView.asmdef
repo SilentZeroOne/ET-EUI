@@ -4,7 +4,10 @@
     "references": [
         "Unity.Model",
         "Unity.Mono",
-        "Unity.ThirdParty"
+        "Unity.ThirdParty",
+        "DOTween.Modules",
+        "Unity.TextMeshPro",
+        "DOTweenPro.Scripts"
     ],
     "includePlatforms": [
         "Editor"

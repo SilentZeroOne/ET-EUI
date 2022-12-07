@@ -27,6 +27,7 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgLandLobby__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgLandLobby.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgLobby__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgLobby.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgLogin__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgLogin.prefab";
+		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgMatch__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgMatch.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgRedDot__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgRedDot.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Item_HandCard__prefab = "Assets/Bundles/ResBundles/UI/Item/HandCard.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Item_Item_serverTest__prefab = "Assets/Bundles/ResBundles/UI/Item/Item_serverTest.prefab";

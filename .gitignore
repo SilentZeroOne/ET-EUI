@@ -94,3 +94,6 @@ Unity/Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj
 Unity/Sirenix.OdinInspector.Modules.UnityMathematics.csproj
 Unity/BuildBundles/
 *.dwlt
+Unity/DOTween.Modules.csproj
+Unity/DOTweenPro.Scripts.csproj
+Unity/DOTweenPro.EditorScripts.csproj
