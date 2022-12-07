@@ -378,3 +378,17 @@ message RoleInfoProto
 	int64 Id = 6;
 }
 
+//ResponseType M2C_StartMatch
+message C2M_StartMatch // IActorLocationRequest
+{
+	int32 RpcId = 1;
+	int64 RoleInfoId = 2;
+}
+
+message M2C_StartMatch // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+

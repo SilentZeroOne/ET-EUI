@@ -11,5 +11,6 @@
         WindowID_Land,  //斗地主登陆界面
         WindowID_LandCreateRole, //创建角色界面
         WindowID_LandLobby, //进入大厅
+        WindowID_Match,     //匹配界面
     }
 }

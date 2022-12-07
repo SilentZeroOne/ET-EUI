@@ -8,9 +8,9 @@
 		Lobby
 	}
 
-	public sealed class Player : Entity, IAwake<long>
+	public sealed class Player : Entity, IAwake<long>,IDestroy
 	{
-		//目前Player.id 和AccountId相同
+		//Player.id 和RoleInfoId相同
 		public long AccountId { get; set; }
 
 		public PlayerState PlayerState { get; set; }

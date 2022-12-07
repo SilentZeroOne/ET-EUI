@@ -67,6 +67,7 @@ namespace ET
                 else
                 {
                     //TODO playerofflinetimeoutComponent  断线延迟10秒再正式断开链接
+                    //登陆中心服相关
                 }
 
                 var sessionPlayer = session.AddComponent<SessionPlayerComponent>();

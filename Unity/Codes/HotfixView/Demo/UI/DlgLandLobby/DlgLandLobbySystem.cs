@@ -53,7 +53,7 @@ namespace ET
                 }
 
                 self.DomainScene().GetComponent<UIComponent>().HideWindow(WindowID.WindowID_LandLobby);
-                //TODO 显示下一个窗口
+                self.DomainScene().GetComponent<UIComponent>().ShowWindow(WindowID.WindowID_Match);
             }
             catch (Exception e)
             {

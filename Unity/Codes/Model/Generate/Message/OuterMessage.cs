@@ -806,4 +806,32 @@ namespace ET
 
 	}
 
+	[ResponseType(nameof(M2C_StartMatch))]
+	[Message(OuterOpcode.C2M_StartMatch)]
+	[ProtoContract]
+	public partial class C2M_StartMatch: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public long RoleInfoId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.M2C_StartMatch)]
+	[ProtoContract]
+	public partial class M2C_StartMatch: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
 }
