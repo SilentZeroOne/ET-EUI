@@ -40,6 +40,8 @@ namespace ET
 
             AfterCompiling();
             
+            BuildHotfixMono(CodeOptimization.Debug);
+            
             AssetDatabase.Refresh();
         }
         
@@ -55,6 +57,8 @@ namespace ET
             }, Array.Empty<string>(), CodeOptimization.Release);
 
             AfterCompiling();
+
+            BuildHotfixMono(CodeOptimization.Release);
             
             AssetDatabase.Refresh();
         }
@@ -87,6 +91,18 @@ namespace ET
                 "Codes/Hotfix/",
                 "Codes/HotfixView/",
             }, new[]{Path.Combine(Define.BuildOutputDir, "Data.dll")}, CodeOptimization.Debug);
+        }
+        
+        public static void BuildHotfixMono(CodeOptimization optimization)
+        {
+            BuildAssemblieEditor.BuildMuteAssembly("HotfixMono", new []
+            {
+                "Assets/HotfixMono/"
+            }, Array.Empty<string>(), optimization);
+
+            AfterCompiling("HotfixMono");
+            
+            AssetDatabase.Refresh();
         }
 
         private static void BuildMuteAssembly(string assemblyName, string[] CodeDirectorys, string[] additionalReferences, CodeOptimization codeOptimization)
@@ -169,7 +185,7 @@ namespace ET
             }
         }
 
-        private static void AfterCompiling()
+        private static void AfterCompiling(string dllName = "Code")
         {
             while (EditorApplication.isCompiling)
             {
@@ -182,16 +198,16 @@ namespace ET
             Debug.Log("Compiling finish");
 
             Directory.CreateDirectory(CodeDir);
-            File.Copy(Path.Combine(Define.BuildOutputDir, "Code.dll"), Path.Combine(CodeDir, "Code.dll.bytes"), true);
-            File.Copy(Path.Combine(Define.BuildOutputDir, "Code.pdb"), Path.Combine(CodeDir, "Code.pdb.bytes"), true);
+            File.Copy(Path.Combine(Define.BuildOutputDir, $"{dllName}.dll"), Path.Combine(CodeDir, $"{dllName}.dll.bytes"), true);
+            File.Copy(Path.Combine(Define.BuildOutputDir, $"{dllName}.pdb"), Path.Combine(CodeDir, $"{dllName}.pdb.bytes"), true);
             AssetDatabase.Refresh();
             Debug.Log("copy Code.dll to Bundles/Code success!");
             
             // 设置ab包
-            AssetImporter assetImporter1 = AssetImporter.GetAtPath("Assets/Bundles/Code/Code.dll.bytes");
-            assetImporter1.assetBundleName = "Code.unity3d";
-            AssetImporter assetImporter2 = AssetImporter.GetAtPath("Assets/Bundles/Code/Code.pdb.bytes");
-            assetImporter2.assetBundleName = "Code.unity3d";
+            AssetImporter assetImporter1 = AssetImporter.GetAtPath($"Assets/Bundles/Code/{dllName}.dll.bytes");
+            assetImporter1.assetBundleName = $"{dllName}.unity3d";
+            AssetImporter assetImporter2 = AssetImporter.GetAtPath($"Assets/Bundles/Code/{dllName}.pdb.bytes");
+            assetImporter2.assetBundleName = $"{dllName}.unity3d";
             
             BuildHelper.CopyDllToAssets(EditorUserBuildSettings.activeBuildTarget);
             
@@ -200,7 +216,7 @@ namespace ET
             
             Debug.Log("build success!");
             //反射获取当前Game视图，提示编译完成
-            ShowNotification("Build Code Success");
+            ShowNotification($"Build {dllName} Success");
         }
 
         public static void ShowNotification(string tips)

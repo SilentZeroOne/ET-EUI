@@ -5,9 +5,14 @@ using UnityEngine;
 
 namespace ET
 {
-	public static class Entry
+	public class Entry : IEntry
 	{
-		public static void Start()
+		public Entry()
+		{
+			
+		}
+		
+		public void Start()
 		{
 			try
 			{

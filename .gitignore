@@ -98,3 +98,5 @@ Unity/DOTween.Modules.csproj
 Unity/DOTweenPro.Scripts.csproj
 Unity/DOTweenPro.EditorScripts.csproj
 Unity/HotfixBundles/
+Unity/HybridCLRData/
+Unity/HotfixMono.csproj
