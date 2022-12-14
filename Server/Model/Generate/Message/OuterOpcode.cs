@@ -52,5 +52,7 @@ namespace ET
 		 public const ushort RoleInfoProto = 10049;
 		 public const ushort C2M_StartMatch = 10050;
 		 public const ushort M2C_StartMatch = 10051;
+		 public const ushort C2M_ReturnLobby = 10052;
+		 public const ushort M2C_UpdateLandMatcher = 10053;
 	}
 }

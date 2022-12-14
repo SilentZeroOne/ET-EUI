@@ -56,7 +56,7 @@ namespace BM
                     string crcLog;
                     using (StreamReader streamReader = new StreamReader(crcLogPath))
                     {
-                        crcLog = await streamReader.ReadToEndAsync();
+                        crcLog = streamReader.ReadToEnd();
                     }
                     string[] crcLogData = crcLog.Split('\n');
                     for (int j = 0; j < crcLogData.Length; j++)

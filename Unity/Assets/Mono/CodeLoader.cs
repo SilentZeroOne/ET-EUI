@@ -72,7 +72,7 @@ namespace ET
 			AssetComponentConfig.DefaultBundlePackageName = "ResBundles";
 			
 			//重新配置热更路径(开发方便用, 打包移动端需要注释注释)
-			AssetComponentConfig.HotfixPath = Application.dataPath + "/../HotfixBundles/";
+			//AssetComponentConfig.HotfixPath = Application.dataPath + "/../HotfixBundles/";
 			
 			Dictionary<string, bool> updatePackageBundle = new Dictionary<string, bool>()
 			{

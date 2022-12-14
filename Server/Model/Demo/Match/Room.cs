@@ -8,7 +8,7 @@ namespace ET
 
         public readonly Unit[] Units = new Unit[3];
 
-        public readonly bool[] isReady = new bool[3];
+        public readonly bool[] isReady = { false, false, false };
 
         public int PlayerCount => this.Seats.Values.Count;
     }

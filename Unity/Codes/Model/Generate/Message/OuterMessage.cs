@@ -834,4 +834,31 @@ namespace ET
 
 	}
 
+/// <summary>
+/// 返回大厅
+/// </summary>
+	[Message(OuterOpcode.C2M_ReturnLobby)]
+	[ProtoContract]
+	public partial class C2M_ReturnLobby: Object, IActorMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+	}
+
+/// <summary>
+/// 更新匹配排队人数
+/// </summary>
+	[Message(OuterOpcode.M2C_UpdateLandMatcher)]
+	[ProtoContract]
+	public partial class M2C_UpdateLandMatcher: Object, IActorMessage
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(1)]
+		public int CurrentQueueCount { get; set; }
+
+	}
+
 }

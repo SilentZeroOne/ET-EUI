@@ -392,3 +392,20 @@ message M2C_StartMatch // IActorLocationResponse
 	string Message = 92;
 }
 
+/// <summary>
+/// 返回大厅
+/// </summary>
+message C2M_ReturnLobby // IActorMessage
+{
+	int32 RpcId = 90;
+}
+
+/// <summary>
+/// 更新匹配排队人数
+/// </summary>
+message M2C_UpdateLandMatcher // IActorMessage
+{
+	int32 RpcId = 90;
+	int32 CurrentQueueCount = 1;
+}
+
