@@ -9,6 +9,8 @@ namespace ET
 		{
 			public override void Destroy(SessionPlayerComponent self)
 			{
+				Log.Info($"Session player dispose! Parent id {self.Parent.Id}");
+				
 				// 发送断线消息
 				if (!self.isLoginAgain && self.PlayerInstanceId != 0)
 				{

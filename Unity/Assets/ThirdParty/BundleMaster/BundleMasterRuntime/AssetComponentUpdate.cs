@@ -383,7 +383,7 @@ namespace BM
         {
             if (AssetComponentConfig.AssetLoadMode != AssetLoadMode.Build)
             {
-                AssetLogHelper.LogError("AssetLoadMode != AssetLoadMode.Build 不需要更新");
+                AssetLogHelper.Log("AssetLoadMode != AssetLoadMode.Build 不需要更新");
                 return;
             }
             Dictionary<string, Queue<DownLoadTask>> packageDownLoadTask = new Dictionary<string, Queue<DownLoadTask>>();
@@ -474,7 +474,7 @@ namespace BM
             updateBundleDataInfo.SmoothProgress = 100;
             DownLoadAction -= updateBundleDataInfo.UpdateProgress;
             updateBundleDataInfo.FinishCallback?.Invoke();
-            AssetLogHelper.LogError("下载完成");
+            AssetLogHelper.Log("下载完成");
         }
         
     }

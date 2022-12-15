@@ -7,7 +7,7 @@ namespace ET
     {
         public override void Update(SceneChangeComponent self)
         {
-            if (!self.loadMapOperation.isDone)
+            if (self.loadMapOperation is { isDone: false })
             {
                 return;
             }

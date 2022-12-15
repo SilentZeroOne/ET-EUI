@@ -85,7 +85,7 @@ namespace ET
 			UpdateBundleDataInfo updateBundleDataInfo = await AssetComponent.CheckAllBundlePackageUpdate(updatePackageBundle);
 			if (updateBundleDataInfo.NeedUpdate)
 			{
-				Debug.LogError("需要更新, 大小: " + updateBundleDataInfo.NeedUpdateSize);
+				Log.Info("需要更新, 大小: " + updateBundleDataInfo.NeedUpdateSize);
 				await AssetComponent.DownLoadUpdate(updateBundleDataInfo);
 			}
 			await AssetComponent.Initialize("Code");

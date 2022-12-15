@@ -40,9 +40,10 @@
                         case PlayerState.Gate:
                             break;
                         case PlayerState.Game:
+                        case PlayerState.Lobby:
                             //WORKFLOW 玩家下线操作 都需要在这里增加
                             //通知游戏逻辑服下线玩家，并将数据存入数据库
-                            await MessageHelper.CallLocationActor(player.AccountId, new G2M_RequestExitGame());
+                            await MessageHelper.CallLocationActor(player.Id, new G2M_RequestExitGame());
                             break;
                     }
                 }
