@@ -4,7 +4,7 @@
     {
         public override void Awake(Room self)
         {
-
+            self.CreatePlayingScene().Coroutine();
         }
     }
 
@@ -12,6 +12,7 @@
     {
         public override void Destroy(Room self)
         {
+            self.PlayingScene = null;
             self.Seats.Clear();
             for (int i = 0; i < 3; i++)
             {
@@ -25,13 +26,20 @@
     [FriendClass(typeof (Room))]
     public static class RoomSystem
     {
-        public static void AddUnit(this Room self,Unit unit)
+        public static async ETTask CreatePlayingScene(this Room self)
+        {
+            self.PlayingScene = await SceneFactory.Create(self, "PlayingRoom", SceneType.Map);
+        }
+        
+        public static void AddUnit(this Room self, Unit unit)
         {
             if (self.PlayerCount < 3 && !self.Seats.ContainsKey(unit.Id))
             {
                 var index = self.Seats.Count;
                 self.Seats.Add(unit.Id, index);
                 self.Units[index] = unit;
+
+                TransferHelper.Transfer(unit, self.PlayingScene.InstanceId, "PlayingRoom").Coroutine();
             }
             else
             {

@@ -543,6 +543,8 @@ MonoBehaviour:
   data:
   - key: Unit
     gameObject: {fileID: 0}
+  - key: FixedRoot
+    gameObject: {fileID: 2112265938}
 --- !u!1 &1114695592
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,7 +1351,7 @@ Canvas:
   m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0

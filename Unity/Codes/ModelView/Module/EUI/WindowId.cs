@@ -12,5 +12,6 @@
         WindowID_LandCreateRole, //创建角色界面
         WindowID_LandLobby, //进入大厅
         WindowID_Match,     //匹配界面
+        WindowID_Main,      //游戏主界面
     }
 }

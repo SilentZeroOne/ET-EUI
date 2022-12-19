@@ -12,6 +12,8 @@ namespace ET
             reply();
 
             await unit.RemoveLocation();
+            LandMatchComponent landMatchComponent = unit.DomainScene().GetComponent<LandMatchComponent>();
+            landMatchComponent?.RemoveUnit(unit.Id);
             UnitComponent unitComponent = unit.DomainScene().GetComponent<UnitComponent>();
             unitComponent?.Remove(unit.Id);
         }

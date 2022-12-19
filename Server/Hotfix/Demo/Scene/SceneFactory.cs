@@ -32,8 +32,11 @@ namespace ET
                     break;
                 case SceneType.Map:
                     scene.AddComponent<UnitComponent>();
-                    scene.AddComponent<LandMatchComponent>();
                     //scene.AddComponent<AOIManagerComponent>();
+                    break;
+                case SceneType.Lobby:
+                    scene.AddComponent<UnitComponent>();
+                    scene.AddComponent<LandMatchComponent>();
                     break;
                 case SceneType.Location:
                     scene.AddComponent<LocationComponent>();

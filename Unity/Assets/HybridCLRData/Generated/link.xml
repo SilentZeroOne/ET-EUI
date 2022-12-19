@@ -14,12 +14,20 @@
   <assembly fullname="Unity.Mono">
     <type fullname="ET.CanvasConfig" preserve="all" />
     <type fullname="ET.CodeLoader" preserve="all" />
+    <type fullname="ET.DlgDownloadingBg" preserve="all" />
     <type fullname="ET.IStaticMethod" preserve="all" />
     <type fullname="ET.Log" preserve="all" />
     <type fullname="ET.MonoStaticMethod" preserve="all" />
     <type fullname="ET.UILayerScript" preserve="all" />
     <type fullname="RedDotMonoView" preserve="all" />
     <type fullname="ReferenceCollector" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.TextMeshPro">
+    <type fullname="TMPro.TextMeshProUGUI" preserve="all" />
+    <type fullname="TMPro.TMP_FontAsset" preserve="all" />
+    <type fullname="TMPro.TMP_Settings" preserve="all" />
+    <type fullname="TMPro.TMP_SpriteAsset" preserve="all" />
+    <type fullname="TMPro.TMP_StyleSheet" preserve="all" />
   </assembly>
   <assembly fullname="Unity.ThirdParty">
     <type fullname="BM.BundleMasterRuntimeConfig" preserve="all" />

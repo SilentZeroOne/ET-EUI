@@ -11,5 +11,7 @@ namespace ET
         public readonly bool[] isReady = { false, false, false };
 
         public int PlayerCount => this.Seats.Values.Count;
+
+        public Scene PlayingScene { get; set; }
     }
 }

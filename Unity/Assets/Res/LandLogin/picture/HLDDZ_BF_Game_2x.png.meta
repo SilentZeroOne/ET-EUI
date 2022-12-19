@@ -1,0 +1,1166 @@
+fileFormatVersion: 2
+guid: 1cebc6d01a54c45448553d65f63f2dce
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 803
+        width: 427
+        height: 220
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c84666d7d02a86c4ebbcafd3466b0068
+      internalID: 1295976547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_1
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 881
+        width: 162
+        height: 143
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a0f9ab48b557944a9f9fa57b93af84b
+      internalID: -1569369189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_2
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 979
+        width: 65
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f18a30e1a0ed2b41b4d0ce36c780159
+      internalID: -1545235329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_3
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 980
+        width: 78
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce964703f91a55f4dad3aff23b8a711d
+      internalID: 2045579921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_4
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 986
+        width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23434dd305cd5ec4e9584196597b2cb2
+      internalID: 1359440009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_5
+      rect:
+        serializedVersion: 2
+        x: 773
+        y: 980
+        width: 76
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1139c3059c85e104a92b77c0d818f128
+      internalID: -932694261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_6
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 977
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fa6d0032fd9a8542acd007e5b3257c6
+      internalID: 919449088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_7
+      rect:
+        serializedVersion: 2
+        x: 903
+        y: 977
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f1e89ee184159146a0e7529c6523708
+      internalID: 569376755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_8
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 864
+        width: 36
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b43014ebbc2c154298b800635999028
+      internalID: 671227202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_9
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 909
+        width: 63
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5afbaca6992dc9b4f894085c8a91f70e
+      internalID: 1556330627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_10
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 909
+        width: 63
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 499d01418d95d5c429eb63977c5e8319
+      internalID: -1840522527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_11
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 912
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf9b5732223fefe49bfc179b86ad21b4
+      internalID: -1145018613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_12
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 935
+        width: 70
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eb37ba9b4f4f284ea180d56d328d387
+      internalID: 123872955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_13
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 935
+        width: 70
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6a66748d53f1834385ae21b1509b9d2
+      internalID: -851387001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_14
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 875
+        width: 123
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 698452565b5fa824f86c6de9be7f9778
+      internalID: -818191029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_18
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 875
+        width: 120
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae102dacf341bb845885460d62f04342
+      internalID: 493097258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_19
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 887
+        width: 108
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53a933e9a6d6a3e4c9f376673308cdf1
+      internalID: 789029908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_20
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 804
+        width: 319
+        height: 65
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ab5a2a67d142a948a52312caafde914
+      internalID: -1360620861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_24
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 744
+        width: 148
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c800df817b85710448b516fdf65d3ee2
+      internalID: 1750968128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_25
+      rect:
+        serializedVersion: 2
+        x: 919
+        y: 795
+        width: 103
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dace1219b897d31498f9ec9c3a97b728
+      internalID: -837843180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 580
+        width: 604
+        height: 218
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af6caef1e48d1a34d8c844e49ea91bdd
+      internalID: 877344036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_27
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 690
+        width: 105
+        height: 105
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 844992c4b058e164e9e18839ad0618f8
+      internalID: -2134343969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_28
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 612
+        width: 148
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f56667467d6099441a934bc296544a1c
+      internalID: 1615832056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_29
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 725
+        width: 47
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32776555b9009ae4390c49f752c087ce
+      internalID: -200266218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_30
+      rect:
+        serializedVersion: 2
+        x: 971
+        y: 725
+        width: 47
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a278635e5aac5f349860227964884184
+      internalID: -1559866644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_31
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 602
+        width: 86
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65a855f2d7edc7549b2e250cfd73889e
+      internalID: -543606471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_32
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 527
+        width: 82
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d72641606ae744f4fb486bc9c55817f7
+      internalID: -295286912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_33
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 540
+        width: 243
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20356e72b7ddd3042becc7610af715d8
+      internalID: 599233395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_35
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 512
+        width: 566
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c270cdf871d00f847967d89d2b975194
+      internalID: -1704423062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_36
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 464
+        width: 234
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccb04d73855584947b785f070f60a963
+      internalID: -2134582057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_40
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 384
+        width: 178
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77cd04526e4d19040a40e737550fce2f
+      internalID: 1465257792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_41
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 485
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4fb1d152a02a4746ac13560d3a33a63
+      internalID: -332325965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_42
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 487
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a563cce255856d47bd3c09563e316d9
+      internalID: -417039159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_43
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 501
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a64f007e4c3cd44d9c79b23b521ffbd
+      internalID: 2092910252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_44
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 486
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44bf965390ca25c479acfe45f19eadfc
+      internalID: 1186317033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_45
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 486
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee6f8a0b2f3a68848b80d769286091a5
+      internalID: -766676034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_46
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 487
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54fefb5ef596e674bb874e110c27be92
+      internalID: 325457689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_47
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 487
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2a7043234d26d54ea8f9d17c69dbf87
+      internalID: 1867275019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_48
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 487
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2a6cd7f63111654e876336a3750d9ee
+      internalID: 1261357425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_49
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 487
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a1c2cf6fb4dad1408da1525c5d54de2
+      internalID: 1497755966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_50
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 487
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30878e86a48b7b844b458871f3b71847
+      internalID: -1631325530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_51
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 504
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cb8ef888fbea7f458cae5d43c98f2c1
+      internalID: -400547834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_52
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 487
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4c4e09041ac331408163b2e480d7a10
+      internalID: 1879938433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_53
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 501
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4625a47772cad0468ca5d2842eb307c
+      internalID: 227155426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_54
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 486
+        width: 178
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 908ed26192cbfe44ab6eb53b2bb2f438
+      internalID: 1781952300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_55
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 488
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e4f8d176bdfd38429059bbc36d4c9df
+      internalID: -1889855295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HLDDZ_BF_Game_2x_56
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 487
+        width: 9
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a89e8bc5a7952d49a539ee65fd8104f
+      internalID: -683917049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 1ceced7795410cf4390a77412337e90b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      HLDDZ_BF_Game_2x_34: -1570680195
+      HLDDZ_BF_Game_2x_36: -2134582057
+      HLDDZ_BF_Game_2x_37: -1665226778
+      HLDDZ_BF_Game_2x_51: -400547834
+      HLDDZ_BF_Game_2x_5: -932694261
+      HLDDZ_BF_Game_2x_41: -332325965
+      HLDDZ_BF_Game_2x_20: -1360620861
+      HLDDZ_BF_Game_2x_26: 877344036
+      HLDDZ_BF_Game_2x_56: -683917049
+      HLDDZ_BF_Game_2x_32: -295286912
+      HLDDZ_BF_Game_2x_15: 507516645
+      HLDDZ_BF_Game_2x_28: 1615832056
+      HLDDZ_BF_Game_2x_9: 1556330627
+      HLDDZ_BF_Game_2x_39: -519517085
+      HLDDZ_BF_Game_2x_25: -837843180
+      HLDDZ_BF_Game_2x_49: 1497755966
+      HLDDZ_BF_Game_2x_0: 1295976547
+      HLDDZ_BF_Game_2x_30: -1559866644
+      HLDDZ_BF_Game_2x_47: 1867275019
+      HLDDZ_BF_Game_2x_3: 2045579921
+      HLDDZ_BF_Game_2x_53: 227155426
+      HLDDZ_BF_Game_2x_29: -200266218
+      HLDDZ_BF_Game_2x_21: 1458186971
+      HLDDZ_BF_Game_2x_54: 1781952300
+      HLDDZ_BF_Game_2x_22: -1088081299
+      HLDDZ_BF_Game_2x_50: -1631325530
+      HLDDZ_BF_Game_2x_1: -1569369189
+      HLDDZ_BF_Game_2x_55: -1889855295
+      HLDDZ_BF_Game_2x_18: 493097258
+      HLDDZ_BF_Game_2x_10: -1840522527
+      HLDDZ_BF_Game_2x_33: 599233395
+      HLDDZ_BF_Game_2x_45: -766676034
+      HLDDZ_BF_Game_2x_23: 1715328771
+      HLDDZ_BF_Game_2x_46: 325457689
+      HLDDZ_BF_Game_2x_7: 569376755
+      HLDDZ_BF_Game_2x_6: 919449088
+      HLDDZ_BF_Game_2x_4: 1359440009
+      HLDDZ_BF_Game_2x_11: -1145018613
+      HLDDZ_BF_Game_2x_40: 1465257792
+      HLDDZ_BF_Game_2x_17: -1470084254
+      HLDDZ_BF_Game_2x_16: -841329654
+      HLDDZ_BF_Game_2x_52: 1879938433
+      HLDDZ_BF_Game_2x_35: -1704423062
+      HLDDZ_BF_Game_2x_43: 2092910252
+      HLDDZ_BF_Game_2x_19: 789029908
+      HLDDZ_BF_Game_2x_24: 1750968128
+      HLDDZ_BF_Game_2x_14: -818191029
+      HLDDZ_BF_Game_2x_13: -851387001
+      HLDDZ_BF_Game_2x_2: -1545235329
+      HLDDZ_BF_Game_2x_48: 1261357425
+      HLDDZ_BF_Game_2x_27: -2134343969
+      HLDDZ_BF_Game_2x_44: 1186317033
+      HLDDZ_BF_Game_2x_12: 123872955
+      HLDDZ_BF_Game_2x_8: 671227202
+      HLDDZ_BF_Game_2x_38: 147093078
+      HLDDZ_BF_Game_2x_31: -543606471
+      HLDDZ_BF_Game_2x_42: -417039159
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

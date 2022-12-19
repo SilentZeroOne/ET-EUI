@@ -11,6 +11,7 @@
 		Map = 6,
 		Account = 7,
 		UnitCache = 8,
+		Lobby = 9,
 
 		// 客户端Model层
 		Client = 30,

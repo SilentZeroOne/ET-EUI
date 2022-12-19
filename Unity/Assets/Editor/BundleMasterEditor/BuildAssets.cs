@@ -91,15 +91,26 @@ namespace BM
             sw.Stop();
             AssetLogHelper.Log("打包结束, 耗时" + sw.Elapsed.TotalMilliseconds + " ms \n" + assetLoadTable.BuildBundlePath);
         }
-        
+
         [MenuItem("Tools/BuildAsset/Copy资源到StreamingAssets")]
         public static void CopyToStreamingAssets()
         {
-            if (!Directory.Exists(Application.streamingAssetsPath))
+            CopyToPath(Application.streamingAssetsPath);
+        }
+        
+        [MenuItem("Tools/BuildAsset/Copy资源到MyServer")]
+        public static void CopyToMyServer()
+        {
+            CopyToPath(@"D:\Tivon\MyTestServer\BundleData\");
+        }
+        
+        public static void CopyToPath(string path)
+        {
+            if (!Directory.Exists(path))
             {
-                Directory.CreateDirectory(Application.streamingAssetsPath);
+                Directory.CreateDirectory(path);
             }
-            DeleteHelper.DeleteDir(Application.streamingAssetsPath);
+            DeleteHelper.DeleteDir(path);
             AssetLoadTable assetLoadTable = AssetDatabase.LoadAssetAtPath<AssetLoadTable>(BundleMasterWindow.AssetLoadTablePath);
             foreach (AssetsSetting assetsSetting in assetLoadTable.AssetsSettings)
             {
@@ -116,7 +127,7 @@ namespace BM
                 {
                     assetPathFolder = Path.Combine(assetLoadTable.BuildBundlePath, assetsLoadSetting.BuildName);
                 }
-                string directoryPath = Path.Combine(Application.streamingAssetsPath, assetsLoadSetting.BuildName);
+                string directoryPath = Path.Combine(path, assetsLoadSetting.BuildName);
                 if (!Directory.Exists(directoryPath))
                 {
                     Directory.CreateDirectory(directoryPath);
@@ -146,7 +157,7 @@ namespace BM
                     continue;
                 }
                 string assetPathFolder = Path.Combine(assetLoadTable.BuildBundlePath, assetsOriginSetting.BuildName);
-                string directoryPath = Path.Combine(Application.streamingAssetsPath, assetsOriginSetting.BuildName);
+                string directoryPath = Path.Combine(path, assetsOriginSetting.BuildName);
                 if (!Directory.Exists(directoryPath))
                 {
                     Directory.CreateDirectory(directoryPath);
@@ -166,7 +177,7 @@ namespace BM
                 }
             }
             AssetDatabase.Refresh();
-            AssetLogHelper.Log("已将资源复制到StreamingAssets");
+            AssetLogHelper.Log($"已将资源复制到{path}");
         }
         
         private static void Build(AssetLoadTable assetLoadTable, AssetsLoadSetting assetsLoadSetting, HashSet<string> assetLoadPath, HashSet<string> alwaysIncludedShaders)

@@ -543,14 +543,14 @@ namespace BM
             using (FileStream fs = new FileStream(fileCreatePath, FileMode.Create))
             {
                 //大于2M用异步
-                if (dataLength > 2097152)
-                {
-                    await fs.WriteAsync(data, 0, data.Length);
-                }
-                else
-                {
+                // if (dataLength > 2097152)
+                // {
+                //     await fs.WriteAsync(data, 0, data.Length);
+                // }
+                // else
+                // {
                     fs.Write(data, 0, data.Length);
-                }
+                //}
                 fs.Close();
             }
             UpdateBundleDataInfo.AddCRCFileInfo(PackegName, FileName, VerifyHelper.GetCRC32(data));

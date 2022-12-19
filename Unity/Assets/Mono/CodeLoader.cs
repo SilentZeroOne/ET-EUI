@@ -86,7 +86,10 @@ namespace ET
 			if (updateBundleDataInfo.NeedUpdate)
 			{
 				Log.Info("需要更新, 大小: " + updateBundleDataInfo.NeedUpdateSize);
+				DlgDownloadingBg.Instance.UpdateTotalProgress(updateBundleDataInfo.NeedUpdateSize / 1024f);
+				updateBundleDataInfo.ProgressCallback += DlgDownloadingBg.Instance.UpdateCurrentProgress;
 				await AssetComponent.DownLoadUpdate(updateBundleDataInfo);
+				Object.Destroy(DlgDownloadingBg.Instance.gameObject);
 			}
 			await AssetComponent.Initialize("Code");
 			await AssetComponent.Initialize("ResBundles");

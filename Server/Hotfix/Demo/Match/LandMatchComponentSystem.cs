@@ -75,12 +75,13 @@ namespace ET
             {
                 return;
             }
-
+            
             self.WaitingUnit[unit.Id] = room;
             room.AddUnit(unit);
+            //广播通知所有匹配中的玩家
+            self.Broadcast(new M2C_UpdateLandMatcher() { CurrentQueueCount = self.MatchingQueue.Count });
             
-            Log.Info($"玩家 {unit.Id} 进入房间");
-            
+            Log.Info($"玩家 {unit.Id} 进入房间 {room.Id}");
         }
 
         /// <summary>
@@ -94,6 +95,48 @@ namespace ET
             {
                 MessageHelper.SendToClient(unit, actorMessage);
             }
+        }
+
+        public static void LeaveMatchingQueue(this LandMatchComponent self,long unitId)
+        {
+            Log.Info($"{unitId} 离开匹配队列");
+            ListComponent<Unit> temp = ListComponent<Unit>.Create();
+            temp.AddRange(self.MatchingQueue);
+            foreach (var unit in temp)
+            {
+                if (unit.Id == unitId)
+                {
+                    temp.Remove(unit);
+                    break;
+                }
+            }
+            
+            self.MatchingQueue.Clear();
+            foreach (var unit in temp)
+            {
+                self.MatchingQueue.Enqueue(unit);
+            }
+            temp.Dispose();
+            
+            //广播通知所有匹配中的玩家
+            self.Broadcast(new M2C_UpdateLandMatcher() { CurrentQueueCount = self.MatchingQueue.Count });
+        }
+
+        public static void RemoveUnit(this LandMatchComponent self, long id)
+        {
+            if (self.WaitingUnit.ContainsKey(id))
+            {
+                self.WaitingUnit[id].RemoveUnit(id);
+                self.WaitingUnit.Remove(id);
+            }
+
+            if (self.PlayingUnit.ContainsKey(id))
+            {
+                self.PlayingUnit[id].RemoveUnit(id);
+                self.PlayingUnit.Remove(id);
+            }
+            
+            self.LeaveMatchingQueue(id);
         }
     }
 }
