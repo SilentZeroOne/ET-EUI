@@ -38,11 +38,10 @@ namespace ET
     {
         public static async ETTask ChangeSceneAsync(this SceneChangeComponent self, string sceneName)
         {
+            await AssetComponent.LoadSceneAsync(sceneName.SceneNameToAB());
             self.tcs = ETTask.Create(true);
             // 加载map
 
-            await AssetComponent.LoadSceneAsync(sceneName.SceneNameToAB());
-            
             self.loadMapOperation = SceneManager.LoadSceneAsync(sceneName);
             //this.loadMapOperation.allowSceneActivation = false;
             await self.tcs;
