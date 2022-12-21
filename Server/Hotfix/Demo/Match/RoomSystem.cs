@@ -31,7 +31,7 @@
             self.PlayingScene = await SceneFactory.Create(self, "PlayingRoom", SceneType.Map);
         }
         
-        public static void AddUnit(this Room self, Unit unit)
+        public static async ETTask AddUnit(this Room self, Unit unit)
         {
             if (self.PlayerCount < 3 && !self.Seats.ContainsKey(unit.Id))
             {
@@ -39,7 +39,11 @@
                 self.Seats.Add(unit.Id, index);
                 self.Units[index] = unit;
 
-                TransferHelper.Transfer(unit, self.PlayingScene.InstanceId, "PlayingRoom").Coroutine();
+                await TransferHelper.Transfer(unit, self.PlayingScene.InstanceId, "PlayingRoom");
+                var create_units = new M2C_CreateUnits();
+                create_units.Units.Add(UnitHelper.CreateUnitInfo(unit));
+
+                self.Broadcast(create_units);
             }
             else
             {

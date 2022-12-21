@@ -77,7 +77,7 @@ namespace ET
             }
             
             self.WaitingUnit[unit.Id] = room;
-            room.AddUnit(unit);
+            room.AddUnit(unit).Coroutine();
             //广播通知所有匹配中的玩家
             self.Broadcast(new M2C_UpdateLandMatcher() { CurrentQueueCount = self.MatchingQueue.Count });
             
