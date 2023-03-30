@@ -32,5 +32,8 @@
 	    public const int HuanleBean = 3001;
 	    public const int Diamond = 3002;
 	    public const int BagCapcity = 3003;
+
+	    public const int IsWaiting = 5001;
+	    public const int IsPlaying = 5002;
     }
 }

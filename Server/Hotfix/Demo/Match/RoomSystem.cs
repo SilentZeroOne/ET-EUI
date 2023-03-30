@@ -46,6 +46,7 @@
                 
                 var create_units = new M2C_CreateUnits();
                 create_units.Units.Add(UnitHelper.CreateUnitInfo(unit));
+                unit.GetComponent<NumericComponent>().Set(NumericType.IsWaiting, 1);
 
                 self.Broadcast(create_units, unitId: unit.Id);
             }
@@ -88,7 +89,10 @@
             {
                 self.Seats.Remove(id);
                 self.isReady[index] = false;
+                self.Units[index].GetComponent<NumericComponent>().Set(NumericType.IsWaiting, 0);
+                self.Units[index].GetComponent<NumericComponent>().Set(NumericType.IsPlaying, 0);
                 self.Units[index] = null;
+                Log.Info($"Unit {id} 离开room instanceid:{self.InstanceId}");
             }
         }
 
