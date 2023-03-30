@@ -108,5 +108,12 @@ namespace ET
         {
             public Unit Unit;
         }
+
+        public struct UnitReady
+        {
+            public Scene ZoneScene;
+            public int UnitIndex;
+            public int Ready;
+        }
     }
 }

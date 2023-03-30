@@ -9,6 +9,9 @@ namespace ET
 	        UnitComponent unitComponent = currentScene.GetComponent<UnitComponent>();
 	        Unit unit = unitComponent.AddChildWithId<Unit, int>(unitInfo.UnitId, unitInfo.ConfigId);
 	        unitComponent.Add(unit);
+
+	        LandRoomComponent landRoomComponent = currentScene.GetComponent<LandRoomComponent>();
+	        landRoomComponent?.AddUnit(unit);
 	        
 	        unit.Position = new Vector3(unitInfo.X, unitInfo.Y, unitInfo.Z);
 	        unit.Forward = new Vector3(unitInfo.ForwardX, unitInfo.ForwardY, unitInfo.ForwardZ);

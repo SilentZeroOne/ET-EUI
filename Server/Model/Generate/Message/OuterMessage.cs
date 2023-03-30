@@ -806,10 +806,10 @@ namespace ET
 
 	}
 
-	[ResponseType(nameof(M2C_StartMatch))]
-	[Message(OuterOpcode.C2M_StartMatch)]
+	[ResponseType(nameof(Lo2C_StartMatch))]
+	[Message(OuterOpcode.C2Lo_StartMatch)]
 	[ProtoContract]
-	public partial class C2M_StartMatch: Object, IActorLocationRequest
+	public partial class C2Lo_StartMatch: Object, IActorLocationRequest
 	{
 		[ProtoMember(1)]
 		public int RpcId { get; set; }
@@ -819,9 +819,9 @@ namespace ET
 
 	}
 
-	[Message(OuterOpcode.M2C_StartMatch)]
+	[Message(OuterOpcode.Lo2C_StartMatch)]
 	[ProtoContract]
-	public partial class M2C_StartMatch: Object, IActorLocationResponse
+	public partial class Lo2C_StartMatch: Object, IActorLocationResponse
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
@@ -837,11 +837,11 @@ namespace ET
 /// <summary>
 /// 返回大厅
 /// </summary>
-	[Message(OuterOpcode.C2M_ReturnLobby)]
+	[Message(OuterOpcode.C2Lo_ReturnLobby)]
 	[ProtoContract]
-	public partial class C2M_ReturnLobby: Object, IActorMessage
+	public partial class C2Lo_ReturnLobby: Object, IActorMessage
 	{
-		[ProtoMember(90)]
+		[ProtoMember(1)]
 		public int RpcId { get; set; }
 
 	}
@@ -849,15 +849,58 @@ namespace ET
 /// <summary>
 /// 更新匹配排队人数
 /// </summary>
-	[Message(OuterOpcode.M2C_UpdateLandMatcher)]
+	[Message(OuterOpcode.Lo2C_UpdateLandMatcher)]
 	[ProtoContract]
-	public partial class M2C_UpdateLandMatcher: Object, IActorMessage
+	public partial class Lo2C_UpdateLandMatcher: Object, IActorMessage
 	{
 		[ProtoMember(90)]
 		public int RpcId { get; set; }
 
 		[ProtoMember(1)]
 		public int CurrentQueueCount { get; set; }
+
+	}
+
+	[ResponseType(nameof(Lo2C_UnitReady))]
+	[Message(OuterOpcode.C2Lo_UnitReady)]
+	[ProtoContract]
+	public partial class C2Lo_UnitReady: Object, IActorLobbyRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(3)]
+		public int Ready { get; set; }
+
+	}
+
+	[Message(OuterOpcode.Lo2C_UnitReady)]
+	[ProtoContract]
+	public partial class Lo2C_UnitReady: Object, IActorLobbyResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.Lo2C_NotifyUnitReady)]
+	[ProtoContract]
+	public partial class Lo2C_NotifyUnitReady: Object, IActorLobbyMessage
+	{
+		[ProtoMember(1)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(2)]
+		public int Ready { get; set; }
 
 	}
 

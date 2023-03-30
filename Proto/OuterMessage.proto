@@ -378,14 +378,14 @@ message RoleInfoProto
 	int64 Id = 6;
 }
 
-//ResponseType M2C_StartMatch
-message C2M_StartMatch // IActorLocationRequest
+//ResponseType Lo2C_StartMatch
+message C2Lo_StartMatch // IActorLocationRequest
 {
 	int32 RpcId = 1;
 	int64 RoleInfoId = 2;
 }
 
-message M2C_StartMatch // IActorLocationResponse
+message Lo2C_StartMatch // IActorLocationResponse
 {
 	int32 RpcId = 90;
 	int32 Error = 91;
@@ -395,17 +395,38 @@ message M2C_StartMatch // IActorLocationResponse
 /// <summary>
 /// 返回大厅
 /// </summary>
-message C2M_ReturnLobby // IActorMessage
+message C2Lo_ReturnLobby // IActorMessage
 {
-	int32 RpcId = 90;
+	int32 RpcId = 1;
 }
 
 /// <summary>
 /// 更新匹配排队人数
 /// </summary>
-message M2C_UpdateLandMatcher // IActorMessage
+message Lo2C_UpdateLandMatcher // IActorMessage
 {
 	int32 RpcId = 90;
 	int32 CurrentQueueCount = 1;
+}
+
+//ResponseType Lo2C_UnitReady
+message C2Lo_UnitReady // IActorLobbyRequest
+{
+	int32 RpcId = 1;
+	int64 UnitId = 2;
+	int32 Ready = 3;
+}
+
+message Lo2C_UnitReady // IActorLobbyResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message Lo2C_NotifyUnitReady // IActorLobbyMessage
+{
+	int64 UnitId = 1;
+	int32 Ready = 2;
 }
 

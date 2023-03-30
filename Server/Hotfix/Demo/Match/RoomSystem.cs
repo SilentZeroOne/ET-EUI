@@ -35,15 +35,19 @@
         {
             if (self.PlayerCount < 3 && !self.Seats.ContainsKey(unit.Id))
             {
+                var unitId = unit.Id;
                 var index = self.Seats.Count;
                 self.Seats.Add(unit.Id, index);
-                self.Units[index] = unit;
-
+                
                 await TransferHelper.Transfer(unit, self.PlayingScene.InstanceId, "PlayingRoom");
+                
+                unit = self.PlayingScene.GetComponent<UnitComponent>().Get(unitId);
+                self.Units[index] = unit;
+                
                 var create_units = new M2C_CreateUnits();
                 create_units.Units.Add(UnitHelper.CreateUnitInfo(unit));
 
-                self.Broadcast(create_units);
+                self.Broadcast(create_units, unitId: unit.Id);
             }
             else
             {
@@ -101,13 +105,38 @@
             return -1;
         }
 
-        public static void Broadcast(this Room self, IActorMessage message)
+        public static void Broadcast(this Room self, IActorMessage message ,bool containSelf = false,long unitId = 0)
         {
             foreach (var unit in self.Units)
             {
-                if (unit != null)
-                    MessageHelper.SendToClient(unit, message);
+                if (unit is { IsDisposed: false })
+                {
+                    if(containSelf)
+                        MessageHelper.SendToClient(unit, message);
+                    else
+                    {
+                        if (unit.Id != unitId)
+                            MessageHelper.SendToClient(unit, message);
+                    }
+                }
             }
+        }
+        
+        public static bool SetReady(this Room self, long unitId, bool ready = true)
+        {
+            if (self.Seats.ContainsKey(unitId))
+            {
+                self.isReady[self.Seats[unitId]] = ready;
+                var message = new Lo2C_NotifyUnitReady() { UnitId = unitId, Ready = ready? 1 : 0 };
+                self.Broadcast(message, unitId: unitId);
+            }
+            else
+            {
+                Log.Error($"{unitId} 不在当前房间中");
+                return false;
+            }
+
+            return true;
         }
     }
 }

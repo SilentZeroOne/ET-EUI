@@ -49,6 +49,27 @@ namespace ET
                     ActorLocationSenderComponent.Instance.Send(unitId, actorLocationMessage);
                     break;
                 }
+                case IActorLobbyMessage actorLobbyMessage:
+                {
+                    var actorId = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Lobby").InstanceId;
+                    MessageHelper.SendActor(actorId, actorLobbyMessage);
+                    break;
+                }
+                case IActorLobbyRequest actorLobbyRequest:
+                {
+                    var actorId = StartSceneConfigCategory.Instance.GetBySceneName(session.DomainZone(), "Lobby").InstanceId;
+                    
+                    int rpcId = actorLobbyRequest.RpcId;
+                    long instanceId = session.InstanceId;
+                    IResponse response = await MessageHelper.CallActor(actorId, actorLobbyRequest);
+                    response.RpcId = rpcId;
+                    // session可能已经断开了，所以这里需要判断
+                    if (session.InstanceId == instanceId)
+                    {
+                        session.Reply(response);
+                    }
+                    break;
+                }
                 case IActorRequest actorRequest:  // 分发IActorRequest消息，目前没有用到，需要的自己添加
                 {
                     break;

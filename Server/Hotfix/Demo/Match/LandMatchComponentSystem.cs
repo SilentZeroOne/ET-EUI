@@ -43,7 +43,7 @@ namespace ET
             self.MatchingQueue.Enqueue(unit);
             Log.Info($"Unit {unit.Id} 进入匹配队列");
             //广播通知所有匹配中的玩家
-            self.Broadcast(new M2C_UpdateLandMatcher() { CurrentQueueCount = self.MatchingQueue.Count });
+            self.Broadcast(new Lo2C_UpdateLandMatcher() { CurrentQueueCount = self.MatchingQueue.Count });
             
             self.MatchingCheck();
         }
@@ -79,7 +79,7 @@ namespace ET
             self.WaitingUnit[unit.Id] = room;
             room.AddUnit(unit).Coroutine();
             //广播通知所有匹配中的玩家
-            self.Broadcast(new M2C_UpdateLandMatcher() { CurrentQueueCount = self.MatchingQueue.Count });
+            self.Broadcast(new Lo2C_UpdateLandMatcher() { CurrentQueueCount = self.MatchingQueue.Count });
             
             Log.Info($"玩家 {unit.Id} 进入房间 {room.Id}");
         }
@@ -119,7 +119,7 @@ namespace ET
             temp.Dispose();
             
             //广播通知所有匹配中的玩家
-            self.Broadcast(new M2C_UpdateLandMatcher() { CurrentQueueCount = self.MatchingQueue.Count });
+            self.Broadcast(new Lo2C_UpdateLandMatcher() { CurrentQueueCount = self.MatchingQueue.Count });
         }
 
         public static void RemoveUnit(this LandMatchComponent self, long id)

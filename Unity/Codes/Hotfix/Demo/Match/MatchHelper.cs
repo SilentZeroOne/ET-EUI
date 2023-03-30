@@ -6,17 +6,17 @@ namespace ET
     {
         public static async ETTask<int> StartMatch(Scene zoneScene)
         {
-            M2C_StartMatch m2CStartMatch = null;
+            Lo2C_StartMatch lo2CStartMatch = null;
             try
             {
                 var roleInfo = zoneScene.GetComponent<RoleInfoComponent>().RoleInfo;
-                m2CStartMatch = (M2C_StartMatch)await zoneScene.GetComponent<SessionComponent>().Session
-                        .Call(new C2M_StartMatch() { RoleInfoId = roleInfo.Id });
+                lo2CStartMatch = (Lo2C_StartMatch)await zoneScene.GetComponent<SessionComponent>().Session
+                        .Call(new C2Lo_StartMatch() { RoleInfoId = roleInfo.Id });
                 
-                if (m2CStartMatch.Error != ErrorCode.ERR_Success)
+                if (lo2CStartMatch.Error != ErrorCode.ERR_Success)
                 {
-                    Log.Error(m2CStartMatch.Error.ToString());
-                    return m2CStartMatch.Error;
+                    Log.Error(lo2CStartMatch.Error.ToString());
+                    return lo2CStartMatch.Error;
                 }
             }
             catch (Exception e)

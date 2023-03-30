@@ -50,9 +50,12 @@ namespace ET
 		 public const ushort C2A_CreateRole = 10047;
 		 public const ushort A2C_CreateRole = 10048;
 		 public const ushort RoleInfoProto = 10049;
-		 public const ushort C2M_StartMatch = 10050;
-		 public const ushort M2C_StartMatch = 10051;
-		 public const ushort C2M_ReturnLobby = 10052;
-		 public const ushort M2C_UpdateLandMatcher = 10053;
+		 public const ushort C2Lo_StartMatch = 10050;
+		 public const ushort Lo2C_StartMatch = 10051;
+		 public const ushort C2Lo_ReturnLobby = 10052;
+		 public const ushort Lo2C_UpdateLandMatcher = 10053;
+		 public const ushort C2Lo_UnitReady = 10054;
+		 public const ushort Lo2C_UnitReady = 10055;
+		 public const ushort Lo2C_NotifyUnitReady = 10056;
 	}
 }
