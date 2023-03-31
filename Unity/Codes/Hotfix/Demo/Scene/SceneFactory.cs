@@ -27,6 +27,8 @@ namespace ET
                 currentScene.AddComponent<LandRoomComponent>();
             }
 
+            currentScene.AddComponent<ObjectWait>();
+
             Game.EventSystem.Publish(new EventType.AfterCreateCurrentScene() {CurrentScene = currentScene});
             return currentScene;
         }

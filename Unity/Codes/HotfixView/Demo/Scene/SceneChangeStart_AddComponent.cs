@@ -30,6 +30,8 @@ namespace ET
 			
 
             currentScene.AddComponent<OperaComponent>();
+            if (currentScene.Name == "PlayingRoom")
+                currentScene.AddComponent<LandRoomObjectsComponent>();
         }
     }
 }

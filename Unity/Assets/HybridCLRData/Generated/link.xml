@@ -12,73 +12,12 @@
     <type fullname="System.Security.UnverifiableCodeAttribute" preserve="all" />
   </assembly>
   <assembly fullname="Unity.Mono">
-    <type fullname="ET.CanvasConfig" preserve="all" />
     <type fullname="ET.CodeLoader" preserve="all" />
-    <type fullname="ET.DlgDownloadingBg" preserve="all" />
     <type fullname="ET.IStaticMethod" preserve="all" />
     <type fullname="ET.Log" preserve="all" />
     <type fullname="ET.MonoStaticMethod" preserve="all" />
-    <type fullname="ET.UILayerScript" preserve="all" />
-    <type fullname="RedDotMonoView" preserve="all" />
-    <type fullname="ReferenceCollector" preserve="all" />
-  </assembly>
-  <assembly fullname="Unity.TextMeshPro">
-    <type fullname="TMPro.TextMeshProUGUI" preserve="all" />
-    <type fullname="TMPro.TMP_FontAsset" preserve="all" />
-    <type fullname="TMPro.TMP_Settings" preserve="all" />
-    <type fullname="TMPro.TMP_SpriteAsset" preserve="all" />
-    <type fullname="TMPro.TMP_StyleSheet" preserve="all" />
-  </assembly>
-  <assembly fullname="Unity.ThirdParty">
-    <type fullname="BM.BundleMasterRuntimeConfig" preserve="all" />
-  </assembly>
-  <assembly fullname="UnityEngine.AnimationModule">
-    <type fullname="UnityEngine.AnimationClip" preserve="all" />
-    <type fullname="UnityEngine.Animator" preserve="all" />
-    <type fullname="UnityEngine.Avatar" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.CoreModule">
-    <type fullname="UnityEngine.Cubemap" preserve="all" />
-    <type fullname="UnityEngine.GameObject" preserve="all" />
-    <type fullname="UnityEngine.LightingSettings" preserve="all" />
-    <type fullname="UnityEngine.LightProbes" preserve="all" />
-    <type fullname="UnityEngine.Material" preserve="all" />
-    <type fullname="UnityEngine.Mesh" preserve="all" />
     <type fullname="UnityEngine.MonoBehaviour" preserve="all" />
-    <type fullname="UnityEngine.Object" preserve="all" />
-    <type fullname="UnityEngine.RectTransform" preserve="all" />
-    <type fullname="UnityEngine.Shader" preserve="all" />
-    <type fullname="UnityEngine.SkinnedMeshRenderer" preserve="all" />
-    <type fullname="UnityEngine.Sprite" preserve="all" />
-    <type fullname="UnityEngine.TextAsset" preserve="all" />
-    <type fullname="UnityEngine.Texture2D" preserve="all" />
-    <type fullname="UnityEngine.Transform" preserve="all" />
-    <type fullname="UnityEngine.U2D.SpriteAtlas" preserve="all" />
-  </assembly>
-  <assembly fullname="UnityEngine.TextRenderingModule">
-    <type fullname="UnityEngine.Font" preserve="all" />
-  </assembly>
-  <assembly fullname="UnityEngine.UI">
-    <type fullname="UnityEngine.EventSystems.BaseInput" preserve="all" />
-    <type fullname="UnityEngine.EventSystems.EventSystem" preserve="all" />
-    <type fullname="UnityEngine.EventSystems.EventTrigger" preserve="all" />
-    <type fullname="UnityEngine.EventSystems.StandaloneInputModule" preserve="all" />
-    <type fullname="UnityEngine.UI.Button" preserve="all" />
-    <type fullname="UnityEngine.UI.CanvasScaler" preserve="all" />
-    <type fullname="UnityEngine.UI.GraphicRaycaster" preserve="all" />
-    <type fullname="UnityEngine.UI.HorizontalLayoutGroup" preserve="all" />
-    <type fullname="UnityEngine.UI.Image" preserve="all" />
-    <type fullname="UnityEngine.UI.InputField" preserve="all" />
-    <type fullname="UnityEngine.UI.LayoutElement" preserve="all" />
-    <type fullname="UnityEngine.UI.RectMask2D" preserve="all" />
-    <type fullname="UnityEngine.UI.Scrollbar" preserve="all" />
-    <type fullname="UnityEngine.UI.ScrollRect" preserve="all" />
-    <type fullname="UnityEngine.UI.Text" preserve="all" />
-    <type fullname="UnityEngine.UI.VerticalLayoutGroup" preserve="all" />
-  </assembly>
-  <assembly fullname="UnityEngine.UIModule">
-    <type fullname="UnityEngine.Canvas" preserve="all" />
-    <type fullname="UnityEngine.CanvasGroup" preserve="all" />
-    <type fullname="UnityEngine.CanvasRenderer" preserve="all" />
   </assembly>
 </linker>

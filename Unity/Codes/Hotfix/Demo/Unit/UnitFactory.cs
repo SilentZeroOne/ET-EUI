@@ -13,8 +13,8 @@ namespace ET
 	        LandRoomComponent landRoomComponent = currentScene.GetComponent<LandRoomComponent>();
 	        landRoomComponent?.AddUnit(unit);
 	        
-	        unit.Position = new Vector3(unitInfo.X, unitInfo.Y, unitInfo.Z);
-	        unit.Forward = new Vector3(unitInfo.ForwardX, unitInfo.ForwardY, unitInfo.ForwardZ);
+	        //unit.Position = new Vector3(unitInfo.X, unitInfo.Y, unitInfo.Z);
+	        //unit.Forward = new Vector3(unitInfo.ForwardX, unitInfo.ForwardY, unitInfo.ForwardZ);
 	        
 	        NumericComponent numericComponent = unit.AddComponent<NumericComponent>();
 	        for (int i = 0; i < unitInfo.Ks.Count; ++i)
@@ -24,7 +24,7 @@ namespace ET
 
 	        unit.AddComponent<ObjectWait>();
 
-	        Game.EventSystem.Publish(new EventType.AfterUnitCreate() {Unit = unit});
+	        Game.EventSystem.Publish(new EventType.AfterUnitCreate() { Unit = unit, CreateView = landRoomComponent != null });
             return unit;
         }
     }

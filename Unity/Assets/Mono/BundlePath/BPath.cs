@@ -14,6 +14,7 @@ namespace BM
 		public const string Assets_Bundles_Code_Unity__ThirdParty__dll__bytes = "Assets/Bundles/Code/Unity.ThirdParty.dll.bytes";
 		public const string Assets_Bundles_ResBundles_StartPrefab__prefab = "Assets/Bundles/ResBundles/StartPrefab.prefab";
 		public const string Assets_Bundles_ResBundles_Atlas_Poker__png = "Assets/Bundles/ResBundles/Atlas/Poker.png";
+		public const string Assets_Bundles_ResBundles_Atlas_Pokers__spriteatlas = "Assets/Bundles/ResBundles/Atlas/Pokers.spriteatlas";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_AllCommon__spriteatlas = "Assets/Bundles/ResBundles/Atlas/Common/AllCommon.spriteatlas";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_Axe__png = "Assets/Bundles/ResBundles/Atlas/Common/Axe.png";
 		public const string Assets_Bundles_ResBundles_Atlas_Common_Gold__gif = "Assets/Bundles/ResBundles/Atlas/Common/Gold.gif";
@@ -38,6 +39,7 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_UI_Item_Item_serverTest__prefab = "Assets/Bundles/ResBundles/UI/Item/Item_serverTest.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Item_Item_test__prefab = "Assets/Bundles/ResBundles/UI/Item/Item_test.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Item_PlayCard__prefab = "Assets/Bundles/ResBundles/UI/Item/PlayCard.prefab";
+		public const string Assets_Bundles_ResBundles_Unit_LandLordUnit__prefab = "Assets/Bundles/ResBundles/Unit/LandLordUnit.prefab";
 		public const string Assets_Bundles_ResBundles_Unit_Unit__prefab = "Assets/Bundles/ResBundles/Unit/Unit.prefab";
 		public const string Assets_Scenes_Lobby__unity = "Assets/Scenes/Lobby.unity";
 		public const string Assets_Scenes_PlayingRoom__unity = "Assets/Scenes/PlayingRoom.unity";

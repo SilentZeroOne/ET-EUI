@@ -97,6 +97,7 @@ namespace ET
         public struct AfterUnitCreate
         {
             public Unit Unit;
+            public bool CreateView;
         }
         
         public struct MoveStart
