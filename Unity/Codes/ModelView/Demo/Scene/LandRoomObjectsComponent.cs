@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace ET
 {
@@ -12,5 +13,8 @@ namespace ET
 		public Transform SelfUnitPosition;
 
 		public bool[] PositionUsed = new[] { false, false };
+
+		//玩家Id和座位Index的对应关系
+		public Dictionary<long, int> Seats = new();
 	}
 }

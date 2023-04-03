@@ -395,9 +395,10 @@ message Lo2C_StartMatch // IActorLocationResponse
 /// <summary>
 /// 返回大厅
 /// </summary>
-message C2Lo_ReturnLobby // IActorMessage
+message C2Lo_ReturnLobby // IActorLobbyMessage
 {
 	int32 RpcId = 1;
+	int64 UnitId = 2;
 }
 
 /// <summary>

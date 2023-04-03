@@ -126,6 +126,40 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Button E_LeaveRoomButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_LeaveRoomButton == null )
+     			{
+		    		this.m_E_LeaveRoomButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_LeaveRoom");
+     			}
+     			return this.m_E_LeaveRoomButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_LeaveRoomImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_LeaveRoomImage == null )
+     			{
+		    		this.m_E_LeaveRoomImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_LeaveRoom");
+     			}
+     			return this.m_E_LeaveRoomImage;
+     		}
+     	}
+
 		public void DestroyWidget()
 		{
 			this.m_E_StartGameButton = null;
@@ -135,6 +169,8 @@ namespace ET
 			this.m_E_UnReadyImage = null;
 			this.m_EG_Player1StandByRectTransform = null;
 			this.m_EG_Player2StandByRectTransform = null;
+			this.m_E_LeaveRoomButton = null;
+			this.m_E_LeaveRoomImage = null;
 			this.uiTransform = null;
 		}
 
@@ -145,6 +181,8 @@ namespace ET
 		private UnityEngine.UI.Image m_E_UnReadyImage = null;
 		private UnityEngine.RectTransform m_EG_Player1StandByRectTransform = null;
 		private UnityEngine.RectTransform m_EG_Player2StandByRectTransform = null;
+		private UnityEngine.UI.Button m_E_LeaveRoomButton = null;
+		private UnityEngine.UI.Image m_E_LeaveRoomImage = null;
 		public Transform uiTransform = null;
 	}
 }

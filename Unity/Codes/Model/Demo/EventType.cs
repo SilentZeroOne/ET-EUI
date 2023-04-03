@@ -99,6 +99,11 @@ namespace ET
             public Unit Unit;
             public bool CreateView;
         }
+
+        public struct AfterUnitRemove
+        {
+            public Unit Unit;
+        }
         
         public struct MoveStart
         {

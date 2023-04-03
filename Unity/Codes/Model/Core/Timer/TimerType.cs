@@ -9,6 +9,6 @@
         public const int ActorMessageSenderChecker = 3;
 
         // 不能超过1000
-        
+        public const int RoomEmptyCloseTimer = 1000;
     }
 }

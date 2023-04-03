@@ -7,7 +7,7 @@ namespace ET
     public class LandMatchComponent: Entity, IAwake, IDestroy
     {
         /// <summary>
-        /// 游戏中的房间
+        /// 游戏中的房间 RoomId/Room
         /// </summary>
         public readonly Dictionary<long, Room> GamingLandlordsDict = new Dictionary<long, Room>();
 

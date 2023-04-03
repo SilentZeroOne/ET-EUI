@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OuterMessage
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 2
+    SerializedFormat: 0
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -1466,7 +1466,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 8
     ClassName: C2Lo_StartMatch
     ResponseType: Lo2C_StartMatch
@@ -1486,7 +1486,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 9
     ClassName: Lo2C_StartMatch
     ResponseType: 
@@ -1514,7 +1514,7 @@ MonoBehaviour:
       MessageClassName: 
       Comment: 
   - Enabled: 1
-    MessageType: 4
+    MessageType: 10
     ClassName: C2Lo_ReturnLobby
     ResponseType: 
     Annotation: "\u8FD4\u56DE\u5927\u5385"
@@ -1526,7 +1526,14 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+    - ParamName: UnitId
+      ParamType: 1
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 0
     MessageType: 4
     ClassName: Lo2C_UpdateLandMatcher
     ResponseType: 
@@ -1546,7 +1553,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 11
     ClassName: C2Lo_UnitReady
     ResponseType: Lo2C_UnitReady
@@ -1573,7 +1580,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 12
     ClassName: Lo2C_UnitReady
     ResponseType: 
@@ -1600,7 +1607,7 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: 
       Comment: 
-  - Enabled: 1
+  - Enabled: 0
     MessageType: 10
     ClassName: Lo2C_NotifyUnitReady
     ResponseType: 

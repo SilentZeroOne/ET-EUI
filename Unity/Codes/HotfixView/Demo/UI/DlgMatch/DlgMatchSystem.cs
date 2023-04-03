@@ -44,23 +44,22 @@ namespace ET
 				if (errorCode != ErrorCode.ERR_Success)
 				{
 					Log.Error(errorCode.ToString());
-					self.IsMatching = false;
-					tween.Kill();
-					self.View.E_StartMatchTextMeshProUGUI.SetText("开始匹配");
-					return;
 				}
 				
-				//tween.Kill();
-				//self.View.E_StartMatchTextMeshProUGUI.SetText("匹配成功");
-
+				self.ReturnToBegining(tween);
 			}
 			catch (Exception e)
 			{
-				self.IsMatching = false;
-				tween?.Kill();
-				self.View.E_StartMatchTextMeshProUGUI.SetText("开始匹配");
+				self.ReturnToBegining(tween);
 				Log.Error(e.ToString());
 			}
+		}
+
+		public static void ReturnToBegining(this DlgMatch self, Tweener tween)
+		{
+			self.IsMatching = false;
+			tween?.Kill();
+			self.View.E_StartMatchTextMeshProUGUI.SetText("开始匹配");
 		}
 
 		public static void UpdateMatchingCount(this DlgMatch self,string count)

@@ -14,6 +14,7 @@ namespace ET
 		{
 			self.View.E_StartGameButton.AddListenerAsyncWithId(self.OnReadyBtnClickHandler, 1);
 			self.View.E_UnReadyButton.AddListenerAsyncWithId(self.OnReadyBtnClickHandler, 0);
+			self.View.E_LeaveRoomButton.AddListener(self.OnLeaveRoomBtnClickHandler);
 			
 			self.ReadyIcon.Add(self.View.EG_SelfStandByRectTransform);
 			self.ReadyIcon.Add(self.View.EG_Player1StandByRectTransform);
@@ -40,6 +41,15 @@ namespace ET
 				Log.Error(errorCode.ToString());
 				return;
 			}
+		}
+
+		public static void OnLeaveRoomBtnClickHandler(this DlgMain self)
+		{
+			Scene currentScene = self.ZoneScene().CurrentScene();
+			Unit myUnit = UnitHelper.GetMyUnitFromCurrentScene(currentScene);
+			LandRoomComponent landRoomComponent = currentScene.GetComponent<LandRoomComponent>();
+
+			landRoomComponent.LeaveRoom(myUnit.Id);
 		}
 
 		public static void SetReadyIcon(this DlgMain self,int unitIndex ,bool active)

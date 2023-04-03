@@ -839,10 +839,13 @@ namespace ET
 /// </summary>
 	[Message(OuterOpcode.C2Lo_ReturnLobby)]
 	[ProtoContract]
-	public partial class C2Lo_ReturnLobby: Object, IActorMessage
+	public partial class C2Lo_ReturnLobby: Object, IActorLobbyMessage
 	{
 		[ProtoMember(1)]
 		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public long UnitId { get; set; }
 
 	}
 

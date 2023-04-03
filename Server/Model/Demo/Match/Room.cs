@@ -13,5 +13,7 @@ namespace ET
         public int PlayerCount => this.Seats.Values.Count;
 
         public Scene PlayingScene { get; set; }
+
+        public long CloseTimer;
     }
 }

@@ -15,12 +15,18 @@ namespace ET
             // 这里可以改成异步加载，demo就不搞了
             if (!args.CreateView) return;
 
+            var currentScene = args.Unit.ZoneScene().CurrentScene();
             GameObject unitObject = AssetComponent.Load<GameObject>(BPath.Assets_Bundles_ResBundles_Unit_LandLordUnit__prefab);
             GameObject unitGo = UnityEngine.Object.Instantiate(unitObject, GlobalComponent.Instance.Unit, true);
             
-            await args.Unit.ZoneScene().CurrentScene().GetComponent<ObjectWait>().Wait<WaitType.Wait_PlayRoomAddObjectComponentFinish>();
-
-            LandRoomObjectsComponent landRoomObjectsComponent = args.Unit.ZoneScene().CurrentScene().GetComponent<LandRoomObjectsComponent>();
+            LandRoomObjectsComponent landRoomObjectsComponent = currentScene.GetComponent<LandRoomObjectsComponent>();
+            if (landRoomObjectsComponent == null)
+            {
+                Log.Debug($"Waiting Landroom objects");
+                await currentScene.GetComponent<ObjectWait>().Wait<WaitType.Wait_PlayRoomAddObjectComponentFinish>();
+                landRoomObjectsComponent = currentScene.GetComponent<LandRoomObjectsComponent>();
+                Log.Debug($"Landroom objects loaded");
+            }
 
             args.Unit.AddComponent<GameObjectComponent>().GameObject = unitGo;
             args.Unit.AddComponent<SpriteRendererComponent>().Renderer = unitGo.GetComponent<SpriteRenderer>();
@@ -41,10 +47,15 @@ namespace ET
                     var usedList = landRoomObjectsComponent.PositionUsed;
                     for (int i = 0; i < usedList.Length; i++)
                     {
-                        if (usedList[i])
+                        if (!usedList[i])
                         {
                             unitGo.transform.position = landRoomObjectsComponent.OtherUnitPositions[i].position;
                             landRoomObjectsComponent.PositionUsed[i] = true;
+                            landRoomObjectsComponent.Seats.Add(args.Unit.Id, i);
+                            if (i == 0)
+                            {
+                                args.Unit.GetComponent<SpriteRendererComponent>().Renderer.flipX = true;
+                            }
                             break;
                         }
                     }

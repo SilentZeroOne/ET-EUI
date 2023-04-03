@@ -39,6 +39,20 @@ namespace ET
                 Log.Error($"无法加入房间 {self.Id}");
             }
         }
+
+        public static void RemoveUnit(this LandRoomComponent self, long id)
+        {
+            if (self.Seats.ContainsKey(id))
+            {
+                var index = self.GetUnitSeatIndex(id);
+                self.Seats.Remove(id);
+                self.Units[index] = null;
+            }
+            else
+            {
+                Log.Error($"用户 {id} 不在房间{self.Id}中 无法移除");
+            }
+        }
         
         public static int GetUnitSeatIndex(this LandRoomComponent self, long id)
         {
@@ -86,6 +100,12 @@ namespace ET
             var index = self.GetUnitSeatIndex(unitId);
             self.isReady[index] = ready == 1;
             Game.EventSystem.Publish(new EventType.UnitReady() { ZoneScene = self.ZoneScene(), UnitIndex = index, Ready = ready });
+        }
+
+        public static void LeaveRoom(this LandRoomComponent self, long unitId)
+        {
+            Session session = self.ZoneScene().GetComponent<SessionComponent>().Session;
+            session.Send(new C2Lo_ReturnLobby() { UnitId = unitId });
         }
     }
 }

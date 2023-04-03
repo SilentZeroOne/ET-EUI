@@ -21,15 +21,15 @@ namespace ET
     [FriendClass(typeof (LandMatchComponent))]
     public static class LandMatchComponentSystem
     {
-        public static Room GetGamingRoom(this LandMatchComponent self, long id)
+        public static Room GetGamingRoom(this LandMatchComponent self, long unitId)
         {
-            self.PlayingUnit.TryGetValue(id, out var room);
+            self.PlayingUnit.TryGetValue(unitId, out var room);
             return room;
         }
 
-        public static Room GetWaitingRoom(this LandMatchComponent self, long id)
+        public static Room GetWaitingRoom(this LandMatchComponent self, long unitId)
         {
-            self.WaitingUnit.TryGetValue(id, out var room);
+            self.WaitingUnit.TryGetValue(unitId, out var room);
             return room;
         }
 
@@ -122,21 +122,24 @@ namespace ET
             self.Broadcast(new Lo2C_UpdateLandMatcher() { CurrentQueueCount = self.MatchingQueue.Count });
         }
 
-        public static void RemoveUnit(this LandMatchComponent self, long id)
+        public static Unit RemoveUnit(this LandMatchComponent self, long id)
         {
+            Unit unit = null;
             if (self.WaitingUnit.ContainsKey(id))
             {
-                self.WaitingUnit[id].RemoveUnit(id);
+                unit = self.WaitingUnit[id].RemoveUnit(id);
                 self.WaitingUnit.Remove(id);
             }
 
             if (self.PlayingUnit.ContainsKey(id))
             {
-                self.PlayingUnit[id].RemoveUnit(id);
+                unit = self.PlayingUnit[id].RemoveUnit(id);
                 self.PlayingUnit.Remove(id);
             }
             
             self.LeaveMatchingQueue(id);
+
+            return unit;
         }
     }
 }
