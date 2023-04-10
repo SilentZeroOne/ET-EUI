@@ -431,3 +431,18 @@ message Lo2C_NotifyUnitReady // IActorLobbyMessage
 	int32 Ready = 2;
 }
 
+//ResponseType G2C_GetRoleInfo
+message C2G_GetRoleInfo // IRequest
+{
+	int32 RpcId = 1;
+	int64 UnitId = 2;
+}
+
+message G2C_GetRoleInfo // IResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+	RoleInfoProto RoleInfo = 1;
+}
+

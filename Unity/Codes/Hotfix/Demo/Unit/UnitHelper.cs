@@ -1,4 +1,6 @@
-﻿namespace ET
+﻿using System;
+
+namespace ET
 {
     public static class UnitHelper
     {
@@ -8,11 +10,40 @@
             Scene currentScene = zoneScene.GetComponent<CurrentScenesComponent>().Scene;
             return currentScene.GetComponent<UnitComponent>().Get(playerComponent.MyId);
         }
-        
+
         public static Unit GetMyUnitFromCurrentScene(Scene currentScene)
         {
             PlayerComponent playerComponent = currentScene.Parent.Parent.GetComponent<PlayerComponent>();
             return currentScene.GetComponent<UnitComponent>().Get(playerComponent.MyId);
+        }
+
+        public static async ETTask<RoleInfo> GetRoleInfo(Scene zoneScene, long unitId)
+        {
+            G2C_GetRoleInfo g2CGetRoleInfo = null;
+            try
+            {
+                g2CGetRoleInfo = (G2C_GetRoleInfo)await zoneScene.GetComponent<SessionComponent>().Session.Call(new C2G_GetRoleInfo()
+                {
+                    UnitId = unitId
+                });
+
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.ToString());
+                return null;
+            }
+
+            if (g2CGetRoleInfo.Error != ErrorCode.ERR_Success)
+            {
+                Log.Error(g2CGetRoleInfo.Error.ToString());
+                return null;
+            }
+
+            var roleInfo = zoneScene.GetComponent<RoleInfoComponent>().AddChildWithId<RoleInfo>(g2CGetRoleInfo.RoleInfo.Id);
+            roleInfo.FromMessage(g2CGetRoleInfo.RoleInfo);
+
+            return roleInfo;
         }
     }
 }
