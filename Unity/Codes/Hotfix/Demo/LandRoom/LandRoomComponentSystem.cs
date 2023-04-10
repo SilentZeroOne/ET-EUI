@@ -47,6 +47,8 @@ namespace ET
                 var index = self.GetUnitSeatIndex(id);
                 self.Seats.Remove(id);
                 self.Units[index] = null;
+                self.isReady[index] = false;
+                Game.EventSystem.Publish(new EventType.UnitReady() { ZoneScene = self.ZoneScene(), UnitIndex = index, Ready = 0 });
             }
             else
             {

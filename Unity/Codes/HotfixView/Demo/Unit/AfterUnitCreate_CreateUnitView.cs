@@ -35,11 +35,12 @@ namespace ET
             var role2 = poker.GetSprite("Role2");
             unitGo.GetComponent<SpriteRenderer>().sprite = role2;
             
-            RoleInfoComponent roleInfoComponent = args.Unit.ZoneScene().GetComponent<RoleInfoComponent>();
-            if (roleInfoComponent.RoleInfo is { IsDisposed: false })
+            PlayerComponent playerComponent = args.Unit.ZoneScene().GetComponent<PlayerComponent>();
+            if (playerComponent is { IsDisposed: false })
             {
-                if (roleInfoComponent.RoleInfo.Id == args.Unit.Id)
+                if (playerComponent.MyId == args.Unit.Id)
                 {
+                    unitGo.transform.position = landRoomObjectsComponent.SelfUnitPosition.position;
                     unitGo.transform.position = landRoomObjectsComponent.SelfUnitPosition.position;
                 }
                 else

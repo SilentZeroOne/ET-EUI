@@ -18,7 +18,7 @@ namespace ET
 
         public static void ShowWindow(this DlgLandLobby self, Entity contextData = null)
         {
-            var roleInfo = self.ZoneScene().GetComponent<RoleInfoComponent>().RoleInfo;
+            var roleInfo = self.ZoneScene().GetComponent<RoleInfoComponent>().GetSelfRoleInfo();
             if (roleInfo != null || !roleInfo.IsDisposed)
             {
                 self.View.E_NickNameText.SetText(roleInfo.NickName);

@@ -9,7 +9,7 @@ namespace ET
             Lo2C_StartMatch lo2CStartMatch = null;
             try
             {
-                var roleInfo = zoneScene.GetComponent<RoleInfoComponent>().RoleInfo;
+                var roleInfo = zoneScene.GetComponent<RoleInfoComponent>().GetSelfRoleInfo();
                 lo2CStartMatch = (Lo2C_StartMatch)await zoneScene.GetComponent<SessionComponent>().Session
                         .Call(new C2Lo_StartMatch() { RoleInfoId = roleInfo.Id });
                 

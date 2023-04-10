@@ -52,7 +52,7 @@ namespace ET
 				
 				var infoComponent = self.ZoneScene().GetComponent<RoleInfoComponent>();
 				self.DomainScene().GetComponent<UIComponent>()
-						.ShowWindow(infoComponent.RoleInfo == null? WindowID.WindowID_LandCreateRole : WindowID.WindowID_LandLobby);
+						.ShowWindow(infoComponent.GetSelfRoleInfo() == null? WindowID.WindowID_LandCreateRole : WindowID.WindowID_LandLobby);
 
 				self.IsLogining = false;
 			}

@@ -53,8 +53,9 @@ namespace ET
             if (a2CLoginAccount.RoleInfo != null)
             {
                 var infoComponent = zoneScene.GetComponent<RoleInfoComponent>();
-                infoComponent.RoleInfo = infoComponent.AddChild<RoleInfo>();
-                infoComponent.RoleInfo.FromMessage(a2CLoginAccount.RoleInfo);
+                var roleInfo = infoComponent.AddChildWithId<RoleInfo>(a2CLoginAccount.RoleInfo.Id);
+                roleInfo.FromMessage(a2CLoginAccount.RoleInfo);
+                zoneScene.GetComponent<PlayerComponent>().MyId = a2CLoginAccount.RoleInfo.Id;
             }
             
             return ErrorCode.ERR_Success;
@@ -108,9 +109,8 @@ namespace ET
                         });
 
                 var infoComponent = zoneScene.GetComponent<RoleInfoComponent>();
-                var roleInfo = infoComponent.AddChild<RoleInfo>();
+                var roleInfo = infoComponent.AddChildWithId<RoleInfo>(a2CCreateRole.RoleInfo.Id);
                 roleInfo.FromMessage(a2CCreateRole.RoleInfo);
-                infoComponent.RoleInfo = roleInfo;
             }
             catch (Exception e)
             {
@@ -197,7 +197,7 @@ namespace ET
                 g2CLoginGameGate = (G2C_LoginGameGate)await gateSession.Call(new C2G_LoginGameGate()
                 {
                     AccountId = accountInfo.AccountId, GateSessionKey = r2CLoginRealm.GateSessionKey,
-                    RoleInfoId = roleInfo.RoleInfo.Id
+                    RoleInfoId = roleInfo.GetSelfRoleInfo().Id
                 });
             }
             catch (Exception e)
