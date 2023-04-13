@@ -446,3 +446,17 @@ message G2C_GetRoleInfo // IResponse
 	RoleInfoProto RoleInfo = 1;
 }
 
+message CardInfo
+{
+	int32 CardWeight = 1;
+	int32 CardSuit = 2;
+}
+
+/// <summary>
+/// 更新自己的卡牌信息
+/// </summary>
+message Lo2C_UpdateCardsInfo // IActorLobbyMessage
+{
+	repeated CardInfo CardsInfo = 1;
+}
+

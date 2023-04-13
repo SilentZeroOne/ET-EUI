@@ -938,4 +938,28 @@ namespace ET
 
 	}
 
+	[Message(OuterOpcode.CardInfo)]
+	[ProtoContract]
+	public partial class CardInfo: Object
+	{
+		[ProtoMember(1)]
+		public int CardWeight { get; set; }
+
+		[ProtoMember(2)]
+		public int CardSuit { get; set; }
+
+	}
+
+/// <summary>
+/// 更新自己的卡牌信息
+/// </summary>
+	[Message(OuterOpcode.Lo2C_UpdateCardsInfo)]
+	[ProtoContract]
+	public partial class Lo2C_UpdateCardsInfo: Object, IActorLobbyMessage
+	{
+		[ProtoMember(1)]
+		public List<CardInfo> CardsInfo = new List<CardInfo>();
+
+	}
+
 }

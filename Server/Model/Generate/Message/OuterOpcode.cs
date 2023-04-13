@@ -59,5 +59,7 @@ namespace ET
 		 public const ushort Lo2C_NotifyUnitReady = 10056;
 		 public const ushort C2G_GetRoleInfo = 10057;
 		 public const ushort G2C_GetRoleInfo = 10058;
+		 public const ushort CardInfo = 10059;
+		 public const ushort Lo2C_UpdateCardsInfo = 10060;
 	}
 }

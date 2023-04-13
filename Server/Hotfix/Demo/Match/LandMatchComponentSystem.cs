@@ -60,7 +60,7 @@ namespace ET
             }
             else
             {
-                room = self.AddChild<Room>();
+                room = self.AddChild<Room, int>(1);
                 self.FreeLandlordsDict.Add(room.Id, room);
                 while (self.MatchingQueue.Count > 0 && room.PlayerCount < 3)
                 {

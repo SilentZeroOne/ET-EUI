@@ -33,6 +33,7 @@ namespace ET
                 var index = self.Seats.Count;
                 self.Seats.Add(unit.Id, index);
                 self.Units[index] = unit;
+                unit.AddComponent<HandCardsComponent>();
             }
             else
             {

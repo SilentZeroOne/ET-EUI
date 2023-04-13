@@ -1,0 +1,3 @@
+{"list":[
+{"_t":"RoomConfig","_id":1,"Multiples":1,"BasePointPerMatch":100,"MinThreshold":1},
+]}

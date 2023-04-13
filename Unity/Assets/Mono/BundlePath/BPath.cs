@@ -45,6 +45,7 @@ namespace BM
 		public const string Assets_Scenes_PlayingRoom__unity = "Assets/Scenes/PlayingRoom.unity";
 		public const string Assets_Bundles_Config_AIConfigCategory__bytes = "Assets/Bundles/Config/AIConfigCategory.bytes";
 		public const string Assets_Bundles_Config_PlayerNumericConfigCategory__bytes = "Assets/Bundles/Config/PlayerNumericConfigCategory.bytes";
+		public const string Assets_Bundles_Config_RoomConfigCategory__bytes = "Assets/Bundles/Config/RoomConfigCategory.bytes";
 		public const string Assets_Bundles_Config_StartMachineConfigCategory__bytes = "Assets/Bundles/Config/StartMachineConfigCategory.bytes";
 		public const string Assets_Bundles_Config_StartProcessConfigCategory__bytes = "Assets/Bundles/Config/StartProcessConfigCategory.bytes";
 		public const string Assets_Bundles_Config_StartSceneConfigCategory__bytes = "Assets/Bundles/Config/StartSceneConfigCategory.bytes";

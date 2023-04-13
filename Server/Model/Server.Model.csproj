@@ -30,6 +30,14 @@
       <Link>Demo\Enums.cs</Link>
     </Compile>
 
+    <Compile Include="..\..\Unity\Codes\Model\Demo\LandRoom\Card.cs">
+      <Link>Demo\Match\Card.cs</Link>
+    </Compile>
+
+    <Compile Include="..\..\Unity\Codes\Model\Demo\LandRoom\HandCardsComponent.cs">
+      <Link>Demo\Match\HandCardsComponent.cs</Link>
+    </Compile>
+
     <Compile Include="..\..\Unity\Codes\Model\Demo\Role\RoleInfo.cs">
       <Link>Demo\Role\RoleInfo.cs</Link>
     </Compile>

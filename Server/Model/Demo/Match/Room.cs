@@ -2,8 +2,12 @@
 
 namespace ET
 {
-    public class Room: Entity, IAwake, IDestroy
+    public class Room: Entity, IAwake<int>, IDestroy
     {
+        public int ConfigId;
+
+        public RoomConfig Config => RoomConfigCategory.Instance.Get(this.ConfigId);
+        
         public readonly Dictionary<long, int> Seats = new Dictionary<long, int>(3);
 
         public readonly Unit[] Units = new Unit[3];

@@ -14,10 +14,11 @@
         }
     }
     
-    public class RoomAwakeSystem: AwakeSystem<Room>
+    public class RoomAwakeSystem: AwakeSystem<Room,int>
     {
-        public override void Awake(Room self)
+        public override void Awake(Room self, int a)
         {
+            self.ConfigId = a;
             self.CreatePlayingScene().Coroutine();
         }
     }
@@ -80,10 +81,10 @@
 
         public static bool IsGameCanStart(this Room self)
         {
-            bool isOk = false;
+            bool isOk = true;
             for (int i = 0; i < 3; i++)
             {
-                isOk |= self.isReady[i];
+                isOk &= self.isReady[i];
             }
 
             return isOk;
@@ -103,9 +104,14 @@
                 landMatchComponent.PlayingUnit.Add(unit.Id, self);
             }
             
-            //TODO 添加斗地主开始必要组件
+            //添加斗地主开始必要组件
+            self.AddComponent<DeckComponent>();
+            self.AddComponent<HandCardsComponent>(); //存放地主牌
+            var controller = self.AddComponent<GameControllerComponent>();
+
             
             //开始游戏
+            controller.StartGame();
         }
 
         public static int GetUnitSeatIndex(this Room self, long id)
@@ -173,6 +179,10 @@
                 self.isReady[self.Seats[unitId]] = ready;
                 var message = new Lo2C_NotifyUnitReady() { UnitId = unitId, Ready = ready ? 1 : 0 };
                 self.Broadcast(message, unitId: unitId);
+                if (self.IsGameCanStart())
+                {
+                    self.GameStart();
+                }
             }
             else
             {

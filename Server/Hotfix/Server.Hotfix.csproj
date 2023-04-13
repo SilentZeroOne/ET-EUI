@@ -19,6 +19,15 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\Unity\Codes\Hotfix\Demo\LandRoom\CardFactory.cs">
+      <Link>Demo\Match\CardFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Codes\Hotfix\Demo\LandRoom\CardSystem.cs">
+      <Link>Demo\Match\CardSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Unity\Codes\Hotfix\Demo\LandRoom\HandCardsComponentSystem.cs">
+      <Link>Demo\Match\HandCardsComponentSystem.cs</Link>
+    </Compile>
     <Compile Include="..\..\Unity\Codes\Hotfix\Demo\Move\MoveComponentSystem.cs">
       <Link>Demo\Move\MoveComponentSystem.cs</Link>
     </Compile>
