@@ -33,7 +33,8 @@ namespace ET
                 var index = self.Seats.Count;
                 self.Seats.Add(unit.Id, index);
                 self.Units[index] = unit;
-                unit.AddComponent<HandCardsComponent>();
+                if (unit.Id == self.ZoneScene().GetComponent<PlayerComponent>().MyId)
+                    unit.AddComponent<HandCardsComponent>();
             }
             else
             {

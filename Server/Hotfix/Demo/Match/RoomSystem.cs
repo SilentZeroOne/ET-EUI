@@ -1,8 +1,9 @@
 ﻿namespace ET
 {
-    
+
     [Timer(TimerType.RoomEmptyCloseTimer)]
-    public class RoomEmptyCloseTimerTimer: ATimer<Room>
+    [FriendClassAttribute(typeof(ET.Room))]
+    public class RoomEmptyCloseTimerTimer : ATimer<Room>
     {
         public override void Run(Room self)
         {
@@ -13,7 +14,7 @@
             }
         }
     }
-    
+
     public class RoomAwakeSystem: AwakeSystem<Room,int>
     {
         public override void Awake(Room self, int a)
@@ -27,9 +28,8 @@
     {
         public override void Destroy(Room self)
         {
-            self.PlayingScene.Dispose();
-            self.PlayingScene = null;
             self.Seats.Clear();
+            TimerComponent.Instance.Remove(ref self.CloseTimer);
             for (int i = 0; i < 3; i++)
             {
                 self.Units[i]?.Dispose();

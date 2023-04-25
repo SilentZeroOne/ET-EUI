@@ -20,7 +20,13 @@
 	{
 		public static Card[] GetAllCards(this HandCardsComponent self)
 		{
+			self.Sort();
 			return self.Library.ToArray();
+		}
+
+		public static void Sort(this HandCardsComponent self)
+		{
+			self.Library.Sort();
 		}
 
 		public static void AddCard(this HandCardsComponent self, Card card)

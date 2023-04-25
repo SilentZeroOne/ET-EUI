@@ -28,7 +28,7 @@ namespace ET
                 Log.Debug($"Landroom objects loaded");
             }
 
-            args.Unit.AddComponent<GameObjectComponent>().GameObject = unitGo;
+            args.Unit.AddComponent<GameObjectComponent>().SetGameObject(unitGo);
             args.Unit.AddComponent<SpriteRendererComponent>().Renderer = unitGo.GetComponent<SpriteRenderer>();
 
             var poker = AssetComponent.Load<SpriteAtlas>(BPath.Assets_Bundles_ResBundles_Atlas_Pokers__spriteatlas);

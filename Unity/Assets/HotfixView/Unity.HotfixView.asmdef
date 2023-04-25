@@ -9,7 +9,8 @@
         "Unity.ModelView",
         "DOTween.Modules",
         "Unity.TextMeshPro",
-        "DOTweenPro.Scripts"
+        "DOTweenPro.Scripts",
+        "HotfixMono"
     ],
     "includePlatforms": [
         "Editor"

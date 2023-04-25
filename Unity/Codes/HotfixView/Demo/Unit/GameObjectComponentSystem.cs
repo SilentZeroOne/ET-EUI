@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace ET
 {
@@ -11,6 +12,12 @@ namespace ET
             {
                 UnityEngine.Object.Destroy(self.GameObject);
             }
+        }
+
+        public static void SetGameObject(this GameObjectComponent self, GameObject gameObject)
+        {
+            gameObject.AddComponent<EntityMonoBridge>().BelongToEntity = self.GetParent<Entity>().InstanceId;
+            self.GameObject = gameObject;
         }
     }
 }

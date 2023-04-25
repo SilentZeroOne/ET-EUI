@@ -19,6 +19,8 @@ namespace ET
 			self.ReadyIcon.Add(self.View.EG_SelfStandByRectTransform);
 			self.ReadyIcon.Add(self.View.EG_Player1StandByRectTransform);
 			self.ReadyIcon.Add(self.View.EG_Player2StandByRectTransform);
+			
+			GameObjectPoolHelper.InitPoolFormGamObjectAsync(self.View.E_CardTemplateButton.gameObject, 17).Coroutine();
 		}
 
 		public static void ShowWindow(this DlgMain self, Entity contextData = null)
@@ -60,6 +62,32 @@ namespace ET
 				self.View.E_StartGameButton.SetVisible(!active);
 				self.View.E_UnReadyButton.SetVisible(active);
 			}
+		}
+
+		public static void HideBeforeStartUI(this DlgMain self)
+		{
+			foreach (var icon in self.ReadyIcon)
+			{
+				icon.SetVisible(false);
+			}
+			
+			self.View.E_StartGameButton.SetVisible(false);
+			self.View.E_UnReadyButton.SetVisible(false);
+		}
+
+		public static void AddCardSpriteToHand(this DlgMain self, Card card)
+		{
+			var template = self.View.E_CardTemplateButton.gameObject;
+			var newCard = GameObjectPoolHelper.GetObjectFromPool(template.name);
+			self.Cards.Add(card.Id, newCard);
+			
+			newCard.transform.SetParent(template.transform.parent);
+			var rect = newCard.transform.GetComponent<RectTransform>();
+			rect.localPosition = Vector3.zero;
+			rect.localScale = Vector2.one * 1.5f;
+			newCard.GetComponent<Image>().sprite = CardHelper.GetCardSprite(card);
+
+			card.AddComponent<GameObjectComponent>().SetGameObject(newCard);
 		}
 	}
 }

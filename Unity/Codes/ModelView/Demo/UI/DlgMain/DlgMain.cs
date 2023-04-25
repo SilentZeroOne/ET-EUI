@@ -8,6 +8,8 @@ namespace ET
 	{
 		public DlgMainViewComponent View { get => this.Parent.GetComponent<DlgMainViewComponent>();}
 
-		public List<RectTransform> ReadyIcon = new List<RectTransform>(3);
+		public List<RectTransform> ReadyIcon = new(3);
+
+		public Dictionary<long,GameObject> Cards = new(30);
 	}
 }

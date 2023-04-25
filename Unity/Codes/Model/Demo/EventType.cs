@@ -121,5 +121,12 @@ namespace ET
             public int UnitIndex;
             public int Ready;
         }
+        
+        public struct AfterCardCreate
+        {
+            public Scene ZoneScene;
+            public Card Card;
+            public bool CreateView;
+        }
     }
 }
