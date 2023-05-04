@@ -1,11 +1,7 @@
 {
     "name": "HotfixMono",
     "rootNamespace": "ET",
-    "references": [
-        "Unity.Mono",
-        "Unity.Model",
-        "Unity.Hotfix"
-    ],
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": true,

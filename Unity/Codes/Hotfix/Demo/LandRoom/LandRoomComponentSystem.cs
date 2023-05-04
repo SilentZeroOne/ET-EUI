@@ -6,7 +6,7 @@ namespace ET
     {
         public override void Awake(LandRoomComponent self)
         {
-
+            self.AddComponent<HandCardsComponent>();
         }
     }
 

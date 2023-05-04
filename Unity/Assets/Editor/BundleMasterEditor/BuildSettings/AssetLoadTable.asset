@@ -19,7 +19,7 @@ MonoBehaviour:
   InitScene:
   - {fileID: 102900000, guid: e0d691ac8c1d0454ba07089ea820e18a, type: 3}
   GeneratePathCode: 1
-  GenerateCodeScriptPath: Mono\BundlePath
+  GenerateCodeScriptPath: HotfixMono\BundlePath
   AssetsSettings:
   - {fileID: 11400000, guid: 0c36a7b75e46bb447b95e79a278812ac, type: 2}
   - {fileID: 11400000, guid: cfb4077177054324782ea023dde94435, type: 2}

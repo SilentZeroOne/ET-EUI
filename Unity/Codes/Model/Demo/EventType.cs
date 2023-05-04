@@ -128,5 +128,16 @@ namespace ET
             public Card Card;
             public bool CreateView;
         }
+        
+        public struct AfterCardCreateEnd
+        {
+            public Scene ZoneScene;
+        }
+        
+        public struct AfterLordCardCreate
+        {
+            public Scene ZoneScene;
+            public Card Card;
+        }
     }
 }

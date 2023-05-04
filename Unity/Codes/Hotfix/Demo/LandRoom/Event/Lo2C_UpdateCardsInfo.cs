@@ -9,8 +9,16 @@ namespace ET
     {
         protected override async void Run(Session session, Lo2C_UpdateCardsInfo message)
         {
-            Unit myUnit = UnitHelper.GetMyUnitFromZoneScene(session.ZoneScene());
-            await CreateAndDisplayCard(message.CardsInfo, myUnit);
+            if (message.LordCard == 0)
+            {
+                Unit myUnit = UnitHelper.GetMyUnitFromZoneScene(session.ZoneScene());
+                await CreateAndDisplayCard(message.CardsInfo, myUnit);
+            }
+            else
+            {
+                await CreateAndDisplayCard(message.CardsInfo, session.ZoneScene().CurrentScene());
+            }
+            
         }
 
         private async ETTask CreateAndDisplayCard(List<CardInfo> cardsInfo, Unit myUnit)
@@ -30,8 +38,31 @@ namespace ET
                 Game.EventSystem.Publish(new AfterCardCreate() { ZoneScene = myUnit.ZoneScene(), Card = tempCards[i] });
                 await TimerComponent.Instance.WaitAsync(200);
             }
+
+            Game.EventSystem.Publish(new AfterCardCreateEnd() { ZoneScene = myUnit.ZoneScene() });
             
             tempCards.Dispose();
+        }
+
+        private async ETTask CreateAndDisplayCard(List<CardInfo> cardsInfo, Scene currentScene)
+        {
+            ListComponent<Card> tempCards = ListComponent<Card>.Create();
+            LandRoomComponent landRoom = currentScene.GetComponent<LandRoomComponent>();
+            foreach (var info in cardsInfo)
+            {
+                var card = CardFactory.CreateCard(landRoom, info.CardWeight, info.CardSuit);
+                landRoom.GetComponent<HandCardsComponent>().AddCard(card);
+                tempCards.Add(card);
+            }
+            
+            for (var i = tempCards.Count - 1; i >= 0; i--)
+            {
+                Game.EventSystem.Publish(new AfterLordCardCreate() { ZoneScene = currentScene.ZoneScene(), Card = tempCards[i] });
+            }
+            
+            tempCards.Dispose();
+
+            await ETTask.CompletedTask;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using BM;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +21,7 @@ namespace ET
 			self.ReadyIcon.Add(self.View.EG_Player1StandByRectTransform);
 			self.ReadyIcon.Add(self.View.EG_Player2StandByRectTransform);
 			
-			GameObjectPoolHelper.InitPoolFormGamObjectAsync(self.View.E_CardTemplateButton.gameObject, 17).Coroutine();
+			GameObjectPoolHelper.InitPool("PlayCard", 17);
 		}
 
 		public static void ShowWindow(this DlgMain self, Entity contextData = null)
@@ -75,16 +76,15 @@ namespace ET
 			self.View.E_UnReadyButton.SetVisible(false);
 		}
 
-		public static void AddCardSpriteToHand(this DlgMain self, Card card)
+		public static void AddCardSprite(this DlgMain self, Card card, bool lordCard)
 		{
-			var template = self.View.E_CardTemplateButton.gameObject;
-			var newCard = GameObjectPoolHelper.GetObjectFromPool(template.name);
+			var newCard = GameObjectPoolHelper.GetObjectFromPool("PlayCard");
 			self.Cards.Add(card.Id, newCard);
-			
-			newCard.transform.SetParent(template.transform.parent);
+
+			newCard.transform.SetParent(lordCard? self.View.EG_LordCardBgRectTransform : self.View.EG_CardParentRectTransform);
 			var rect = newCard.transform.GetComponent<RectTransform>();
 			rect.localPosition = Vector3.zero;
-			rect.localScale = Vector2.one * 1.5f;
+			rect.localScale = Vector2.one * (lordCard? 1 : 1.5f);
 			newCard.GetComponent<Image>().sprite = CardHelper.GetCardSprite(card);
 
 			card.AddComponent<GameObjectComponent>().SetGameObject(newCard);

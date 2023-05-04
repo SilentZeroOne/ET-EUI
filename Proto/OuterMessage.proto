@@ -453,10 +453,12 @@ message CardInfo
 }
 
 /// <summary>
-/// 更新自己的卡牌信息
+/// 更新的卡牌信息
 /// </summary>
 message Lo2C_UpdateCardsInfo // IActorLobbyMessage
 {
 	repeated CardInfo CardsInfo = 1;
+	// 0=自己 1=地主牌
+	int32 LordCard = 2;
 }
 

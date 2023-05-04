@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OuterMessage
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -1705,7 +1705,7 @@ MonoBehaviour:
     MessageType: 10
     ClassName: Lo2C_UpdateCardsInfo
     ResponseType: 
-    Annotation: "\u66F4\u65B0\u81EA\u5DF1\u7684\u5361\u724C\u4FE1\u606F"
+    Annotation: "\u66F4\u65B0\u7684\u5361\u724C\u4FE1\u606F"
     MessageParamConfigs:
     - ParamName: CardsInfo
       ParamType: 11
@@ -1714,4 +1714,11 @@ MonoBehaviour:
       CustomMessageClassName: 
       MessageClassName: CardInfo
       Comment: 
+    - ParamName: LordCard
+      ParamType: 0
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: "0=\u81EA\u5DF1 1=\u5730\u4E3B\u724C"
   ImportMessagesGroup: 0

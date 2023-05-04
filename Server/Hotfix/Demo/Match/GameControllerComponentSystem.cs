@@ -24,6 +24,7 @@
         public static void StartGame(this GameControllerComponent self)
         {
             Room room = self.GetParent<Room>();
+            room.GetComponent<HandCardsComponent>().Reset();
             Unit[] units = room.Units;
 
             foreach (var unit in units)
@@ -45,8 +46,21 @@
                     updateCardsInfo.CardsInfo.Add(card.ToMessage());
                 }
 
+                updateCardsInfo.LordCard = 0;
+
                 MessageHelper.SendToClient(unit, updateCardsInfo);
             }
+
+            var landLordCard = room.GetComponent<HandCardsComponent>();
+            Lo2C_UpdateCardsInfo lordCardInfo = new Lo2C_UpdateCardsInfo();
+            foreach (var card in landLordCard.Library)
+            {
+                lordCardInfo.CardsInfo.Add(card.ToMessage());
+            }
+
+            lordCardInfo.LordCard = 1;
+
+            room.Broadcast(lordCardInfo);
             
             Log.Info($"Room {room.Id} 开始游戏");
         }

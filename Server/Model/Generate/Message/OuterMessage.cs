@@ -951,7 +951,7 @@ namespace ET
 	}
 
 /// <summary>
-/// 更新自己的卡牌信息
+/// 更新的卡牌信息
 /// </summary>
 	[Message(OuterOpcode.Lo2C_UpdateCardsInfo)]
 	[ProtoContract]
@@ -959,6 +959,10 @@ namespace ET
 	{
 		[ProtoMember(1)]
 		public List<CardInfo> CardsInfo = new List<CardInfo>();
+
+// 0=自己 1=地主牌
+		[ProtoMember(2)]
+		public int LordCard { get; set; }
 
 	}
 

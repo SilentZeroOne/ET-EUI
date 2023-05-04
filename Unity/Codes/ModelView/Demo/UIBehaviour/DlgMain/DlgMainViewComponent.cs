@@ -7,6 +7,57 @@ namespace ET
 	[EnableMethod]
 	public  class DlgMainViewComponent : Entity,IAwake,IDestroy 
 	{
+		public UnityEngine.UI.Button E_LeaveRoomButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_LeaveRoomButton == null )
+     			{
+		    		this.m_E_LeaveRoomButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"TopParent/E_LeaveRoom");
+     			}
+     			return this.m_E_LeaveRoomButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_LeaveRoomImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_LeaveRoomImage == null )
+     			{
+		    		this.m_E_LeaveRoomImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"TopParent/E_LeaveRoom");
+     			}
+     			return this.m_E_LeaveRoomImage;
+     		}
+     	}
+
+		public UnityEngine.RectTransform EG_LordCardBgRectTransform
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EG_LordCardBgRectTransform == null )
+     			{
+		    		this.m_EG_LordCardBgRectTransform = UIFindHelper.FindDeepChild<UnityEngine.RectTransform>(this.uiTransform.gameObject,"TopParent/EG_LordCardBg");
+     			}
+     			return this.m_EG_LordCardBgRectTransform;
+     		}
+     	}
+
 		public UnityEngine.UI.Button E_StartGameButton
      	{
      		get
@@ -177,42 +228,11 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Button E_LeaveRoomButton
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_LeaveRoomButton == null )
-     			{
-		    		this.m_E_LeaveRoomButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"E_LeaveRoom");
-     			}
-     			return this.m_E_LeaveRoomButton;
-     		}
-     	}
-
-		public UnityEngine.UI.Image E_LeaveRoomImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_LeaveRoomImage == null )
-     			{
-		    		this.m_E_LeaveRoomImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"E_LeaveRoom");
-     			}
-     			return this.m_E_LeaveRoomImage;
-     		}
-     	}
-
 		public void DestroyWidget()
 		{
+			this.m_E_LeaveRoomButton = null;
+			this.m_E_LeaveRoomImage = null;
+			this.m_EG_LordCardBgRectTransform = null;
 			this.m_E_StartGameButton = null;
 			this.m_E_StartGameImage = null;
 			this.m_EG_SelfStandByRectTransform = null;
@@ -223,11 +243,12 @@ namespace ET
 			this.m_E_CardTemplateImage = null;
 			this.m_EG_Player1StandByRectTransform = null;
 			this.m_EG_Player2StandByRectTransform = null;
-			this.m_E_LeaveRoomButton = null;
-			this.m_E_LeaveRoomImage = null;
 			this.uiTransform = null;
 		}
 
+		private UnityEngine.UI.Button m_E_LeaveRoomButton = null;
+		private UnityEngine.UI.Image m_E_LeaveRoomImage = null;
+		private UnityEngine.RectTransform m_EG_LordCardBgRectTransform = null;
 		private UnityEngine.UI.Button m_E_StartGameButton = null;
 		private UnityEngine.UI.Image m_E_StartGameImage = null;
 		private UnityEngine.RectTransform m_EG_SelfStandByRectTransform = null;
@@ -238,8 +259,6 @@ namespace ET
 		private UnityEngine.UI.Image m_E_CardTemplateImage = null;
 		private UnityEngine.RectTransform m_EG_Player1StandByRectTransform = null;
 		private UnityEngine.RectTransform m_EG_Player2StandByRectTransform = null;
-		private UnityEngine.UI.Button m_E_LeaveRoomButton = null;
-		private UnityEngine.UI.Image m_E_LeaveRoomImage = null;
 		public Transform uiTransform = null;
 	}
 }

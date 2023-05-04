@@ -7,7 +7,7 @@ namespace ET
 		protected override void Run(AfterCardCreate a)
 		{
 			a.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgMain>().HideBeforeStartUI();
-			a.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgMain>().AddCardSpriteToHand(a.Card);
+			a.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgMain>().AddCardSprite(a.Card, false);
 		}
 	}
 }
