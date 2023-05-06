@@ -81,20 +81,25 @@ namespace ET
             Lo2C_UnitReady lo2CUnitReady;
             try
             {
+                self.InReady = true;
                 lo2CUnitReady = (Lo2C_UnitReady)await session.Call(new C2Lo_UnitReady() { UnitId = unitId , Ready = ready});
                 if (lo2CUnitReady.Error != ErrorCode.ERR_Success)
                 {
+                    self.InReady = false;
                     Log.Error(lo2CUnitReady.Error.ToString());
                     return lo2CUnitReady.Error;
                 }
             }
             catch (Exception e)
             {
+                self.InReady = false;
                 Log.Error(e.ToString());
                 return ErrorCode.ERR_NetworkError;
             }
 
+            self.InReady = false;
             self.SetReady(unitId, ready);
+            self.SelfIsReady = ready == 1;
 
             return ErrorCode.ERR_Success;
         }

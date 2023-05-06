@@ -58,6 +58,159 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.RectTransform EG_AfterStartGameButtonsRectTransform
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_EG_AfterStartGameButtonsRectTransform == null )
+     			{
+		    		this.m_EG_AfterStartGameButtonsRectTransform = UIFindHelper.FindDeepChild<UnityEngine.RectTransform>(this.uiTransform.gameObject,"BottomParent/EG_AfterStartGameButtons");
+     			}
+     			return this.m_EG_AfterStartGameButtonsRectTransform;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_RobButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_RobButton == null )
+     			{
+		    		this.m_E_RobButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"BottomParent/EG_AfterStartGameButtons/E_Rob");
+     			}
+     			return this.m_E_RobButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_RobImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_RobImage == null )
+     			{
+		    		this.m_E_RobImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"BottomParent/EG_AfterStartGameButtons/E_Rob");
+     			}
+     			return this.m_E_RobImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_NotRobButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NotRobButton == null )
+     			{
+		    		this.m_E_NotRobButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"BottomParent/EG_AfterStartGameButtons/E_NotRob");
+     			}
+     			return this.m_E_NotRobButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_NotRobImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_NotRobImage == null )
+     			{
+		    		this.m_E_NotRobImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"BottomParent/EG_AfterStartGameButtons/E_NotRob");
+     			}
+     			return this.m_E_NotRobImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_PlayCardButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_PlayCardButton == null )
+     			{
+		    		this.m_E_PlayCardButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"BottomParent/EG_AfterStartGameButtons/E_PlayCard");
+     			}
+     			return this.m_E_PlayCardButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_PlayCardImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_PlayCardImage == null )
+     			{
+		    		this.m_E_PlayCardImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"BottomParent/EG_AfterStartGameButtons/E_PlayCard");
+     			}
+     			return this.m_E_PlayCardImage;
+     		}
+     	}
+
+		public UnityEngine.UI.Button E_PassButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_PassButton == null )
+     			{
+		    		this.m_E_PassButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"BottomParent/EG_AfterStartGameButtons/E_Pass");
+     			}
+     			return this.m_E_PassButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_PassImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_PassImage == null )
+     			{
+		    		this.m_E_PassImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"BottomParent/EG_AfterStartGameButtons/E_Pass");
+     			}
+     			return this.m_E_PassImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Button E_StartGameButton
      	{
      		get
@@ -233,6 +386,15 @@ namespace ET
 			this.m_E_LeaveRoomButton = null;
 			this.m_E_LeaveRoomImage = null;
 			this.m_EG_LordCardBgRectTransform = null;
+			this.m_EG_AfterStartGameButtonsRectTransform = null;
+			this.m_E_RobButton = null;
+			this.m_E_RobImage = null;
+			this.m_E_NotRobButton = null;
+			this.m_E_NotRobImage = null;
+			this.m_E_PlayCardButton = null;
+			this.m_E_PlayCardImage = null;
+			this.m_E_PassButton = null;
+			this.m_E_PassImage = null;
 			this.m_E_StartGameButton = null;
 			this.m_E_StartGameImage = null;
 			this.m_EG_SelfStandByRectTransform = null;
@@ -249,6 +411,15 @@ namespace ET
 		private UnityEngine.UI.Button m_E_LeaveRoomButton = null;
 		private UnityEngine.UI.Image m_E_LeaveRoomImage = null;
 		private UnityEngine.RectTransform m_EG_LordCardBgRectTransform = null;
+		private UnityEngine.RectTransform m_EG_AfterStartGameButtonsRectTransform = null;
+		private UnityEngine.UI.Button m_E_RobButton = null;
+		private UnityEngine.UI.Image m_E_RobImage = null;
+		private UnityEngine.UI.Button m_E_NotRobButton = null;
+		private UnityEngine.UI.Image m_E_NotRobImage = null;
+		private UnityEngine.UI.Button m_E_PlayCardButton = null;
+		private UnityEngine.UI.Image m_E_PlayCardImage = null;
+		private UnityEngine.UI.Button m_E_PassButton = null;
+		private UnityEngine.UI.Image m_E_PassImage = null;
 		private UnityEngine.UI.Button m_E_StartGameButton = null;
 		private UnityEngine.UI.Image m_E_StartGameImage = null;
 		private UnityEngine.RectTransform m_EG_SelfStandByRectTransform = null;

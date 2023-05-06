@@ -11,8 +11,19 @@ namespace ET
             try
             {
                 zoneScene = SceneFactory.CreateZoneScene(zone, "Robot", self);
-                await LoginHelper.Login(zoneScene, ConstValue.LoginAddress, zone.ToString(), zone.ToString());
-                await EnterMapHelper.EnterMapAsync(zoneScene);
+                await LoginHelper.Register(zoneScene, ConstValue.LoginAddress, $"Robot{zone}", $"Robot{zone}");
+                await LoginHelper.Login(zoneScene, ConstValue.LoginAddress, $"Robot{zone}", $"Robot{zone}");
+                if (zoneScene.GetComponent<RoleInfoComponent>().GetSelfRoleInfo() == null)
+                {
+                    await LoginHelper.CreateRole(zoneScene, $"Robot{zone}");
+                }
+                
+                //await EnterMapHelper.EnterMapAsync(zoneScene);
+                
+                await LoginHelper.GetRealm(zoneScene);
+                await LoginHelper.EnterGame(zoneScene);
+
+                await MatchHelper.StartMatch(zoneScene);
                 Log.Debug($"create robot ok: {zone}");
                 return zoneScene;
             }

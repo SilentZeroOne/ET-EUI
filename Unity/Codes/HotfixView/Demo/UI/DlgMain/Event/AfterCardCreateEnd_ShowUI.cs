@@ -6,7 +6,7 @@ namespace ET
 	{
 		protected override void Run(AfterCardCreateEnd a)
 		{
-			//a.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgMain>()
+			//a.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgMain>().DisplayRobLandLordButtons();
 		}
 	}
 }

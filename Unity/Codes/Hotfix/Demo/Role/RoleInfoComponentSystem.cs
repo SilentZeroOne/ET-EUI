@@ -25,6 +25,10 @@
 			return self.GetChild<RoleInfo>(unitId);
 		}
 
-		
+		public static void Remove(this RoleInfoComponent self, long id)
+		{
+			var child = self.GetChild<Entity>(id);
+			child?.Dispose();
+		}
 	}
 }

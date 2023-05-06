@@ -81,13 +81,24 @@ namespace ET
 			var newCard = GameObjectPoolHelper.GetObjectFromPool("PlayCard");
 			self.Cards.Add(card.Id, newCard);
 
+			if (lordCard)
+				self.View.EG_LordCardBgRectTransform.SetVisible(true);
 			newCard.transform.SetParent(lordCard? self.View.EG_LordCardBgRectTransform : self.View.EG_CardParentRectTransform);
 			var rect = newCard.transform.GetComponent<RectTransform>();
 			rect.localPosition = Vector3.zero;
 			rect.localScale = Vector2.one * (lordCard? 1 : 1.5f);
-			newCard.GetComponent<Image>().sprite = CardHelper.GetCardSprite(card);
+			newCard.GetComponent<Image>().sprite = lordCard? CardHelper.GetCardSprite("None") : CardHelper.GetCardSprite(card);
 
 			card.AddComponent<GameObjectComponent>().SetGameObject(newCard);
+		}
+
+		public static void DisplayRobLandLordButtons(this DlgMain self)
+		{
+			self.View.EG_AfterStartGameButtonsRectTransform.SetVisible(true);
+			self.View.E_RobButton.SetVisible(true);
+			self.View.E_NotRobButton.SetVisible(true);
+			self.View.E_PassButton.SetVisible(false);
+			self.View.E_PlayCardButton.SetVisible(false);
 		}
 	}
 }

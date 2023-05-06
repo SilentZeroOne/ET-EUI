@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using ET;
 using UnityEngine;
 using UnityEditor;
 using Debug = UnityEngine.Debug;
@@ -18,6 +19,9 @@ namespace BM
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
+            
+            BuildAssemblieEditor.BuildCodeDebug();
+            
             AssetLoadTable assetLoadTable = AssetDatabase.LoadAssetAtPath<AssetLoadTable>(BundleMasterWindow.AssetLoadTablePath);
             List<AssetsSetting> assetsSettings = assetLoadTable.AssetsSettings;
             //开始构建前剔除多余场景
