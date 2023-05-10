@@ -54,6 +54,7 @@ namespace ET
 		public static void AddCard(this DeckComponent self, Card card)
 		{
 			self.CardLibrary.Add(card);
+			self.AddChild(card);
 		}
 
 		/// <summary>

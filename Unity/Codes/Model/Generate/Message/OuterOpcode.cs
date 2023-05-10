@@ -61,5 +61,10 @@ namespace ET
 		 public const ushort G2C_GetRoleInfo = 10058;
 		 public const ushort CardInfo = 10059;
 		 public const ushort Lo2C_UpdateCardsInfo = 10060;
+		 public const ushort Lo2C_CurrentPlayer = 10061;
+		 public const ushort C2Lo_RobLandLordRequest = 10062;
+		 public const ushort Lo2C_RobLandLordResponse = 10063;
+		 public const ushort Lo2C_SetMultiples = 10064;
+		 public const ushort Lo2C_RobLandLord = 10065;
 	}
 }

@@ -2,7 +2,7 @@
 
 namespace ET
 {
-    public class C2M_StartMatchHandler: AMActorLocationRpcHandler<Unit, C2Lo_StartMatch, Lo2C_StartMatch>
+    public class C2Lo_StartMatchHandler: AMActorLocationRpcHandler<Unit, C2Lo_StartMatch, Lo2C_StartMatch>
     {
         protected override async ETTask Run(Unit unit, C2Lo_StartMatch request, Lo2C_StartMatch response, Action reply)
         {

@@ -21,7 +21,7 @@
     [FriendClassAttribute(typeof(ET.HandCardsComponent))]
     public static class GameControllerComponentSystem
     {
-        public static void StartGame(this GameControllerComponent self)
+        public static async void StartGame(this GameControllerComponent self)
         {
             Room room = self.GetParent<Room>();
             room.GetComponent<HandCardsComponent>().Reset();
@@ -51,18 +51,20 @@
                 MessageHelper.SendToClient(unit, updateCardsInfo);
             }
 
-            var landLordCard = room.GetComponent<HandCardsComponent>();
-            Lo2C_UpdateCardsInfo lordCardInfo = new Lo2C_UpdateCardsInfo();
-            foreach (var card in landLordCard.Library)
-            {
-                lordCardInfo.CardsInfo.Add(card.ToMessage());
-            }
-
-            lordCardInfo.LordCard = 1;
-
-            room.Broadcast(lordCardInfo);
             
-            Log.Info($"Room {room.Id} 开始游戏");
+            Log.Info($"Room {room.Id} 发牌结束");
+
+            await TimerComponent.Instance.WaitAsync(1000);
+
+            var firstPlayer = self.RandomFirstPlayer();
+            Lo2C_CurrentPlayer lo2CCurrentPlayer = new Lo2C_CurrentPlayer()
+            {
+                ActionType = (int)ActionType.RobLandLord, UnitId = firstPlayer
+            };
+
+            room.GetComponent<OrderControllerComponent>().Init(firstPlayer);
+            room.GetComponent<OrderControllerComponent>().CurrentPlayer = firstPlayer;
+            room.Broadcast(lo2CCurrentPlayer);
         }
 
         /// <summary>
@@ -102,6 +104,85 @@
             Entity entity = EventSystem.Instance.Get(instanceId);
 
             entity?.GetComponent<HandCardsComponent>()?.AddCard(card);
+        }
+        
+        public static void CardsOnTable(this GameControllerComponent self, long unitId)
+        {
+            //往客户端发送地主牌信息
+            var room = self.GetParent<Room>();
+            var landLordCard = room.GetComponent<HandCardsComponent>();
+            Lo2C_UpdateCardsInfo lordCardInfo = new Lo2C_UpdateCardsInfo();
+            foreach (var card in landLordCard.Library)
+            {
+                lordCardInfo.CardsInfo.Add(card.ToMessage());
+            }
+
+            lordCardInfo.LordCard = 1;
+
+            room.Broadcast(lordCardInfo);
+
+            foreach (var player in room.Units)
+            {
+                Identify identify = unitId == player.Id? Identify.LandLord : Identify.Farmer;
+                self.UpdateIdentify(player, identify);
+            }
+            
+            //把地主牌加入地主手中
+            lordCardInfo.LordCard = 0;
+            var lordUnit = room.GetUnit(unitId);
+            MessageHelper.SendToClient(lordUnit, lordCardInfo);
+
+            var lordHandCard = lordUnit.GetComponent<HandCardsComponent>();
+            while (landLordCard.Library.Count > 0)
+            {
+                var card = landLordCard.Library[^1];
+                landLordCard.PopCard(card);
+                lordHandCard.AddCard(card);
+            }
+
+            room.Broadcast(new Lo2C_CurrentPlayer() { ActionType = (int)ActionType.PlayCard, UnitId = unitId });
+        }
+
+        public static long RandomFirstPlayer(this GameControllerComponent self)
+        {
+            Room room = self.GetParent<Room>();
+            var index = RandomHelper.RandomNumber(0, 2);
+
+            return room.Units[index].Id;
+        }
+
+        public static void UpdateIdentify(this GameControllerComponent self, Unit unit, Identify identify)
+        {
+            unit.GetComponent<HandCardsComponent>().AccessIdentify = identify;
+        }
+
+        /// <summary>
+        /// 回收所有卡牌到卡组
+        /// </summary>
+        /// <param name="self"></param>
+        public static void BackToDeck(this GameControllerComponent self)
+        {
+            Room room = self.GetParent<Room>();
+            DeckComponent deckComponent = room.GetComponent<DeckComponent>();
+
+            foreach (var player in room.Units)
+            {
+                HandCardsComponent handCardsComponent = player.GetComponent<HandCardsComponent>();
+                while (handCardsComponent.Library.Count > 0)
+                {
+                    var card = handCardsComponent.Library[^1];
+                    handCardsComponent.PopCard(card);
+                    deckComponent.AddCard(card);
+                }
+            }
+
+            var roomCard = room.GetComponent<HandCardsComponent>();
+            while (roomCard.Library.Count > 0)
+            {
+                var card = roomCard.Library[^1];
+                roomCard.PopCard(card);
+                deckComponent.AddCard(card);
+            }
         }
 
     }

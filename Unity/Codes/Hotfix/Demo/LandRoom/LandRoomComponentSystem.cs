@@ -1,4 +1,5 @@
 ﻿using System;
+using ET.EventType;
 
 namespace ET
 {
@@ -68,49 +69,26 @@ namespace ET
             return -1;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="self"></param>
-        /// <param name="unitId"></param>
-        /// <param name="ready">0 = unready 1 = ready</param>
-        /// <returns></returns>
-        public static async ETTask<int> SetReadyNetwork(this LandRoomComponent self, long unitId, int ready)
-        {
-            Session session = self.ZoneScene().GetComponent<SessionComponent>().Session;
-            Lo2C_UnitReady lo2CUnitReady;
-            try
-            {
-                self.InReady = true;
-                lo2CUnitReady = (Lo2C_UnitReady)await session.Call(new C2Lo_UnitReady() { UnitId = unitId , Ready = ready});
-                if (lo2CUnitReady.Error != ErrorCode.ERR_Success)
-                {
-                    self.InReady = false;
-                    Log.Error(lo2CUnitReady.Error.ToString());
-                    return lo2CUnitReady.Error;
-                }
-            }
-            catch (Exception e)
-            {
-                self.InReady = false;
-                Log.Error(e.ToString());
-                return ErrorCode.ERR_NetworkError;
-            }
-
-            self.InReady = false;
-            self.SetReady(unitId, ready);
-            self.SelfIsReady = ready == 1;
-
-            return ErrorCode.ERR_Success;
-        }
-
         public static void SetReady(this LandRoomComponent self, long unitId, int ready)
         {
             var index = self.GetUnitSeatIndex(unitId);
             self.isReady[index] = ready == 1;
-            Game.EventSystem.Publish(new EventType.UnitReady() { ZoneScene = self.ZoneScene(), UnitIndex = index, Ready = ready });
+            Game.EventSystem.Publish(new UnitReady() { ZoneScene = self.ZoneScene(), UnitIndex = index, Ready = ready });
         }
 
+        public static void SetPromt(this LandRoomComponent self, long unitId, int rob)
+        {
+            var index = self.GetUnitSeatIndex(unitId);
+            
+            Game.EventSystem.Publish(new RobLandLord() { ZoneScene = self.ZoneScene(), Rob = rob == 1, UnitIndex = index });
+        }
+
+        public static void SetMultiples(this LandRoomComponent self, int multiples)
+        {
+            self.Multiples = multiples;
+            Game.EventSystem.Publish(new SetMutiples() { ZoneScene = self.ZoneScene(), Mutiples = multiples});
+        }
+        
         public static void LeaveRoom(this LandRoomComponent self, long unitId)
         {
             Session session = self.ZoneScene().GetComponent<SessionComponent>().Session;

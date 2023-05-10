@@ -12,6 +12,8 @@ namespace ET
         
         public readonly bool[] isReady = { false, false, false };
         
+        public int Multiples { get; set; }
+        
         public int PlayerCount => this.Seats.Values.Count;
 
         //正在准备中--往服务器发送消息

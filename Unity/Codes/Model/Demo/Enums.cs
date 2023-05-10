@@ -60,4 +60,11 @@
         Spade,   //黑桃
         None
     }
+
+    //行动类型
+    public enum ActionType
+    {
+        RobLandLord,
+        PlayCard
+    }
 }

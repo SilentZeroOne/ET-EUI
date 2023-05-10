@@ -458,7 +458,42 @@ message CardInfo
 message Lo2C_UpdateCardsInfo // IActorLobbyMessage
 {
 	repeated CardInfo CardsInfo = 1;
-	// 0=自己 1=地主牌
+	// 0=自己 1=地主牌 
 	int32 LordCard = 2;
+}
+
+/// <summary>
+/// 当前行动玩家
+/// </summary>
+message Lo2C_CurrentPlayer // IActorLobbyMessage
+{
+	int64 UnitId = 1;
+	int32 ActionType = 2;
+}
+
+//ResponseType Lo2C_RobLandLordResponse
+message C2Lo_RobLandLordRequest // IActorLocationRequest
+{
+	int32 RpcId = 1;
+	int32 Grab = 2;
+	int64 UnitId = 3;
+}
+
+message Lo2C_RobLandLordResponse // IActorLocationResponse
+{
+	int32 RpcId = 90;
+	int32 Error = 91;
+	string Message = 92;
+}
+
+message Lo2C_SetMultiples // IActorLobbyMessage
+{
+	int32 Multiples = 1;
+}
+
+message Lo2C_RobLandLord // IActorLobbyMessage
+{
+	int64 UnitId = 1;
+	int32 Rob = 2;
 }
 

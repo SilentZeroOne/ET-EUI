@@ -139,5 +139,24 @@ namespace ET
             public Scene ZoneScene;
             public Card Card;
         }
+        
+        public struct StartPlayCard
+        {
+            public Scene ZoneScene;
+            public bool PlayingCard;
+        }
+
+        public struct RobLandLord
+        {
+            public Scene ZoneScene;
+            public bool Rob;
+            public int UnitIndex;
+        }
+        
+        public struct SetMutiples
+        {
+            public Scene ZoneScene;
+            public int Mutiples;
+        }
     }
 }

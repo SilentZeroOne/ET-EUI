@@ -966,4 +966,71 @@ namespace ET
 
 	}
 
+/// <summary>
+/// 当前行动玩家
+/// </summary>
+	[Message(OuterOpcode.Lo2C_CurrentPlayer)]
+	[ProtoContract]
+	public partial class Lo2C_CurrentPlayer: Object, IActorLobbyMessage
+	{
+		[ProtoMember(1)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(2)]
+		public int ActionType { get; set; }
+
+	}
+
+	[ResponseType(nameof(Lo2C_RobLandLordResponse))]
+	[Message(OuterOpcode.C2Lo_RobLandLordRequest)]
+	[ProtoContract]
+	public partial class C2Lo_RobLandLordRequest: Object, IActorLocationRequest
+	{
+		[ProtoMember(1)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(2)]
+		public int Rob { get; set; }
+
+		[ProtoMember(3)]
+		public long UnitId { get; set; }
+
+	}
+
+	[Message(OuterOpcode.Lo2C_RobLandLordResponse)]
+	[ProtoContract]
+	public partial class Lo2C_RobLandLordResponse: Object, IActorLocationResponse
+	{
+		[ProtoMember(90)]
+		public int RpcId { get; set; }
+
+		[ProtoMember(91)]
+		public int Error { get; set; }
+
+		[ProtoMember(92)]
+		public string Message { get; set; }
+
+	}
+
+	[Message(OuterOpcode.Lo2C_SetMultiples)]
+	[ProtoContract]
+	public partial class Lo2C_SetMultiples: Object, IActorLobbyMessage
+	{
+		[ProtoMember(1)]
+		public int Multiples { get; set; }
+
+	}
+
+	[Message(OuterOpcode.Lo2C_RobLandLord)]
+	[ProtoContract]
+	public partial class Lo2C_RobLandLord: Object, IActorLobbyMessage
+	{
+		[ProtoMember(1)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(2)]
+		public int Rob { get; set; }
+
+	}
+
 }

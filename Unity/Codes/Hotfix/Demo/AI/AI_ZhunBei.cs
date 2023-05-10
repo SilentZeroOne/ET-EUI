@@ -14,13 +14,11 @@
 
 		public override async ETTask Execute(AIComponent aiComponent, AIConfig aiConfig, ETCancellationToken cancellationToken)
 		{
-			var currentScene = aiComponent.ZoneScene().CurrentScene();
-			var landRoomComponent = currentScene.GetComponent<LandRoomComponent>();
-			if (landRoomComponent == null) return;
+			var zoneScene = aiComponent.ZoneScene();
 
-			var myUnit = UnitHelper.GetMyUnitFromCurrentScene(currentScene);
-			
-			var errorCode = await landRoomComponent.SetReadyNetwork(myUnit.Id, 1);
+			var myUnit = UnitHelper.GetMyUnitFromZoneScene(zoneScene);
+
+			var errorCode = await MatchHelper.SetReadyNetwork(zoneScene, myUnit.Id, 1);
 			if (errorCode != ErrorCode.ERR_Success)
 			{
 				Log.Error(errorCode.ToString());

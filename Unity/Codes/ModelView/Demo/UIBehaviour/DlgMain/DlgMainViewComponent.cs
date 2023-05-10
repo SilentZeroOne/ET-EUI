@@ -58,6 +58,23 @@ namespace ET
      		}
      	}
 
+		public TMPro.TextMeshProUGUI E_MultiplesTextMeshProUGUI
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_MultiplesTextMeshProUGUI == null )
+     			{
+		    		this.m_E_MultiplesTextMeshProUGUI = UIFindHelper.FindDeepChild<TMPro.TextMeshProUGUI>(this.uiTransform.gameObject,"TopParent/Multiples/E_Multiples");
+     			}
+     			return this.m_E_MultiplesTextMeshProUGUI;
+     		}
+     	}
+
 		public UnityEngine.RectTransform EG_AfterStartGameButtonsRectTransform
      	{
      		get
@@ -347,6 +364,23 @@ namespace ET
      		}
      	}
 
+		public TMPro.TextMeshProUGUI E_SelfPromtTextMeshProUGUI
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_SelfPromtTextMeshProUGUI == null )
+     			{
+		    		this.m_E_SelfPromtTextMeshProUGUI = UIFindHelper.FindDeepChild<TMPro.TextMeshProUGUI>(this.uiTransform.gameObject,"BottomParent/E_SelfPromt");
+     			}
+     			return this.m_E_SelfPromtTextMeshProUGUI;
+     		}
+     	}
+
 		public UnityEngine.RectTransform EG_Player1StandByRectTransform
      	{
      		get
@@ -381,11 +415,46 @@ namespace ET
      		}
      	}
 
+		public TMPro.TextMeshProUGUI E_Player1PromtTextMeshProUGUI
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_Player1PromtTextMeshProUGUI == null )
+     			{
+		    		this.m_E_Player1PromtTextMeshProUGUI = UIFindHelper.FindDeepChild<TMPro.TextMeshProUGUI>(this.uiTransform.gameObject,"MiddleParent/E_Player1Promt");
+     			}
+     			return this.m_E_Player1PromtTextMeshProUGUI;
+     		}
+     	}
+
+		public TMPro.TextMeshProUGUI E_Player2PromtTextMeshProUGUI
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_Player2PromtTextMeshProUGUI == null )
+     			{
+		    		this.m_E_Player2PromtTextMeshProUGUI = UIFindHelper.FindDeepChild<TMPro.TextMeshProUGUI>(this.uiTransform.gameObject,"MiddleParent/E_Player2Promt");
+     			}
+     			return this.m_E_Player2PromtTextMeshProUGUI;
+     		}
+     	}
+
 		public void DestroyWidget()
 		{
 			this.m_E_LeaveRoomButton = null;
 			this.m_E_LeaveRoomImage = null;
 			this.m_EG_LordCardBgRectTransform = null;
+			this.m_E_MultiplesTextMeshProUGUI = null;
 			this.m_EG_AfterStartGameButtonsRectTransform = null;
 			this.m_E_RobButton = null;
 			this.m_E_RobImage = null;
@@ -403,14 +472,18 @@ namespace ET
 			this.m_EG_CardParentRectTransform = null;
 			this.m_E_CardTemplateButton = null;
 			this.m_E_CardTemplateImage = null;
+			this.m_E_SelfPromtTextMeshProUGUI = null;
 			this.m_EG_Player1StandByRectTransform = null;
 			this.m_EG_Player2StandByRectTransform = null;
+			this.m_E_Player1PromtTextMeshProUGUI = null;
+			this.m_E_Player2PromtTextMeshProUGUI = null;
 			this.uiTransform = null;
 		}
 
 		private UnityEngine.UI.Button m_E_LeaveRoomButton = null;
 		private UnityEngine.UI.Image m_E_LeaveRoomImage = null;
 		private UnityEngine.RectTransform m_EG_LordCardBgRectTransform = null;
+		private TMPro.TextMeshProUGUI m_E_MultiplesTextMeshProUGUI = null;
 		private UnityEngine.RectTransform m_EG_AfterStartGameButtonsRectTransform = null;
 		private UnityEngine.UI.Button m_E_RobButton = null;
 		private UnityEngine.UI.Image m_E_RobImage = null;
@@ -428,8 +501,11 @@ namespace ET
 		private UnityEngine.RectTransform m_EG_CardParentRectTransform = null;
 		private UnityEngine.UI.Button m_E_CardTemplateButton = null;
 		private UnityEngine.UI.Image m_E_CardTemplateImage = null;
+		private TMPro.TextMeshProUGUI m_E_SelfPromtTextMeshProUGUI = null;
 		private UnityEngine.RectTransform m_EG_Player1StandByRectTransform = null;
 		private UnityEngine.RectTransform m_EG_Player2StandByRectTransform = null;
+		private TMPro.TextMeshProUGUI m_E_Player1PromtTextMeshProUGUI = null;
+		private TMPro.TextMeshProUGUI m_E_Player2PromtTextMeshProUGUI = null;
 		public Transform uiTransform = null;
 	}
 }

@@ -107,6 +107,7 @@
             //添加斗地主开始必要组件
             self.AddComponent<DeckComponent>();
             self.AddComponent<HandCardsComponent>(); //存放地主牌
+            self.AddComponent<OrderControllerComponent>();
             var controller = self.AddComponent<GameControllerComponent>();
 
             
@@ -122,6 +123,12 @@
             }
 
             return -1;
+        }
+
+        public static Unit GetUnit(this Room self, long id)
+        {
+            var index = self.GetUnitSeatIndex(id);
+            return self.Units[index];
         }
 
         public static Unit RemoveUnit(this Room self, long id)
