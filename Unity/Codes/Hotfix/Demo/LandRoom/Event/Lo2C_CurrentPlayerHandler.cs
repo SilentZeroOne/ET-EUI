@@ -10,7 +10,7 @@ namespace ET
 		protected override void Run(Session session, Lo2C_CurrentPlayer message)
 		{
 			var myUnit = UnitHelper.GetMyUnitFromZoneScene(session.ZoneScene());
-			if (message.UnitId != myUnit.Id) return;
+			// if (message.UnitId != myUnit.Id) return;
 
 			var playingCard = false;
 			switch ((ActionType)message.ActionType)
@@ -24,8 +24,11 @@ namespace ET
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
-			
-			EventSystem.Instance.Publish(new StartPlayCard() { ZoneScene = session.ZoneScene() ,PlayingCard = playingCard});
+
+			EventSystem.Instance.Publish(new StartPlayCard()
+			{
+				ZoneScene = session.ZoneScene(), PlayingCard = playingCard, IsSelf = message.UnitId == myUnit.Id
+			});
 		}
 	}
 }

@@ -6,7 +6,7 @@ namespace ET
 	{
 		protected override void Run(StartPlayCard a)
 		{
-			a.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgMain>().DisplayGamingButtons(a.PlayingCard);
+			a.ZoneScene.GetComponent<UIComponent>().GetDlgLogic<DlgMain>().DisplayGamingButtons(a.PlayingCard, a.IsSelf);
 		}
 	}
 }

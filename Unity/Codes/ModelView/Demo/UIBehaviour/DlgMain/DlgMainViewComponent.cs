@@ -330,40 +330,6 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.UI.Button E_CardTemplateButton
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_CardTemplateButton == null )
-     			{
-		    		this.m_E_CardTemplateButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"BottomParent/EG_CardParent/E_CardTemplate");
-     			}
-     			return this.m_E_CardTemplateButton;
-     		}
-     	}
-
-		public UnityEngine.UI.Image E_CardTemplateImage
-     	{
-     		get
-     		{
-     			if (this.uiTransform == null)
-     			{
-     				Log.Error("uiTransform is null.");
-     				return null;
-     			}
-     			if( this.m_E_CardTemplateImage == null )
-     			{
-		    		this.m_E_CardTemplateImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"BottomParent/EG_CardParent/E_CardTemplate");
-     			}
-     			return this.m_E_CardTemplateImage;
-     		}
-     	}
-
 		public TMPro.TextMeshProUGUI E_SelfPromtTextMeshProUGUI
      	{
      		get
@@ -470,8 +436,6 @@ namespace ET
 			this.m_E_UnReadyButton = null;
 			this.m_E_UnReadyImage = null;
 			this.m_EG_CardParentRectTransform = null;
-			this.m_E_CardTemplateButton = null;
-			this.m_E_CardTemplateImage = null;
 			this.m_E_SelfPromtTextMeshProUGUI = null;
 			this.m_EG_Player1StandByRectTransform = null;
 			this.m_EG_Player2StandByRectTransform = null;
@@ -499,8 +463,6 @@ namespace ET
 		private UnityEngine.UI.Button m_E_UnReadyButton = null;
 		private UnityEngine.UI.Image m_E_UnReadyImage = null;
 		private UnityEngine.RectTransform m_EG_CardParentRectTransform = null;
-		private UnityEngine.UI.Button m_E_CardTemplateButton = null;
-		private UnityEngine.UI.Image m_E_CardTemplateImage = null;
 		private TMPro.TextMeshProUGUI m_E_SelfPromtTextMeshProUGUI = null;
 		private UnityEngine.RectTransform m_EG_Player1StandByRectTransform = null;
 		private UnityEngine.RectTransform m_EG_Player2StandByRectTransform = null;

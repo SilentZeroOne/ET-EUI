@@ -49,5 +49,10 @@
 			self.Library.Clear();
 			self.AccessIdentify = Identify.None;
 		}
+
+		public static int GetCardIndex(this HandCardsComponent self, Card card)
+		{
+			return self.Library.IndexOf(card);
+		}
 	}
 }

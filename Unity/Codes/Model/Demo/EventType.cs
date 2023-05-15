@@ -144,6 +144,7 @@ namespace ET
         {
             public Scene ZoneScene;
             public bool PlayingCard;
+            public bool IsSelf;
         }
 
         public struct RobLandLord

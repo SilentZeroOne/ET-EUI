@@ -85,10 +85,19 @@ namespace ET
 			self.ReadyIcon[unitIndex].SetVisible(active);
 		}
 
-		public static void SetPromt(this DlgMain self, int unitIndex, bool active,bool rob)
+		public static void SetPromt(this DlgMain self, int unitIndex, bool active, bool rob)
 		{
 			self.Promt[unitIndex].SetVisible(active);
-			self.Promt[unitIndex].SetText(rob? "抢地主" : "不抢");
+			if (active)
+				self.Promt[unitIndex].SetText(rob? "抢地主" : "不抢");
+		}
+
+		public static void HideAllPromt(this DlgMain self)
+		{
+			foreach (var promt in self.Promt)
+			{
+				promt.SetVisible(false);
+			}
 		}
 
 		public static void SetMultiples(this DlgMain self, int multiples)
@@ -103,10 +112,7 @@ namespace ET
 				icon.SetVisible(false);
 			}
 
-			foreach (var promt in self.Promt)
-			{
-				promt.SetVisible(false);
-			}
+			self.HideAllPromt();
 			
 			self.View.E_StartGameButton.SetVisible(false);
 			self.View.E_UnReadyButton.SetVisible(false);
@@ -114,18 +120,26 @@ namespace ET
 
 		public static void AddCardSprite(this DlgMain self, Card card, bool lordCard)
 		{
-			var newCard = GameObjectPoolHelper.GetObjectFromPool("PlayCard");
-			self.Cards.Add(card.Id, newCard);
+			if (!self.Cards.ContainsKey(card.Id))
+			{
+				var newCard = GameObjectPoolHelper.GetObjectFromPool("PlayCard");
+				self.Cards.Add(card.Id, newCard);
+				if (lordCard)
+					self.View.EG_LordCardBgRectTransform.SetVisible(true);
+				newCard.transform.SetParent(lordCard? self.View.EG_LordCardBgRectTransform : self.View.EG_CardParentRectTransform);
+				var rect = newCard.transform.GetComponent<RectTransform>();
+				rect.localPosition = Vector3.zero;
+				rect.localScale = Vector2.one * (lordCard? 1 : 1.5f);
+				newCard.GetComponent<Image>().sprite = CardHelper.GetCardSprite(card);
+				
+				card.AddComponent<GameObjectComponent>().SetGameObject(newCard);
+			}
 
-			if (lordCard)
-				self.View.EG_LordCardBgRectTransform.SetVisible(true);
-			newCard.transform.SetParent(lordCard? self.View.EG_LordCardBgRectTransform : self.View.EG_CardParentRectTransform);
-			var rect = newCard.transform.GetComponent<RectTransform>();
-			rect.localPosition = Vector3.zero;
-			rect.localScale = Vector2.one * (lordCard? 1 : 1.5f);
-			newCard.GetComponent<Image>().sprite = CardHelper.GetCardSprite(card);
-
-			card.AddComponent<GameObjectComponent>().SetGameObject(newCard);
+			var trans = card.GetComponent<GameObjectComponent>().GameObject.transform;
+			var handCards = card.Parent as HandCardsComponent;
+			var index = (handCards.CardsCount - 1) - handCards.GetCardIndex(card);
+			
+			trans.SetSiblingIndex(index);
 		}
 
 		public static void ClearAllCard(this DlgMain self)
@@ -138,8 +152,13 @@ namespace ET
 			self.Cards.Clear();
 		}
 
-		public static void DisplayGamingButtons(this DlgMain self, bool playCard)
+		public static void DisplayGamingButtons(this DlgMain self, bool playCard, bool isSelf)
 		{
+			if (playCard)
+				self.HideAllPromt();
+
+			if (!isSelf) return;
+
 			self.View.EG_AfterStartGameButtonsRectTransform.SetVisible(true);
 			self.SetRobBtnVisible(!playCard);
 			self.View.E_PassButton.SetVisible(playCard);

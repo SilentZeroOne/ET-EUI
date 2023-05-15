@@ -10,7 +10,7 @@ namespace ET
 		public long BelongToEntity;
 
 		public Action OnMouseDownAction;
-		public Action OnPointerClickAction;
+		public Action<PointerEventData> OnPointerClickAction;
 
 		public void OnMouseDown()
 		{
@@ -19,7 +19,7 @@ namespace ET
 
 		public void OnPointerClick(PointerEventData eventData)
 		{
-			OnPointerClickAction?.Invoke();
+			OnPointerClickAction?.Invoke(eventData);
 		}
 	}
 }
