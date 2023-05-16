@@ -166,5 +166,12 @@ namespace ET
             public bool IsSelected;
             public long CardId;
         }
+        
+        public struct UpdateIdentify
+        {
+            public Scene ZoneScene;
+            public long UnitId;
+            public int Idengtify;
+        }
     }
 }

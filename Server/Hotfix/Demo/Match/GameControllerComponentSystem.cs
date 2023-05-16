@@ -140,6 +140,7 @@
                 lordHandCard.AddCard(card);
             }
 
+            room.Broadcast(new Lo2C_UpdateIdentify() { UnitId = unitId, Identify = (int)Identify.LandLord });
             room.Broadcast(new Lo2C_CurrentPlayer() { ActionType = (int)ActionType.PlayCard, UnitId = unitId });
         }
 

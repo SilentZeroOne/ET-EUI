@@ -475,7 +475,7 @@ message Lo2C_CurrentPlayer // IActorLobbyMessage
 message C2Lo_RobLandLordRequest // IActorLocationRequest
 {
 	int32 RpcId = 1;
-	int32 Grab = 2;
+	int32 Rob = 2;
 	int64 UnitId = 3;
 }
 
@@ -495,5 +495,11 @@ message Lo2C_RobLandLord // IActorLobbyMessage
 {
 	int64 UnitId = 1;
 	int32 Rob = 2;
+}
+
+message Lo2C_UpdateIdentify // IActorLobbyMessage
+{
+	int64 UnitId = 1;
+	int32 Identify = 2;
 }
 

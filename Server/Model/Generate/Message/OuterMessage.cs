@@ -1033,4 +1033,16 @@ namespace ET
 
 	}
 
+	[Message(OuterOpcode.Lo2C_UpdateIdentify)]
+	[ProtoContract]
+	public partial class Lo2C_UpdateIdentify: Object, IActorLobbyMessage
+	{
+		[ProtoMember(1)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(2)]
+		public int Identify { get; set; }
+
+	}
+
 }

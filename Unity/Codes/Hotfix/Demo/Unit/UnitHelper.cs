@@ -17,6 +17,12 @@ namespace ET
             return currentScene.GetComponent<UnitComponent>().Get(playerComponent.MyId);
         }
 
+        public static Unit GetUnit(Scene zoneScene,long unitId)
+        {
+            Scene currentScene = zoneScene.GetComponent<CurrentScenesComponent>().Scene;
+            return currentScene.GetComponent<UnitComponent>().Get(unitId);
+        }
+
         public static async ETTask<RoleInfo> GetRoleInfo(Scene zoneScene, long unitId)
         {
             G2C_GetRoleInfo g2CGetRoleInfo = null;
