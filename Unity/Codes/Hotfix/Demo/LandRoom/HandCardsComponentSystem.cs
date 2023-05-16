@@ -54,5 +54,10 @@
 		{
 			return self.Library.IndexOf(card);
 		}
+
+		public static Card GetCard(this HandCardsComponent self, long cardId)
+		{
+			return self.GetChild<Card>(cardId);
+		}
 	}
 }

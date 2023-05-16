@@ -4,6 +4,7 @@ using System;
 using BM;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace ET
 {
@@ -118,7 +119,7 @@ namespace ET
 			self.View.E_UnReadyButton.SetVisible(false);
 		}
 
-		public static void AddCardSprite(this DlgMain self, Card card, bool lordCard)
+		public static async void AddCardSprite(this DlgMain self, Card card, bool lordCard)
 		{
 			if (!self.Cards.ContainsKey(card.Id))
 			{
@@ -133,6 +134,9 @@ namespace ET
 				newCard.GetComponent<Image>().sprite = CardHelper.GetCardSprite(card);
 				
 				card.AddComponent<GameObjectComponent>().SetGameObject(newCard);
+				await TimerComponent.Instance.WaitAsync(100);
+				if (!lordCard)
+					card.AddComponent<PlayCardComponent>();
 			}
 
 			var trans = card.GetComponent<GameObjectComponent>().GameObject.transform;
@@ -169,6 +173,23 @@ namespace ET
 		{
 			self.View.E_RobButton.SetVisible(visiable);
 			self.View.E_NotRobButton.SetVisible(visiable);
+		}
+
+		public static void SelectCard(this DlgMain self, long cardId, bool selected)
+		{
+			if(!self.Cards.ContainsKey(cardId)) return;
+			
+			self.SetCardLayoutEnable(false);
+			
+			var cardObj = self.Cards[cardId];
+
+			cardObj.transform.DOLocalMoveY(selected? 50f : 0f, 0.2f);
+		}
+
+		public static void SetCardLayoutEnable(this DlgMain self, bool enable)
+		{
+			self.View.EG_CardParentRectTransform.GetComponent<ContentSizeFitter>().enabled = enable;
+			self.View.EG_CardParentRectTransform.GetComponent<HorizontalLayoutGroup>().enabled = enable;
 		}
 	}
 }

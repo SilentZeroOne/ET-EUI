@@ -159,5 +159,12 @@ namespace ET
             public Scene ZoneScene;
             public int Mutiples;
         }
+
+        public struct CardSelected
+        {
+            public Scene ZoneScene;
+            public bool IsSelected;
+            public long CardId;
+        }
     }
 }

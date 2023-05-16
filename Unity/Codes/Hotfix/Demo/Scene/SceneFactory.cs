@@ -25,6 +25,7 @@ namespace ET
             if (name == "PlayingRoom")
             {
                 currentScene.AddComponent<LandRoomComponent>();
+                currentScene.AddComponent<LandInteractionComponent>();
             }
 
             currentScene.AddComponent<ObjectWait>();

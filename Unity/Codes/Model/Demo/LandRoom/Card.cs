@@ -18,9 +18,10 @@ namespace ET
 		public int CompareTo(object obj)
 		{
 			Card other = obj as Card;
-			var selfWeight = this.CardWeight;
+
 			if (other == null) return 1;
-			if (selfWeight > other.CardWeight) return 1;
+			if (this.CardWeight > other.CardWeight) return 1;
+			if (this.CardWeight == other.CardWeight) return 0;
 			return -1;
 		}
 	}
