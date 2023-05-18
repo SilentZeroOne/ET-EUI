@@ -13,6 +13,8 @@ namespace ET
 
 		public List<TextMeshProUGUI> Promt = new(3);
 
+		public List<ES_PlayerStatusUI> PlayerStatusUI = new(3);
+
 		public Dictionary<long,GameObject> Cards = new(30);
 	}
 }

@@ -10,7 +10,6 @@ namespace ET
             var currentScene = a.Unit.ZoneScene().CurrentScene();
             LandRoomObjectsComponent landRoomObjectsComponent = currentScene.GetComponent<LandRoomObjectsComponent>();
             var index = landRoomObjectsComponent.Seats[a.Unit.Id];
-            landRoomObjectsComponent.PositionUsed[index] = false;
             landRoomObjectsComponent.Seats.Remove(a.Unit.Id);
 
             var go = a.Unit.GetComponent<GameObjectComponent>().GameObject;

@@ -17,7 +17,7 @@ namespace ET
             return currentScene.GetComponent<UnitComponent>().Get(playerComponent.MyId);
         }
 
-        public static Unit GetUnit(Scene zoneScene,long unitId)
+        public static Unit GetUnit(Scene zoneScene, long unitId)
         {
             Scene currentScene = zoneScene.GetComponent<CurrentScenesComponent>().Scene;
             return currentScene.GetComponent<UnitComponent>().Get(unitId);
@@ -50,6 +50,23 @@ namespace ET
             roleInfo.FromMessage(g2CGetRoleInfo.RoleInfo);
 
             return roleInfo;
+        }
+
+        public static RoleInfo GetCachedRoleInfo(Scene zoneScene, long unitId)
+        {
+            return zoneScene.GetComponent<RoleInfoComponent>().GetChild<RoleInfo>(unitId);
+        }
+
+        public static int GetSeatIndex(this Unit unit)
+        {
+            var myUnit = GetMyUnitFromZoneScene(unit.ZoneScene());
+            
+            if (unit.SeatIndex == (myUnit.SeatIndex + 1) % 3)
+            {
+                return 1;
+            }
+            
+            return 2;
         }
     }
 }

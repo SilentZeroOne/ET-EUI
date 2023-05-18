@@ -25,6 +25,8 @@ namespace ET
             unitInfo.ForwardY = forward.y;
             unitInfo.ForwardZ = forward.z;
 
+            unitInfo.SeatIndex = unit.SeatIndex;
+
             // MoveComponent moveComponent = unit.GetComponent<MoveComponent>();
             // if (moveComponent != null)
             // {

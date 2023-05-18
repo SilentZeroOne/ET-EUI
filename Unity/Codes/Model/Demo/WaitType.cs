@@ -39,5 +39,14 @@
                 set;
             }
         }
+        
+        public struct Wait_MainUILoad: IWaitType
+        {
+            public int Error
+            {
+                get;
+                set;
+            }
+        }
     }
 }

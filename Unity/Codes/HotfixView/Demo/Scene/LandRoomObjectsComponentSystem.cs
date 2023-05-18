@@ -25,9 +25,10 @@ namespace ET
 		{
 			var deskSprite = GameObject.Find("DeskSprite");
 			self.DeskSprite = deskSprite.GetComponent<SpriteRenderer>();
-			self.SelfUnitPosition = deskSprite.Get<GameObject>("SelfUnitPosition").transform;
-			self.OtherUnitPositions = new[]
+			//self.SelfUnitPosition = deskSprite.Get<GameObject>("SelfUnitPosition").transform;
+			self.UnitPositions = new[]
 			{
+				deskSprite.Get<GameObject>("OtherUnitPosition_0").transform, 
 				deskSprite.Get<GameObject>("OtherUnitPosition_1").transform, 
 				deskSprite.Get<GameObject>("OtherUnitPosition_2").transform
 			};

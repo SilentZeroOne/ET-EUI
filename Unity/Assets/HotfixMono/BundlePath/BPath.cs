@@ -25,6 +25,7 @@ namespace BM
 		public const string Assets_Bundles_ResBundles_UI_UIHelp__prefab = "Assets/Bundles/ResBundles/UI/UIHelp.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Common_ESCommonUI__prefab = "Assets/Bundles/ResBundles/UI/Common/ESCommonUI.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Common_ESReuseUI__prefab = "Assets/Bundles/ResBundles/UI/Common/ESReuseUI.prefab";
+		public const string Assets_Bundles_ResBundles_UI_Common_ES_PlayerStatusUI__prefab = "Assets/Bundles/ResBundles/UI/Common/ES_PlayerStatusUI.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Common_RedDot__prefab = "Assets/Bundles/ResBundles/UI/Common/RedDot.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgHelper__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgHelper.prefab";
 		public const string Assets_Bundles_ResBundles_UI_Dlg_DlgLand__prefab = "Assets/Bundles/ResBundles/UI/Dlg/DlgLand.prefab";

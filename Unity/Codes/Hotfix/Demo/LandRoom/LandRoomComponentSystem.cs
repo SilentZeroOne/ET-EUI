@@ -31,10 +31,11 @@ namespace ET
         {
             if (self.PlayerCount < 3 && !self.Seats.ContainsKey(unit.Id))
             {
-                var index = self.Seats.Count;
+                var isSelf = unit.Id == self.ZoneScene().GetComponent<PlayerComponent>().MyId;
+                var index = isSelf? 0 : unit.GetSeatIndex();
                 self.Seats.Add(unit.Id, index);
                 self.Units[index] = unit;
-                if (unit.Id == self.ZoneScene().GetComponent<PlayerComponent>().MyId)
+                if (isSelf)
                     unit.AddComponent<HandCardsComponent>();
             }
             else

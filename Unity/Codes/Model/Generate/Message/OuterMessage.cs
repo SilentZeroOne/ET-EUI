@@ -161,6 +161,9 @@ namespace ET
 		[ProtoMember(12)]
 		public MoveInfo MoveInfo { get; set; }
 
+		[ProtoMember(13)]
+		public int SeatIndex { get; set; }
+
 	}
 
 	[Message(OuterOpcode.M2C_CreateUnits)]
@@ -1042,6 +1045,21 @@ namespace ET
 
 		[ProtoMember(2)]
 		public int Identify { get; set; }
+
+	}
+
+	[Message(OuterOpcode.Lo2C_NoticeNumeric)]
+	[ProtoContract]
+	public partial class Lo2C_NoticeNumeric: Object, IActorLobbyMessage
+	{
+		[ProtoMember(1)]
+		public long UnitId { get; set; }
+
+		[ProtoMember(2)]
+		public int NumericType { get; set; }
+
+		[ProtoMember(3)]
+		public long NewValue { get; set; }
 
 	}
 

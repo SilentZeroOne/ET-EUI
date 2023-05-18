@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OuterMessage
   m_EditorClassIdentifier: 
   serializationData:
-    SerializedFormat: 0
+    SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects: []
     SerializedBytesString: 
@@ -322,6 +322,13 @@ MonoBehaviour:
       Custom: 0
       CustomMessageClassName: MoveInfo
       MessageClassName: MoveInfo
+      Comment: 
+    - ParamName: SeatIndex
+      ParamType: 0
+      MemberID: 13
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
       Comment: 
   - Enabled: 0
     MessageType: 4
@@ -1844,6 +1851,33 @@ MonoBehaviour:
     - ParamName: Identify
       ParamType: 0
       MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+  - Enabled: 1
+    MessageType: 10
+    ClassName: Lo2C_NoticeNumeric
+    ResponseType: 
+    Annotation: 
+    MessageParamConfigs:
+    - ParamName: UnitId
+      ParamType: 1
+      MemberID: 1
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: NumericType
+      ParamType: 0
+      MemberID: 2
+      Custom: 0
+      CustomMessageClassName: 
+      MessageClassName: 
+      Comment: 
+    - ParamName: NewValue
+      ParamType: 1
+      MemberID: 3
       Custom: 0
       CustomMessageClassName: 
       MessageClassName: 

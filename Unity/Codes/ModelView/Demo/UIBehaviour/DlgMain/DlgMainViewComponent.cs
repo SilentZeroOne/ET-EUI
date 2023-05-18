@@ -194,6 +194,40 @@ namespace ET
      		}
      	}
 
+		public UnityEngine.UI.Button E_PromptButton
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_PromptButton == null )
+     			{
+		    		this.m_E_PromptButton = UIFindHelper.FindDeepChild<UnityEngine.UI.Button>(this.uiTransform.gameObject,"BottomParent/EG_AfterStartGameButtons/E_Prompt");
+     			}
+     			return this.m_E_PromptButton;
+     		}
+     	}
+
+		public UnityEngine.UI.Image E_PromptImage
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_PromptImage == null )
+     			{
+		    		this.m_E_PromptImage = UIFindHelper.FindDeepChild<UnityEngine.UI.Image>(this.uiTransform.gameObject,"BottomParent/EG_AfterStartGameButtons/E_Prompt");
+     			}
+     			return this.m_E_PromptImage;
+     		}
+     	}
+
 		public UnityEngine.UI.Button E_PassButton
      	{
      		get
@@ -347,7 +381,7 @@ namespace ET
      		}
      	}
 
-		public UnityEngine.RectTransform EG_Player1StandByRectTransform
+		public ES_PlayerStatusUI ES_PlayerStatusUI_0
      	{
      		get
      		{
@@ -356,11 +390,12 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_EG_Player1StandByRectTransform == null )
+     			if( this.m_es_playerstatusui_0 == null )
      			{
-		    		this.m_EG_Player1StandByRectTransform = UIFindHelper.FindDeepChild<UnityEngine.RectTransform>(this.uiTransform.gameObject,"MiddleParent/EG_Player1StandBy");
+		    	   Transform subTrans = UIFindHelper.FindDeepChild<Transform>(this.uiTransform.gameObject,"BottomParent/ES_PlayerStatusUI_0");
+		    	   this.m_es_playerstatusui_0 = this.AddChild<ES_PlayerStatusUI,Transform>(subTrans);
      			}
-     			return this.m_EG_Player1StandByRectTransform;
+     			return this.m_es_playerstatusui_0;
      		}
      	}
 
@@ -381,7 +416,7 @@ namespace ET
      		}
      	}
 
-		public TMPro.TextMeshProUGUI E_Player1PromtTextMeshProUGUI
+		public UnityEngine.RectTransform EG_Player1StandByRectTransform
      	{
      		get
      		{
@@ -390,11 +425,11 @@ namespace ET
      				Log.Error("uiTransform is null.");
      				return null;
      			}
-     			if( this.m_E_Player1PromtTextMeshProUGUI == null )
+     			if( this.m_EG_Player1StandByRectTransform == null )
      			{
-		    		this.m_E_Player1PromtTextMeshProUGUI = UIFindHelper.FindDeepChild<TMPro.TextMeshProUGUI>(this.uiTransform.gameObject,"MiddleParent/E_Player1Promt");
+		    		this.m_EG_Player1StandByRectTransform = UIFindHelper.FindDeepChild<UnityEngine.RectTransform>(this.uiTransform.gameObject,"MiddleParent/EG_Player1StandBy");
      			}
-     			return this.m_E_Player1PromtTextMeshProUGUI;
+     			return this.m_EG_Player1StandByRectTransform;
      		}
      	}
 
@@ -415,6 +450,59 @@ namespace ET
      		}
      	}
 
+		public TMPro.TextMeshProUGUI E_Player1PromtTextMeshProUGUI
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_E_Player1PromtTextMeshProUGUI == null )
+     			{
+		    		this.m_E_Player1PromtTextMeshProUGUI = UIFindHelper.FindDeepChild<TMPro.TextMeshProUGUI>(this.uiTransform.gameObject,"MiddleParent/E_Player1Promt");
+     			}
+     			return this.m_E_Player1PromtTextMeshProUGUI;
+     		}
+     	}
+
+		public ES_PlayerStatusUI ES_PlayerStatusUI_2
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_es_playerstatusui_2 == null )
+     			{
+		    	   Transform subTrans = UIFindHelper.FindDeepChild<Transform>(this.uiTransform.gameObject,"MiddleParent/ES_PlayerStatusUI_2");
+		    	   this.m_es_playerstatusui_2 = this.AddChild<ES_PlayerStatusUI,Transform>(subTrans);
+     			}
+     			return this.m_es_playerstatusui_2;
+     		}
+     	}
+
+		public ES_PlayerStatusUI ES_PlayerStatusUI_1
+     	{
+     		get
+     		{
+     			if (this.uiTransform == null)
+     			{
+     				Log.Error("uiTransform is null.");
+     				return null;
+     			}
+     			if( this.m_es_playerstatusui_1 == null )
+     			{
+		    	   Transform subTrans = UIFindHelper.FindDeepChild<Transform>(this.uiTransform.gameObject,"MiddleParent/ES_PlayerStatusUI_1");
+		    	   this.m_es_playerstatusui_1 = this.AddChild<ES_PlayerStatusUI,Transform>(subTrans);
+     			}
+     			return this.m_es_playerstatusui_1;
+     		}
+     	}
+
 		public void DestroyWidget()
 		{
 			this.m_E_LeaveRoomButton = null;
@@ -428,6 +516,8 @@ namespace ET
 			this.m_E_NotRobImage = null;
 			this.m_E_PlayCardButton = null;
 			this.m_E_PlayCardImage = null;
+			this.m_E_PromptButton = null;
+			this.m_E_PromptImage = null;
 			this.m_E_PassButton = null;
 			this.m_E_PassImage = null;
 			this.m_E_StartGameButton = null;
@@ -437,10 +527,16 @@ namespace ET
 			this.m_E_UnReadyImage = null;
 			this.m_EG_CardParentRectTransform = null;
 			this.m_E_SelfPromtTextMeshProUGUI = null;
-			this.m_EG_Player1StandByRectTransform = null;
+			this.m_es_playerstatusui_0?.Dispose();
+			this.m_es_playerstatusui_0 = null;
 			this.m_EG_Player2StandByRectTransform = null;
-			this.m_E_Player1PromtTextMeshProUGUI = null;
+			this.m_EG_Player1StandByRectTransform = null;
 			this.m_E_Player2PromtTextMeshProUGUI = null;
+			this.m_E_Player1PromtTextMeshProUGUI = null;
+			this.m_es_playerstatusui_2?.Dispose();
+			this.m_es_playerstatusui_2 = null;
+			this.m_es_playerstatusui_1?.Dispose();
+			this.m_es_playerstatusui_1 = null;
 			this.uiTransform = null;
 		}
 
@@ -455,6 +551,8 @@ namespace ET
 		private UnityEngine.UI.Image m_E_NotRobImage = null;
 		private UnityEngine.UI.Button m_E_PlayCardButton = null;
 		private UnityEngine.UI.Image m_E_PlayCardImage = null;
+		private UnityEngine.UI.Button m_E_PromptButton = null;
+		private UnityEngine.UI.Image m_E_PromptImage = null;
 		private UnityEngine.UI.Button m_E_PassButton = null;
 		private UnityEngine.UI.Image m_E_PassImage = null;
 		private UnityEngine.UI.Button m_E_StartGameButton = null;
@@ -464,10 +562,13 @@ namespace ET
 		private UnityEngine.UI.Image m_E_UnReadyImage = null;
 		private UnityEngine.RectTransform m_EG_CardParentRectTransform = null;
 		private TMPro.TextMeshProUGUI m_E_SelfPromtTextMeshProUGUI = null;
-		private UnityEngine.RectTransform m_EG_Player1StandByRectTransform = null;
+		private ES_PlayerStatusUI m_es_playerstatusui_0 = null;
 		private UnityEngine.RectTransform m_EG_Player2StandByRectTransform = null;
-		private TMPro.TextMeshProUGUI m_E_Player1PromtTextMeshProUGUI = null;
+		private UnityEngine.RectTransform m_EG_Player1StandByRectTransform = null;
 		private TMPro.TextMeshProUGUI m_E_Player2PromtTextMeshProUGUI = null;
+		private TMPro.TextMeshProUGUI m_E_Player1PromtTextMeshProUGUI = null;
+		private ES_PlayerStatusUI m_es_playerstatusui_2 = null;
+		private ES_PlayerStatusUI m_es_playerstatusui_1 = null;
 		public Transform uiTransform = null;
 	}
 }

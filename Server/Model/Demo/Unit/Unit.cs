@@ -46,5 +46,8 @@ namespace ET
                 Game.EventSystem.PublishClass(EventType.ChangeRotation.Instance);
             }
         }
+        
+        [BsonIgnore]
+        public int SeatIndex { get; set; }
     }
 }

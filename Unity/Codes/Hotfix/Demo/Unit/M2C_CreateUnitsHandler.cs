@@ -10,8 +10,10 @@
 			
 			foreach (UnitInfo unitInfo in message.Units)
 			{
-				if (unitComponent.Get(unitInfo.UnitId) != null)
+				var unit = unitComponent.Get(unitInfo.UnitId);
+				if (unit != null)
 				{
+					unit.SeatIndex = unitInfo.SeatIndex;
 					continue;
 				}
 				UnitFactory.Create(currentScene, unitInfo).Coroutine();

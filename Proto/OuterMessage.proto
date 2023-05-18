@@ -71,6 +71,7 @@ message UnitInfo
 	repeated int32 Ks = 10;
 	repeated int64 Vs = 11;
 	MoveInfo MoveInfo = 12;
+	int32 SeatIndex = 13;
 }
 
 message M2C_CreateUnits // IActorMessage
@@ -501,5 +502,12 @@ message Lo2C_UpdateIdentify // IActorLobbyMessage
 {
 	int64 UnitId = 1;
 	int32 Identify = 2;
+}
+
+message Lo2C_NoticeNumeric // IActorLobbyMessage
+{
+	int64 UnitId = 1;
+	int32 NumericType = 2;
+	int64 NewValue = 3;
 }
 

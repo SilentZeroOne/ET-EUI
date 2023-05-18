@@ -27,6 +27,7 @@ namespace ET
 			// unit.Position = new Vector3(-10, 0, -10);
 			
 			unit.AddComponent<MailBoxComponent>();
+			unit.AddComponent<NumericNoticeComponent>();
 			
 			// 通知客户端创建My Unit
 			M2C_CreateMyUnit m2CCreateUnits = new M2C_CreateMyUnit();

@@ -40,26 +40,15 @@ namespace ET
             {
                 if (playerComponent.MyId == args.Unit.Id)
                 {
-                    unitGo.transform.position = landRoomObjectsComponent.SelfUnitPosition.position;
-                    unitGo.transform.position = landRoomObjectsComponent.SelfUnitPosition.position;
+                    unitGo.transform.position = landRoomObjectsComponent.UnitPositions[0].position;
+                    landRoomObjectsComponent.Seats.Add(args.Unit.Id, 0);
                 }
                 else
                 {
-                    var usedList = landRoomObjectsComponent.PositionUsed;
-                    for (int i = 0; i < usedList.Length; i++)
-                    {
-                        if (!usedList[i])
-                        {
-                            unitGo.transform.position = landRoomObjectsComponent.OtherUnitPositions[i].position;
-                            landRoomObjectsComponent.PositionUsed[i] = true;
-                            landRoomObjectsComponent.Seats.Add(args.Unit.Id, i);
-                            if (i == 0)
-                            {
-                                args.Unit.GetComponent<SpriteRendererComponent>().Renderer.flipX = true;
-                            }
-                            break;
-                        }
-                    }
+                    var index = args.Unit.GetSeatIndex();
+                    unitGo.transform.position = landRoomObjectsComponent.UnitPositions[index].position;
+                    if (index == 2) args.Unit.GetComponent<SpriteRendererComponent>().Renderer.flipX = true;
+                    landRoomObjectsComponent.Seats.Add(args.Unit.Id, index);
                 }
             }
         }

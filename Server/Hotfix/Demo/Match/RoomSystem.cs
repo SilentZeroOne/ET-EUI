@@ -54,19 +54,22 @@
             if (self.PlayerCount < 3 && !self.Seats.ContainsKey(unit.Id))
             {
                 var unitId = unit.Id;
-                var index = self.Seats.Count;
+                var index = self.GetEmptySeatIndex();
                 self.Seats.Add(unit.Id, index);
 
                 await TransferHelper.Transfer(unit, self.PlayingScene.InstanceId, "PlayingRoom");
 
                 unit = self.PlayingScene.GetComponent<UnitComponent>().Get(unitId);
                 self.Units[index] = unit;
+                unit.SeatIndex = index;
 
                 var create_units = new M2C_CreateUnits();
-                foreach (var u in self.Units)
+                for (int i = self.Units.Length - 1; i >= 0; i--)
                 {
-                    if (u is { IsDisposed: false })
-                        create_units.Units.Add(UnitHelper.CreateUnitInfo(u));
+                    if (self.Units[i] is { IsDisposed: false })
+                    {
+                        create_units.Units.Add(UnitHelper.CreateUnitInfo(self.Units[i]));
+                    }
                 }
 
                 unit.GetComponent<NumericComponent>().Set(NumericType.IsWaiting, 1);

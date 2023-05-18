@@ -8,11 +8,7 @@ namespace ET
 	{
 		public SpriteRenderer DeskSprite;
 		
-		public Transform[] OtherUnitPositions;
-
-		public Transform SelfUnitPosition;
-
-		public bool[] PositionUsed = new[] { false, false };
+		public Transform[] UnitPositions;
 
 		//玩家Id和座位Index的对应关系
 		public Dictionary<long, int> Seats = new();

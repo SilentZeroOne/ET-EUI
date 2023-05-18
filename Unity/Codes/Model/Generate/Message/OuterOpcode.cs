@@ -67,5 +67,6 @@ namespace ET
 		 public const ushort Lo2C_SetMultiples = 10064;
 		 public const ushort Lo2C_RobLandLord = 10065;
 		 public const ushort Lo2C_UpdateIdentify = 10066;
+		 public const ushort Lo2C_NoticeNumeric = 10067;
 	}
 }

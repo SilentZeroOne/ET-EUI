@@ -9,7 +9,8 @@ namespace ET
 	        UnitComponent unitComponent = currentScene.GetComponent<UnitComponent>();
 	        Unit unit = unitComponent.AddChildWithId<Unit, int>(unitInfo.UnitId, unitInfo.ConfigId);
 	        unitComponent.Add(unit);
-
+	        unit.SeatIndex = unitInfo.SeatIndex;
+	        
 	        LandRoomComponent landRoomComponent = currentScene.GetComponent<LandRoomComponent>();
 	        landRoomComponent?.AddUnit(unit);
 
